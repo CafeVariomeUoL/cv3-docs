@@ -1,4 +1,4 @@
-# Cafe Variome V3 Documentation
+# Documentations
 
 ## Administrator guide
 
