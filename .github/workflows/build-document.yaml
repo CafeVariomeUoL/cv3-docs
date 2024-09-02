@@ -11,8 +11,6 @@ permissions:
   contents: read
 
 env:
-  INSTANCE: 'Writerside/hi'
-  ARTIFACT: 'webHelpHI2-all.zip'
   DOCKER_VERSION: '241.18775'
 
 jobs:
@@ -78,17 +76,14 @@ jobs:
       - name: Download artifacts
         uses: actions/download-artifact@v4
 
-      - name: List files
-        run: ls -R
-
       - name: Unzip index
-        run: unzip -O UTF-8 -qq webHelpI2-all.zip -d dir
+        run: unzip -O UTF-8 -qq index/webHelpI2-all.zip -d dir
 
       - name: Unzip admin guide
-        run:  unzip -O UTF-8 -qq webHelpAG2-all.zip -d dir/admin
+        run:  unzip -O UTF-8 -qq admin/webHelpAG2-all.zip -d dir/admin
 
       - name: Unzip user guide
-        run: unzip -O UTF-8 -qq webHelpUG2-all.zip -d dir/user
+        run: unzip -O UTF-8 -qq user/webHelpUG2-all.zip -d dir/user
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
