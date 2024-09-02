@@ -1,0 +1,8 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Build Admin Guide" type="StardustRunConfiguration" factoryName="save-as-zip">
+    <option name="folderPath" value="$PROJECT_DIR$/dist" />
+    <option name="instanceId" value="ag" />
+    <option name="instanceName" value="Admin Guide" />
+    <method v="2" />
+  </configuration>
+</component>

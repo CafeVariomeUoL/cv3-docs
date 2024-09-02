@@ -6,5 +6,6 @@
                  name="User Guide"
                   start-page="cafe-variome-v3.md">
 
+    <toc-element topic="user-and-admin-access-control.md"/>
     <toc-element topic="cafe-variome-v3.md"/>
 </instance-profile>

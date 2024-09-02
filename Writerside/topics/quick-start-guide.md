@@ -30,7 +30,8 @@ There is also a copy of example Apache configuration file in the backend reposit
 
 The front end consists of 3 Flutter application, written with a cross-platform programming framework developed by Google. It can be compiled to run on desktop systems, but here we will cover only the web deployment.
 
-The easiest option is to **Deploy it from release**. We provide periodical releases on major version updates and essential bug/security fixes, and they can be used directly as static web apps. To deploy from releases, download from the [GitHub release section](https://github.com/CafeVariomeUoL/cv3-frontend/releases), and follow the `README.md` provided within the release. Here is a brief summary:
+The easiest option is to **Deploy it from release
+**. We provide periodical releases on major version updates and essential bug/security fixes, and they can be used directly as static web apps. To deploy from releases, download from the [GitHub release section](https://github.com/CafeVariomeUoL/cv3-frontend/releases), and follow the `README.md` provided within the release. Here is a brief summary:
 
 Basically, you need to modify the config files (located at `assets/assets/config.json` for each app) and `callback` files to point to correct addresses. During compiling, each component has been assigned a subpath, and has to be followed when deploying it. By default, we assume that the entire folder is placed under a domain root. This means that, for a domain of `www.example.com`:
 
@@ -67,7 +68,7 @@ The compiled web app will be in the ``build/web`` directory for each app. You ca
 
 ### Deploying the backend
 
-The backend consists of 9 components, and not all are mandatory. You can select which one to run based on your requirements. For the details on what each component does, refer to the backend documentation. Here we assume you need everything.
+The backend consists of 9 components, and not all are mandatory. You can select which one to run based on your requirements. For the details on what each component does, refer to the [backend documentation](deploying-backend.md). Here we assume you need everything.
 
 The first thing you need is to install dependencies with pip. Run the following command in the downloaded source folder (with Python and pip available in PATH, you may need to activate the conda environment beforehand):
 
@@ -82,12 +83,11 @@ export VAULT_ROLE_ID=... # Role ID for AppRole authentication, ensure this role 
 export VAULT_SECRET_ID=... # Secret ID for AppRole authentication
 ```
 
-> ##### Warning
->
 > The Vault role ID and secret ID are sensitive information. Ensure the way you load them into the environment variables is secure, and they are not registered in any logs or history.
-{: .block-warning }
+> {style="warning"}
 
-The backend also provides a CLI tool for managing the instance, including initializing the database, etc. It's recommended to use the CLI to initialize the database before running it. To use it, run the following command in the **Backend Project Folder**:
+The backend also provides a CLI tool for managing the instance, including initializing the database, etc. It's recommended to use the CLI to initialize the database before running it. To use it, run the following command in the
+**Backend Project Folder**:
 
 ```shell
 ./CafeVariome3.sh cli
@@ -95,10 +95,8 @@ The backend also provides a CLI tool for managing the instance, including initia
 
 In the interactive shell, type ``install``, and follow the instructions.
 
-> ##### Danger
->
 > Initializing the database and vault while there's data inside of them will lead to irreversible data loss. Ensure you do not accidentally use the wrong database or vault path.
-{: .block-danger }
+> {style="warning"}
 
 ```
      ________  ________  ________ _______           ___      ___ ________  ________  ___  ________  _____ ______   _______           ________     
@@ -118,7 +116,9 @@ Current application version: 1.0.0
 > install
 ```
 
-The CLI has interactive prompts and input pop ups that guide you through the installation process. Now, the backend is ready to be started. There is a **Process manager** to manage each components by guarding their process and start/stop them accordingly. We provided a simple script to manage the backend process, with startup check and graceful shutdown:
+The CLI has interactive prompts and input pop ups that guide you through the installation process. Now, the backend is ready to be started. There is a
+**Process manager
+** to manage each components by guarding their process and start/stop them accordingly. We provided a simple script to manage the backend process, with startup check and graceful shutdown:
 
 ```shell
 # To start it
@@ -255,7 +255,8 @@ services:
 
 Several points worth noting:
 
-1. The KeyCloak server is configured to start as a dev server in this stack, and the database is set to MariaDB. This is to facilitate the easy debugging and run it with minimal configuration. When using in production environment, **do not use the dev mode**, instead refer to Keycloak documentation on how to configure it properly.
+1. The KeyCloak server is configured to start as a dev server in this stack, and the database is set to MariaDB. This is to facilitate the easy debugging and run it with minimal configuration. When using in production environment,
+   **do not use the dev mode**, instead refer to Keycloak documentation on how to configure it properly.
 2. Remember to change the Keycloak admin password and the database password to something secure.
 3. The vault is using file storage backend and has TLS disabled. This is also for development environment only. When using on production server, it's recommended to use vault with high availability cluster. If this is not an option, you should at least use a production storage backend (like MySQL) and enable TLS.
 4. You may add or modify configurations, use a different version of the image, etc. as you see fit. The provided configuration is a minimal working example. As long as the services have compatible API, the version should not matter.

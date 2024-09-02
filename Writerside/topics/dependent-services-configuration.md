@@ -158,6 +158,7 @@ Cafe Variome V3 requires a service account with sufficient privileges to perform
 - view-profile
 
 If you wish to use the Nexus mode (which manages multiple CV2 instances), you will also need to assign the following roles:
+
 - create-client
 - manage-clients
 - view-clients
@@ -176,7 +177,7 @@ To set up the credentials in KeyCloak 21+, follow the steps below:
 Then the client should be ready to use by CV3.
 
 > The client secret, which is part of the client credentials, is one of the most important credential for CV3. DO NOT note it down in unsecure locations, and rotate it frequently. When running installation script, CV3 installer will ask for this secret, and store it securely in Vault.
-{: .block-tip }
+> {: .block-tip }
 
 ## Vault
 
@@ -249,8 +250,9 @@ Vault is a bit special in this setup, because every time it reboots, it needs to
       capabilities = ["create", "update", "read", "delete", "list"]
     }
     ```
-    The policy should be stored with a name. For example, ``cv3_policy``.
+   The policy should be stored with a name. For example, ``cv3_policy``.
 4. Enable AppRole authentication. This can be done with command line:
+
   ```bash
   # Enable approle auth method
   vault auth enable approle
@@ -271,4 +273,4 @@ Vault is a bit special in this setup, because every time it reboots, it needs to
 The role ID is unique to each role, and will not change even if the approle configuration changes. However, the secret ID is generated every time it's requested, and the previous secret ID will be invalidated. The above configuration means that the secret ID is valid for 10 minutes after it's generated, and can be used 40 times. Whatever the authentication method (approle, OIDC, etc.), the client will eventually get a tokene for this session. This token is set to expire in 20 minutes, and can be renewed up to 30 minutes. The token can be used 10 times. Change the configuration to suit your needs.
 
 > For development purpose, the configurations can be set to 0 to disable the expiration of credentials. However, this is highly discouraged for production use.
-{: .block-tip }
+> {: .block-tip }
