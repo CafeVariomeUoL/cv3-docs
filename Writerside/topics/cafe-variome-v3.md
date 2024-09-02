@@ -43,7 +43,7 @@ The query interface, with which most users interact, is designed to be generativ
 The interface can be adapted to the type of data contained in the underlying database, to allow users to quickly build their queries in an intuitive way. The examples below show the types of adaptations that can be made.
 
 > **Keyword Search**
-> 
+>
 > ![interface-keyword_search.png](interface-keyword_search.png)
 
 > **Toggle based filters**
@@ -51,7 +51,7 @@ The interface can be adapted to the type of data contained in the underlying dat
 > ![interface-available_samples.png](interface-available_samples.png)
 
 > **Autocomplete dropdown lists**
-> 
+>
 > It may be used to present matching terms from a controlled vocabulary, ontology or other list of terms.
 > ![interface-hpo_auto_complete.png](interface-hpo_auto_complete.png)
 
@@ -61,6 +61,6 @@ The interface can be adapted to the type of data contained in the underlying dat
 
 ### Full BEACON compatibility
 
-Cafe Variome implements BEACON v2 specifications, which aims to make discovering genomic data easier. By loading data into Cafe Variome, you also get a BEACON compatible API to integrate with other services. The  optional security features have been implemented into the BEACON API, granting the BEACON the same level of security, access control, and data synchronisation should the admin wish to enable it.
+Cafe Variome implements BEACON v2 specifications, which aims to make discovering genomic data easier. By loading data into Cafe Variome, you also get a BEACON compatible API to integrate with other services. The optional security features have been implemented into the BEACON API, granting the BEACON the same level of security, access control, and data synchronisation should the admin wish to enable it.
 
 Cafe Variome can also query other BEACON compatible systems as remote data sources, as if the data is being stored locally. The query will be limited to BEACON capabilities, but the results will be merged with local results, and will be presented to the user as a single result set, allowing Cafe Variome to be used as a central interface for BEACON discovery.

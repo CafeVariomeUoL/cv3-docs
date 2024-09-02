@@ -10,4 +10,12 @@
         <description>Created after removal of "Quick Start Guide" from Admin Guide</description>
         <accepts>quick-start-guide.html</accepts>
     </rule>
+    <rule id="55a19cbc">
+        <description>Created after removal of "About User Guide" from User Guide</description>
+        <accepts>user-guide.html</accepts>
+    </rule>
+    <rule id="692911ab">
+        <description>Created after removal of "About library" from library</description>
+        <accepts>library.html</accepts>
+    </rule>
 </rules>
