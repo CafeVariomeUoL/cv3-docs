@@ -75,8 +75,11 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: Download index
+      - name: Download artifacts
         uses: actions/download-artifact@v4
+
+      - name: List files
+        run: ls -R
 
       - name: Unzip index
         run: unzip -O UTF-8 -qq webHelpI2-all.zip -d dir
