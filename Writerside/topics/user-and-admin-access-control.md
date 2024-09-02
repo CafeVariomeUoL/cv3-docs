@@ -11,12 +11,9 @@ In Cafe Variome V3, users can be divided into the following types:
 - *Remote
   users*: Users registered with another installation that uses the same authentication providers. They may be granted query privileges on some data sources, but they cannot log into this particular system, and cannot access the interface that requires login.
 - *Users*: Regular users that have logged in. They can access the query interface, as well as user setting pages.
-- *Data
-  admins*: The administrators that manage the data sources. They are allowed to access part of the admin interface, particularly the data source management pages, discovery network and discovery group settings, etc.
-- *System
-  admins*: The administrators that manage the system. They are allowed to access the user registration, server config, and other system management pages.
--
-*Developers*: The super admin of the system. They have full access to all pages of the system, including the debug system, while the system is in debug mode.
+- *Data admins*: The administrators that manage the data sources. They are allowed to access part of the admin interface, particularly the data source management pages, discovery network and discovery group settings, etc.
+- *System admins*: The administrators that manage the system. They are allowed to access the user registration, server config, and other system management pages.
+- *Developers*: The super admin of the system. They have full access to all pages of the system, including the debug system, while the system is in debug mode.
 
 This model is implemented so that data holders can separate the role that actually controls who can see the data, with the necessary role of server maintenance.
 
@@ -58,7 +55,7 @@ Users can also be created inside KeyCloak, although this is a more "manual" appr
 
 ### User access request
 
-When a user access the system without logging in, he would see an access request page, which will guide him through the process of providing enough information for the admin to create an account for him. Once the request is submitted, both the requester and the admin would receive an email, notifying them a new access request has been created, and the admin can then either accept the request to automatically create the account, or deny the request.
+When a user access the system without logging in, he would see an access request page, which will guide him through the process of providing enough information for the admin to create an account for him. Once the request is submitted, both the requester and the admin would receive an email, notifying them a new access request has been created, and the admin can then either accept the request to automatically create the account or deny the request.
 
 ### Automatic user registration
 

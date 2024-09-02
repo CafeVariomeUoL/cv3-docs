@@ -12,4 +12,6 @@
     <toc-element topic="deploying-backend.md"/>
     <toc-element topic="deploying-frontend.md"/>
     <toc-element topic="user-and-admin-access-control.md"/>
+    <toc-element topic="metadata-discovery-model.md"/>
+    <toc-element topic="uploading-metadata.md"/>
 </instance-profile>
