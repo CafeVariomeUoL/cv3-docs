@@ -8,7 +8,7 @@ The most straight forward way is to use the editing interface to (manually) crea
 recommended approach when there are only several records to add.
 
 > Document WIP.
-> {: .block-tip }
+> {style="warning"}
 
 ## Using the file uploader
 
@@ -16,9 +16,8 @@ If the metadata is large in quantity, or if the metadata is being exported from 
 file uploader to upload the metadata. It does, however, requires the metadata to be in a specific format to allow direct
 ingestion.
 
-> The file uploader cannot override metadata entries. If you upload a new version of existing entry there will be
-> duplications. Please remove the old entries before uploading the new ones.
-> {: .block-warning }
+> The file uploader cannot override metadata entries. If you upload a new version of existing entry there will be duplications. Please remove the old entries before uploading the new ones.
+> {style="warning"}
 
 ### Metadata file format
 
@@ -82,9 +81,8 @@ providing the data is **accurate** and the admin **knows what they are doing**. 
 
 Note that these fields are also present in the maximum examples below.
 
-> **Warning**: Assigning `sourceID` and `connectionID` manually can lead to data inconsistency, and should be done with
-> caution. Always make sure the ID is present before adding them to the metadata file. If there are only a small amount of
-> IDs to assign, it's better to do it manually in the editing interface.
+> Assigning `sourceID` and `connectionID` manually can lead to data inconsistency, and should be done with caution. Always make sure the ID is present before adding them to the metadata file. If there are only a small amount of IDs to assign, it's better to do it manually in the editing interface.
+> {style="warning"}
 
 #### Common fields
 
@@ -101,16 +99,13 @@ These are the fields that are present in all types of meta sources.
     - *guideline*: A guideline.
     - *dataset*: A collection of records.
     - *dataCollection*: A data collection.
-- **resourceURLs**: `array[string]` `optional` The URLs of the source. They should be fully qualified URLs with schema (
-  e.g. `https://example.com/). They should point to the main resource of the source, its description, or any point of
-  interest that a requesting user may need.
+- **resourceURLs**: `array[string]` `optional` The URLs of the source. They should be fully qualified URLs with schema (e.g. `https://example.com/). They should point to the main resource of the source, its description, or any point of interest that a requesting user may need.
 - **publisher**: `object` The publisher of the resource. It's a nested JSON object, with the following fields:
     - **publisherType**: `string` The type of the publisher. It's an enumeral field, can only be one of the following (
       case sensitive):
         - *individual*: An individual person.
         - *organization*: An organization.
-        - *agency*: An agency that is not the generator/owner of the resource, but is responsible for managing the
-          resource.
+        - *agency*: An agency that is not the generator/owner of the resource, but is responsible for managing the resource.
         - *other*: Any other type of publisher.
     - **name**: `string` The name of the publisher. **Cannot be empty**.
     - **contactEmail**: `string` The contact email of the publisher. Cannot be empty.
