@@ -1,6 +1,6 @@
 # Dependent Services Configuration
 
-Cafe Variome V3 requires several services to be running in order to function properly. They are databases, storages, and identity provider.
+Cafe Variome V3 requires several services to be running in order to function properly. They are databases, storages, and identity providers.
 
 ## MongoDB
 
@@ -165,23 +165,25 @@ If you wish to use the Nexus mode (which manages multiple CV2 instances), you wi
 
 To set up the credentials in KeyCloak 21+, follow the steps below:
 
-1. Log in to KeyCloak as an administrator. The administrator account can be the global admin in master realm, or any admin account with the ``realm-management`` role in the realm you wish to use.
-2. Go to the realm you wish to use, and go to the ``Clients`` page.
-3. Click ``Create client`` button to create a new client.
-4. Set the client type to ``OpenID Connect``, and the client ID, client name, description to something you wish to use. Click ``Next`` to go to capability configuration.
-5. In Capability config, enable ``Client authentication``, ``Standard flow`` and ``Service accounts roles``. For security purpose, it's recommended to disable ``Direct access grants`` and any other flow you do not use. Click ``Next`` to go to login settings.
-6. In Login settings, set all the URL to the URL you plan to host the service. For front end related URL, refer to the [Frontend Installation]({% link _posts/2023-11-11-frontend_install.md %}) document. Click ``Save`` to save the client.
-7. Go to the configuration page for the newly created client, and select ``Service accounts roles`` tab. Click ``Assign role`` to assign the aforementioned roles to the client.
-9. Fine tune other settings for this client.
-
-Then the client should be ready to use by CV3.
+<procedure title="Create credentials in KeyCloak 21+" id="procedure-id">
+   <p>To set up the credentials in KeyCloak 21+, follow the steps below:</p>
+   <step>Log in to KeyCloak as an administrator. The administrator account can be the global admin in master realm, or any admin account with the <code>realm-management</code> role in the realm you wish to use.</step>
+   <step>Go to the realm you wish to use, and go to the <code>Clients</code> page.</step>
+   <step>Click <code>Create client</code> button to create a new client.</step>
+   <step>Set the client type to <code>Service account</code>, and the client ID, client name, description to something you wish to use. Click <code>Save</code> to save the client.</step>
+   <step>In Capability config, enable <code>Client authentication</code>, <code>Standard flow</code> and <code>Service accounts roles</code>. For security purpose, it's recommended to disable <code>Direct access grants</code> and any other flow you do not use. Click <code>Next</code> to go to login settings.</step>
+   <step>In Login settings, set all the URL to the URL you plan to host the service. For front end related URL, refer to the <a href="deploying-frontend.md">Frontend Installation</a> document. Click <code>Save</code> to save the client.</step>
+   <step>Go to the configuration page for the newly created client, and select <code>Service accounts roles</code> tab. Click <code>Assign role</code> to assign the aforementioned roles to the client.</step>
+   <step>Fine tune other settings for this client.</step>
+   <p>Then the client should be ready to use by CV3.</p>
+</procedure>
 
 > The client secret, which is part of the client credentials, is one of the most important credential for CV3. DO NOT note it down in unsecure locations, and rotate it frequently. When running installation script, CV3 installer will ask for this secret, and store it securely in Vault.
-> {: .block-tip }
+> {style="note"}
 
 ## Vault
 
-Vault is a powerful secret management tool that focuses on security. It's a web service that stores secrets, such as passwords, encryption keys, and other sensitive data. It stores everything in an encrypted form, and supports encryption/decription as a service.
+Vault is a powerful secret management tool that focuses on security. It's a web service that stores secrets, such as passwords, encryption keys, and other sensitive data. It stores everything in an encrypted form, and supports encryption / decryption as a service.
 
 ### Installing as a package
 
@@ -252,25 +254,24 @@ Vault is a bit special in this setup, because every time it reboots, it needs to
     ```
    The policy should be stored with a name. For example, ``cv3_policy``.
 4. Enable AppRole authentication. This can be done with command line:
-
-  ```bash
-  # Enable approle auth method
-  vault auth enable approle
-  # Create the role for cv3
-  vault write auth/approle/role/cv3_role \
+   ```bash
+   # Enable approle auth method
+   vault auth enable approle
+   # Create the role for cv3
+   vault write auth/approle/role/cv3_role \
       secret_id_ttl=10m \
       token_num_uses=10 \
       token_ttl=20m \
       token_max_ttl=30m \
       secret_id_num_uses=40 \
       token_policies="cv3_policy"
-  # Get the role ID
-  vault read auth/approle/role/cv3_role/role-id
-  # Get the secret ID
-  vault write -f auth/approle/role/cv3_role/secret-id
-  ```
+   # Get the role ID
+   vault read auth/approle/role/cv3_role/role-id
+   # Get the secret ID
+   vault write -f auth/approle/role/cv3_role/secret-id
+   ```
 
 The role ID is unique to each role, and will not change even if the approle configuration changes. However, the secret ID is generated every time it's requested, and the previous secret ID will be invalidated. The above configuration means that the secret ID is valid for 10 minutes after it's generated, and can be used 40 times. Whatever the authentication method (approle, OIDC, etc.), the client will eventually get a tokene for this session. This token is set to expire in 20 minutes, and can be renewed up to 30 minutes. The token can be used 10 times. Change the configuration to suit your needs.
 
 > For development purpose, the configurations can be set to 0 to disable the expiration of credentials. However, this is highly discouraged for production use.
-> {: .block-tip }
+> {style="note"}
