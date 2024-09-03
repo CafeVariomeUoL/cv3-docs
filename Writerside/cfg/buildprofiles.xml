@@ -3,7 +3,18 @@
 <buildprofiles xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/build-profiles.xsd"
                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
-    <variables></variables>
+    <variables>
+        <web-root>https://v3doc.cafevariome.org</web-root>
+        <custom-favicons>favicon.ico</custom-favicons>
+        <header-logo>cafevariome-logo.png</header-logo>
+    </variables>
+
+    <footer>
+        <copyright>2024 Cafe Variome Org.</copyright>
+    </footer>
+
+    <sitemap priority="0.35" change-frequency="monthly"/>
+
     <build-profile instance="ag">
         <variables>
             <noindex-content>false</noindex-content>
@@ -14,9 +25,9 @@
             <noindex-content>false</noindex-content>
         </variables>
     </build-profile>
-    <build-profile instance="l">
+    <build-profile instance="dg">
         <variables>
-            <noindex-content>true</noindex-content>
+            <noindex-content>false</noindex-content>
         </variables>
     </build-profile>
     <build-profile instance="i">
@@ -24,5 +35,4 @@
             <noindex-content>false</noindex-content>
         </variables>
     </build-profile>
-
 </buildprofiles>

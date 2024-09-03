@@ -165,7 +165,7 @@ If you wish to use the Nexus mode (which manages multiple CV2 instances), you wi
 
 To set up the credentials in KeyCloak 21+, follow the steps below:
 
-<procedure title="Create credentials in KeyCloak 21+" id="procedure-id">
+<procedure title="Create credentials in KeyCloak 21+">
    <p>To set up the credentials in KeyCloak 21+, follow the steps below:</p>
    <step>Log in to KeyCloak as an administrator. The administrator account can be the global admin in master realm, or any admin account with the <code>realm-management</code> role in the realm you wish to use.</step>
    <step>Go to the realm you wish to use, and go to the <code>Clients</code> page.</step>
