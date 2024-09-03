@@ -7,8 +7,24 @@
                  start-page="cafe-variome-v3.md">
 
     <toc-element topic="cafe-variome-v3.md"/>
-    <toc-element topic="authentication.md">
-        <toc-element topic="authentication-model.md"/>
+    <toc-element topic="convention.md">
+        <toc-element topic="file-structure.md"/>
     </toc-element>
-    <toc-element topic="data-model.md"/>
+    <toc-element topic="authentication.md">
+        <toc-element topic="keycloak-credentials-and-account.md"/>
+        <toc-element topic="authentication-model.md"/>
+        <toc-element topic="federated-authentication.md"/>
+    </toc-element>
+    <toc-element topic="authorization.md">
+        <toc-element topic="authorization-model.md"/>
+        <toc-element topic="federated-authorization.md"/>
+    </toc-element>
+    <toc-element topic="data-model.md">
+        <toc-element topic="mongodb-data-structure.md"/>
+        <toc-element topic="subjects.md"/>
+    </toc-element>
+    <toc-element topic="query.md">
+        <toc-element topic="query-builder-and-query-result.md"/>
+    </toc-element>
+    <toc-element topic="monitoring.md"/>
 </instance-profile>
