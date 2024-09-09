@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "title": "User",
+  "description": "A representation of a user in system",
+  "examples": [
+    {
+      "userID": "2c3821b8-1cdb-4b77-bcd8-a1da701e46aa",
+      "email": "john@example.com",
+      "username": "johndoe",
+      "firstName": "John",
+      "lastName": "Doe",
+      "affiliation": "Example Org",
+      "role": "developer",
+      "active": true,
+      "allowLogin": true,
+      "budget": 0
+    }
+  ],
+  "required": [
+    "userID",
+    "email",
+    "username",
+    "firstName",
+    "lastName",
+    "affiliation",
+    "role",
+    "active",
+    "allowLogin",
+    "budget"
+  ],
+  "properties": {
+    "userID": {
+      "type": "string",
+      "format": "uuid",
+      "example": "2c3821b8-1cdb-4b77-bcd8-a1da701e46aa"
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "example": "john@example.com"
+    },
+    "username": {
+      "type": "string",
+      "example": "johndoe"
+    },
+    "firstName": {
+      "type": "string",
+      "example": "John"
+    },
+    "lastName": {
+      "type": "string",
+      "example": "Doe"
+    },
+    "affiliation": {
+      "type": "string",
+      "example": "Example Org"
+    },
+    "role": {
+      "enum": [
+        "developer",
+        "dataAdmin",
+        "serverAdmin",
+        "user"
+      ],
+      "example": "developer"
+    },
+    "active": {
+      "type": "boolean"
+    },
+    "allowLogin": {
+      "type": "boolean"
+    },
+    "budget": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100,
+      "example": 100
+    }
+  }
+}

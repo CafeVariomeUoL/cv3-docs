@@ -1,0 +1,27 @@
+{
+  "get": {
+    "tags": [
+      "Authentication"
+    ],
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ],
+    "summary": "Get user info",
+    "description": "Get user info from KeyCloak in OpenID Connect format",
+    "responses": {
+      "200": {
+        "description": "User info from KeyCloak server",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "../components/schemas/user.json"
+            }
+          }
+        }
+      }
+    },
+    "operationId": "infoUserGet"
+  }
+}

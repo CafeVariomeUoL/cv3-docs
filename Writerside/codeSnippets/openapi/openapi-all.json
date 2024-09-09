@@ -22,11 +22,32 @@
   "tags": [
     {
       "$ref": "./components/tags/info.json"
+    },
+    {
+      "$ref": "./components/tags/authentication.json"
     }
   ],
   "paths": {
     "/": {
       "$ref": "./paths/root.json"
+    },
+    "/auth/token": {
+      "$ref": "./paths/auth_token.json"
+    },
+    "/auth/user-info": {
+      "$ref": "./paths/auth_user-info.json"
     }
-  }
+  },
+  "components": {
+    "securitySchemes": {
+      "userAccessToken": {
+        "$ref": "./components/security_schemes/user_access_token.json"
+      }
+    }
+  },
+  "security": [
+    {
+      "userAccessToken": []
+    }
+  ]
 }

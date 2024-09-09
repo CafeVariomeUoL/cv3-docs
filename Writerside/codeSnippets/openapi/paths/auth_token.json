@@ -1,0 +1,158 @@
+{
+  "post": {
+    "tags": [
+      "Authentication"
+    ],
+    "security": [],
+    "summary": "Get tokens",
+    "description": "Get a pair of access token and refresh token from the credentials provided.",
+    "requestBody": {
+      "content": {
+        "application/json": {
+          "schema": {
+            "oneOf": [
+              {
+                "required": [
+                  "grant_type",
+                  "code"
+                ],
+                "type": "object",
+                "properties": {
+                  "grant_type": {
+                    "type": "string",
+                    "enum": [
+                      "authorization_code"
+                    ],
+                    "example": "authorization_code",
+                    "description": "The grant type, following OIDC standard"
+                  },
+                  "code": {
+                    "type": "string",
+                    "description": "The authorization code, required for grant_type=authorization_code"
+                  }
+                }
+              },
+              {
+                "required": [
+                  "grant_type",
+                  "refresh_token"
+                ],
+                "type": "object",
+                "properties": {
+                  "grant_type": {
+                    "type": "string",
+                    "enum": [
+                      "refresh_token"
+                    ],
+                    "example": "refresh_token",
+                    "description": "The grant type, following OIDC standard"
+                  },
+                  "refresh_token": {
+                    "type": "string",
+                    "description": "The refresh token, required for grant_type=refresh_token"
+                  }
+                }
+              }
+            ]
+          },
+          "examples": {
+            "Authorization code grant": {
+              "value": {
+                "grant_type": "authorization_code",
+                "code": "string"
+              }
+            },
+            "Refresh token grant": {
+              "value": {
+                "grant_type": "refresh_token",
+                "refresh_token": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "responses": {
+      "200": {
+        "description": "The granted tokens.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "required": [
+                "access_token",
+                "refresh_token"
+              ],
+              "type": "object",
+              "properties": {
+                "access_token": {
+                  "type": "string",
+                  "description": "The access token, required for grant_type=authorization_code"
+                },
+                "refresh_token": {
+                  "type": "string",
+                  "description": "The refresh token, required for grant_type=refresh_token"
+                }
+              }
+            },
+            "examples": {
+              "Example": {
+                "value": {
+                  "access_token": "string",
+                  "refresh_token": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "401": {
+        "description": "Unauthorized",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "required": [
+                "error"
+              ],
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "description": "The reason why this request is denied"
+                }
+              }
+            }
+          }
+        },
+        "headers": {
+          "WWW-Authenticate": {
+            "schema": {
+              "type": "string",
+              "example": "Bearer realm=\"Access token required\""
+            },
+            "description": "Header describing the authentication requirements"
+          }
+        }
+      },
+      "403": {
+        "description": "Forbidden",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "required": [
+                "error"
+              ],
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "description": "The reason why this request is denied"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "operationId": "tokenUserGet"
+  }
+}
