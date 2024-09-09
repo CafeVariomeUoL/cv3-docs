@@ -4,7 +4,7 @@ Cafe Variome V3 uses MongoDB for primary data storage. All operational data, inc
 
 ## Class Diagram
 
-<code-block lang="plantuml" src="class_diagram.puml"/>
+<code-block lang="plantuml" src="plantuml/class_diagram.puml"/>
 
 > Class diagram is under development. The diagram you see here may not be complete or accurate. This warning will be removed when the diagram is ready.
 > {style="warning"}

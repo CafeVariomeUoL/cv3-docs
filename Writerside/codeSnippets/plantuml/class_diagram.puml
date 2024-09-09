@@ -1,0 +1,94 @@
+@startuml ClassDiagram
+enum BeaconAuthMethod {
+    NO_AUTH
+    AUTH_KEY
+    TOKEN
+}
+
+enum UserMappingType {
+    NO_MAPPING
+    STATIC
+    DYNAMIC
+}
+
+class DatabaseCollection {
+    + {static} mongo_client : AsyncIOMotorClient
+    + {static} db : AsyncIOMotorDatabase
+    + {static} sem : asyncio.Semaphore
+    + {static} init_driver(database_client: AsyncIOMotorClient)
+    -- getters --
+    {field} counter() : AsyncIOMotorCollection
+    {field} datafiles() : AsyncIOMotorCollection
+    {field} config() : AsyncIOMotorCollection
+    {field} logs() : AsyncIOMotorCollection
+    {field} beacon_endpoints() : AsyncIOMotorCollection
+    {field} discovery_groups() : AsyncIOMotorCollection
+    {field} nodes() : AsyncIOMotorCollection
+    {field} pending_nodes() : AsyncIOMotorCollection
+    {field} networks() : AsyncIOMotorCollection
+    {field} network_messages() : AsyncIOMotorCollection
+    {field} nexus_credentials() : AsyncIOMotorCollection
+    {field} nexus_installations() : AsyncIOMotorCollection
+    {field} nexus_networks() : AsyncIOMotorCollection
+    {field} nexus_requests() : AsyncIOMotorCollection
+    {field} pipelines() : AsyncIOMotorCollection
+    {field} queries() : AsyncIOMotorCollection
+    {field} responses() : AsyncIOMotorCollection
+    {field} sources() : AsyncIOMotorCollection
+    {field} source_index() : AsyncIOMotorCollection
+    {field} meta_sources() : AsyncIOMotorCollection
+    {field} users() : AsyncIOMotorCollection
+    {field} access_requests() : AsyncIOMotorCollection
+}
+
+class DataModel{
+    + {static} db : DatabaseCollection
+    + {static} Schema : marshmallow.Schema
+    + {static} init_driver()
+    + {static} load() : DataModel
+    + {static} load_all() : list[DataModel]
+    + store()
+    + update(payload: dict)
+    + delete()
+    + to_dict(self) : dict
+    + {static} from_dict(payload: dict) : DataModel
+    + {static} validate_json(json_data: dict) : bool
+}
+
+class AccessRequest {
+    + request_id : str
+    + first_name : str
+    + last_name : str
+    + email : str
+    + affiliation : str
+    + justification : str
+}
+
+class BeaconEndpoint {
+    + endpoint_id : str
+    + endpoint_path : str
+    + network_id : str
+    + mapping : UserMapping
+    + beacon_auth_method : BeaconAuthMethod
+    + beacon_auth_key : str
+    + {static} load_by_path(beacon_path: str) : BeaconEndpoint
+    + generate_auth_key() : str
+}
+
+class UserMapping {
+    + mapping_type : UserMappingType
+    + mapping_user : str
+    + mapping : dict[str, str]
+    + to_storage() : str | dict[str, str]
+    + {static} from_storage(payload: str | dict[str, str]) : UserMapping
+    + remap(user_id: str) : str
+}
+
+DataModel *-- DatabaseCollection
+BeaconEndpoint *-- BeaconAuthMethod
+BeaconEndpoint *-- UserMapping
+UserMapping *-- UserMappingType
+
+DataModel <|-- AccessRequest
+DataModel <|-- BeaconEndpoint
+@enduml

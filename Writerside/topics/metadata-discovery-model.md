@@ -323,9 +323,6 @@ The cohort model extends the base model to contain more information, specificall
                     <def title="petTau">
                         PET Tau.
                     </def>
-                    <def title="datScan">
-                        DAT Scan.
-                    </def>
                     <def title="spect">
                         SPECT.
                     </def>
@@ -372,7 +369,7 @@ Datasets contain the following fields:
                     <def title="versionID">
                         The UUID of the version. If omitted, Cafe Variome will assign a UUID to the version. If present, it should be a valid UUID 4 string. Either way, it will always be present in the database.
                     </def>
-                    <def title="versionCode">
+                    <def title="versionName">
                         The version number of the dataset. Semantic versioning is recommended. Using a format that does not fit with semantic versioning will disable the parsing, comparison, and sorting of the versions.
                     </def>
                     <def title="keywords">
@@ -512,8 +509,8 @@ Datasets contain the following fields:
                             <def title="alphaSynuclein">
                                 Alpha-synuclein protein markers.
                             </def>
-                            <def title="digitalMarkers">
-                                Digital markers.
+                            <def title="dat">
+                                Direct Antibody Test.
                             </def>
                         </deflist>
                     </def>
@@ -528,9 +525,6 @@ Datasets contain the following fields:
                             </def>
                             <def title="petTau">
                                 PET Tau.
-                            </def>
-                            <def title="datScan">
-                                DAT Scan.
                             </def>
                             <def title="spect">
                                 SPECT.
@@ -761,8 +755,8 @@ These are the fields specific to the data collection type.
                     <def title="alphaSynuclein">
                         Alpha-synuclein protein markers.
                     </def>
-                    <def title="digitalMarkers">
-                        Digital markers.
+                    <def title="dat">
+                        Direct Antibody Test.
                     </def>
                 </deflist>
             </def>
@@ -777,9 +771,6 @@ These are the fields specific to the data collection type.
                     </def>
                     <def title="petTau">
                         PET Tau.
-                    </def>
-                    <def title="datScan">
-                        DAT Scan.
                     </def>
                     <def title="spect">
                         SPECT.

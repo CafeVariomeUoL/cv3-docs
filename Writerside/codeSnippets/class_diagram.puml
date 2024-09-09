@@ -1,7 +1,0 @@
-@startuml ClassDiagram
-enum BeaconAuthMethod {
-    NO_AUTH
-    AUTH_KEY
-    TOKEN
-}
-@enduml

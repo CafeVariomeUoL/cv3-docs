@@ -180,7 +180,6 @@ These are the fields specific to the cohort type.
                     <li>mri</li>
                     <li>petAmyloid</li>
                     <li>petTau</li>
-                    <li>datScan</li>
                     <li>spect</li>
                     <li>ocular</li>
                 </list>
@@ -292,7 +291,7 @@ These are the fields specific to the dataset type.
                             <li>tau</li>
                             <li>neurofilamentLightChain</li>
                             <li>alphaSynuclein</li>
-                            <li>digitalMarkers</li>
+                            <li>dat</li>
                         </list>
                     </def>
                     <def title="images">
@@ -301,7 +300,6 @@ These are the fields specific to the dataset type.
                             <li>mri</li>
                             <li>petAmyloid</li>
                             <li>petTau</li>
-                            <li>datScan</li>
                             <li>spect</li>
                             <li>ocular</li>
                         </list>
@@ -423,7 +421,7 @@ These are the fields specific to the data collection type.
                     <li>tau</li>
                     <li>neurofilamentLightChain</li>
                     <li>alphaSynuclein</li>
-                    <li>digitalMarkers</li>
+                    <li>dat</li>
                 </list>
             </def>
             <def title="images">
@@ -432,7 +430,6 @@ These are the fields specific to the data collection type.
                     <li>mri</li>
                     <li>petAmyloid</li>
                     <li>petTau</li>
-                    <li>datScan</li>
                     <li>spect</li>
                     <li>ocular</li>
                 </list>

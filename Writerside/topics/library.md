@@ -164,7 +164,7 @@
   "datasetVersions": [
     {
       "datasetDetails": {
-        "versionCode": "v1.0.0"
+        "versionName": "v1.0.0"
       },
       "datasetContent": {
         "numberOfSubjects": 100
@@ -201,7 +201,7 @@
     {
       "datasetDetails": {
         "versionID": "1b71b513-33be-45ee-b6e9-a24b2bc9dc05",
-        "versionCode": "v1.0.0",
+        "versionName": "v1.0.0",
         "keywords": [
           "keyword1",
           "keyword2"
@@ -251,7 +251,7 @@
     {
       "datasetDetails": {
         "versionID": "4114682d-73f5-45eb-9b7c-023e18cd12c9",
-        "versionCode": "v2.0.0",
+        "versionName": "v2.0.0",
         "keywords": [
           "keyword3",
           "keyword4"
