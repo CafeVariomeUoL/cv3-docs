@@ -1,0 +1,32 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Cafe Variome V3 Admin API",
+    "version": "1.0",
+    "description": "This is the OpenAPI document for Cafe Variome V3 Backend Admin API service.",
+    "license": {
+      "name": "MIT",
+      "url": "https://github.com/CafeVariomeUoL/cv3-backend-admin/blob/main/license.txt"
+    },
+    "contact": {
+      "email": "brookeslab@leicester.ac.uk",
+      "name": "Brookes Lab, University of Leicester",
+      "url": "https://www.cafevariome.org"
+    }
+  },
+  "servers": [
+    {
+      "$ref": "./components/servers/admin.json"
+    }
+  ],
+  "tags": [
+    {
+      "$ref": "./components/tags/info.json"
+    }
+  ],
+  "paths": {
+    "/": {
+      "$ref": "./paths/root.json"
+    }
+  }
+}

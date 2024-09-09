@@ -1,0 +1,77 @@
+{
+  "get": {
+    "tags": [
+      "Info"
+    ],
+    "security": [],
+    "summary": "Get instance info",
+    "description": "Get the information about this instance.",
+    "responses": {
+      "200": {
+        "description": "Instance info",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "required": [
+                "name",
+                "owner",
+                "ownerAddress",
+                "ownerEmail",
+                "status",
+                "uptime"
+              ],
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "description": "Name of the instance",
+                  "example": "Cafe Variome UoL"
+                },
+                "owner": {
+                  "type": "string",
+                  "description": "Name of the owner of the instance",
+                  "example": "University of Leicester"
+                },
+                "ownerAddress": {
+                  "type": "string",
+                  "description": "Address of the owner of the instance",
+                  "example": "University Road, Leicester, LE1 7RH"
+                },
+                "ownerEmail": {
+                  "type": "string",
+                  "description": "Email address of the owner of the instance",
+                  "format": "email",
+                  "example": "admin@cafevariome.org"
+                },
+                "status": {
+                  "type": "string",
+                  "description": "Status of the instance",
+                  "default": "OK"
+                },
+                "uptime": {
+                  "type": "string",
+                  "description": "Uptime of the instance",
+                  "pattern": "^[0-9]{2}:[0-9]{2}:[0-9]{2}.[0-9]{2}$",
+                  "example": "04:46:39.09"
+                }
+              }
+            },
+            "examples": {
+              "Example": {
+                "value": {
+                  "name": "Cafe Variome UoL",
+                  "owner": "University of Leicester",
+                  "ownerAddress": "University Road, Leicester, LE1 7RH",
+                  "ownerEmail": "admin@cafevariome.org",
+                  "status": "OK",
+                  "uptime": "04:46:39.09"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "operationId": "infoInstanceGet"
+  }
+}

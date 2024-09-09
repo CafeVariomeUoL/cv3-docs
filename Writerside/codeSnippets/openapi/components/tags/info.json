@@ -1,0 +1,4 @@
+{
+  "name": "Info",
+  "description": "Endpoints that returns arbitrary information about the instance."
+}
