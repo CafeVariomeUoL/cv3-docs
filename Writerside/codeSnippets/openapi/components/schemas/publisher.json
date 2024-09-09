@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "publisherType": {
+      "type": "string",
+      "enum": [
+        "organization",
+        "individual"
+      ]
+    },
+    "name": {
+      "type": "string"
+    },
+    "contactEmail": {
+      "type": "string",
+      "format": "email"
+    },
+    "contactName": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "location": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "publisherType",
+    "name",
+    "contactEmail"
+  ]
+}

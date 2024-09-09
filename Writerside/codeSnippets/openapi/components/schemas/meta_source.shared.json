@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Meta Sources Shared Properties",
+  "type": "object",
+  "properties": {
+    "sourceID": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "sourceName": {
+      "type": "string"
+    },
+    "publisher": {
+      "$ref": "./publisher.json"
+    },
+    "resourceURLs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      }
+    },
+    "description": {
+      "type": "string"
+    },
+    "themes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      }
+    },
+    "releaseLicense": {
+      "type": "string",
+      "format": "uri"
+    },
+    "language": {
+      "type": "string",
+      "enum": {
+        "$ref": "../enums/language_codes.json"
+      }
+    },
+    "connectionID": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "customFields": {
+      "type": "object",
+      "additionalProperties": {
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "required": [
+    "sourceID",
+    "sourceName",
+    "publisher",
+    "description",
+    "releaseLicense",
+    "language",
+    "connectionID"
+  ]
+}

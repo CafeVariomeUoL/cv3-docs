@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "title": "Custom Meta Source",
+  "description": "A representation of a custom meta source in system",
+  "$ref": "./meta_source.shared.json",
+  "properties": {
+    "sourceType": {
+      "type": "string",
+      "const": "custom"
+    }
+  },
+  "required": [
+    "sourceType"
+  ],
+  "unevaluatedProperties": false
+}
