@@ -1,0 +1,33 @@
+{
+  "get": {
+    "tags": [
+      "Network"
+    ],
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ],
+    "summary": "Get network meta index",
+    "description": "Get the metadata index for a network.",
+    "parameters": [],
+    "operationId": "networkMetaGet",
+    "responses": {
+      "200": {
+        "description": "The metadata index of a network",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "../components/schemas/meta_index.json"
+            }
+          }
+        }
+      }
+    }
+  },
+  "parameters": [
+    {
+      "$ref": "../components/parameters/network_id.json"
+    }
+  ]
+}

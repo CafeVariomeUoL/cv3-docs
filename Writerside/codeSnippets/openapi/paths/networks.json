@@ -1,0 +1,57 @@
+{
+  "get": {
+    "tags": [
+      "Network"
+    ],
+    "summary": "Get discovery networks",
+    "description": "Get the discovery networks the user has access to. Admin has access to all networks this node is in.",
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Discovery networks",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "../components/schemas/discovery_network.json"
+              }
+            }
+          }
+        }
+      }
+    },
+    "operationId": "networkGet"
+  },
+  "post": {
+    "tags": [
+      "Network"
+    ],
+    "summary": "Create a discovery network",
+    "description": "Create a discovery network. This will generate a pair of keys.",
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ],
+    "requestBody": {
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "../components/schemas/discovery_network.json"
+          }
+        }
+      }
+    },
+    "responses": {
+      "200": {
+        "$ref": "../components/responses/success.json"
+      }
+    },
+    "operationId": "networkCreate"
+  }
+}

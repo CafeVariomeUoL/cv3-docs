@@ -1,0 +1,78 @@
+{
+  "get": {
+    "summary": "Get a pipeline by ID",
+    "tags": [
+      "Pipeline"
+    ],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "../components/schemas/pipeline.json"
+            }
+          }
+        }
+      }
+    },
+    "operationId": "pipelineGetByID",
+    "description": "Search for a specific pipeline by ID",
+    "parameters": [],
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ]
+  },
+  "parameters": [
+    {
+      "$ref": "../components/parameters/pipeline_id.json"
+    }
+  ],
+  "patch": {
+    "summary": "Update a pipeline",
+    "tags": [
+      "Pipeline"
+    ],
+    "responses": {
+      "200": {
+        "$ref": "../components/responses/success.json"
+      }
+    },
+    "operationId": "pipelineUpdate",
+    "description": "Update an existing pipeline with new information",
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ],
+    "requestBody": {
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "../components/schemas/pipeline.json"
+          }
+        }
+      }
+    }
+  },
+  "delete": {
+    "summary": "Delete a pipeline",
+    "tags": [
+      "Pipeline"
+    ],
+    "responses": {
+      "200": {
+        "$ref": "../components/responses/success.json"
+      }
+    },
+    "operationId": "pipelineDelete",
+    "description": "Delete a pipeline by ID",
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ]
+  }
+}

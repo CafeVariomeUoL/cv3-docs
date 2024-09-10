@@ -1,0 +1,10 @@
+{
+  "name": "network_id",
+  "in": "path",
+  "required": true,
+  "schema": {
+    "type": "string",
+    "format": "uuid"
+  },
+  "description": "The ID of the network."
+}

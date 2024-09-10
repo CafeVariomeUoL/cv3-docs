@@ -1,0 +1,8 @@
+{
+  "title": "Cognitive Data Collected Type",
+  "enum": [
+    "crossSectional",
+    "longitudinal"
+  ],
+  "description": "Types of cognitive data a cohort may collect for study"
+}

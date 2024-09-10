@@ -1,0 +1,66 @@
+{
+  "title": "Meta Index",
+  "type": "object",
+  "description": "An index for metadata inside of the database",
+  "properties": {
+    "availableTypes": {
+      "type": "array",
+      "items": {
+        "$ref": "../enums/meta_source_type.json"
+      }
+    },
+    "cohort": {
+      "type": "object",
+      "description": "Cohort index",
+      "properties": {
+        "availableTypes": {
+          "type": "array",
+          "items": {
+            "$ref": "../enums/cohort_site_type.json"
+          }
+        },
+        "availableCountries": {
+          "type": "array",
+          "description": "Countries where the cohorts are located, in ISO 2-characters format",
+          "items": {
+            "type": "string"
+          }
+        },
+        "participants": {
+          "type": "array",
+          "items": {
+            "$ref": "../enums/disorder_collected_type.json"
+          }
+        },
+        "bioSamples": {
+          "type": "array",
+          "items": {
+            "$ref": "../enums/bio_sample_collected_type.json"
+          }
+        },
+        "images": {
+          "type": "array",
+          "items": {
+            "$ref": "../enums/image_collected_type.json"
+          }
+        },
+        "cognitiveData": {
+          "type": "array",
+          "items": {
+            "$ref": "../enums/cognitive_data_collected_type.json"
+          }
+        }
+      }
+    },
+    "customFields": {
+      "type": "object",
+      "description": "The index of the custom fields. The key is the name of the field, while the value is a list of all known values for this field",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

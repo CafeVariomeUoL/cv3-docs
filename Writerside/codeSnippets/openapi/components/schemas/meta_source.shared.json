@@ -35,10 +35,7 @@
       "format": "uri"
     },
     "language": {
-      "type": "string",
-      "enum": {
-        "$ref": "../enums/language_codes.json"
-      }
+      "$ref": "../enums/language_codes.json"
     },
     "customFields": {
       "type": "object",

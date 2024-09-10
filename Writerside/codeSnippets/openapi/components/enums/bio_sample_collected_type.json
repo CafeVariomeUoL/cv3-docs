@@ -1,0 +1,13 @@
+{
+  "title": "Bio Sample Collected Type",
+  "enum": [
+    "csf",
+    "serum",
+    "plasma",
+    "dna",
+    "saliva",
+    "urine",
+    "stool"
+  ],
+  "description": "Bio sample types which a metadata record can be associated with."
+}

@@ -1,0 +1,20 @@
+{
+  "title": "Disorder Collected Type",
+  "description": "The disorders a metadata entry may contain.",
+  "enum": [
+    "controlGroup",
+    "ad",
+    "pd",
+    "irbd",
+    "dlb",
+    "caa",
+    "ftd",
+    "als",
+    "psp",
+    "cbd",
+    "msa",
+    "hd",
+    "ataxia",
+    "other"
+  ]
+}

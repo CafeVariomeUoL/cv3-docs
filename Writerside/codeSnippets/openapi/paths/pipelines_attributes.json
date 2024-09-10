@@ -1,0 +1,31 @@
+{
+  "get": {
+    "summary": "Get pipeline attributes",
+    "tags": [
+      "Pipeline"
+    ],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "example": "subject_id"
+              }
+            }
+          }
+        }
+      }
+    },
+    "operationId": "pipelineAttributeGet",
+    "description": "Get the attributes that has been indexed in the database for pipeline creation",
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ]
+  }
+}

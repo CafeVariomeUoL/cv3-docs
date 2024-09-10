@@ -1,0 +1,78 @@
+{
+  "get": {
+    "tags": [
+      "Network"
+    ],
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ],
+    "summary": "Get one discovery network",
+    "description": "Get details on a discovery network",
+    "parameters": [],
+    "responses": {
+      "200": {
+        "description": "A discovery network",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "../components/schemas/discovery_network.json"
+            }
+          }
+        }
+      }
+    },
+    "operationId": "networkSingleGet"
+  },
+  "patch": {
+    "tags": [
+      "Network"
+    ],
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ],
+    "summary": "Update one discovery network",
+    "description": "Update a discovery network. Note that only network name, description and visibility can be changed.",
+    "requestBody": {
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "../components/schemas/discovery_network.json"
+          }
+        }
+      }
+    },
+    "responses": {
+      "200": {
+        "$ref": "../components/responses/success.json"
+      }
+    },
+    "operationId": "networkUpdate"
+  },
+  "delete": {
+    "tags": [
+      "Network"
+    ],
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ],
+    "summary": "Delete one discovery network",
+    "description": "Delete a discovery network. This will also delete the keys from Vault. When rejoining, this node will use a new key and have to be approved again.",
+    "operationId": "networkDelete",
+    "responses": {
+      "200": {
+        "$ref": "../components/responses/success.json"
+      }
+    }
+  },
+  "parameters": [
+    {
+      "$ref": "../components/parameters/network_id.json"
+    }
+  ]
+}

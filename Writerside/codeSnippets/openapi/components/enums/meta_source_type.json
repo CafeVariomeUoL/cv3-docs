@@ -1,0 +1,14 @@
+{
+  "title": "Meta Source Type",
+  "description": "Types of metadata entries",
+  "enum": [
+    "custom",
+    "cohort",
+    "catalog",
+    "bioBank",
+    "registry",
+    "guideline",
+    "dataset",
+    "all"
+  ]
+}

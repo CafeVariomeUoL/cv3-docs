@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "title": "EAV Index",
+  "description": "Index for Entity-Attribute-Value data structure",
+  "required": [
+    "attributes",
+    "values",
+    "mappings"
+  ],
+  "properties": {
+    "attributes": {
+      "type": "object",
+      "description": "Mapping of all attributes and their display values",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "values": {
+      "type": "object",
+      "description": "Maps of all values and their display values",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "mappings": {
+      "type": "object",
+      "description": "Mapping between an attribute and multiple values",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

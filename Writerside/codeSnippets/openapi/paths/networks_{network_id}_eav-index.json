@@ -1,0 +1,33 @@
+{
+  "get": {
+    "tags": [
+      "Network"
+    ],
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ],
+    "summary": "Get network EAV index",
+    "description": "Get the EAV index for a network.",
+    "parameters": [],
+    "responses": {
+      "200": {
+        "description": "The EAV index of the network",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "../components/schemas/eav_index.json"
+            }
+          }
+        }
+      }
+    },
+    "operationId": "networkEAVGet"
+  },
+  "parameters": [
+    {
+      "$ref": "../components/parameters/network_id.json"
+    }
+  ]
+}

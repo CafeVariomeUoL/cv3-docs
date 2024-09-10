@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Capability",
+  "type": "object",
+  "description": "Capability describes the data source's capability to support various queries.",
+  "properties": {
+    "subject": {
+      "type": "boolean",
+      "default": false,
+      "description": "Demographic query ability"
+    },
+    "genes": {
+      "type": "boolean",
+      "default": false,
+      "description": "Genetic code query ability"
+    },
+    "hpo": {
+      "type": "boolean",
+      "default": false,
+      "description": "HPO term query abili"
+    },
+    "ordo": {
+      "type": "boolean",
+      "default": false,
+      "description": "ORDO term query ability"
+    },
+    "snomed": {
+      "type": "boolean",
+      "default": false,
+      "description": "SNOMED CT term quer"
+    },
+    "variant": {
+      "type": "boolean",
+      "default": false,
+      "description": "Varia"
+    },
+    "source": {
+      "type": "boolean",
+      "default": false,
+      "description": "Source query ability"
+    },
+    "eav": {
+      "type": "boolean",
+      "default": false,
+      "description": "Entity-Attribute-Value structure query ability"
+    },
+    "subjectCapability": {
+      "type": "object",
+      "description": "Details on the demographic query",
+      "properties": {
+        "age": {
+          "type": "boolean",
+          "default": false,
+          "description": "Subject age query ability"
+        },
+        "gender": {
+          "type": "boolean",
+          "default": false,
+          "description": "Subject gender query ability"
+        },
+        "familyType": {
+          "type": "boolean",
+          "default": false,
+          "description": "Subject family type query ability"
+        },
+        "affected": {
+          "type": "boolean",
+          "default": false,
+          "description": "Subject condition query ability"
+        }
+      }
+    }
+  }
+}

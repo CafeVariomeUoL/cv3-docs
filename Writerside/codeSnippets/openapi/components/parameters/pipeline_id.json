@@ -1,0 +1,10 @@
+{
+  "name": "pipeline_id",
+  "in": "path",
+  "required": true,
+  "schema": {
+    "type": "string",
+    "format": "uuid"
+  },
+  "description": "ID of the pipeline"
+}

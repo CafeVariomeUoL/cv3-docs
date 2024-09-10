@@ -1,0 +1,9 @@
+{
+  "title": "Cohort Site Type",
+  "description": "Types of cohorts, regarding their location and site",
+  "enum": [
+    "singleSite",
+    "multiSite",
+    "multiCountry"
+  ]
+}

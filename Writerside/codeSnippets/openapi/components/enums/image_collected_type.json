@@ -1,0 +1,10 @@
+{
+  "title": "Image Collected Type",
+  "description": "Types of images a cohort may collect for study",
+  "enum": [
+    "mri",
+    "petAmyloid",
+    "petTau",
+    "datScan"
+  ]
+}
