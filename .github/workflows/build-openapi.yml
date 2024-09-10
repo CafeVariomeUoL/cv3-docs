@@ -1,0 +1,37 @@
+name: Build and Upload OpenAPI Spec to Nexus
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  pages: write
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Install Redocly CLI
+        run: npm install -g @redocly/cli
+
+      - name: Bundle OpenAPI spec
+        run: redocly bundle Writerside/codeSnippets/openapi/openapi-all.json --output openapi/bundled-openapi.yaml
+
+      - name: Upload OpenAPI spec to Nexus
+        run: |
+          curl -u "${{ secrets.NEXUS_USERNAME }}:${{ secrets.NEXUS_PASSWORD }}" --upload-file openapi/bundled-openapi.yaml \
+          https://artifactory.cafevariome.org/repository/openapi-specs/bundled-openapi.yaml
