@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "title": "Remap Pattern Set Qualifier",
+  "description": "The basic patterns to remap one data column to a biomedical term.",
+  "properties": {
+    "patternSetType": {
+      "type": "string",
+      "const": "qualifier"
+    },
+    "qualifierReplacement": {
+      "type": "string",
+      "format": "regex"
+    },
+    "valueReplacement": {
+      "type": "string",
+      "format": "regex"
+    }
+  },
+  "required": [
+    "patternSetType",
+    "qualifierReplacement",
+    "valueReplacement"
+  ],
+  "additionalProperties": false
+}

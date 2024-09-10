@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "title": "Remap Pattern Set",
+  "description": "A pattern configuration to transform the data content.",
+  "oneOf": [
+    {
+      "$ref": "./remap_pattern_set_basic.json"
+    },
+    {
+      "$ref": "./remap_pattern_set_qualifier.json"
+    }
+  ]
+}

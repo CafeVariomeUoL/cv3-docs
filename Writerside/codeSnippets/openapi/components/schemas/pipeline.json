@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "title": "Pipeline",
+  "description": "A instruction set to process data",
+  "oneOf": [
+    {
+      "$ref": "./file_pipeline_attribute_in_file.json"
+    },
+    {
+      "$ref": "./file_pipeline_attribute_in_name.json"
+    },
+    {
+      "$ref": "./file_pipeline_assign_per_batch.json"
+    },
+    {
+      "$ref": "./file_pipeline_assign_by_expansion.json"
+    },
+    {
+      "$ref": "remap_pipeline.json"
+    }
+  ]
+}

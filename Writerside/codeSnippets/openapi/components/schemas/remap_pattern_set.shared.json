@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "title": "Remap Pattern Set Shared",
+  "description": "The shared properties of remap pattern set.",
+  "properties": {
+    "pattern": {
+      "type": "string",
+      "format": "regex"
+    }
+  },
+  "required": [
+    "pattern"
+  ]
+}

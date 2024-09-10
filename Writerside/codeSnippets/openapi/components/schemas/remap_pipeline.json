@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "title": "Remap Pipeline",
+  "description": "Remap pipeline defines the process to transfer a already ingested data source into the format of permanent storage.",
+  "$ref": "./pipeline.shared.json",
+  "properties": {
+    "pipelineType": {
+      "type": "string",
+      "const": "remapPipeline"
+    },
+    "directives": {
+      "type": "array",
+      "description": "The directives to remap the data source",
+      "items": {
+        "$ref": "./remap_directive.json"
+      }
+    }
+  },
+  "required": [
+    "sourceType",
+    "directives"
+  ]
+}

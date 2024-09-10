@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "title": "Remap Directive",
+  "description": "The shared properties of a directive to remap a data column to a biomedical term set.",
+  "required": [
+    "destination"
+  ],
+  "properties": {
+    "destination": {
+      "enum": [
+        "hpo",
+        "ordo",
+        "gene",
+        "snomedCT",
+        "eav"
+      ],
+      "description": "The target location where the data from this field should be loaded into",
+      "example": "hpo"
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Pipeline Shared",
+  "type": "object",
+  "description": "Shared properties of a data processing pipeline",
+  "required": [
+    "pipelineID",
+    "pipelineName"
+  ],
+  "properties": {
+    "pipelineID": {
+      "type": "string",
+      "format": "uuid",
+      "description": "The UUID of the pipeline"
+    },
+    "pipelineName": {
+      "type": "string",
+      "description": "Name of the pipeline. May not be unique, but should aim to be",
+      "example": "Test pipeline"
+    }
+  }
+}

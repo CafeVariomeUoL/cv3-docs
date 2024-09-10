@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "title": "Remap Pattern Set Basic",
+  "description": "The basic patterns to remap one data column to a biomedical term.",
+  "properties": {
+    "patternSetType": {
+      "type": "string",
+      "const": "basic"
+    },
+    "replacement": {
+      "type": "string",
+      "format": "regex"
+    }
+  },
+  "required": [
+      "patternSetType",
+      "replacement"
+  ],
+  "unevaluatedProperties": false
+}

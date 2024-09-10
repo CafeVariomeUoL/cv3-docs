@@ -1,0 +1,45 @@
+{
+  "get": {
+    "tags": [
+      "Config"
+    ],
+    "security": [],
+    "summary": "Get KeyCloak configuration",
+    "description": "Get the configuration for KeyCloak in this instance.",
+    "responses": {
+      "200": {
+        "description": "KeyCloak configuration",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "required": [
+                "url",
+                "realm",
+                "client_id"
+              ],
+              "properties": {
+                "url": {
+                  "type": "string",
+                  "format": "uri",
+                  "description": "URL of the KeyCloak base installation",
+                  "example": "https://auth.cafevariome.org"
+                },
+                "realm": {
+                  "type": "string",
+                  "example": "nexus",
+                  "description": "The realm of the client"
+                },
+                "client_id": {
+                  "type": "string",
+                  "description": "The ID of the client"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "operationId": "configKeyCloakGet"
+  }
+}

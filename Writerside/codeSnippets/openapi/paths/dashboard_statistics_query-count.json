@@ -1,0 +1,32 @@
+{
+  "get": {
+    "summary": "Get query count",
+    "tags": [
+      "Dashboard"
+    ],
+    "responses": {
+      "200": {
+        "description": "OK"
+      }
+    },
+    "operationId": "infoQueryCountGet",
+    "description": "Get the number of requested query over time",
+    "security": [
+      {
+        "sharedSecret": []
+      }
+    ],
+    "parameters": [
+      {
+        "schema": {
+          "type": "number",
+          "default": 14,
+          "minimum": 0
+        },
+        "in": "query",
+        "name": "days",
+        "description": "How long back should the query count be"
+      }
+    ]
+  }
+}

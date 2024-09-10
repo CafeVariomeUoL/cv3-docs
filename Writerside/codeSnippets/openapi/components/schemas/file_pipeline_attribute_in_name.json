@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "title": "File Pipeline Attribute In Name",
+  "description": "This file pipeline takes the data from the file as the same subject.",
+  "$ref": "./file_pipeline.json",
+  "properties": {
+    "subjectIDLocation": {
+      "type": "string",
+      "const": "attributeInFile"
+    }
+  },
+  "required": [
+    "subjectIDLocation"
+  ],
+  "unevaluatedProperties": false
+}

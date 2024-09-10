@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "title": "File Pipeline Assign Per Batch",
+  "description": "This file pipeline takes the data from the file, group rows by batch, and assign the subject ID to each batch.",
+  "$ref": "./file_pipeline.json",
+  "properties": {
+    "subjectIDLocation": {
+      "type": "string",
+      "const": "attributeInFile"
+    },
+    "prefix": {
+      "type": "string",
+      "description": "The prefix to be added to the subject ID"
+    },
+    "batchSize": {
+      "type": "integer",
+      "description": "The number of rows in each batch"
+    }
+  },
+  "required": [
+    "subjectIDLocation",
+    "prefix",
+    "batchSize"
+  ],
+  "unevaluatedProperties": false
+}

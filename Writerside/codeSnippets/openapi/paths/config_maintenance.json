@@ -1,0 +1,54 @@
+{
+  "post": {
+    "tags": [
+      "Config"
+    ],
+    "summary": "Set the maintenance status",
+    "description": "This endpoint can put the instance into or out of maintenance mode.",
+    "responses": {
+      "200": {
+        "$ref": "../components/responses/success.json"
+      }
+    },
+    "operationId": "maintenanceSet",
+    "security": [
+      {
+        "sharedSecret": []
+      }
+    ],
+    "parameters": [
+      {
+        "schema": {
+          "type": "integer",
+          "format": "time"
+        },
+        "in": "header",
+        "name": "X-Timestamp",
+        "description": "Timestamp of the request"
+      }
+    ],
+    "requestBody": {
+      "content": {
+        "application/json": {
+          "schema": {
+            "type": "object",
+            "required": [
+              "maintenance"
+            ],
+            "properties": {
+              "maintenance": {
+                "type": "boolean",
+                "description": "Whether the maintenance mode should be enabled"
+              },
+              "message": {
+                "type": "string",
+                "description": "Optional message to display when an endpoint is called during maintenance mode",
+                "example": "Scheduled downtime, service restoring in 22:00"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

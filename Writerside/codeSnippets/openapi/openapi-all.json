@@ -21,10 +21,19 @@
   ],
   "tags": [
     {
+      "$ref": "./components/tags/authentication.json"
+    },
+    {
+      "$ref": "./components/tags/config.json"
+    },
+    {
+      "$ref": "./components/tags/dashboard.json"
+    },
+    {
       "$ref": "./components/tags/info.json"
     },
     {
-      "$ref": "./components/tags/authentication.json"
+      "$ref": "./components/tags/pipeline.json"
     }
   ],
   "paths": {
@@ -36,12 +45,30 @@
     },
     "/auth/user-info": {
       "$ref": "./paths/auth_user-info.json"
+    },
+    "/config/maintenance": {
+      "$ref": "./paths/config_maintenance.json"
+    },
+    "/config/keycloak": {
+      "$ref": "./paths/config_keycloak.json"
+    },
+    "/dashboard/statistics": {
+      "$ref": "./paths/dashboard_statistics.json"
+    },
+    "/dashboard/statistics/query-count": {
+      "$ref": "./paths/dashboard_statistics_query-count.json"
+    },
+    "/pipelines/" : {
+      "$ref": "./paths/pipelines.json"
     }
   },
   "components": {
     "securitySchemes": {
       "userAccessToken": {
         "$ref": "./components/security_schemes/user_access_token.json"
+      },
+      "sharedSecret": {
+        "$ref": "./components/security_schemes/shared_secret.json"
       }
     }
   },

@@ -1,0 +1,12 @@
+{
+  "description": "Operation successful",
+  "content": {
+    "text/html": {
+      "schema": {
+        "type": "string",
+        "default": "Success",
+        "example": "Success"
+      }
+    }
+  }
+}

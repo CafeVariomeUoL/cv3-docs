@@ -1,0 +1,57 @@
+{
+  "get": {
+    "summary": "Get pipelines",
+    "tags": [
+      "Pipeline"
+    ],
+    "responses": {
+      "200": {
+        "description": "Pipelines in the database",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "../components/schemas/pipeline.json"
+              }
+            }
+          }
+        }
+      }
+    },
+    "operationId": "pipelineGet",
+    "description": "Get all the pipelines",
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ]
+  },
+  "post": {
+    "summary": "Create a pipeline",
+    "tags": [
+      "Pipeline"
+    ],
+    "responses": {
+      "200": {
+        "$ref": "../components/responses/success.json"
+      }
+    },
+    "operationId": "pipelinePost",
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ],
+    "description": "Create a new pipeline",
+    "requestBody": {
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "../components/schemas/pipeline.json"
+          }
+        }
+      }
+    }
+  }
+}

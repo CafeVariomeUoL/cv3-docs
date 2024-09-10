@@ -40,10 +40,6 @@
         "$ref": "../enums/language_codes.json"
       }
     },
-    "connectionID": {
-      "type": "string",
-      "format": "uuid"
-    },
     "customFields": {
       "type": "object",
       "additionalProperties": {

@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "title": "File Pipeline",
+  "description": "File pipeline defines the process to ingest a data file, and move into the database for temporary storage.",
+  "$ref": "./pipeline.shared.json",
+  "properties": {
+    "pipelineType": {
+      "type": "string",
+      "const": "filePipeline"
+    },
+    "grouping": {
+      "enum": [
+        "individual",
+        "customized"
+      ],
+      "description": "How the columns are grouped together. Only concerned in file pipeline"
+    },
+    "internalDelimiter": {
+      "type": "string",
+      "description": "The delimiter used by the file. Usually the file should be CSV, or a format where the delimiter is constant. Only concerned in file pipeline",
+      "example": ","
+    },
+    "groupColumns": {
+      "type": "string",
+      "description": "The column name acting as a grouping separator. Only concerned if the grouping is customized",
+      "example": "<grouping delimiter>"
+    }
+  },
+  "required": [
+    "sourceType",
+    "grouping",
+    "internalDelimiter"
+  ]
+}

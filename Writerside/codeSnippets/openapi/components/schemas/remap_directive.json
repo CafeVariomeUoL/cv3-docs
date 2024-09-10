@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "title": "Remap Directive",
+  "description": "A directive determining how to map an ingested collection onto an internal data storage.",
+  "oneOf": [
+    {
+      "$ref": "./remap_directive_term.json"
+    }
+  ]
+}

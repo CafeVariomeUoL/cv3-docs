@@ -1,0 +1,107 @@
+{
+  "get": {
+    "tags": [
+      "Dashboard"
+    ],
+    "summary": "Get dashboard statistics",
+    "description": "Get the statistics data for the dashboard.",
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Dashboard statistics",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "source_count": {
+                  "description": "Number of sources on this instance",
+                  "type": "integer",
+                  "example": 10
+                },
+                "user_count": {
+                  "description": "Number of users on this instance",
+                  "type": "integer",
+                  "example": 32
+                },
+                "network_count": {
+                  "description": "Number of networks this instance is in",
+                  "type": "integer",
+                  "example": 2
+                },
+                "request_count": {
+                  "description": "Number of pending network join requests or invites received",
+                  "type": "integer",
+                  "example": 6
+                },
+                "sources": {
+                  "description": "List of sources and the record count in each source on this instance",
+                  "type": "object",
+                  "example": {
+                    "929cb492-895f-4c22-be96-441ba00711ac": {
+                      "display_name": "Source 1",
+                      "record_count": 100
+                    },
+                    "e2872e95-8af2-4477-a067-f6bbba45cc18": {
+                      "display_name": "Source 2",
+                      "record_count": 200
+                    }
+                  }
+                },
+                "space": {
+                  "description": "Disk space usage of this instance",
+                  "type": "object",
+                  "properties": {
+                    "used": {
+                      "description": "Used disk space in gigabytes",
+                      "type": "number",
+                      "format": "float",
+                      "example": 10.5
+                    },
+                    "available": {
+                      "description": "Available disk space in gigabytes",
+                      "type": "number",
+                      "format": "float",
+                      "example": 100.5
+                    }
+                  },
+                  "example": {
+                    "used": 10.5,
+                    "available": 100.5
+                  }
+                },
+                "analytics": {
+                  "description": "Analytics data for this instance",
+                  "type": "object",
+                  "properties": {
+                    "error_count": {
+                      "description": "Number of errors reported by the front end",
+                      "type": "integer",
+                      "example": 60
+                    },
+                    "query_count": {
+                      "description": "Number of queries currently stored in the database",
+                      "type": "integer",
+                      "example": 100
+                    },
+                    "uptime": {
+                      "description": "Uptime of the instance as formatted string",
+                      "type": "string",
+                      "format": "time",
+                      "example": "15:30:02.46"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "operationId": "infoStatisticGet"
+  }
+}
