@@ -3,7 +3,11 @@
   "type": "object",
   "title": "File Pipeline Assign By Expansion",
   "description": "This file pipeline takes the data from the file, and assign a subject ID to each record based on column expansion results.",
-  "$ref": "./file_pipeline.json",
+  "allOf": [
+    {
+      "$ref": "./file_pipeline.json"
+    }
+  ],
   "properties": {
     "subjectIDLocation": {
       "type": "string",

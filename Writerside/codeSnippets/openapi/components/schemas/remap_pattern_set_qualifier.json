@@ -3,6 +3,11 @@
   "type": "object",
   "title": "Remap Pattern Set Qualifier",
   "description": "The basic patterns to remap one data column to a biomedical term.",
+  "allOf": [
+    {
+      "$ref": "./remap_pattern_set.shared.json"
+    }
+  ],
   "properties": {
     "patternSetType": {
       "type": "string",

@@ -3,7 +3,11 @@
   "type": "object",
   "title": "Remap Directive Term Shared",
   "description": "The directive to remap a data column to a biomedical term set.",
-  "$ref": "./remap_directive.shared.json",
+  "allOf": [
+    {
+      "$ref": "./remap_directive.shared.json"
+    }
+  ],
   "properties": {
     "directiveType": {
       "type": "string",

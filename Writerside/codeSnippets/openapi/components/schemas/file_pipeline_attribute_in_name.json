@@ -3,7 +3,11 @@
   "type": "object",
   "title": "File Pipeline Attribute In Name",
   "description": "This file pipeline takes the data from the file as the same subject.",
-  "$ref": "./file_pipeline.json",
+  "allOf": [
+    {
+      "$ref": "./file_pipeline.json"
+    }
+  ],
   "properties": {
     "subjectIDLocation": {
       "type": "string",

@@ -3,7 +3,11 @@
   "type": "object",
   "title": "Remap Pipeline",
   "description": "Remap pipeline defines the process to transfer a already ingested data source into the format of permanent storage.",
-  "$ref": "./pipeline.shared.json",
+  "allOf": [
+    {
+      "$ref": "./pipeline.shared.json"
+    }
+  ],
   "properties": {
     "pipelineType": {
       "type": "string",

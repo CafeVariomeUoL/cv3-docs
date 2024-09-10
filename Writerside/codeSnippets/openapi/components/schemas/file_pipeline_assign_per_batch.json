@@ -3,7 +3,11 @@
   "type": "object",
   "title": "File Pipeline Assign Per Batch",
   "description": "This file pipeline takes the data from the file, group rows by batch, and assign the subject ID to each batch.",
-  "$ref": "./file_pipeline.json",
+  "allOf": [
+    {
+      "$ref": "./file_pipeline.json"
+    }
+  ],
   "properties": {
     "subjectIDLocation": {
       "type": "string",

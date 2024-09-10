@@ -3,7 +3,11 @@
   "type": "object",
   "title": "Custom Meta Source",
   "description": "A representation of a custom meta source in system",
-  "$ref": "./meta_source.shared.json",
+  "allOf": [
+    {
+      "$ref": "./meta_source.shared.json"
+    }
+  ],
   "properties": {
     "sourceType": {
       "type": "string",

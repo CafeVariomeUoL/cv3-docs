@@ -3,7 +3,11 @@
   "type": "object",
   "title": "File Pipeline",
   "description": "File pipeline defines the process to ingest a data file, and move into the database for temporary storage.",
-  "$ref": "./pipeline.shared.json",
+  "allOf": [
+    {
+      "$ref": "./pipeline.shared.json"
+    }
+  ],
   "properties": {
     "pipelineType": {
       "type": "string",
