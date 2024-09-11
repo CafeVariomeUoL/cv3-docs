@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "title": "Beacon Data Source",
+  "description": "A BEACON data source represents a BEACON compatible web service to query from.",
+  "allOf": [
+    {
+      "$ref": "./source.shared.json"
+    }
+  ],
+  "properties": {
+    "sourceType": {
+      "type": "string",
+      "const": "beacon"
+    },
+    "sourceURL": {
+      "type": "string",
+      "description": "The base URL of the BEACON service",
+      "format": "uri"
+    },
+    "beaconAuthMethod": {
+      "$ref": "../enums/beacon_auth_method.json"
+    }
+  },
+  "required": [
+    "sourceType",
+    "sourceURL",
+    "beaconAuthMethod"
+  ],
+  "unevaluatedProperties": false
+}

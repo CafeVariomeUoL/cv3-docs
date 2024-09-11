@@ -1,0 +1,50 @@
+{
+  "get": {
+    "tags": [
+      "Network",
+      "Node"
+    ],
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ],
+    "summary": "Get network installations",
+    "description": "Get the installation information in a network.",
+    "parameters": [
+      {
+        "schema": {
+          "type": "string",
+          "enum": [
+            "approved",
+            "pending"
+          ]
+        },
+        "in": "query",
+        "name": "status",
+        "description": "The status of the nodes to fetch"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "All the nodes within a network",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "../components/schemas/node.json"
+              }
+            }
+          }
+        }
+      }
+    },
+    "operationId": "networkNodeGet"
+  },
+  "parameters": [
+    {
+      "$ref": "../components/parameters/network_id.json"
+    }
+  ]
+}

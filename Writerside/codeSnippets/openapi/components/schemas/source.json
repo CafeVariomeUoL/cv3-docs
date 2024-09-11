@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "title": "Source",
+  "description": "A dataset / data service to query from.",
+  "oneOf": [
+    {
+      "$ref": "./internal_source.json"
+    },
+    {
+      "$ref": "./molgenis_source.json"
+    },
+    {
+      "$ref": "./beacon_source.json"
+    }
+  ]
+}

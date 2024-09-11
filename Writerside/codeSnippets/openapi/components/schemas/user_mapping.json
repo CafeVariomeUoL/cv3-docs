@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "User Mapping",
+  "description": "Mapping configuration to map one user ID to another",
+  "oneOf": [
+    {
+      "type": "string",
+      "description": "Static mapping, the string will be user UUID",
+      "format": "uuid"
+    },
+    {
+      "type": "object",
+      "description": "Dynamic mapping, the user ID matching the key will be remapped to the value",
+      "additionalProperties": {
+        "type": "string",
+        "format": "uuid"
+      }
+    }
+  ]
+}

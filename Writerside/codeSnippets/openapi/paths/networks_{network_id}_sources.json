@@ -1,0 +1,36 @@
+{
+  "get": {
+    "tags": [
+      "Network",
+      "Source"
+    ],
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ],
+    "summary": "Get network sources",
+    "description": "Get the sources assigned to a network.",
+    "operationId": "networkSourceGet",
+    "responses": {
+      "200": {
+        "description": "The sources within this network",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "../components/schemas/source.json"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "parameters": [
+    {
+      "$ref": "../components/parameters/network_id.json"
+    }
+  ]
+}

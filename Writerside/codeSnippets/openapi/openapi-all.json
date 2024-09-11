@@ -36,7 +36,13 @@
       "$ref": "./components/tags/network.json"
     },
     {
+      "$ref": "./components/tags/node.json"
+    },
+    {
       "$ref": "./components/tags/pipeline.json"
+    },
+    {
+      "$ref": "./components/tags/source.json"
     }
   ],
   "paths": {
@@ -81,6 +87,12 @@
     },
     "/networks/{network_id}/meta-index": {
       "$ref": "./paths/networks_{network_id}_meta-index.json"
+    },
+    "/networks/{network_id}/nodes": {
+      "$ref": "./paths/networks_{network_id}_nodes.json"
+    },
+    "/networks/{network_id}/sources": {
+      "$ref": "./paths/networks_{network_id}_sources.json"
     }
   },
   "components": {

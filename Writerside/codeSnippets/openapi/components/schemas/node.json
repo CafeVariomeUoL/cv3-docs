@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "title": "Node",
+  "description": "Data model of a node in the decentralized network",
+  "required": [
+    "nodeID",
+    "nodeName",
+    "nodeUrl",
+    "clientID",
+    "nodeDescription"
+  ],
+  "properties": {
+    "nodeID": {
+      "type": "string",
+      "format": "uuid",
+      "description": "The UUID of the node"
+    },
+    "nodeName": {
+      "type": "string",
+      "description": "Name of the node"
+    },
+    "nodeUrl": {
+      "type": "string",
+      "description": "Base URL of the node, without the `/api` part",
+      "format": "uri"
+    },
+    "clientID": {
+      "type": "string",
+      "description": "Client ID this node is assigned to in KeyCloak"
+    },
+    "nodeDescription": {
+      "type": "string",
+      "description": "Description of then node"
+    },
+    "authenticationEnabled": {
+      "type": "boolean",
+      "description": "Whether the access token from this node can be accepted"
+    },
+    "userMapping": {
+      "$ref": "./user_mapping.json"
+    },
+    "publicKey": {
+      "type": "string",
+      "description": "Public key of the node"
+    },
+    "eavIndex": {
+      "$ref": "./eav_index.json"
+    },
+    "capability": {
+      "$ref": "./capability.json"
+    },
+    "metaIndex": {
+      "$ref": "./meta_index.json"
+    }
+  }
+}

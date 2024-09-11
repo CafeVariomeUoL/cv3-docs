@@ -27,4 +27,5 @@
         <toc-element topic="query-builder-and-query-result.md"/>
     </toc-element>
     <toc-element topic="monitoring.md"/>
+    <toc-element topic="system-structure.md"/>
 </instance-profile>

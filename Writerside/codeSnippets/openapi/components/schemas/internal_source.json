@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "title": "Internal Data Source",
+  "description": "An internal data source represents a dataset stored in local database.",
+  "allOf": [
+    {
+      "$ref": "./source.shared.json"
+    }
+  ],
+  "properties": {
+    "sourceType": {
+      "type": "string",
+      "const": "internal"
+    }
+  },
+  "required": [
+      "sourceType"
+  ],
+  "unevaluatedProperties": false
+}

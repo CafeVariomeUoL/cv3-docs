@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "title": "Molgenis Data Source",
+  "description": "A Molgenis data source represents a Molgenis instance supporting CV query format.",
+  "allOf": [
+    {
+      "$ref": "./source.shared.json"
+    }
+  ],
+  "properties": {
+    "sourceType": {
+      "type": "string",
+      "const": "molgenis"
+    },
+    "sourceURL": {
+      "type": "string",
+      "format": "uri",
+      "description": "The query URL of the source"
+    },
+    "indexURL": {
+      "type": "string",
+      "format": "uri",
+      "description": "The index URL of the source"
+    }
+  },
+  "required": [
+    "sourceType",
+    "sourceURL",
+    "indexURL"
+  ],
+  "unevaluatedProperties": false
+}

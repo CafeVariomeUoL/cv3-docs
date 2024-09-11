@@ -1,0 +1,9 @@
+{
+  "title": "Beacon Auth Method",
+  "description": "The authentication method for a beacon endpoint, either internal or external",
+  "enum": [
+    "noAuth",
+    "authKey",
+    "token"
+  ]
+}

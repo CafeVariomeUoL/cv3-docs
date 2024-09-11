@@ -12,9 +12,7 @@ recommended approach when there are only several records to add.
 
 ## Using the file uploader
 
-If the metadata is large in quantity, or if the metadata is being exported from another system, it's better to use the
-file uploader to upload the metadata. It does, however, requires the metadata to be in a specific format to allow direct
-ingestion.
+If the metadata is large in quantity, or if the metadata is being exported from another system, it's better to use the file uploader to upload the metadata. It does, however, requires the metadata to be in a specific format to allow direct ingestion.
 
 > The file uploader cannot override metadata entries. If you upload a new version of existing entry there will be duplications. **Please remove the old entries before uploading the new ones.**
 > {style="warning"}

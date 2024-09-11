@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "title": "Source Shared",
+  "description": "Shared properties of record source models.",
+  "required": [
+    "sourceID",
+    "sourceName",
+    "displayName",
+    "sourceDescription",
+    "owner",
+    "ownerEmail",
+    "capability",
+    "recordCount",
+    "online"
+  ],
+  "properties": {
+    "sourceID": {
+      "type": "string",
+      "format": "uuid",
+      "description": "The UUID of the source"
+    },
+    "sourceName": {
+      "type": "string",
+      "description": "The name of the source, used in internal representations",
+      "pattern": "^[a-zA-Z0-9]$"
+    },
+    "displayName": {
+      "type": "string",
+      "description": "The display name of the source"
+    },
+    "sourceDescription": {
+      "type": "string",
+      "description": "The description of a source"
+    },
+    "owner": {
+      "type": "string",
+      "description": "The name of the source owner"
+    },
+    "ownerEmail": {
+      "type": "string",
+      "description": "The email of the source owner"
+    },
+    "capability": {
+      "$ref": "./capability.json"
+    },
+    "recordCount": {
+      "type": "integer",
+      "description": "The number of records in this source",
+      "minimum": 0
+    },
+    "online": {
+      "type": "boolean",
+      "description": "Whether the source is online for query"
+    },
+    "pipelineIndex": {
+      "type": "array",
+      "description": "The index to generate a query pipeline, built based on the distribution of the data",
+      "items": {
+        "type": "integer"
+      }
+    },
+    "eavIndex": {
+      "$ref": "./eav_index.json"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "title": "Source Type",
+  "enum": [
+    "internal",
+    "beacon",
+    "molgenis",
+    "legacy"
+  ],
+  "description": "The type of a data source"
+}
