@@ -1,0 +1,30 @@
+{
+  "get": {
+    "tags": [
+      "Network"
+    ],
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ],
+    "summary": "Get network requests",
+    "description": "Get all network requests that are in the database.",
+    "responses": {
+      "200": {
+        "description": "All network requests and invites",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "../components/schemas/auth_request_invite.json"
+              }
+            }
+          }
+        }
+      }
+    },
+    "operationId": "networkRequestGet"
+  }
+}

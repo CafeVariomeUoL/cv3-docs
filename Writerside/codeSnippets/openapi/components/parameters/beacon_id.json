@@ -1,0 +1,9 @@
+{
+  "name": "beacon_id",
+  "in": "path",
+  "required": true,
+  "schema": {
+    "type": "string"
+  },
+  "description": "The UUID of a beacon endpoint config"
+}

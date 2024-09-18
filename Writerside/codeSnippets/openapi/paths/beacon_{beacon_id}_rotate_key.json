@@ -1,0 +1,25 @@
+{
+  "post": {
+    "tags": [
+      "Beacon"
+    ],
+    "summary": "Rotate beacon key",
+    "operationId": "beaconEndpointKeyRotate",
+    "description": "Rotate the authentication key of a beacon endpoint, and send the new key to the admin email who requested this rotation",
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ],
+    "responses": {
+      "200": {
+        "$ref": "../components/responses/success.json"
+      }
+    }
+  },
+  "parameters": [
+    {
+      "$ref": "../components/parameters/beacon_id.json"
+    }
+  ]
+}

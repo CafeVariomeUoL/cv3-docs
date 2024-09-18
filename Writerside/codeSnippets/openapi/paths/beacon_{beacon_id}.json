@@ -1,0 +1,80 @@
+{
+  "get": {
+    "tags": [
+      "Beacon"
+    ],
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ],
+    "summary": "Get one beacon endpoint",
+    "description": "Get configurations of one Beacon endpoint by ID",
+    "parameters": [],
+    "operationId": "beaconEndpointGetSingle",
+    "responses": {
+      "200": {
+        "description": "A beacon endpoint config matching the ID",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "../components/schemas/beacon_endpoint.json"
+            }
+          }
+        }
+      }
+    }
+  },
+  "patch": {
+    "tags": [
+      "Beacon"
+    ],
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ],
+    "summary": "Update one beacon endpoint",
+    "description": "Update configurations of one Beacon endpoint by ID",
+    "parameters": [],
+    "operationId": "beaconEndpointUpdate",
+    "requestBody": {
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "../components/schemas/beacon_endpoint.json"
+          }
+        }
+      }
+    },
+    "responses": {
+      "200": {
+        "$ref": "../components/responses/success.json"
+      }
+    }
+  },
+  "delete": {
+    "tags": [
+      "Beacon"
+    ],
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ],
+    "summary": "Delete one beacon endpoint",
+    "description": "Delete configurations of one Beacon endpoint by ID",
+    "parameters": [],
+    "operationId": "beaconEndpointDelete",
+    "responses": {
+      "200": {
+        "$ref": "../components/responses/success.json"
+      }
+    }
+  },
+  "parameters": [
+    {
+      "$ref": "../components/parameters/beacon_id.json"
+    }
+  ]
+}

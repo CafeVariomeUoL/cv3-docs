@@ -1,0 +1,10 @@
+{
+  "title": "Network Message Type",
+  "description": "The type of a message being transmitted on decentralised network.",
+  "enum": [
+    "authMessage",
+    "syncMessage",
+    "dataMessage",
+    "relayMessage"
+  ]
+}

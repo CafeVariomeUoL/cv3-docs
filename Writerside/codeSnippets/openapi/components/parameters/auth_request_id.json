@@ -1,0 +1,9 @@
+{
+  "name": "request_id",
+  "in": "path",
+  "required": true,
+  "schema": {
+    "type": "string"
+  },
+  "description": "The UUID of the network request"
+}

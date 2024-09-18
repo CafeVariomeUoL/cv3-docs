@@ -1,0 +1,26 @@
+{
+  "get": {
+    "tags": [
+      "Network"
+    ],
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ],
+    "summary": "Deny network request",
+    "description": "Deny a network request. Can be either join request or invite.",
+    "parameters": [],
+    "responses": {
+      "200": {
+        "$ref": "../components/responses/success.json"
+      }
+    },
+    "operationId": "networkRequestDeny"
+  },
+  "parameters": [
+    {
+      "$ref": "../components/parameters/auth_request_id.json"
+    }
+  ]
+}

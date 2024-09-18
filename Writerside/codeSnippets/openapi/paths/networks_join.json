@@ -1,0 +1,44 @@
+{
+  "post": {
+    "tags": [
+      "Network"
+    ],
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ],
+    "summary": "Join network",
+    "description": "Instruct the backend to join a network.",
+    "requestBody": {
+      "content": {
+        "application/json": {
+          "schema": {
+            "type": "object",
+            "required": [
+              "networkID",
+              "baseURL"
+            ],
+            "properties": {
+              "networkID": {
+                "type": "string",
+                "format": "uuid",
+                "description": "UUID of the network to join"
+              },
+              "baseURL": {
+                "type": "string",
+                "description": "Base URL of the node to request the network join (entry node)"
+              }
+            }
+          }
+        }
+      }
+    },
+    "responses": {
+      "200": {
+        "$ref": "../components/responses/success.json"
+      }
+    },
+    "operationId": "networkJoin"
+  }
+}

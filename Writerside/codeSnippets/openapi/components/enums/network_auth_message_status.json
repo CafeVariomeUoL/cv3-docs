@@ -1,0 +1,10 @@
+{
+  "title": "Network Auth Message Status",
+  "description": "The status of the network auth message.",
+  "enum": [
+    "sent",
+    "pending",
+    "accepted",
+    "rejected"
+  ]
+}

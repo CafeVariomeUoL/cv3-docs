@@ -24,6 +24,9 @@
       "$ref": "./components/tags/authentication.json"
     },
     {
+      "$ref": "./components/tags/beacon.json"
+    },
+    {
       "$ref": "./components/tags/config.json"
     },
     {
@@ -55,11 +58,23 @@
     "/auth/user-info": {
       "$ref": "./paths/auth_user-info.json"
     },
-    "/config/maintenance": {
-      "$ref": "./paths/config_maintenance.json"
+    "/beacon/" : {
+      "$ref": "./paths/beacon.json"
+    },
+    "/beacon/{beacon_id}": {
+      "$ref": "./paths/beacon_{beacon_id}.json"
+    },
+    "/beacon/{beacon_id}/rotate_key": {
+      "$ref": "./paths/beacon_{beacon_id}_rotate_key.json"
+    },
+    "/beacon/{beacon_id}/auth_key": {
+      "$ref": "./paths/beacon_{beacon_id}_auth_key.json"
     },
     "/config/keycloak": {
       "$ref": "./paths/config_keycloak.json"
+    },
+    "/config/maintenance": {
+      "$ref": "./paths/config_maintenance.json"
     },
     "/dashboard/statistics": {
       "$ref": "./paths/dashboard_statistics.json"
@@ -70,14 +85,17 @@
     "/pipelines/" : {
       "$ref": "./paths/pipelines.json"
     },
-    "/pipelines/{pipeline_id}": {
-      "$ref": "./paths/pipelines_{pipeline_id}.json"
-    },
     "/pipelines/attributes": {
       "$ref": "./paths/pipelines_attributes.json"
     },
+    "/pipelines/{pipeline_id}": {
+      "$ref": "./paths/pipelines_{pipeline_id}.json"
+    },
     "/networks/" : {
       "$ref": "./paths/networks.json"
+    },
+    "/networks/join": {
+      "$ref": "./paths/networks_join.json"
     },
     "/networks/{network_id}": {
       "$ref": "./paths/networks_{network_id}.json"
@@ -93,6 +111,15 @@
     },
     "/networks/{network_id}/sources": {
       "$ref": "./paths/networks_{network_id}_sources.json"
+    },
+    "/networks/requests": {
+      "$ref": "./paths/networks_requests.json"
+    },
+    "/networks/requests/{request_id}/approve": {
+      "$ref": "./paths/networks_requests_{request_id}_approve.json"
+    },
+    "/networks/requests/{request_id}/deny": {
+      "$ref": "./paths/networks_requests_{request_id}_deny.json"
     }
   },
   "components": {

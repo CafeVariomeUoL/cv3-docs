@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "title": "Beacon Endpoint",
+  "description": "A beacon endpoint configuration for querying a network with BEACON request",
+  "properties": {
+    "endpointID": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "endpointPath": {
+      "type": "string"
+    },
+    "networkID": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "beaconAuthMethod": {
+      "$ref": "../enums/beacon_auth_method.json"
+    },
+    "userMapping": {
+      "$ref": "./user_mapping.json"
+    },
+    "beaconAuthKey": {
+      "type": "string",
+      "description": "The API key to authenticate the beacon request"
+    }
+  },
+  "required": [
+    "endpointID",
+    "endpointPath",
+    "networkID",
+    "beaconAuthMethod",
+    "userMapping"
+  ]
+}

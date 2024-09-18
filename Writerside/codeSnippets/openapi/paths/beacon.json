@@ -1,0 +1,57 @@
+{
+  "get": {
+    "tags": [
+      "Beacon"
+    ],
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ],
+    "summary": "Get beacon endpoints",
+    "description": "Get configurations of all Beacon endpoints",
+    "responses": {
+      "200": {
+        "description": "All beacon endpoints created in the system",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "../components/schemas/beacon_endpoint.json"
+              }
+            }
+          }
+        }
+      }
+    },
+    "operationId": "beaconEndpointGet"
+  },
+  "post": {
+    "tags": [
+      "Beacon"
+    ],
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ],
+    "summary": "Create beacon endpoints",
+    "description": "Create a Beacon endpoint configuration",
+    "operationId": "beaconEndpointCreate",
+    "requestBody": {
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "../components/schemas/beacon_endpoint.json"
+          }
+        }
+      }
+    },
+    "responses": {
+      "200": {
+        "$ref": "../components/responses/success.json"
+      }
+    }
+  }
+}

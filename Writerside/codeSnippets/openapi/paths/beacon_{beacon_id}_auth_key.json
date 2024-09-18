@@ -1,0 +1,25 @@
+{
+  "post": {
+    "tags": [
+      "Beacon"
+    ],
+    "summary": "Request beacon key",
+    "operationId": "beaconEndpointKeyRequest",
+    "description": "Request a copy of the auth key of the beacon endpoint to be sent to the admin email",
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ],
+    "responses": {
+      "200": {
+        "$ref": "../components/responses/success.json"
+      }
+    }
+  },
+  "parameters": [
+    {
+      "$ref": "../components/parameters/beacon_id.json"
+    }
+  ]
+}

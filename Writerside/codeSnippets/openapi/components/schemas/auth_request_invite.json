@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "title": "Auth Request or Invite",
+  "description": "A message to request to join a network, or to invite another node to a network.",
+  "required": [
+    "messageType",
+    "messageAttributes",
+    "messageData",
+    "timestamp"
+  ],
+  "properties": {
+    "messageType": {
+      "$ref": "../enums/network_message_type.json"
+    },
+    "messageAttributes": {
+      "type": "object",
+      "description": "Information related to the message",
+      "required": [
+        "messageID",
+        "authType",
+        "networkID",
+        "status",
+        "targetUrl"
+      ],
+      "properties": {
+        "messageID": {
+          "type": "string",
+          "format": "uuid",
+          "description": "ID of the message"
+        },
+        "authType": {
+          "$ref": "../enums/network_auth_message_type.json"
+        },
+        "networkID": {
+          "type": "string",
+          "format": "uuid",
+          "description": "ID of the network in the request"
+        },
+        "status": {
+          "$ref": "../enums/network_auth_message_status.json"
+        },
+        "targetUrl": {
+          "type": "string",
+          "format": "uri",
+          "description": "The URL which this message is intended for"
+        }
+      }
+    },
+    "messageData": {
+      "type": "object",
+      "description": "Data payload carried by the message",
+      "required": [
+        "node",
+        "challenge"
+      ],
+      "properties": {
+        "node": {
+          "$ref": "./node.json",
+          "description": "The node representation of the sender"
+        },
+        "network": {
+          "$ref": "./discovery_network.json",
+          "description": "The network representation, only present if it's an invite"
+        },
+        "challenge": {
+          "type": "array",
+          "description": "3 word challenge, used for offline verification",
+          "minItems": 3,
+          "maxItems": 3,
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "timestamp": {
+      "type": "integer",
+      "description": "Timestamp in epoch time"
+    }
+  }
+}

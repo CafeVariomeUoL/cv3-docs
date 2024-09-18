@@ -1,0 +1,12 @@
+{
+  "title": "Network Auth Message Type",
+  "description": "The purpose of the network auth message.",
+  "enum": [
+    "request",
+    "invite",
+    "response",
+    "join",
+    "leave",
+    "status"
+  ]
+}
