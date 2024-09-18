@@ -83,6 +83,13 @@ jobs:
             artifacts/webHelpDG2-all.zip
           retention-days: 7
 
+      - name: Save swagger-ui folder as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: swagger-ui
+          path: swagger-ui/*
+          retention-days: 7
+
   deploy:
     environment:
       name: github-pages
