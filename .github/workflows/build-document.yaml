@@ -9,6 +9,7 @@ permissions:
   id-token: write
   pages: write
   contents: read
+  checks: read
 
 env:
   DOCKER_VERSION: '241.18775'
@@ -103,6 +104,22 @@ jobs:
 
       - name: Unzip developer guide
         run: unzip -O UTF-8 -qq developer/webHelpDG2-all.zip -d dir/developer
+
+      - name: Copy Swagger-UI
+        run: mkdir -p dir/openapi && cp -r swagger-ui/* dir/openapi/
+
+      - name: Wait for OpenAPI specs to be uploaded
+        uses: lewagon/wait-on-check-action@v1.3.4
+        with:
+          ref: ${{ github.ref }}
+          check-name: 'Build and Upload OpenAPI Spec to Nexus'
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          wait-interval: 10
+
+      - name: Download OpenAPI specs
+        run: |
+          curl -o dir/openapi/cv3-all-bundled.yaml https://artifactory.cafevariome.org/repository/schemas/openapi/cv3-all-bundled.yaml
+          curl -o dir/openapi/cv3-admin-bundled.yaml https://artifactory.cafevariome.org/repository/schemas/openapi/cv3-admin-bundled.yaml
 
       - name: Setup Pages
         uses: actions/configure-pages@v4

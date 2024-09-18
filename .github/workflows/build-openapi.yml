@@ -12,6 +12,7 @@ permissions:
 
 jobs:
   build:
+    name: Build and Upload OpenAPI Spec to Nexus
     runs-on: ubuntu-latest
 
     steps:
