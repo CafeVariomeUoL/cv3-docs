@@ -1,0 +1,8 @@
+{
+  "name": "installation_key",
+  "in": "path",
+  "required": true,
+  "schema": {
+    "type": "string"
+  }
+}

@@ -13,12 +13,7 @@
     "summary": "Update a nexus installation",
     "parameters": [
       {
-        "name": "installation_key",
-        "in": "path",
-        "required": true,
-        "schema": {
-          "type": "string"
-        }
+        "$ref": "../components/parameters/nexus_installation_key.json"
       }
     ],
     "requestBody": {
@@ -47,6 +42,11 @@
     "tags": [
       "Nexus",
       "Node"
+    ],
+    "parameters": [
+      {
+        "$ref": "../components/parameters/nexus_installation_key.json"
+      }
     ],
     "operationId": "deleteLegacyNexusInstallation",
     "summary": "Delete a nexus installation",
