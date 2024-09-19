@@ -21,24 +21,240 @@
   ],
   "tags": [
     {
-      "$ref": "./components/tags/info.json"
+      "$ref": "./components/tags/access_request.json"
     },
     {
       "$ref": "./components/tags/authentication.json"
+    },
+    {
+      "$ref": "./components/tags/beacon.json"
+    },
+    {
+      "$ref": "./components/tags/config.json"
+    },
+    {
+      "$ref": "./components/tags/credential.json"
+    },
+    {
+      "$ref": "./components/tags/dashboard.json"
+    },
+    {
+      "$ref": "./components/tags/datafile.json"
+    },
+    {
+      "$ref": "./components/tags/group.json"
+    },
+    {
+      "$ref": "./components/tags/info.json"
+    },
+    {
+      "$ref": "./components/tags/log.json"
+    },
+    {
+      "$ref": "./components/tags/network.json"
+    },
+    {
+      "$ref": "./components/tags/nexus.json"
+    },
+    {
+      "$ref": "./components/tags/node.json"
+    },
+    {
+      "$ref": "./components/tags/pipeline.json"
+    },
+    {
+      "$ref": "./components/tags/source.json"
+    },
+    {
+      "$ref": "./components/tags/user.json"
     }
   ],
   "paths": {
     "/": {
       "$ref": "./paths/root.json"
     },
+    "/access-requests/" : {
+      "$ref": "./paths/access-requests.json"
+    },
+    "/access-requests/{request_id}": {
+      "$ref": "./paths/access-requests_{request_id}.json"
+    },
+    "/access-requests/{request_id}/approve": {
+      "$ref": "./paths/access-requests_{request_id}_approve.json"
+    },
+    "/access-requests/{request_id}/deny": {
+      "$ref": "./paths/access-requests_{request_id}_deny.json"
+    },
     "/auth/token": {
       "$ref": "./paths/auth_token.json"
+    },
+    "/auth/user-info": {
+      "$ref": "./paths/auth_user-info.json"
+    },
+    "/beacon/" : {
+      "$ref": "./paths/beacon.json"
+    },
+    "/beacon/{beacon_id}": {
+      "$ref": "./paths/beacon_{beacon_id}.json"
+    },
+    "/beacon/{beacon_id}/rotate-key": {
+      "$ref": "./paths/beacon_{beacon_id}_rotate-key.json"
+    },
+    "/beacon/{beacon_id}/auth-key": {
+      "$ref": "./paths/beacon_{beacon_id}_auth-key.json"
+    },
+    "/config/global": {
+      "$ref": "./paths/config_global.json"
+    },
+    "/config/keycloak": {
+      "$ref": "./paths/config_keycloak.json"
+    },
+    "/config/maintenance": {
+      "$ref": "./paths/config_maintenance.json"
+    },
+    "/config/user": {
+      "$ref": "./paths/config_user.json"
+    },
+    "/dashboard/statistics": {
+      "$ref": "./paths/dashboard_statistics.json"
+    },
+    "/dashboard/statistics/query-count": {
+      "$ref": "./paths/dashboard_statistics_query-count.json"
+    },
+    "/groups/": {
+      "$ref": "./paths/groups.json"
+    },
+    "/groups/{group_id}" : {
+      "$ref": "./paths/groups_{group_id}.json"
+    },
+    "/log/error": {
+      "$ref": "./paths/log_error.json"
+    },
+    "/log/info": {
+      "$ref": "./paths/log_info.json"
+    },
+    "/pipelines/" : {
+      "$ref": "./paths/pipelines.json"
+    },
+    "/pipelines/attributes": {
+      "$ref": "./paths/pipelines_attributes.json"
+    },
+    "/pipelines/{pipeline_id}": {
+      "$ref": "./paths/pipelines_{pipeline_id}.json"
+    },
+    "/networks/" : {
+      "$ref": "./paths/networks.json"
+    },
+    "/networks/join": {
+      "$ref": "./paths/networks_join.json"
+    },
+    "/networks/{network_id}": {
+      "$ref": "./paths/networks_{network_id}.json"
+    },
+    "/networks/{network_id}/eav-index": {
+      "$ref": "./paths/networks_{network_id}_eav-index.json"
+    },
+    "/networks/{network_id}/meta-index": {
+      "$ref": "./paths/networks_{network_id}_meta-index.json"
+    },
+    "/networks/{network_id}/nodes": {
+      "$ref": "./paths/networks_{network_id}_nodes.json"
+    },
+    "/networks/{network_id}/sources": {
+      "$ref": "./paths/networks_{network_id}_sources.json"
+    },
+    "/networks/requests": {
+      "$ref": "./paths/networks_requests.json"
+    },
+    "/networks/requests/{request_id}/approve": {
+      "$ref": "./paths/networks_requests_{request_id}_approve.json"
+    },
+    "/networks/requests/{request_id}/deny": {
+      "$ref": "./paths/networks_requests_{request_id}_deny.json"
+    },
+    "/nexus/credentials": {
+      "$ref": "./paths/nexus_credentials.json"
+    },
+    "/nexus/credentials/{realm}" : {
+      "$ref": "./paths/nexus_credentials_{realm}.json"
+    },
+    "/nexus/installations": {
+      "$ref": "./paths/nexus_installations.json"
+    },
+    "/nexus/installations/{installation_key}" : {
+      "$ref": "./paths/nexus_installations_{installation_key}.json"
+    },
+    "/nexus/networks": {
+      "$ref": "./paths/nexus_networks.json"
+    },
+    "/nexus/networks/{network_key}" : {
+      "$ref": "./paths/nexus_networks_{network_key}.json"
+    },
+    "/nexus/requests": {
+      "$ref": "./paths/nexus_requests.json"
+    },
+    "/nexus/requests/pending" : {
+      "$ref": "./paths/nexus_requests_pending.json"
+    },
+    "/nexus/requests/{request_token}/accept": {
+      "$ref": "./paths/nexus_requests_{request_token}_accept.json"
+    },
+    "/nexus/requests/{request_token}/deny": {
+      "$ref": "./paths/nexus_requests_{request_token}_deny.json"
+    },
+    "/sources/": {
+      "$ref": "./paths/sources.json"
+    },
+    "/sources/{source_id}": {
+      "$ref": "./paths/sources_{source_id}.json"
+    },
+    "/source/{source_id}/datafiles": {
+      "$ref": "./paths/sources_{source_id}_datafiles.json"
+    },
+    "/sources/{source_id}/eav-index": {
+      "$ref": "./paths/sources_{source_id}_eav-index.json"
+    },
+    "/sources/{source_id}/index": {
+      "$ref": "./paths/sources_{source_id}_index.json"
+    },
+    "/source/{source_id}/ingest": {
+      "$ref": "./paths/sources_{source_id}_ingest.json"
+    },
+    "/sources/{source_id}/upload": {
+      "$ref": "./paths/sources_{source_id}_upload.json"
+    },
+    "/sources/upload-token": {
+      "$ref": "./paths/sources_upload-token.json"
+    },
+    "/users/": {
+      "$ref": "./paths/users.json"
+    },
+    "/users/local": {
+      "$ref": "./paths/users_local.json"
+    },
+    "/users/{user_id}": {
+      "$ref": "./paths/users_{user_id}.json"
+    },
+    "/users/{user_id}/activate": {
+      "$ref": "./paths/users_{user_id}_activate.json"
+    },
+    "/users/{user_id}/deactivate": {
+      "$ref": "./paths/users_{user_id}_deactivate.json"
+    },
+    "/users/{user_id}/permit-login": {
+      "$ref": "./paths/users_{user_id}_permit-login.json"
+    },
+    "/users/{user_id}/revoke-login": {
+      "$ref": "./paths/users_{user_id}_revoke-login.json"
     }
   },
   "components": {
     "securitySchemes": {
       "userAccessToken": {
         "$ref": "./components/security_schemes/user_access_token.json"
+      },
+      "sharedSecret": {
+        "$ref": "./components/security_schemes/shared_secret.json"
       }
     }
   },
