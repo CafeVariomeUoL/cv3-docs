@@ -1,0 +1,119 @@
+{
+  "get": {
+    "tags": [
+      "Nexus",
+      "Node"
+    ],
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ],
+    "summary": "Get all nexus installations",
+    "description": "Get all CV2 installations that has registered with Nexus service",
+    "operationId": "getLegacyNexusInsatallations",
+    "responses": {
+      "200": {
+        "description": "OK",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "../components/schemas/nexus_installation.json"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "post": {
+    "tags": [
+      "Nexus",
+      "Node"
+    ],
+    "summary": "Create a new nexus installation",
+    "operationId": "createLegacyNexusInstallations",
+    "requestBody": {
+      "content": {
+        "application/json": {
+          "schema": {
+            "type": "object",
+            "required": [
+              "installationName",
+              "baseURL",
+              "email"
+            ],
+            "properties": {
+              "installationName": {
+                "type": "string"
+              },
+              "baseURL": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+              },
+              "realm": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "responses": {
+      "200": {
+        "description": "OK",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "../components/schemas/nexus_installation.json"
+            }
+          }
+        }
+      },
+      "401": {
+        "description": "Unauthorized access, token required",
+        "content": {
+          "application/x-www-form-urlencoded": {
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "500": {
+        "description": "Internal Server Error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "503": {
+        "description": "Service is under maintenance or KeyCloak/Vault is not available",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

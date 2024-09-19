@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "title": "System Config",
+  "description": "The data model for system settings",
+  "properties": {
+    "beaconSettings": {
+      "$ref": "./beacon_config.json"
+    },
+    "ownershipSettings": {
+      "$ref": "./ownership_config.json"
+    },
+    "discoverySettings": {
+      "$ref": "./discovery_config.json"
+    },
+    "instanceSettings": {
+      "$ref": "./instance_config.json"
+    },
+    "federationSettings": {
+      "$ref": "./federation_config.json"
+    },
+    "nexusEnabled": {
+      "type": "boolean",
+      "description": "Whether nexus mode is enabled"
+    }
+  }
+}

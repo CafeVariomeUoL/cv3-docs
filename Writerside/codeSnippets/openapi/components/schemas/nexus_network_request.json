@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "title": "Nexus Network Request",
+  "required": [
+    "networkKey",
+    "installationKey",
+    "token",
+    "email",
+    "justification",
+    "ipAddress",
+    "status"
+  ],
+  "properties": {
+    "networkKey": {
+      "type": "integer"
+    },
+    "installationKey": {
+      "type": "string"
+    },
+    "token": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string",
+      "format": "email"
+    },
+    "justification": {
+      "type": "string"
+    },
+    "ipAddress": {
+      "type": "string",
+      "format": "ipv4"
+    },
+    "status": {
+      "type": "string"
+    }
+  }
+}

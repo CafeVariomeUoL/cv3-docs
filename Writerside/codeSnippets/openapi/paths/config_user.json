@@ -1,0 +1,54 @@
+{
+  "get": {
+    "tags": [
+      "Config"
+    ],
+    "summary": "Get user settings",
+    "operationId": "settingUserGet",
+    "description": "Get the settings of the user himself",
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "OK",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "../components/schemas/user_setting.json"
+            }
+          }
+        }
+      }
+    }
+  },
+  "post": {
+    "tags": [
+      "Config"
+    ],
+    "summary": "Set user settings",
+    "operationId": "settingUserSet",
+    "description": "Update teh settings for a user",
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ],
+    "requestBody": {
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "../components/schemas/user_setting.json"
+          }
+        }
+      }
+    },
+    "responses": {
+      "200": {
+        "$ref": "../components/responses/success.json"
+      }
+    }
+  }
+}

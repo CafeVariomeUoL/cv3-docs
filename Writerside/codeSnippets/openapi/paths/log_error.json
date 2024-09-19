@@ -1,0 +1,24 @@
+{
+  "post": {
+    "tags": [
+      "Log"
+    ],
+    "operationId": "logError",
+    "summary": "Receive ERROR log",
+    "description": "Receive an ERROR level log message",
+    "requestBody": {
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "../components/schemas/log.json"
+          }
+        }
+      }
+    },
+    "responses": {
+      "200": {
+        "$ref": "../components/responses/success.json"
+      }
+    }
+  }
+}

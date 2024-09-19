@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "title": "Discovery Config",
+  "description": "The data model for discovery related configurations",
+  "properties": {
+    "endpoints": {
+      "type": "object",
+      "description": "The endpoints for web services used in the system",
+      "required": [
+        "genes",
+        "hpo",
+        "ordo",
+        "snomed",
+        "medicine",
+        "reactome",
+        "neo4j"
+      ],
+      "properties": {
+        "genes": {
+          "type": "string",
+          "format": "uri"
+        },
+        "hpo": {
+          "type": "string",
+          "format": "uri"
+        },
+        "ordo": {
+          "type": "string",
+          "format": "uri"
+        },
+        "snomed": {
+          "type": "string",
+          "format": "uri"
+        },
+        "medicine": {
+          "type": "string",
+          "format": "uri"
+        },
+        "reactome": {
+          "type": "string",
+          "format": "uri"
+        },
+        "neo4j": {
+          "type": "string",
+          "format": "uri"
+        }
+      }
+    },
+    "capability": {
+      "$ref": "./capability.json"
+    },
+    "defaultBudget": {
+      "type": "integer",
+      "default": 100,
+      "minimum": 0,
+      "maximum": 100
+    }
+  }
+}

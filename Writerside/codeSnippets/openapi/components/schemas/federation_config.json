@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "title": "Federation Config",
+  "description": "The data model for discovery related configurations",
+  "properties": {
+    "allowNonClientAuthenticated": {
+      "type": "boolean",
+      "description": "Whether to allow communication with nodes that cannot validate the access token (for example, if it uses a different IdP)"
+    },
+    "autoUserRegistration": {
+      "type": "boolean",
+      "description": "Whether to automatically register a user in database when a user accesses or queries this instance for the first time"
+    },
+    "anonymousAccess": {
+      "type": "boolean",
+      "description": "Whether to allow anonymous access on query systems"
+    },
+    "defaultTTL": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Default times to relay a network message. Should not be too high to avoid wasting network resources"
+    }
+  }
+}

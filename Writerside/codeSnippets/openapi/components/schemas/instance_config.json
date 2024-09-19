@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "title": "Instance Config",
+  "description": "The data model for instance related configurations",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Name of the instance"
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "Public URL of the instance, without the `api` part"
+    },
+    "description": {
+      "type": "string",
+      "description": "THe description of the instance"
+    },
+    "version": {
+      "type": "string",
+      "description": "The software version of the instance. Automatically generated and cannot be changed",
+      "readOnly": true
+    },
+    "alternativeUrl": {
+      "type": "string",
+      "description": "A secondary URL to reach the instance; it's recommended that this URL is either under the same (sub)domain or is also covered by the main certificate. Missing HTTPS on URL may cause the system to malfunction"
+    }
+  }
+}

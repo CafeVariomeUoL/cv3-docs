@@ -1,0 +1,24 @@
+{
+  "post": {
+    "tags": [
+      "Log"
+    ],
+    "operationId": "logInfo",
+    "summary": "Receive INFO log",
+    "description": "Receive a INFO level log message",
+    "requestBody": {
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "../components/schemas/log.json"
+          }
+        }
+      }
+    },
+    "responses": {
+      "200": {
+        "$ref": "../components/responses/success.json"
+      }
+    }
+  }
+}

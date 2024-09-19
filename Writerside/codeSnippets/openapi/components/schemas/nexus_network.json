@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "title": "Nexus Network",
+  "required": [
+    "networkKey",
+    "networkName",
+    "networkThreshold",
+    "networkStatus",
+    "installations"
+  ],
+  "properties": {
+    "networkKey": {
+      "type": "integer"
+    },
+    "networkName": {
+      "type": "string"
+    },
+    "networkThreshold": {
+      "type": "integer"
+    },
+    "networkStatus": {
+      "enum": [
+        "online",
+        "offline"
+      ]
+    },
+    "installations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "clientID": {
+      "type": "string"
+    }
+  }
+}

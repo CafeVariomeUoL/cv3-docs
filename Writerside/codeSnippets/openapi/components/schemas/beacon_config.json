@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "title": "Beacon Config",
+  "description": "The data structure for beacon related configurations",
+  "required": [
+    "welcomeUrl",
+    "alternativeUrl",
+    "beaconId",
+    "apiVersion",
+    "description",
+    "environment",
+    "createDateTime",
+    "updateDateTime"
+  ],
+  "properties": {
+    "welcomeUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "The URL of the welcome page"
+    },
+    "alternativeUrl": {
+      "type": "string",
+      "description": "The alternative URL (if any) of the beacon services",
+      "format": "uri"
+    },
+    "beaconId": {
+      "type": "string",
+      "description": "Unique identifier of this beacon service"
+    },
+    "apiVersion": {
+      "type": "string",
+      "description": "Beacon API version"
+    },
+    "description": {
+      "type": "string",
+      "description": "Beacon service description"
+    },
+    "environment": {
+      "type": "string",
+      "description": "Production/development/testing environment"
+    },
+    "createDateTime": {
+      "type": "string",
+      "description": "Time this service is created",
+      "format": "date-time"
+    },
+    "updateDateTime": {
+      "type": "string",
+      "description": "Time this service is last updated",
+      "format": "date-time"
+    }
+  }
+}

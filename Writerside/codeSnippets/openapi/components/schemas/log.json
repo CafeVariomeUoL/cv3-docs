@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "title": "Log",
+  "description": "A model to transfer log from frontend to backend",
+  "required": [
+    "error",
+    "timestamp",
+    "uuid"
+  ],
+  "properties": {
+    "error": {
+      "type": "string",
+      "description": "Details of the error"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The timestamp of the log"
+    },
+    "uuid": {
+      "type": "string",
+      "description": "The runtime ID of the frontend, used to group the logs",
+      "format": "uuid"
+    }
+  }
+}

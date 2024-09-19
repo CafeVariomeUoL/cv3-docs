@@ -1,0 +1,105 @@
+{
+  "get": {
+    "tags": [
+      "Nexus",
+      "Network"
+    ],
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ],
+    "summary": "Get all nexus networks",
+    "description": "Get all CV2 networks that has registered with Nexus service",
+    "operationId": "nexusNetworks",
+    "responses": {
+      "200": {
+        "description": "OK",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "../components/schemas/nexus_network.json"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "post": {
+    "tags": [
+      "Nexus",
+      "Node"
+    ],
+    "operationId": "createLegacyNexusNetwork",
+    "summary": "Create a new nexus network",
+    "requestBody": {
+      "content": {
+        "application/json": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "networkName": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "responses": {
+      "200": {
+        "description": "OK",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "../components/schemas/nexus_network.json"
+            }
+          }
+        }
+      },
+      "401": {
+        "description": "Unauthorized access, token required",
+        "content": {
+          "application/x-www-form-urlencoded": {
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "500": {
+        "description": "Internal Server Error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "503": {
+        "description": "Service is under maintenance or KeyCloak/Vault is not available",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

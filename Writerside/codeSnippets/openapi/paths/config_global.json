@@ -1,0 +1,54 @@
+{
+  "get": {
+    "tags": [
+      "Config"
+    ],
+    "summary": "Get global settings",
+    "operationId": "settingGlobalGet",
+    "description": "Load the global system settings",
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "OK",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "../components/schemas/system_config.json"
+            }
+          }
+        }
+      }
+    }
+  },
+  "post": {
+    "tags": [
+      "Config"
+    ],
+    "summary": "Set global settings",
+    "operationId": "settingGlobalSet",
+    "description": "Update the system settings",
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ],
+    "requestBody": {
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "../components/schemas/system_config.json"
+          }
+        }
+      }
+    },
+    "responses": {
+      "200": {
+        "$ref": "../components/responses/success.json"
+      }
+    }
+  }
+}

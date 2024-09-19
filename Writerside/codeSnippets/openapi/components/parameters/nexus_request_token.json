@@ -1,0 +1,8 @@
+{
+  "name": "request_token",
+  "in": "path",
+  "required": true,
+  "schema": {
+    "type": "string"
+  }
+}

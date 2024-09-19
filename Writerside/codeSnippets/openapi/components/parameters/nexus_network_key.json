@@ -1,0 +1,8 @@
+{
+  "name": "network_key",
+  "in": "path",
+  "required": true,
+  "schema": {
+    "type": "string"
+  }
+}

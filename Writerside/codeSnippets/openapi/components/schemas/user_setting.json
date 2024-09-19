@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "title": "User Setting",
+  "properties": {
+    "colorSetting": {
+      "type": "object",
+      "description": "The theme color setting",
+      "required": [
+        "seedColor",
+        "themeMode"
+      ],
+      "properties": {
+        "seedColor": {
+          "type": "string",
+          "description": "Seed color is the primary color (which all other colors derive from), in hex format",
+          "pattern": "^[A-Fa-f0-9]{6}$"
+        },
+        "themeMode": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2,
+          "description": "0 for follow system, 1 for light and 2 for dark"
+        }
+      }
+    },
+    "capability": {
+      "$ref": "./capability.json"
+    }
+  },
+  "description": "The data structure for user custom settings"
+}

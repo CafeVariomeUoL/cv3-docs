@@ -1,0 +1,24 @@
+{
+  "post": {
+    "tags": [
+      "Nexus"
+    ],
+    "parameters": [
+      {
+        "$ref": "../components/parameters/nexus_request_token.json"
+      }
+    ],
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ],
+    "operationId": "nexusRequestsAccept",
+    "summary": "Accept a nexus request",
+    "responses": {
+      "200": {
+        "$ref": "../components/responses/success.json"
+      }
+    }
+  }
+}

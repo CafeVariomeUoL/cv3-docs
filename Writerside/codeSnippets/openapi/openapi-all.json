@@ -33,6 +33,9 @@
       "$ref": "./components/tags/config.json"
     },
     {
+      "$ref": "./components/tags/credential.json"
+    },
+    {
       "$ref": "./components/tags/dashboard.json"
     },
     {
@@ -45,7 +48,13 @@
       "$ref": "./components/tags/info.json"
     },
     {
+      "$ref": "./components/tags/log.json"
+    },
+    {
       "$ref": "./components/tags/network.json"
+    },
+    {
+      "$ref": "./components/tags/nexus.json"
     },
     {
       "$ref": "./components/tags/node.json"
@@ -94,11 +103,17 @@
     "/beacon/{beacon_id}/auth-key": {
       "$ref": "./paths/beacon_{beacon_id}_auth-key.json"
     },
+    "/config/global": {
+      "$ref": "./paths/config_global.json"
+    },
     "/config/keycloak": {
       "$ref": "./paths/config_keycloak.json"
     },
     "/config/maintenance": {
       "$ref": "./paths/config_maintenance.json"
+    },
+    "/config/user": {
+      "$ref": "./paths/config_user.json"
     },
     "/dashboard/statistics": {
       "$ref": "./paths/dashboard_statistics.json"
@@ -111,6 +126,12 @@
     },
     "/groups/{group_id}" : {
       "$ref": "./paths/groups_{group_id}.json"
+    },
+    "/log/error": {
+      "$ref": "./paths/log_error.json"
+    },
+    "/log/info": {
+      "$ref": "./paths/log_info.json"
     },
     "/pipelines/" : {
       "$ref": "./paths/pipelines.json"
@@ -150,6 +171,36 @@
     },
     "/networks/requests/{request_id}/deny": {
       "$ref": "./paths/networks_requests_{request_id}_deny.json"
+    },
+    "/nexus/credentials": {
+      "$ref": "./paths/nexus_credentials.json"
+    },
+    "/nexus/credentials/{realm}" : {
+      "$ref": "./paths/nexus_credentials_{realm}.json"
+    },
+    "/nexus/installations": {
+      "$ref": "./paths/nexus_installations.json"
+    },
+    "/nexus/installations/{installation_key}" : {
+      "$ref": "./paths/nexus_installations_{installation_key}.json"
+    },
+    "/nexus/networks": {
+      "$ref": "./paths/nexus_networks.json"
+    },
+    "/nexus/networks/{network_key}" : {
+      "$ref": "./paths/nexus_networks_{network_key}.json"
+    },
+    "/nexus/requests": {
+      "$ref": "./paths/nexus_requests.json"
+    },
+    "/nexus/requests/pending" : {
+      "$ref": "./paths/nexus_requests_pending.json"
+    },
+    "/nexus/requests/{request_token}/accept": {
+      "$ref": "./paths/nexus_requests_{request_token}_accept.json"
+    },
+    "/nexus/requests/{request_token}/deny": {
+      "$ref": "./paths/nexus_requests_{request_token}_deny.json"
     },
     "/sources/": {
       "$ref": "./paths/sources.json"

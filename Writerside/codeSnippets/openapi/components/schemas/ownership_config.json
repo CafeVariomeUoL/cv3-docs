@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "title": "Ownership Config",
+  "description": "The data structure for owner related configurations",
+  "required": [
+    "address",
+    "email",
+    "name",
+    "description",
+    "logo",
+    "url",
+    "organizationId"
+  ],
+  "properties": {
+    "address": {
+      "type": "string",
+      "description": "Controlling entity address"
+    },
+    "email": {
+      "type": "string",
+      "description": "Owner email",
+      "format": "email"
+    },
+    "name": {
+      "type": "string",
+      "description": "Owner name"
+    },
+    "description": {
+      "type": "string",
+      "description": "Owner description"
+    },
+    "logo": {
+      "type": "string",
+      "description": "Logo of the controlling entity"
+    },
+    "url": {
+      "type": "string",
+      "description": "URL to the homepage or introduction of owner",
+      "format": "uri"
+    },
+    "organizationId": {
+      "type": "string",
+      "description": "Unique identifier of the owner"
+    }
+  }
+}

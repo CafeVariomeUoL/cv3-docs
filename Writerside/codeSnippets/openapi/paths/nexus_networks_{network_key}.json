@@ -1,0 +1,59 @@
+{
+  "patch": {
+    "tags": [
+      "Nexus",
+      "Network"
+    ],
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ],
+    "operationId": "updateLegacyNexusNetwork",
+    "summary": "Update a nexus network",
+    "parameters": [
+      {
+        "$ref": "../components/parameters/nexus_network_key.json"
+      }
+    ],
+    "requestBody": {
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "../components/schemas/nexus_network.json"
+          }
+        }
+      }
+    },
+    "responses": {
+      "200": {
+        "description": "OK",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "../components/schemas/nexus_network.json"
+            }
+          }
+        }
+      }
+    }
+  },
+  "delete": {
+    "tags": [
+      "Nexus",
+      "Network"
+    ],
+    "parameters": [
+      {
+        "$ref": "../components/parameters/nexus_network_key.json"
+      }
+    ],
+    "operationId": "deleteLegacyNexusNetwork",
+    "summary": "Delete a nexus network",
+    "responses": {
+      "200": {
+        "$ref": "../components/responses/success.json"
+      }
+    }
+  }
+}

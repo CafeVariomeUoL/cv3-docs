@@ -1,0 +1,24 @@
+{
+  "post": {
+    "tags": [
+      "Nexus"
+    ],
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ],
+    "parameters": [
+      {
+        "$ref": "../components/parameters/nexus_request_token.json"
+      }
+    ],
+    "operationId": "nexusRequestsDeny",
+    "summary": "Deny a nexus request",
+    "responses": {
+      "200": {
+        "$ref": "../components/responses/success.json"
+      }
+    }
+  }
+}

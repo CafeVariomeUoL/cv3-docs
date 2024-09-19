@@ -1,0 +1,59 @@
+{
+  "patch": {
+    "tags": [
+      "Nexus",
+      "Node"
+    ],
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ],
+    "operationId": "updateLegacyNexusInstallation",
+    "summary": "Update a nexus installation",
+    "parameters": [
+      {
+        "name": "installation_key",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      }
+    ],
+    "requestBody": {
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "../components/schemas/nexus_installation.json"
+          }
+        }
+      }
+    },
+    "responses": {
+      "200": {
+        "description": "OK",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "../components/schemas/nexus_installation.json"
+            }
+          }
+        }
+      }
+    }
+  },
+  "delete": {
+    "tags": [
+      "Nexus",
+      "Node"
+    ],
+    "operationId": "deleteLegacyNexusInstallation",
+    "summary": "Delete a nexus installation",
+    "responses": {
+      "200": {
+        "$ref": "../components/responses/success.json"
+      }
+    }
+  }
+}
