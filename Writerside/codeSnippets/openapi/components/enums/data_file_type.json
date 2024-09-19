@@ -1,0 +1,8 @@
+{
+  "title": "Data File Type",
+  "description": "Types (extensions) of uploaded data files",
+  "enum": [
+    "csv",
+    "vcf"
+  ]
+}

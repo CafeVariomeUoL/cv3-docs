@@ -1,0 +1,25 @@
+{
+  "post": {
+    "tags": [
+      "Source"
+    ],
+    "operationId": "sourceIndex",
+    "summary": "Index a source",
+    "description": "Start the indexing of a source. This will update the data index (capability and EAV index) of the source",
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ],
+    "responses": {
+      "200": {
+        "$ref": "../components/responses/success.json"
+      }
+    }
+  },
+  "parameters": [
+    {
+      "$ref": "../components/parameters/source_id.json"
+    }
+  ]
+}

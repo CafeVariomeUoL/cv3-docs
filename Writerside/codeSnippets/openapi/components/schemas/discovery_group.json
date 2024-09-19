@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "title": "Discovery Group",
+  "description": "A data model for discovery group, a policy group that controls the user query permission on data sources",
+  "required": [
+    "groupID",
+    "groupName",
+    "networkID",
+    "discoveryPolicy"
+  ],
+  "properties": {
+    "groupID": {
+      "type": "string",
+      "format": "uuid",
+      "description": "The UUID of the discovery group"
+    },
+    "groupName": {
+      "type": "string",
+      "description": "The name of the discovery group"
+    },
+    "networkID": {
+      "type": "string",
+      "description": "The UUID of the network this discovery group is assigned to"
+    },
+    "discoveryPolicy": {
+      "$ref": "../enums/discovery_policy.json"
+    },
+    "assignedUsers": {
+      "type": "array",
+      "description": "The UUIDs of the users this group manages",
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
+    },
+    "assignedSources": {
+      "type": "array",
+      "description": "The UUID of the sources this group manages",
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
+    },
+    "groupDescription": {
+      "type": "string",
+      "description": "The description of the group"
+    }
+  }
+}

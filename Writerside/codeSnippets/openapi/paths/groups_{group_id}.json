@@ -1,0 +1,80 @@
+{
+  "get": {
+    "tags": [
+      "Group"
+    ],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "../components/schemas/discovery_group.json"
+            }
+          }
+        }
+      }
+    },
+    "summary": "Get a discovery group",
+    "operationId": "groupGetSingle",
+    "description": "Get a discovery group by ID",
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ]
+  },
+  "patch": {
+    "tags": [
+      "Group"
+    ],
+    "requestBody": {
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "../components/schemas/discovery_group.json"
+          }
+        }
+      }
+    },
+    "responses": {
+      "200": {
+        "$ref": "../components/responses/success.json"
+      },
+      "404": {
+        "description": "Not Found"
+      }
+    },
+    "summary": "Update a discovery group",
+    "operationId": "groupUpdate",
+    "description": "Update a discovery group with new data",
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ]
+  },
+  "delete": {
+    "tags": [
+      "Group"
+    ],
+    "description": "Delete a discovery group by ID",
+    "operationId": "groupDelete",
+    "responses": {
+      "200": {
+        "$ref": "../components/responses/success.json"
+      }
+    },
+    "summary": "Delete a discovery group",
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ]
+  },
+  "parameters": [
+    {
+      "$ref": "../components/parameters/group_id.json"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "post": {
+    "tags": [
+      "Access Request",
+      "User"
+    ],
+    "summary": "Deny access request",
+    "operationId": "accessRequestDeny",
+    "description": "Reject an access request",
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ],
+    "responses": {
+      "200": {
+        "$ref": "../components/responses/success.json"
+      }
+    }
+  },
+  "parameters": [
+    {
+      "$ref": "../components/parameters/access_request_id.json"
+    }
+  ]
+}

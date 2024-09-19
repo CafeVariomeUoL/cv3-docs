@@ -1,0 +1,25 @@
+{
+  "post": {
+    "tags": [
+      "User"
+    ],
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ],
+    "responses": {
+      "200": {
+        "$ref": "../components/responses/success.json"
+      }
+    },
+    "summary": "Revoke user login",
+    "operationId": "userLoginRevoke",
+    "description": "This removes the user encryption key and disallow a user to login. The user may still be able to query the data from another node in the same network."
+  },
+  "parameters": [
+    {
+      "$ref": "../components/parameters/user_id.json"
+    }
+  ]
+}

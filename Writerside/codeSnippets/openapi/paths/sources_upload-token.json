@@ -1,0 +1,36 @@
+{
+  "get": {
+    "tags": [
+      "Source"
+    ],
+    "operationId": "sourceUploadTokenGet",
+    "summary": "Get upload token",
+    "description": "Get an upload token for a user to upload data files with",
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "The upload token",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "required": [
+                "token"
+              ],
+              "properties": {
+                "token": {
+                  "type": "string",
+                  "description": "A JWT token"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

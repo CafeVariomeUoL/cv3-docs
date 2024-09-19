@@ -1,0 +1,59 @@
+{
+  "get": {
+    "tags": [
+      "Source"
+    ],
+    "operationId": "sourceEavIndexGet",
+    "summary": "Get source EAV index",
+    "description": "Retrieve the EAV index of a data source",
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "The EAV index of the source",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "../components/schemas/eav_index.json"
+            }
+          }
+        }
+      }
+    }
+  },
+  "parameters": [
+    {
+      "$ref": "../components/parameters/source_id.json"
+    }
+  ],
+  "patch": {
+    "summary": "Update source EAV index",
+    "tags": [
+      "Source"
+    ],
+    "responses": {
+      "200": {
+        "$ref": "../components/responses/success.json"
+      }
+    },
+    "operationId": "sourceEavIndexUpdate",
+    "description": "Update the EAV index of a source. The baseline of EAV index is always generated, but the admin can use this endpoint to update the display name of the attributes and values",
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ],
+    "requestBody": {
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "../components/schemas/eav_index.json"
+          }
+        }
+      }
+    }
+  }
+}

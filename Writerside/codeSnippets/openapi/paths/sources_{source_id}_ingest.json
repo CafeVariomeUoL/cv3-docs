@@ -1,0 +1,53 @@
+{
+  "post": {
+    "tags": [
+      "Source"
+    ],
+    "summary": "Ingest data files",
+    "operationId": "sourceIngest",
+    "description": "Start the data ingestion process for a source. This will use pre-defined pipelines to transport data from temporary storage into data source, and remove the temporary storage once complete",
+    "requestBody": {
+      "content": {
+        "application/json": {
+          "schema": {
+            "type": "object",
+            "required": [
+              "pipelineID",
+              "dataFileIDs"
+            ],
+            "properties": {
+              "pipelineID": {
+                "type": "string",
+                "format": "uuid",
+                "description": "The UUID of the file pipeline to use"
+              },
+              "dataFileIDs": {
+                "type": "array",
+                "description": "List of data file UUIDs to process",
+                "items": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "responses": {
+      "200": {
+        "$ref": "../components/responses/success.json"
+      }
+    },
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ]
+  },
+  "parameters": [
+    {
+      "$ref": "../components/parameters/source_id.json"
+    }
+  ]
+}

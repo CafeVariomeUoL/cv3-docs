@@ -1,0 +1,89 @@
+{
+  "get": {
+    "tags": [
+      "Source"
+    ],
+    "summary": "Get upload ID",
+    "operationId": "sourceUploadIDGet",
+    "description": "Get the upload file ID of a data source. This ID is used to upload data files to the source",
+    "responses": {
+      "200": {
+        "description": "The upload file ID",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "required": [
+                "fileID"
+              ],
+              "properties": {
+                "fileID": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "post": {
+    "tags": [
+      "Source"
+    ],
+    "summary": "Upload a data file",
+    "operationId": "sourceUpload",
+    "description": "Upload a data file to the source in chunks. This is resumeable upload, and each request carries part of the data.",
+    "requestBody": {
+      "content": {
+        "multipart/form-data": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "file": {
+                "type": "string",
+                "format": "binary",
+                "description": "The data file to upload"
+              },
+              "resumableChunkNumber": {
+                "type": "integer",
+                "description": "The chunk number of the data file."
+              },
+              "resumableTotalChunks": {
+                "type": "integer",
+                "description": "The total number of chunks of the data file."
+              }
+            }
+          }
+        }
+      }
+    },
+    "responses": {
+      "200": {
+        "description": "The upload is successful",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "required": [
+                "status"
+              ],
+              "properties": {
+                "status": {
+                  "type": "string",
+                  "const": "The file chunk uploaded successfully"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "parameters": [
+    {
+      "$ref": "../components/parameters/source_id.json"
+    }
+  ]
+}

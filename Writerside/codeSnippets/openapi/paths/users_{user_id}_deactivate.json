@@ -1,0 +1,25 @@
+{
+  "post": {
+    "tags": [
+      "User"
+    ],
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ],
+    "responses": {
+      "200": {
+        "$ref": "../components/responses/success.json"
+      }
+    },
+    "summary": "Deactivate a user",
+    "operationId": "userDeactivate",
+    "description": "This disables a user in database, preventing login and query"
+  },
+  "parameters": [
+    {
+      "$ref": "../components/parameters/user_id.json"
+    }
+  ]
+}

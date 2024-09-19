@@ -1,0 +1,55 @@
+{
+  "get": {
+    "tags": [
+      "Access Request",
+      "User"
+    ],
+    "summary": "Get all access requests",
+    "operationId": "accessRequestGet",
+    "description": "Get all access requests in the database",
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "All the access requests",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "../components/schemas/access_request.json"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "post": {
+    "tags": [
+      "Access Request",
+      "User"
+    ],
+    "operationId": "accessRequestSubmit",
+    "summary": "Submit access request",
+    "description": "This endpoint is for public users (not logged in) to submit access requests to an instance",
+    "security": [],
+    "requestBody": {
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "../components/schemas/access_request.json"
+          }
+        }
+      }
+    },
+    "responses": {
+      "200": {
+        "$ref": "../components/responses/success.json"
+      }
+    }
+  }
+}

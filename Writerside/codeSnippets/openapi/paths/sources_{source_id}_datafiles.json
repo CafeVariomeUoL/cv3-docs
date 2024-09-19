@@ -1,0 +1,36 @@
+{
+  "get": {
+    "tags": [
+      "Datafile",
+      "Source"
+    ],
+    "summary": "Get datafiles",
+    "operationId": "sourceDatafileGet",
+    "description": "Get all data files (that have not been fully processed yet) that belongs to a source",
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "All data files belonging to this source",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "../components/schemas/data_file.json"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "parameters": [
+    {
+      "$ref": "../components/parameters/source_id.json"
+    }
+  ]
+}

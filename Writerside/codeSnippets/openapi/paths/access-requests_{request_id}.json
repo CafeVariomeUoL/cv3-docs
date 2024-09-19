@@ -1,0 +1,33 @@
+{
+  "get": {
+    "tags": [
+      "Access Request",
+      "User"
+    ],
+    "summary": "Get an access request",
+    "operationId": "accessRequestGetSingle",
+    "description": "Get an access request by its ID",
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Access request",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "../components/schemas/access_request.json"
+            }
+          }
+        }
+      }
+    }
+  },
+  "parameters": [
+    {
+      "$ref": "../components/parameters/access_request_id.json"
+    }
+  ]
+}

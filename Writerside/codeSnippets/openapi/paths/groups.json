@@ -1,0 +1,57 @@
+{
+  "get": {
+    "tags": [
+      "Group"
+    ],
+    "description": "Retrieve all discovery groups",
+    "operationId": "groupGet",
+    "responses": {
+      "200": {
+        "description": "A list of discovery groups",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "../components/schemas/discovery_group.json"
+              }
+            }
+          }
+        }
+      }
+    },
+    "summary": "Get discovery groups",
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ]
+  },
+  "post": {
+    "tags": [
+      "Group"
+    ],
+    "responses": {
+      "200": {
+        "$ref": "../components/responses/success.json"
+      }
+    },
+    "operationId": "groupCreate",
+    "requestBody": {
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "../components/schemas/discovery_group.json"
+          }
+        }
+      }
+    },
+    "summary": "Create a discovery group",
+    "description": "Create a new discovery group",
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ]
+  }
+}

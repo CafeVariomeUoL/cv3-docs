@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "title": "Access Request",
+  "required": [
+    "requestID",
+    "firstName",
+    "lastName",
+    "email",
+    "affiliation",
+    "justification"
+  ],
+  "properties": {
+    "requestID": {
+      "type": "string",
+      "format": "uuid",
+      "description": "UUID of the access request",
+      "example": "e4619679-f5d9-4eff-9f79-bbded6130bb1"
+    },
+    "firstName": {
+      "type": "string",
+      "description": "First name of the applicant",
+      "example": "John"
+    },
+    "lastName": {
+      "type": "string",
+      "description": "Last name of the applicant",
+      "example": "Doe"
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "description": "Email of the applicant",
+      "example": "john@example.com"
+    },
+    "affiliation": {
+      "type": "string",
+      "description": "Which organization the applicant belongs to",
+      "example": "Example Org"
+    },
+    "justification": {
+      "type": "string",
+      "description": "The reason for this request",
+      "example": "This is just an example request"
+    }
+  },
+  "description": "A data model for non-users to request access to an instance"
+}

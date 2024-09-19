@@ -3,7 +3,7 @@
   "info": {
     "title": "Cafe Variome V3 Backend API",
     "version": "1.0",
-    "description": "This is the OpenAPI document for Cafe Variome V3 Backend system.",
+    "description": "This is the OpenAPI document for Cafe Variome V3 Backend system. This document contains all endpoints from all microservices. Some paths are only available on one of the microservices, if you wish to try them out, please use the correct server URL.",
     "license": {
       "name": "MIT",
       "url": "https://github.com/CafeVariomeUoL/cv3-backend/blob/main/license.txt"
@@ -21,6 +21,9 @@
   ],
   "tags": [
     {
+      "$ref": "./components/tags/access_request.json"
+    },
+    {
       "$ref": "./components/tags/authentication.json"
     },
     {
@@ -31,6 +34,12 @@
     },
     {
       "$ref": "./components/tags/dashboard.json"
+    },
+    {
+      "$ref": "./components/tags/datafile.json"
+    },
+    {
+      "$ref": "./components/tags/group.json"
     },
     {
       "$ref": "./components/tags/info.json"
@@ -46,11 +55,26 @@
     },
     {
       "$ref": "./components/tags/source.json"
+    },
+    {
+      "$ref": "./components/tags/user.json"
     }
   ],
   "paths": {
     "/": {
       "$ref": "./paths/root.json"
+    },
+    "/access-requests/" : {
+      "$ref": "./paths/access-requests.json"
+    },
+    "/access-requests/{request_id}": {
+      "$ref": "./paths/access-requests_{request_id}.json"
+    },
+    "/access-requests/{request_id}/approve": {
+      "$ref": "./paths/access-requests_{request_id}_approve.json"
+    },
+    "/access-requests/{request_id}/deny": {
+      "$ref": "./paths/access-requests_{request_id}_deny.json"
     },
     "/auth/token": {
       "$ref": "./paths/auth_token.json"
@@ -64,11 +88,11 @@
     "/beacon/{beacon_id}": {
       "$ref": "./paths/beacon_{beacon_id}.json"
     },
-    "/beacon/{beacon_id}/rotate_key": {
-      "$ref": "./paths/beacon_{beacon_id}_rotate_key.json"
+    "/beacon/{beacon_id}/rotate-key": {
+      "$ref": "./paths/beacon_{beacon_id}_rotate-key.json"
     },
-    "/beacon/{beacon_id}/auth_key": {
-      "$ref": "./paths/beacon_{beacon_id}_auth_key.json"
+    "/beacon/{beacon_id}/auth-key": {
+      "$ref": "./paths/beacon_{beacon_id}_auth-key.json"
     },
     "/config/keycloak": {
       "$ref": "./paths/config_keycloak.json"
@@ -81,6 +105,12 @@
     },
     "/dashboard/statistics/query-count": {
       "$ref": "./paths/dashboard_statistics_query-count.json"
+    },
+    "/groups/": {
+      "$ref": "./paths/groups.json"
+    },
+    "/groups/{group_id}" : {
+      "$ref": "./paths/groups_{group_id}.json"
     },
     "/pipelines/" : {
       "$ref": "./paths/pipelines.json"
@@ -120,6 +150,51 @@
     },
     "/networks/requests/{request_id}/deny": {
       "$ref": "./paths/networks_requests_{request_id}_deny.json"
+    },
+    "/sources/": {
+      "$ref": "./paths/sources.json"
+    },
+    "/sources/{source_id}": {
+      "$ref": "./paths/sources_{source_id}.json"
+    },
+    "/source/{source_id}/datafiles": {
+      "$ref": "./paths/sources_{source_id}_datafiles.json"
+    },
+    "/sources/{source_id}/eav-index": {
+      "$ref": "./paths/sources_{source_id}_eav-index.json"
+    },
+    "/sources/{source_id}/index": {
+      "$ref": "./paths/sources_{source_id}_index.json"
+    },
+    "/source/{source_id}/ingest": {
+      "$ref": "./paths/sources_{source_id}_ingest.json"
+    },
+    "/sources/{source_id}/upload": {
+      "$ref": "./paths/sources_{source_id}_upload.json"
+    },
+    "/sources/upload-token": {
+      "$ref": "./paths/sources_upload-token.json"
+    },
+    "/users/": {
+      "$ref": "./paths/users.json"
+    },
+    "/users/local": {
+      "$ref": "./paths/users_local.json"
+    },
+    "/users/{user_id}": {
+      "$ref": "./paths/users_{user_id}.json"
+    },
+    "/users/{user_id}/activate": {
+      "$ref": "./paths/users_{user_id}_activate.json"
+    },
+    "/users/{user_id}/deactivate": {
+      "$ref": "./paths/users_{user_id}_deactivate.json"
+    },
+    "/users/{user_id}/permit-login": {
+      "$ref": "./paths/users_{user_id}_permit-login.json"
+    },
+    "/users/{user_id}/revoke-login": {
+      "$ref": "./paths/users_{user_id}_revoke-login.json"
     }
   },
   "components": {

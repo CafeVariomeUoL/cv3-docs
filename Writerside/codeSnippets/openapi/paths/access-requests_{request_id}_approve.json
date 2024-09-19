@@ -1,0 +1,26 @@
+{
+  "post": {
+    "tags": [
+      "Access Request",
+      "User"
+    ],
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ],
+    "summary": "Approve access request",
+    "operationId": "accessRequestApprove",
+    "description": "Approve an access request. This will create an user for the applicant",
+    "responses": {
+      "200": {
+        "$ref": "../components/responses/success.json"
+      }
+    }
+  },
+  "parameters": [
+    {
+      "$ref": "../components/parameters/access_request_id.json"
+    }
+  ]
+}

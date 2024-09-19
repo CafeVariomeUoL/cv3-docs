@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "title": "Data file",
+  "description": "A data structure for a data file, uploaded and ready for processing",
+  "required": [
+    "dataFileID",
+    "filename",
+    "fileFormat",
+    "isProcessed",
+    "sourceID"
+  ],
+  "properties": {
+    "dataFileID": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "filename": {
+      "type": "string"
+    },
+    "fileFormat": {
+      "$ref": "../enums/data_file_type.json"
+    },
+    "isProcessed": {
+      "type": "boolean",
+      "default": false
+    },
+    "sourceID": {
+      "type": "string",
+      "format": "uuid"
+    }
+  }
+}

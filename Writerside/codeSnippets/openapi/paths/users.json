@@ -1,0 +1,57 @@
+{
+  "get": {
+    "tags": [
+      "User"
+    ],
+    "description": "Get all the cv users",
+    "operationId": "userGet",
+    "responses": {
+      "200": {
+        "description": "Success",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "../components/schemas/user.json"
+              }
+            }
+          }
+        }
+      }
+    },
+    "summary": "Get all users",
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ]
+  },
+  "post": {
+    "tags": [
+      "User"
+    ],
+    "description": "Create a new user",
+    "operationId": "userCreate",
+    "requestBody": {
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "../components/schemas/user.json"
+          }
+        }
+      }
+    },
+    "responses": {
+      "200": {
+        "$ref": "../components/responses/success.json"
+      }
+    },
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ],
+    "summary": "Create a user"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "name": "group_id",
+  "in": "path",
+  "description": "ID of the group",
+  "required": true,
+  "schema": {
+    "type": "string"
+  }
+}

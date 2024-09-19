@@ -1,0 +1,25 @@
+{
+  "post": {
+    "tags": [
+      "User"
+    ],
+    "summary": "Activate a user",
+    "operationId": "userActivate",
+    "description": "This enables a user in database, allowing the user to query the system",
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ],
+    "responses": {
+      "200": {
+        "$ref": "../components/responses/success.json"
+      }
+    }
+  },
+  "parameters": [
+    {
+      "$ref": "../components/parameters/user_id.json"
+    }
+  ]
+}

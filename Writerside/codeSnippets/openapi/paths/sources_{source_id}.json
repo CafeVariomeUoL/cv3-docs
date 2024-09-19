@@ -1,0 +1,86 @@
+{
+  "get": {
+    "tags": [
+      "Source"
+    ],
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ],
+    "summary": "Get one source",
+    "description": "Get the details on a data source by ID",
+    "parameters": [],
+    "operationId": "sourceGetSingle",
+    "responses": {
+      "200": {
+        "description": "The data source details",
+        "content": {
+          "application/json": {
+            "schema": {
+              "oneOf": [
+                {
+                  "$ref": "../components/schemas/source.json"
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "patch": {
+    "tags": [
+      "Source"
+    ],
+    "summary": "Update a source",
+    "operationId": "sourceUpdate",
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ],
+    "requestBody": {
+      "content": {
+        "application/json": {
+          "schema": {
+            "oneOf": [
+              {
+                "$ref": "../components/schemas/source.json"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "responses": {
+      "200": {
+        "$ref": "../components/responses/success.json"
+      }
+    },
+    "description": "Update a data source within the database"
+  },
+  "delete": {
+    "tags": [
+      "Source"
+    ],
+    "summary": "Delete a source",
+    "operationId": "sourceDelete",
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ],
+    "responses": {
+      "200": {
+        "$ref": "../components/responses/success.json"
+      }
+    },
+    "description": "Delete a data source"
+  },
+  "parameters": [
+    {
+      "$ref": "../components/parameters/source_id.json"
+    }
+  ]
+}

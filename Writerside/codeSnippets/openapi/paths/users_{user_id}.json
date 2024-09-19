@@ -1,0 +1,77 @@
+{
+  "get": {
+    "tags": [
+      "User"
+    ],
+    "description": "Search for a specific user by ID",
+    "operationId": "userGetSingle",
+    "responses": {
+      "200": {
+        "description": "A user",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "../components/schemas/user.json"
+            }
+          }
+        }
+      }
+    },
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ],
+    "summary": "Get a user"
+  },
+  "patch": {
+    "tags": [
+      "User"
+    ],
+    "description": "Modify an existing user with new information",
+    "requestBody": {
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "../components/schemas/user.json"
+          }
+        }
+      }
+    },
+    "responses": {
+      "200": {
+        "$ref": "../components/responses/success.json"
+      }
+    },
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ],
+    "summary": "Update a user",
+    "operationId": "userUpdate"
+  },
+  "delete": {
+    "tags": [
+      "User"
+    ],
+    "description": "Delete a user by ID",
+    "responses": {
+      "200": {
+        "$ref": "../components/responses/success.json"
+      }
+    },
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ],
+    "summary": "Delete a user",
+    "operationId": "userDelete"
+  },
+  "parameters": [
+    {
+      "$ref": "../components/parameters/user_id.json"
+    }
+  ]
+}

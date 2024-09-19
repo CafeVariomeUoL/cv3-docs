@@ -1,0 +1,30 @@
+{
+  "get": {
+    "tags": [
+      "User"
+    ],
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ],
+    "summary": "Get local users",
+    "operationId": "userLocalGet",
+    "description": "Get all the local users. A local user refers to the users that are inside of the database, as opposed to the ones only available in IdP",
+    "responses": {
+      "200": {
+        "description": "Success",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "../components/schemas/user.json"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

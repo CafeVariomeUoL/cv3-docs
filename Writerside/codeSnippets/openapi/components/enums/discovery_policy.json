@@ -1,0 +1,13 @@
+{
+  "type": "string",
+  "enum": [
+    "noAccess",
+    "boolean",
+    "range",
+    "count",
+    "list",
+    "detailedList"
+  ],
+  "title": "Discovery Policy",
+  "description": "The granularity, or how \"detailed\" a query or response can be"
+}

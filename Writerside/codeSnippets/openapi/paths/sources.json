@@ -1,0 +1,65 @@
+{
+  "get": {
+    "tags": [
+      "Source"
+    ],
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ],
+    "summary": "Get all sources",
+    "description": "Get the details on all of the data sources the user have access to. If the requestor is an admin, this will return all of the sources.",
+    "operationId": "sourceGet",
+    "responses": {
+      "200": {
+        "description": "All data sources",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "oneOf": [
+                  {
+                    "$ref": "../components/schemas/source.json"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "post": {
+    "tags": [
+      "Source"
+    ],
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ],
+    "summary": "Create sources",
+    "description": "Create a new data source",
+    "operationId": "sourceCreate",
+    "requestBody": {
+      "content": {
+        "application/json": {
+          "schema": {
+            "oneOf": [
+              {
+                "$ref": "../components/schemas/source.json"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "responses": {
+      "200": {
+        "$ref": "../components/responses/success.json"
+      }
+    }
+  }
+}

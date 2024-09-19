@@ -1,0 +1,25 @@
+{
+  "post": {
+    "tags": [
+      "User"
+    ],
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ],
+    "responses": {
+      "200": {
+        "$ref": "../components/responses/success.json"
+      }
+    },
+    "summary": "Allow user login",
+    "operationId": "userLoginPermit",
+    "description": "This allows a user to login to the system by creating an encryption key for him. Note that if the user is disabled, this won't enable the user at the same time"
+  },
+  "parameters": [
+    {
+      "$ref": "../components/parameters/user_id.json"
+    }
+  ]
+}
