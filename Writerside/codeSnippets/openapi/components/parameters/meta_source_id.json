@@ -1,0 +1,9 @@
+{
+  "name": "source_id",
+  "in": "path",
+  "description": "ID of the meta source",
+  "required": true,
+  "schema": {
+    "type": "string"
+  }
+}

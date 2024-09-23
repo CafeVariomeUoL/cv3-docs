@@ -1,0 +1,22 @@
+{
+  "get": {
+    "tags": [
+      "Meta"
+    ],
+    "summary": "Get meta index",
+    "description": "Get the index of metadata sources",
+    "operationId": "getMetaIndex",
+    "responses": {
+      "200": {
+        "description": "OK",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "../components/schemas/meta_index.json"
+            }
+          }
+        }
+      }
+    }
+  }
+}

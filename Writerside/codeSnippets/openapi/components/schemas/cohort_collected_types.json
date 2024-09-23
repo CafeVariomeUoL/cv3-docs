@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "title": "Cohort Collected Types",
+  "description": "The data types collected during the cohort research",
+  "properties": {
+    "participants": {
+      "type": "object",
+      "description": "The participants (subjects) information in the cohort",
+      "properties": {
+        "diseases": {
+          "type": "array",
+          "items": {
+            "$ref": "../enums/disorder_collected_type.json"
+          },
+          "description": "The diseases the subjects have"
+        },
+        "numberOfSubjects": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "The number of subjects in the cohort"
+        }
+      },
+      "required": [
+        "diseases",
+        "numberOfSubjects"
+      ]
+    },
+    "bioSamples": {
+      "type": "array",
+      "items": {
+        "$ref": "../enums/bio_sample_collected_type.json"
+      }
+    },
+    "images": {
+      "type": "array",
+      "items": {
+        "$ref": "../enums/image_collected_type.json"
+      }
+    },
+    "cognitiveData": {
+      "type": "array",
+      "items": {
+        "$ref": "../enums/cognitive_data_collected_type.json"
+      }
+    }
+  }
+}

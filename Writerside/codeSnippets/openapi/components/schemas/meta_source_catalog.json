@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "title": "Catalog Meta Source",
+  "description": "A representation of a catalog in system",
+  "allOf": [
+    {
+      "$ref": "./meta_source.shared.json"
+    }
+  ],
+  "properties": {
+    "sourceType": {
+      "type": "string",
+      "const": "catalog"
+    },
+    "datasetIDs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "description": "The dataset IDs that are associated with the catalog",
+        "format": "uuid"
+      }
+    }
+  },
+  "required": [
+    "sourceType"
+  ],
+  "unevaluatedProperties": false
+}

@@ -1,0 +1,14 @@
+{
+  "title": "Clinical Data Collected Type",
+  "type": "string",
+  "enum": [
+    "comorbidities",
+    "medicationUse",
+    "familyHistory",
+    "ageOfSymptomOnset",
+    "clinicalDiagnosis",
+    "exposure",
+    "lifeStyleInfo",
+    "vitalSigns"
+  ]
+}

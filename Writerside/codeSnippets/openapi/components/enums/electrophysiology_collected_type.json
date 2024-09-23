@@ -1,0 +1,9 @@
+{
+  "title": "Electrophysiology Collected Type",
+  "type": "string",
+  "enum": [
+    "eeg",
+    "meg",
+    "erp"
+  ]
+}

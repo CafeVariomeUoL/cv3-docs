@@ -1,0 +1,66 @@
+{
+  "get": {
+    "tags": [
+      "Meta"
+    ],
+    "summary": "Get a meta source",
+    "description": "Get one meta source by ID",
+    "operationId": "getMetaSource",
+    "parameters": [
+      {
+        "$ref": "../components/parameters/meta_source_id.json"
+      }
+    ],
+    "responses": {
+      "200": {
+        "$ref": "../components/responses/meta_source.json"
+      }
+    }
+  },
+  "patch": {
+    "tags": [
+      "Meta"
+    ],
+    "summary": "Update a meta source",
+    "description": "Update a meta source by ID",
+    "operationId": "updateMetaSource",
+    "parameters": [
+      {
+        "$ref": "../components/parameters/meta_source_id.json"
+      }
+    ],
+    "requestBody": {
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "../components/schemas/meta_source.json"
+          }
+        }
+      },
+      "required": true
+    },
+    "responses": {
+      "200": {
+        "$ref": "../components/responses/success.json"
+      }
+    }
+  },
+  "delete": {
+    "tags": [
+      "Meta"
+    ],
+    "summary": "Delete a meta source",
+    "description": "Delete a meta source by ID",
+    "operationId": "deleteMetaSource",
+    "parameters": [
+      {
+        "$ref": "../components/parameters/meta_source_id.json"
+      }
+    ],
+    "responses": {
+      "200": {
+        "$ref": "../components/responses/success.json"
+      }
+    }
+  }
+}

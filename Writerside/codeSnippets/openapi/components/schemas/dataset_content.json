@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "title": "Dataset Content",
+  "description": "The content (data gathered and stored) of a dataset",
+  "properties": {
+    "numberOfSubjects": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "The number of subjects in the dataset"
+    },
+    "minAge": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "The minimum age of the subjects in the dataset"
+    },
+    "maxAge": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "The maximum age of the subjects in the dataset"
+    },
+    "countries": {
+      "type": "array",
+      "description": "The countries where the subjects in the dataset are collected",
+      "items": {
+        "$ref": "../enums/country_codes.json"
+      }
+    },
+    "diseases": {
+      "type": "array",
+      "description": "The diseases that the subjects in the dataset have",
+      "items": {
+        "$ref": "../enums/disorder_collected_type.json"
+      }
+    },
+    "sex": {
+      "type": "array",
+      "description": "The birth sex of the subjects in the dataset",
+      "items": {
+        "$ref": "../enums/sex_collected_type.json"
+      }
+    },
+    "clinical": {
+      "type": "array",
+      "description": "The clinical data collected in the dataset",
+      "items": {
+        "$ref": "../enums/clinical_collected_type.json"
+      }
+    },
+    "markers": {
+      "type": "array",
+      "description": "The markers collected in the dataset",
+      "items": {
+        "$ref": "../enums/marker_collected_type.json"
+      }
+    },
+    "images": {
+      "type": "array",
+      "description": "The imaging data collected in the dataset",
+      "items": {
+        "$ref": "../enums/image_collected_type.json"
+      }
+    },
+    "electrophysiology": {
+      "type": "array",
+      "description": "The electrophysiology data collected in the dataset",
+      "items": {
+        "$ref": "../enums/electrophysiology_collected_type.json"
+      }
+    },
+    "dataTypes": {
+      "type": "array",
+      "description": "The types of data collected in the dataset",
+      "items": {
+        "$ref": "../enums/data_collected_type.json"
+      }
+    }
+  }
+}

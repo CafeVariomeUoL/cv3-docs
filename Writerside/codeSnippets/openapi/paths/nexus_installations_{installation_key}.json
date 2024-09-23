@@ -11,11 +11,6 @@
     ],
     "operationId": "updateLegacyNexusInstallation",
     "summary": "Update a nexus installation",
-    "parameters": [
-      {
-        "$ref": "../components/parameters/nexus_installation_key.json"
-      }
-    ],
     "requestBody": {
       "content": {
         "application/json": {
@@ -43,11 +38,6 @@
       "Nexus",
       "Node"
     ],
-    "parameters": [
-      {
-        "$ref": "../components/parameters/nexus_installation_key.json"
-      }
-    ],
     "operationId": "deleteLegacyNexusInstallation",
     "summary": "Delete a nexus installation",
     "responses": {
@@ -55,5 +45,10 @@
         "$ref": "../components/responses/success.json"
       }
     }
-  }
+  },
+  "parameters": [
+    {
+      "$ref": "../components/parameters/nexus_installation_key.json"
+    }
+  ]
 }

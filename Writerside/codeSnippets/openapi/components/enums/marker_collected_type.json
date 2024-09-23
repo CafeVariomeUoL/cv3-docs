@@ -1,0 +1,11 @@
+{
+  "title": "Marker Collected Type",
+  "type": "string",
+  "enum": [
+    "amyloid",
+    "tau",
+    "neurofilamentLightChain",
+    "alphaSynuclein",
+    "dat"
+  ]
+}

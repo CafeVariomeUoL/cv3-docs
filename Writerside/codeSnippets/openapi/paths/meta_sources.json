@@ -1,0 +1,58 @@
+{
+  "get": {
+    "tags": [
+      "Meta"
+    ],
+    "summary": "Get all meta sources",
+    "description": "Read all meta sources with full details",
+    "operationId": "getMetaSources",
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "A list of meta sources",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "../components/schemas/meta_source.json"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "post": {
+    "tags": [
+      "Meta"
+    ],
+    "summary": "Create meta source",
+    "description": "Create a new meta source",
+    "operationId": "createMetaSource",
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ],
+    "requestBody": {
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "../components/schemas/meta_source.json"
+          }
+        }
+      },
+      "required": true
+    },
+    "responses": {
+      "200": {
+        "$ref": "../components/responses/success.json"
+      }
+    }
+  }
+}

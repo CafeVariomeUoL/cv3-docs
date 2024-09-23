@@ -6,6 +6,18 @@
   "oneOf": [
     {
       "$ref": "./meta_source_custom.json"
+    },
+    {
+      "$ref": "./meta_source_catalog.json"
+    },
+    {
+      "$ref": "./meta_source_cohort.json"
+    },
+    {
+      "$ref": "./meta_source_data_collection.json"
+    },
+    {
+      "$ref": "./meta_source_dataset.json"
     }
   ]
 }

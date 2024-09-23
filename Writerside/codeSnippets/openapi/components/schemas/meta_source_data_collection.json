@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "title": "Data Collection Meta Source",
+  "description": "A representation of a data collection in system",
+  "allOf": [
+    {
+      "$ref": "./meta_source.shared.json"
+    }
+  ],
+  "properties": {
+    "sourceType": {
+      "type": "string",
+      "const": "dataCollection"
+    },
+    "dataCollectionDetails": {
+      "type": "object",
+      "description": "The details that describes the dataset itself",
+      "properties": {
+        "keywords": {
+          "type": "array",
+          "description": "Keywords that describe the data collection",
+          "items": {
+            "type": "string"
+          }
+        },
+        "publishedDate": {
+          "type": "string",
+          "description": "The date the data collection was published",
+          "format": "date"
+        },
+        "updateDate": {
+          "type": "string",
+          "description": "The date the data collection was last updated",
+          "format": "date"
+        },
+        "connectionID": {
+          "type": "string",
+          "description": "The ID of a data source stored in **THIS** Cafe Variome instance. This allowing connecting a record level source to a metadata entry",
+          "format": "uuid"
+        }
+      }
+    },
+    "dataCollectionContent": {
+      "$ref": "./dataset_content.json"
+    }
+  },
+  "required": [
+    "sourceType"
+  ],
+  "unevaluatedProperties": false
+}

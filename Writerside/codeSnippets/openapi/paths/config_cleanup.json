@@ -1,0 +1,20 @@
+{
+  "post": {
+    "tags": [
+      "Config"
+    ],
+    "summary": "Database cleanup",
+    "operationId": "databaseCleanup",
+    "description": "Run database cleanup operation immediately, used after a known inconsistent state is manually identitifed",
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ],
+    "responses": {
+      "200": {
+        "$ref": "../components/responses/success.json"
+      }
+    }
+  }
+}

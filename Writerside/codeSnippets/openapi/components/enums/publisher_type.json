@@ -1,0 +1,10 @@
+{
+  "title": "Publisher Type",
+  "type": "string",
+  "enum": [
+    "other",
+    "organization",
+    "individual",
+    "agency"
+  ]
+}

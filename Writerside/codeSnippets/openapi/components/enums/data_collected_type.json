@@ -1,0 +1,21 @@
+{
+  "title": "Data Collected Type",
+  "type": "string",
+  "enum": [
+    "demographics",
+    "clinical",
+    "ethnicity",
+    "lifestyle",
+    "functionalRatings",
+    "motor",
+    "neuropsychiatric",
+    "neuropsychological",
+    "qualityOfLife",
+    "sleepScales",
+    "digitalData",
+    "imaging",
+    "electrophysiology",
+    "neuroPathology",
+    "other"
+  ]
+}

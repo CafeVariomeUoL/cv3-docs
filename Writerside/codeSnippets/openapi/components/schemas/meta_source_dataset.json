@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "title": "Dataset Meta Source",
+  "description": "A representation of a dataset in system",
+  "allOf": [
+    {
+      "$ref": "./meta_source.shared.json"
+    }
+  ],
+  "properties": {
+    "sourceType": {
+      "type": "string",
+      "const": "dataset"
+    },
+    "datasetVersions": {
+      "type": "array",
+      "description": "The versions of the dataset",
+      "items": {
+        "type": "object",
+        "properties": {
+          "datasetDetails": {
+            "type": "object",
+            "description": "The details that describes the dataset itself",
+            "properties": {
+              "versionID": {
+                "type": "string",
+                "description": "A unique ID of this dataset version",
+                "format": "uuid"
+              },
+              "versionName": {
+                "type": "string",
+                "description": "The name of this dataset version, preferably a semantic version number"
+              },
+              "keywords": {
+                "type": "array",
+                "description": "Keywords that describe the dataset",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "publishedDate": {
+                "type": "string",
+                "description": "The date the dataset was published",
+                "format": "date"
+              },
+              "updateDate": {
+                "type": "string",
+                "description": "The date the dataset was last updated",
+                "format": "date"
+              },
+              "connectionID": {
+                "type": "string",
+                "description": "The ID of a data source stored in **THIS** Cafe Variome instance. This allowing connecting a record level source to a metadata entry",
+                "format": "uuid"
+              }
+            }
+          },
+          "datasetContent": {
+            "$ref": "./dataset_content.json"
+          }
+        },
+        "required": [
+          "datasetDetails"
+        ]
+      }
+    }
+  },
+  "required": [
+    "sourceType"
+  ],
+  "unevaluatedProperties": false
+}

@@ -1,0 +1,20 @@
+{
+  "post": {
+    "tags": [
+      "Meta"
+    ],
+    "summary": "Index meta sources",
+    "description": "Index meta sources",
+    "operationId": "indexMetaSources",
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ],
+    "responses": {
+      "200": {
+        "$ref": "../components/responses/success.json"
+      }
+    }
+  }
+}

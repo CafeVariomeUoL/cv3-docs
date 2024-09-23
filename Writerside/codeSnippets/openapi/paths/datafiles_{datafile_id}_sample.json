@@ -1,0 +1,31 @@
+{
+  "get": {
+    "tags": [
+      "Datafile"
+    ],
+    "summary": "Sample a datafile",
+    "description": "Get a sample of a datafile",
+    "operationId": "getDatafileSample",
+    "parameters": [
+      {
+        "$ref": "../components/parameters/datafile_id.json"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "A sample of the datafile. This is a raw data structure taken out of a database collection, so there is no schema for it.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "title": "Datafile Sample",
+              "items": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

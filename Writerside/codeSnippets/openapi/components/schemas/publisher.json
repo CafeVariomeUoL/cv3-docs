@@ -3,11 +3,7 @@
   "type": "object",
   "properties": {
     "publisherType": {
-      "type": "string",
-      "enum": [
-        "organization",
-        "individual"
-      ]
+      "$ref": "../enums/publisher_type.json"
     },
     "name": {
       "type": "string"

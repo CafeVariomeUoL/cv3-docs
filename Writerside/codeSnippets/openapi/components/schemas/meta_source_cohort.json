@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "title": "Cohort Meta Source",
+  "description": "A representation of a cohort in system",
+  "allOf": [
+    {
+      "$ref": "./meta_source.shared.json"
+    }
+  ],
+  "properties": {
+    "sourceType": {
+      "type": "string",
+      "const": "cohort"
+    },
+    "cohortDetails": {
+      "type": "object",
+      "description": "The details that describes the cohort itself",
+      "properties": {
+        "siteType": {
+          "$ref": "../enums/cohort_site_type.json"
+        },
+        "country": {
+          "$ref": "../enums/country_codes.json"
+        },
+        "yearStart": {
+          "type": "integer",
+          "minimum": 1900,
+          "description": "The year the cohort research started"
+        },
+        "centerName": {
+          "type": "string",
+          "description": "The name of the center that conducted the research"
+        },
+        "ongoing": {
+          "type": "boolean",
+          "description": "Whether the cohort is still ongoing"
+        }
+      },
+      "required": [
+        "siteType",
+        "country",
+        "yearStart"
+      ]
+    },
+    "cohortCollectedTypes": {
+      "$ref": "./cohort_collected_types.json"
+    },
+    "datasetIDs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "description": "The dataset IDs that are associated with the cohort",
+        "format": "uuid"
+      }
+    }
+  },
+  "required": [
+    "sourceType",
+    "cohortDetails"
+  ],
+  "unevaluatedProperties": false
+}

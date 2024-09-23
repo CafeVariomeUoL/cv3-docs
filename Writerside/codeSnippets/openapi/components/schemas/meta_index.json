@@ -1,12 +1,19 @@
 {
-  "title": "Meta Index",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
   "type": "object",
+  "title": "Meta Index",
   "description": "An index for metadata inside of the database",
   "properties": {
     "availableTypes": {
       "type": "array",
       "items": {
         "$ref": "../enums/meta_source_type.json"
+      }
+    },
+    "publisherTypes": {
+      "type": "array",
+      "items": {
+        "$ref": "../enums/publisher_type.json"
       }
     },
     "cohort": {
@@ -23,10 +30,10 @@
           "type": "array",
           "description": "Countries where the cohorts are located, in ISO 2-characters format",
           "items": {
-            "type": "string"
+            "$ref": "../enums/country_codes.json"
           }
         },
-        "participants": {
+        "diseases": {
           "type": "array",
           "items": {
             "$ref": "../enums/disorder_collected_type.json"
@@ -52,6 +59,71 @@
         }
       }
     },
+    "dataset": {
+      "type": "object",
+      "description": "Dataset index",
+      "properties": {
+        "availableTypes": {
+          "type": "array",
+          "items": {
+            "$ref": "../enums/data_collected_type.json"
+          }
+        },
+        "keywords": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "description": "A keyword that describes the dataset"
+          }
+        },
+        "availableCountries": {
+          "type": "array",
+          "description": "Countries where the datasets are located, in ISO 2-characters format",
+          "items": {
+            "$ref": "../enums/country_codes.json"
+          }
+        },
+        "diseases": {
+          "type": "array",
+          "items": {
+            "$ref": "../enums/disorder_collected_type.json"
+          }
+        },
+        "sex": {
+          "type": "array",
+          "items": {
+            "$ref": "../enums/sex_collected_type.json"
+          }
+        },
+        "clinical": {
+          "type": "array",
+          "items": {
+            "$ref": "../enums/clinical_collected_type.json"
+          }
+        },
+        "markers": {
+          "type": "array",
+          "items": {
+            "$ref": "../enums/marker_collected_type.json"
+          }
+        },
+        "images": {
+          "type": "array",
+          "items": {
+            "$ref": "../enums/image_collected_type.json"
+          }
+        },
+        "electrophysiology": {
+          "type": "array",
+          "items": {
+            "$ref": "../enums/electrophysiology_collected_type.json"
+          }
+        }
+      }
+    },
+    "dataCollection": {
+      "$ref": "#/properties/dataset"
+    },
     "customFields": {
       "type": "object",
       "description": "The index of the custom fields. The key is the name of the field, while the value is a list of all known values for this field",
@@ -62,5 +134,10 @@
         }
       }
     }
-  }
+  },
+  "required": [
+    "availableTypes",
+    "publisherTypes",
+    "customFields"
+  ]
 }

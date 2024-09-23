@@ -51,6 +51,9 @@
       "$ref": "./components/tags/log.json"
     },
     {
+      "$ref": "./components/tags/meta.json"
+    },
+    {
       "$ref": "./components/tags/network.json"
     },
     {
@@ -103,6 +106,9 @@
     "/beacon/{beacon_id}/auth-key": {
       "$ref": "./paths/beacon_{beacon_id}_auth-key.json"
     },
+    "/config/cleanup": {
+      "$ref": "./paths/config_cleanup.json"
+    },
     "/config/global": {
       "$ref": "./paths/config_global.json"
     },
@@ -118,8 +124,17 @@
     "/dashboard/statistics": {
       "$ref": "./paths/dashboard_statistics.json"
     },
+    "/dashboard/statistics/network": {
+      "$ref": "./paths/dashboard_statistics_network.json"
+    },
     "/dashboard/statistics/query-count": {
       "$ref": "./paths/dashboard_statistics_query-count.json"
+    },
+    "/datafiles/{datafile_id}": {
+      "$ref": "./paths/datafiles_{datafile_id}.json"
+    },
+    "/datafiles/{datafile_id}/sample": {
+      "$ref": "./paths/datafiles_{datafile_id}_sample.json"
     },
     "/groups/": {
       "$ref": "./paths/groups.json"
@@ -133,14 +148,20 @@
     "/log/info": {
       "$ref": "./paths/log_info.json"
     },
-    "/pipelines/" : {
-      "$ref": "./paths/pipelines.json"
+    "/meta/index": {
+      "$ref": "./paths/meta_index.json"
     },
-    "/pipelines/attributes": {
-      "$ref": "./paths/pipelines_attributes.json"
+    "/meta/sources": {
+      "$ref": "./paths/meta_sources.json"
     },
-    "/pipelines/{pipeline_id}": {
-      "$ref": "./paths/pipelines_{pipeline_id}.json"
+    "/meta/sources/index": {
+      "$ref": "./paths/meta_sources_index.json"
+    },
+    "/meta/sources/{source_id}": {
+      "$ref": "./paths/meta_sources_{source_id}.json"
+    },
+    "/meta/sources/upload": {
+      "$ref": "./paths/meta_sources_upload.json"
     },
     "/networks/" : {
       "$ref": "./paths/networks.json"
@@ -201,6 +222,15 @@
     },
     "/nexus/requests/{request_token}/deny": {
       "$ref": "./paths/nexus_requests_{request_token}_deny.json"
+    },
+    "/pipelines/" : {
+      "$ref": "./paths/pipelines.json"
+    },
+    "/pipelines/attributes": {
+      "$ref": "./paths/pipelines_attributes.json"
+    },
+    "/pipelines/{pipeline_id}": {
+      "$ref": "./paths/pipelines_{pipeline_id}.json"
     },
     "/sources/": {
       "$ref": "./paths/sources.json"

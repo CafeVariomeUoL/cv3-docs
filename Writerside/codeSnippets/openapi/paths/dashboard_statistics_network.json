@@ -1,0 +1,48 @@
+{
+  "get": {
+    "tags": [
+      "Dashboard"
+    ],
+    "summary": "Get network statistics",
+    "operationId": "dashboardStatisticsNetworkGet",
+    "description": "Load the network statistics",
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "OK",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "title": "Network Statistics",
+              "properties": {
+                "networkID": {
+                  "type": "string",
+                  "description": "The network ID",
+                  "format": "uuid"
+                },
+                "networkName": {
+                  "type": "string",
+                  "description": "The network name"
+                },
+                "nodeCount": {
+                  "type": "integer",
+                  "description": "The number of nodes in the network"
+                }
+              },
+              "required": [
+                "networkID",
+                "networkName",
+                "nodeCount"
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}

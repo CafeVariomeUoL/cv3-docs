@@ -1,0 +1,10 @@
+{
+  "name": "datafile_id",
+  "in": "path",
+  "description": "The ID of a datafile",
+  "required": true,
+  "schema": {
+    "type": "string",
+    "format": "uuid"
+  }
+}

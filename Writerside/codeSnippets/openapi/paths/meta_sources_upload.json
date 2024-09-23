@@ -1,0 +1,33 @@
+{
+  "post": {
+    "tags": [
+      "Meta"
+    ],
+    "summary": "Upload meta sources",
+    "description": "Upload meta sources in batch",
+    "operationId": "uploadMetaSources",
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ],
+    "requestBody": {
+      "content": {
+        "application/json": {
+          "schema": {
+            "type": "array",
+            "items": {
+              "$ref": "../components/schemas/meta_source.json"
+            }
+          }
+        }
+      },
+      "required": true
+    },
+    "responses": {
+      "200": {
+        "$ref": "../components/responses/success.json"
+      }
+    }
+  }
+}

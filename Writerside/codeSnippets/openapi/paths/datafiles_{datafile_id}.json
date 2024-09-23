@@ -1,0 +1,20 @@
+{
+  "delete": {
+    "tags": [
+      "Datafile"
+    ],
+    "summary": "Delete a datafile",
+    "description": "Delete a datafile",
+    "operationId": "deleteDatafile",
+    "parameters": [
+      {
+        "$ref": "../components/parameters/datafile_id.json"
+      }
+    ],
+    "responses": {
+      "200": {
+        "$ref": "../components/responses/success.json"
+      }
+    }
+  }
+}
