@@ -1,0 +1,20 @@
+{
+  "post": {
+    "tags": [
+      "Network"
+    ],
+    "summary": "Index a network",
+    "description": "Trigger a network index. This will synchronise the data index (both record and metadata) with the rest of the nodes",
+    "operationId": "indexNetwork",
+    "parameters": [
+      {
+        "$ref": "../components/parameters/network_id.json"
+      }
+    ],
+    "responses": {
+      "200": {
+        "$ref": "../components/responses/success.json"
+      }
+    }
+  }
+}

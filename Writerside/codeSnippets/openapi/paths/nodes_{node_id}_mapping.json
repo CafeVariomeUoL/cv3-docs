@@ -1,0 +1,20 @@
+{
+  "post": {
+    "tags": [
+      "Node"
+    ],
+    "summary": "Update user mapping for node",
+    "description": "This endpoint is not implemented yet",
+    "operationId": "remapNode",
+    "parameters": [
+      {
+        "$ref": "./components/parameters/node_id.json"
+      }
+    ],
+    "responses": {
+      "200": {
+        "$ref": "./components/responses/success.json"
+      }
+    }
+  }
+}

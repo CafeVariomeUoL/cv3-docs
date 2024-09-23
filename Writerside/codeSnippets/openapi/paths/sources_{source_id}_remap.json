@@ -1,0 +1,53 @@
+{
+  "post": {
+    "tags": [
+      "Source"
+    ],
+    "summary": "Remap data files",
+    "operationId": "sourceRemap",
+    "description": "Start the data remapping process for a source. This will use a remap pipeline to transform the ingested raw data into structured storage format.",
+    "requestBody": {
+      "content": {
+        "application/json": {
+          "schema": {
+            "type": "object",
+            "required": [
+              "pipelineID",
+              "dataFileIDs"
+            ],
+            "properties": {
+              "pipelineID": {
+                "type": "string",
+                "format": "uuid",
+                "description": "The UUID of the remap pipeline to use"
+              },
+              "dataFileIDs": {
+                "type": "array",
+                "description": "List of data file UUIDs to process",
+                "items": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "responses": {
+      "200": {
+        "$ref": "../components/responses/success.json"
+      }
+    },
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ]
+  },
+  "parameters": [
+    {
+      "$ref": "../components/parameters/source_id.json"
+    }
+  ]
+}

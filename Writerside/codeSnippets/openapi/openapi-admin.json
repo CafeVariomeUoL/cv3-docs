@@ -175,6 +175,12 @@
     "/networks/{network_id}/eav-index": {
       "$ref": "./paths/networks_{network_id}_eav-index.json"
     },
+    "/networks/{network_id}/index": {
+      "$ref": "./paths/networks_{network_id}_index.json"
+    },
+    "/networks/{network_id}/invite": {
+      "$ref": "./paths/networks_{network_id}_invite.json"
+    },
     "/networks/{network_id}/meta-index": {
       "$ref": "./paths/networks_{network_id}_meta-index.json"
     },
@@ -223,6 +229,15 @@
     "/nexus/requests/{request_token}/deny": {
       "$ref": "./paths/nexus_requests_{request_token}_deny.json"
     },
+    "/nodes/{node_id}/approve": {
+      "$ref": "./paths/nodes_{node_id}_approve.json"
+    },
+    "/nodes/{node_id}/mapping": {
+      "$ref": "./paths/nodes_{node_id}_mapping.json"
+    },
+    "/nodes/{node_id}/remove": {
+      "$ref": "./paths/nodes_{node_id}_remove.json"
+    },
     "/pipelines/" : {
       "$ref": "./paths/pipelines.json"
     },
@@ -249,6 +264,9 @@
     },
     "/source/{source_id}/ingest": {
       "$ref": "./paths/sources_{source_id}_ingest.json"
+    },
+    "/source/{source_id}/remap": {
+      "$ref": "./paths/sources_{source_id}_remap.json"
     },
     "/sources/{source_id}/upload": {
       "$ref": "./paths/sources_{source_id}_upload.json"

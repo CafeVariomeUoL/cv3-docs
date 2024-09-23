@@ -1,0 +1,9 @@
+{
+  "name": "node_id",
+  "in": "path",
+  "description": "The ID of the node",
+  "required": true,
+  "schema": {
+    "type": "string"
+  }
+}

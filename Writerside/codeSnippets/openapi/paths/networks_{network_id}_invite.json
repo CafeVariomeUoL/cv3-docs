@@ -1,0 +1,37 @@
+{
+  "post": {
+    "tags": [
+      "Network"
+    ],
+    "summary": "Invite a node",
+    "description": "Invite a node to join the network",
+    "operationId": "inviteNode",
+    "parameters": [
+      {
+        "$ref": "../components/parameters/network_id.json"
+      }
+    ],
+    "requestBody": {
+      "content": {
+        "application/json": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "baseURL": {
+                "type": "string",
+                "format": "uri",
+                "description": "The base URL of the node to invite"
+              }
+            }
+          }
+        }
+      },
+      "required": true
+    },
+    "responses": {
+      "200": {
+        "$ref": "../components/responses/success.json"
+      }
+    }
+  }
+}

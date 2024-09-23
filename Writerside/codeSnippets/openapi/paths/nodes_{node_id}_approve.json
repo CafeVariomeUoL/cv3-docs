@@ -1,0 +1,20 @@
+{
+  "post": {
+    "tags": [
+      "Node"
+    ],
+    "summary": "Approve a node",
+    "description": "Approve a node. The node is already part of the network even before approving, but this process will allow synchronisation and querying between this node and the target",
+    "operationId": "approveNode",
+    "parameters": [
+      {
+        "$ref": "./components/parameters/node_id.json"
+      }
+    ],
+    "responses": {
+      "200": {
+        "$ref": "./components/responses/success.json"
+      }
+    }
+  }
+}
