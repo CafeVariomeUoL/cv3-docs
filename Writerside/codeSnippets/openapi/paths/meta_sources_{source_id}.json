@@ -13,7 +13,7 @@
     ],
     "responses": {
       "200": {
-        "$ref": "../components/responses/meta_source.json"
+        "$ref": "../components/responses/success.json"
       }
     }
   },

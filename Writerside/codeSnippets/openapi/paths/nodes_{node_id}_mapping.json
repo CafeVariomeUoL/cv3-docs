@@ -8,12 +8,12 @@
     "operationId": "remapNode",
     "parameters": [
       {
-        "$ref": "./components/parameters/node_id.json"
+        "$ref": "../components/parameters/node_id.json"
       }
     ],
     "responses": {
       "200": {
-        "$ref": "./components/responses/success.json"
+        "$ref": "../components/responses/success.json"
       }
     }
   }
