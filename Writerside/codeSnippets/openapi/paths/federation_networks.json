@@ -1,0 +1,47 @@
+{
+  "get": {
+    "tags": [
+      "Federation"
+    ],
+    "summary": "Get visible networks",
+    "description": "Get the visible networks that this installation is in",
+    "operationId": "networkPublicGet",
+    "responses": {
+      "200": {
+        "description": "All networks that are publicly visible",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "required": [
+                "name",
+                "description"
+              ],
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "description": "Network name"
+                },
+                "description": {
+                  "type": "string",
+                  "description": "Network description"
+                }
+              }
+            }
+          }
+        },
+        "headers": {
+          "X-Identifier": {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "cv3-networks"
+              ]
+            },
+            "description": "Special identifier that denotes this is a CV3 public network endpoint"
+          }
+        }
+      }
+    }
+  }
+}

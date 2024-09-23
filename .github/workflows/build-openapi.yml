@@ -35,9 +35,14 @@ jobs:
       - name: Bundle OpenAPI Admin spec
         run: redocly bundle Writerside/codeSnippets/openapi/openapi-admin.json --output openapi/openapi-admin-bundled.yaml
 
+      - name: Bundle OpenAPI Network spec
+        run: redocly bundle Writerside/codeSnippets/openapi/openapi-network.json --output openapi/openapi-network-bundled.yaml
+
       - name: Upload OpenAPI specs to Nexus
         run: |
           curl -u "${{ secrets.NEXUS_USERNAME }}:${{ secrets.NEXUS_PASSWORD }}" --upload-file openapi/openapi-all-bundled.yaml \
           https://artifactory.cafevariome.org/repository/schemas/openapi/cv3-all-bundled.yaml
           curl -u "${{ secrets.NEXUS_USERNAME }}:${{ secrets.NEXUS_PASSWORD }}" --upload-file openapi/openapi-admin-bundled.yaml \
           https://artifactory.cafevariome.org/repository/schemas/openapi/cv3-admin-bundled.yaml
+          curl -u "${{ secrets.NEXUS_USERNAME }}:${{ secrets.NEXUS_PASSWORD }}" --upload-file openapi/openapi-network-bundled.yaml \
+          https://artifactory.cafevariome.org/repository/schemas/openapi/cv3-network-bundled.yaml

@@ -18,3 +18,4 @@ There are multiple OpenAPI specifications available for the system, including on
 
 - [All microservices](https://v3doc.cafevariome.org/openapi/?urls.primaryName=All+Services)
 - [Admin API](https://v3doc.cafevariome.org/openapi/?urls.primaryName=Admin+API)
+- [Network Gateway](https://v3doc.cafevariome.org/openapi/?urls.primaryName=Network+Gateway)

@@ -17,6 +17,9 @@
   "servers": [
     {
       "$ref": "./components/servers/admin.json"
+    },
+    {
+      "$ref": "./components/servers/network.json"
     }
   ],
   "tags": [
@@ -40,6 +43,9 @@
     },
     {
       "$ref": "./components/tags/datafile.json"
+    },
+    {
+      "$ref": "./components/tags/federation.json"
     },
     {
       "$ref": "./components/tags/group.json"
@@ -135,6 +141,9 @@
     },
     "/datafiles/{datafile_id}/sample": {
       "$ref": "./paths/datafiles_{datafile_id}_sample.json"
+    },
+    "/federation/networks": {
+      "$ref": "./paths/federation_networks.json"
     },
     "/groups/": {
       "$ref": "./paths/groups.json"

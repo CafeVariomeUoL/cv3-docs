@@ -12,6 +12,10 @@ window.onload = function() {
       {
         "name": "Admin API",
         "url": "https://v3doc.cafevariome.org/openapi/cv3-admin-bundled.yaml"
+      },
+      {
+        "name": "Network Gateway",
+        "url": "https://v3doc.cafevariome.org/openapi/cv3-network-bundled.yaml"
       }
     ],
     dom_id: '#swagger-ui',
