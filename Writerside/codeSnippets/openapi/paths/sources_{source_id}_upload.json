@@ -1,33 +1,4 @@
 {
-  "get": {
-    "tags": [
-      "Source"
-    ],
-    "summary": "Get upload ID",
-    "operationId": "sourceUploadIDGet",
-    "description": "Get the upload file ID of a data source. This ID is used to upload data files to the source",
-    "responses": {
-      "200": {
-        "description": "The upload file ID",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "required": [
-                "fileID"
-              ],
-              "properties": {
-                "fileID": {
-                  "type": "string",
-                  "format": "uuid"
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  },
   "post": {
     "tags": [
       "Source"
