@@ -3,32 +3,13 @@
   <component name="JsonSchemaMappingsProjectConfiguration">
     <state>
       <map>
-        <entry key="JSON Schema 2020-12">
-          <value>
-            <SchemaInfo>
-              <option name="generatedName" value="New Schema" />
-              <option name="name" value="JSON Schema 2020-12" />
-              <option name="relativePathToSchema" value="https://json-schema.org/draft/2020-12/schema" />
-              <option name="schemaVersion" value="JSON Schema version 7" />
-              <option name="patterns">
-                <list>
-                  <Item>
-                    <option name="directory" value="true" />
-                    <option name="path" value="Writerside/codeSnippets/openapi/components/schemas" />
-                    <option name="mappingKind" value="Directory" />
-                  </Item>
-                </list>
-              </option>
-            </SchemaInfo>
-          </value>
-        </entry>
         <entry key="OpenAPI 3.1">
           <value>
             <SchemaInfo>
               <option name="generatedName" value="New Schema" />
               <option name="name" value="OpenAPI 3.1" />
               <option name="relativePathToSchema" value="https://spec.openapis.org/oas/3.1/schema/2022-10-07" />
-              <option name="schemaVersion" value="JSON Schema version 7" />
+              <option name="schemaVersion" value="JSON Schema 202,012" />
               <option name="patterns">
                 <list>
                   <Item>
@@ -37,24 +18,11 @@
                   <Item>
                     <option name="path" value="Writerside/codeSnippets/openapi/openapi-all.json" />
                   </Item>
-                </list>
-              </option>
-            </SchemaInfo>
-          </value>
-        </entry>
-        <entry key="OpenAPI 3.1 Path">
-          <value>
-            <SchemaInfo>
-              <option name="generatedName" value="New Schema" />
-              <option name="name" value="OpenAPI 3.1 Path" />
-              <option name="relativePathToSchema" value="https://spec.openapis.org/oas/3.1/schema/2022-10-07#/$defs/paths" />
-              <option name="schemaVersion" value="JSON Schema version 7" />
-              <option name="patterns">
-                <list>
                   <Item>
-                    <option name="directory" value="true" />
-                    <option name="path" value="Writerside/codeSnippets/openapi/paths" />
-                    <option name="mappingKind" value="Directory" />
+                    <option name="path" value="Writerside/codeSnippets/openapi/openapi-network.json" />
+                  </Item>
+                  <Item>
+                    <option name="path" value="Writerside/codeSnippets/openapi/openapi-query.json" />
                   </Item>
                 </list>
               </option>
