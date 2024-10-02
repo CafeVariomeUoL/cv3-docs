@@ -21,6 +21,7 @@
 
 </snippet>
 
+
 <snippet id="json-meta_source_custom-maximum">
 
 <code-block lang="json" collapsible="true" collapsed-title="MetaSource.maximum.json">
@@ -57,6 +58,7 @@
 
 </snippet>
 
+
 <snippet id="json-meta_source_cohort-minimum">
 
 <code-block lang="json" collapsible="true" collapsed-title="MetaSourceCohort.minimum.json">
@@ -78,6 +80,7 @@
 </code-block>
 
 </snippet>
+
 
 <snippet id="json-meta_source_cohort-maximum">
 
@@ -149,6 +152,7 @@
 
 </snippet>
 
+
 <snippet id="json-meta_source_dataset-minimum">
 
 <code-block lang="json" collapsible="true" collapsed-title="MetaSourceDataset.minimum.json">
@@ -175,6 +179,7 @@
 </code-block>
 
 </snippet>
+
 
 <snippet id="json-meta_source_dataset-maximum">
 
@@ -321,6 +326,7 @@
 
 </snippet>
 
+
 <snippet id="json-meta_source_data_collection-minimum">
 
 <code-block lang="json" collapsible="true" collapsed-title="MetaSourceDataCollection.minimum.json">
@@ -340,6 +346,7 @@
 </code-block>
 
 </snippet>
+
 
 <snippet id="json-meta_source_data_collection-maximum">
 
@@ -418,6 +425,104 @@
       "Value 2"
     ]
   }
+}
+</code-block>
+
+</snippet>
+
+
+<snippet id="json-record_query_builder-maximum">
+
+<code-block lang="json" collapsible="true" collapsed-title="RecordQueryBuilder.maximum.json">
+{
+    "subject": {
+        "gender": "any",
+        "age": {
+            "min": 16,
+            "max": 99
+        },
+        "ageFirstDiagnosis": {
+            "min": 0,
+            "max": 79
+        },
+        "ageFirstSymptoms": {
+            "min": 24,
+            "max": 99
+        },
+        "affectedOnly": true,
+        "familyType": {
+            "singletons": true,
+            "trio": false,
+            "family": false
+        }
+    },
+    "hpo": [
+        {
+            "terms": [
+                "0000969",
+                "0010741",
+                "0002075"
+            ],
+            "similarity": 0.5,
+            "minimumMatch": 2,
+            "useOrphanet": true
+        }
+    ],
+    "ordo": [ 
+        {
+            "terms": [
+                "1234",
+                "5678"
+            ],
+            "similarity": 0.5,
+            "matchScale": 0.7,
+            "useHPO": true
+        }
+    ],
+    "genes": [
+        {
+            "alleles": [
+                {
+                    "gene": "APOE",
+                    "alleles": ["e3", "e4"]
+                }
+            ]
+        }
+    ],
+    "snomed": [
+        {
+            "terms": [
+                "194891000000101",
+                "439389002"
+            ],
+            "minimumMatch": 1
+        }
+    ],
+    "variants": [
+        {
+            "genes": [
+                "SEC1P",
+                "SEBOX"
+            ],
+            "reactome": [
+                "R-HSA-44482",
+                "R-HSA-77387"
+            ],
+            "mutation": ["lossOfStart"],
+            "maxAf": 5,
+            "useLocalAf": true
+        }
+    ],
+    "sources": {
+        "sources": ["5065179a-d608-4aba-8728-2f131ec68127"]
+    },
+    "eav": [
+        {
+            "attribute": "Attribute 1",
+            "relation": "numericEquals",
+            "value": 20
+        }
+    ]
 }
 </code-block>
 
