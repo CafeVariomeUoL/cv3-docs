@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "title": "Record Index",
+  "properties": {
+    "capability": {
+      "$ref": "./capability.json"
+    },
+    "eavIndex": {
+        "$ref": "./eav_index.json"
+    },
+    "recordCount": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "The number of records in the described index."
+    }
+  }
+}

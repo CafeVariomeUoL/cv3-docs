@@ -10,8 +10,6 @@
     "sourceDescription",
     "owner",
     "ownerEmail",
-    "capability",
-    "recordCount",
     "online"
   ],
   "properties": {
@@ -41,17 +39,12 @@
       "type": "string",
       "description": "The email of the source owner"
     },
-    "capability": {
-      "$ref": "./capability.json"
-    },
-    "recordCount": {
-      "type": "integer",
-      "description": "The number of records in this source",
-      "minimum": 0
-    },
     "online": {
       "type": "boolean",
       "description": "Whether the source is online for query"
+    },
+    "recordIndex": {
+      "$ref": "./record_index.json"
     },
     "pipelineIndex": {
       "type": "array",
@@ -59,9 +52,6 @@
       "items": {
         "type": "integer"
       }
-    },
-    "eavIndex": {
-      "$ref": "./eav_index.json"
     }
   }
 }

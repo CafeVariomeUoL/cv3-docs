@@ -44,11 +44,8 @@
       "type": "string",
       "description": "Public key of the node"
     },
-    "eavIndex": {
-      "$ref": "./eav_index.json"
-    },
-    "capability": {
-      "$ref": "./capability.json"
+    "recordIndex": {
+      "$ref": "./record_index.json"
     },
     "metaIndex": {
       "$ref": "./meta_index.json"

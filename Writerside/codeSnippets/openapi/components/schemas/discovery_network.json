@@ -42,11 +42,8 @@
       "format": "uuid",
       "description": "UUID of this node itself in this network"
     },
-    "eavIndex": {
-      "$ref": "./eav_index.json"
-    },
-    "capability": {
-      "$ref": "./capability.json"
+    "recordIndex": {
+      "$ref": "./record_index.json"
     },
     "metaIndex": {
       "$ref": "./meta_index.json"
