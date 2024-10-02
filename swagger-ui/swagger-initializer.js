@@ -16,6 +16,10 @@ window.onload = function() {
       {
         "name": "Network Gateway",
         "url": "https://v3doc.cafevariome.org/openapi/cv3-network-bundled.yaml"
+      },
+      {
+        "name": "Query API",
+        "url": "https://v3doc.cafevariome.org/openapi/cv3-query-bundled.yaml"
       }
     ],
     dom_id: '#swagger-ui',
