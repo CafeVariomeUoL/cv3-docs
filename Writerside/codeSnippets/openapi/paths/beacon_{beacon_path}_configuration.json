@@ -14,21 +14,10 @@
                   "$ref": "../components/schemas/beacon_response_meta.json"
                 },
                 "response": {
-                  "definitions": {
-                    "EntryTypes": {
-                      "additionalProperties": {
-                        "$ref": "./entryTypeDefinition.json",
-                        "type": "object"
-                      },
-                      "description": "This is a dictionary of the entry types implemented in this Beacon instance.",
-                      "minProperties": 1,
-                      "type": "object"
-                    }
-                  },
                   "description": "Files complaint with this schema are the configuration ones. The details returned in `service-info` are mirroring the ones in this configuration file.",
                   "properties": {
                     "entryTypes": {
-                      "$ref": "./components/schemas/beacon_entry_type.json"
+                      "$ref": "../components/schemas/beacon_entry_type.json"
                     },
                     "maturityAttributes": {
                       "description": "Declares the level of maturity of the Beacon instance.",
