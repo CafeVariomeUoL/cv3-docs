@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "title": "Beacon Entry Type",
+  "additionalProperties": {
+    "$comment": "TO DO: The tagged parts should reference to `common/ontologizedElement.json`. But that configuration fails to validate. Further investigation is required, but should not affect the resulting schema.",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "additionalProperties": true,
+    "description": "Definition of an element or entry type including the Beacon v2 required and suggested attributes. This schema purpose is to  describe each type of entities included in a Beacon, hence Beacon clients could have some metadata about such entities.\n\nThe `id` attribute is the key that should be used in other parts of the Beacon Model to allow Beacon clients to identify the different parts (e.g. endpoints, filteringTerms, request parameters, etc.) that fully describe an entry type.",
+    "properties": {
+      "aCollectionOf": {
+        "description": "If the entry type is a collection of other entry types, (e.g. a Dataset is a collection of Records), then this attribute must list the entry types that could be included. One collection type could be defined as included more than one entry type (e.g. a Dataset could include Individuals or Genomic Variants), in such cases the entries are alternative, meaning that a given instance of this entry type could be of only one of the types (e.g. a given Dataset contains Individuals, while another Dataset could contain Genomic Variants, but not both at once).",
+        "includedConcepts": {
+          "type": "array",
+          "items": {
+            "description": "Definition of the basic element, which is root for most other objects.",
+            "properties": {
+              "id": {
+                "description": "A (unique) identifier of the element.",
+                "type": "string"
+              },
+              "name": {
+                "description": "A distinctive name for the element.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "id",
+              "name"
+            ],
+            "title": "Basic Element",
+            "type": "object"
+          }
+        }
+      },
+      "defaultSchema": {
+        "properties": {
+          "id": {
+            "description": "A (unique) identifier of the element.",
+            "type": "string"
+          },
+          "name": {
+            "description": "A distinctive name for the element.",
+            "type": "string"
+          },
+          "description": {
+            "description": "A textual description for the element.",
+            "type": "string"
+          },
+          "referenceToSchemaDefinition": {
+            "$comment": "this should map to a resolvable reference",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "referenceToSchemaDefinition"
+        ],
+        "description": "Definition of an annotated URL address or a file reference.",
+        "title": "An annotated URL address or a file reference",
+        "type": "object"
+      },
+      "description": {
+        "description": "A textual description for the element.",
+        "type": "string"
+      },
+      "filteringTerms": {
+        "description": "Reference to the file with the list of filtering terms that could be used to filter this concept in this instance of Beacon. The referenced file could be used to populate the `filteringTerms`endpoint. Having it independently should allow for updating the list of accepted filtering terms when it is necessary.",
+        "type": "string"
+      },
+      "id": {
+        "description": "A (unique) identifier of the element.",
+        "type": "string"
+      },
+      "name": {
+        "description": "A distinctive name for the element.",
+        "type": "string"
+      },
+      "ontologyTermForThisType": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "additionalProperties": true,
+        "description": "Definition of an ontology term.",
+        "properties": {
+          "id": {
+            "description": "Definition of an identifier in the CURIE `prefix:local-part` format which is the default type of e.g. ontology term `id` values (used e.g. for filters or external identifiers).",
+            "examples": [
+              "ga4gh:GA.01234abcde",
+              "DUO:0000004",
+              "orcid:0000-0003-3463-0775",
+              "PMID:15254584"
+            ],
+            "pattern": "^\\w[^:]+:.+$",
+            "type": "string"
+          },
+          "label": {
+            "description": "The text that describes the term. By default it could be the preferred text of the term, but is it acceptable to customize it for a clearer description and understanding of the term in an specific context.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "title": "Ontology Term",
+        "type": "object"
+      },
+      "partOfSpecification": {
+        "description": "This is label to group together entry types that are part of the same specification.",
+        "example": "Beacon v2.0",
+        "type": "string"
+      }
+    },
+    "required": [
+      "id",
+      "name",
+      "ontologyTermForThisType",
+      "partOfSpecification",
+      "defaultSchema"
+    ],
+    "title": "",
+    "type": "object"
+  },
+  "description": "This is a dictionary of the entry types implemented in this Beacon instance.",
+  "minProperties": 1
+}
