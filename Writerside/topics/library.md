@@ -522,7 +522,26 @@
             "relation": "numericEquals",
             "value": 20
         }
-    ]
+    ],
+    "advanced": {
+        "granularity": "count",
+        "requiredFilters": {
+            "subject": false,
+            "hpo": false,
+            "ordo": false,
+            "genes": false,
+            "snomed": false,
+            "variant": false,
+            "source": false,
+            "eav": false,
+            "subjectCapability": {
+                "age": false,
+                "gender": false,
+                "familyType": false,
+                "affected": false,
+            }
+        }
+    }
 }
 </code-block>
 
