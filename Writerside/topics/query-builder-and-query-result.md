@@ -67,6 +67,24 @@ The minimum match specifies how many of the **original ** terms must be matched.
 
 The `useOrphanet` flag specifies whether to use Orphanet terms to match with patients. With the HOOM model, HPO and ORDO terms can be mapped to one another, allowing records containing either to be returned.
 
+### ORDO Filter
+
+The ORDO filter is used to query disease data with Orphanet terms. The structure:
+
+```json
+{
+  "terms": [
+    "1234",
+    "5678"
+  ],
+  "similarity": 0.5,
+  "matchScale": 0.7,
+  "useHPO": true
+}
+```
+
+Takes one or more ORDO IDs, with only the numerical ID. The rest is very similar to HPO filter, as they are connected together with the HOOM model.
+
 ## Query Logic
 
 The query API used by CV3 allows advanced query logic by putting the match target in different position.

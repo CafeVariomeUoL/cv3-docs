@@ -83,6 +83,21 @@ jobs:
             artifacts/webHelpDG2-all.zip
           retention-days: 7
 
+      - name: Build BTS docs
+        uses: JetBrains/writerside-github-action@v4
+        with:
+          instance: 'Writerside/bts'
+          artifact: 'webHelpBTS2-all.zip'
+          docker-version: ${{ env.DOCKER_VERSION }}
+
+      - name: Save BTS guide
+        uses: actions/upload-artifact@v4
+        with:
+          name: developer
+          path: |
+            artifacts/webHelpBTS2-all.zip
+          retention-days: 7
+
       - name: Save swagger-ui folder as artifact
         uses: actions/upload-artifact@v4
         with:
@@ -111,6 +126,9 @@ jobs:
 
       - name: Unzip developer guide
         run: unzip -O UTF-8 -qq developer/webHelpDG2-all.zip -d dir/developer
+
+      - name: Unzip BTS guide
+        run: unzip -O UTF-8 -qq developer/webHelpBTS2-all.zip -d dir/bts
 
       - name: Copy Swagger-UI
         run: mkdir -p dir/openapi && cp -r swagger-ui/* dir/openapi/

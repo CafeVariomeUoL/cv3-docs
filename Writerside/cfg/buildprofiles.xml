@@ -30,6 +30,11 @@
             <noindex-content>false</noindex-content>
         </variables>
     </build-profile>
+    <build-profile instance="bts">
+        <variables>
+            <noindex-content>false</noindex-content>
+        </variables>
+    </build-profile>
     <build-profile instance="i">
         <variables>
             <noindex-content>false</noindex-content>
