@@ -93,7 +93,7 @@ jobs:
       - name: Save BTS guide
         uses: actions/upload-artifact@v4
         with:
-          name: developer
+          name: bts
           path: |
             artifacts/webHelpBTS2-all.zip
           retention-days: 7
@@ -128,7 +128,7 @@ jobs:
         run: unzip -O UTF-8 -qq developer/webHelpDG2-all.zip -d dir/developer
 
       - name: Unzip BTS guide
-        run: unzip -O UTF-8 -qq developer/webHelpBTS2-all.zip -d dir/bts
+        run: unzip -O UTF-8 -qq bts/webHelpBTS2-all.zip -d dir/bts
 
       - name: Copy Swagger-UI
         run: mkdir -p dir/openapi && cp -r swagger-ui/* dir/openapi/
