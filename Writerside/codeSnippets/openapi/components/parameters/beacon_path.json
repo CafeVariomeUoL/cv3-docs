@@ -1,0 +1,9 @@
+{
+  "name": "beacon_path",
+  "in": "path",
+  "required": true,
+  "schema": {
+    "type": "string"
+  },
+  "description": "The configured unique path segment of a beacon endpoint (set)"
+}

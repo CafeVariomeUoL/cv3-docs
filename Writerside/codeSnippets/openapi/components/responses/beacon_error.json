@@ -1,36 +1,42 @@
 {
-  "description": "An unsuccessful operation.",
-  "properties": {
-    "error": {
-      "description": "Beacon-specific error.",
-      "properties": {
-        "errorCode": {
-          "description": "Entry not found",
-          "examples": [
-            "404"
-          ],
-          "format": "int32",
-          "type": "integer"
+  "content": {
+    "application/json": {
+      "schema": {
+        "description": "An unsuccessful operation.",
+        "properties": {
+          "error": {
+            "description": "Beacon-specific error.",
+            "properties": {
+              "errorCode": {
+                "description": "Entry not found",
+                "examples": [
+                  "404"
+                ],
+                "format": "int32",
+                "type": "integer"
+              },
+              "errorMessage": {
+                "examples": [
+                  "The provided parameters are incomplete: `start` is missing."
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "errorCode"
+            ],
+            "type": "object"
+          },
+          "meta": {
+            "$ref": "../schemas/beacon_response_meta.json"
+          }
         },
-        "errorMessage": {
-          "examples": [
-            "The provided parameters are incomplete: `start` is missing."
-          ],
-          "type": "string"
-        }
-      },
-      "required": [
-        "errorCode"
-      ],
-      "type": "object"
-    },
-    "meta": {
-      "$ref": "../schemas/beacon_response_meta.json"
+        "required": [
+          "meta",
+          "error"
+        ],
+        "type": "object"
+      }
     }
-  },
-  "required": [
-    "meta",
-    "error"
-  ],
-  "type": "object"
+  }
 }

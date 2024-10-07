@@ -124,5 +124,10 @@
     "tags": [
       "Beacon"
     ]
-  }
+  },
+  "parameters": [
+    {
+      "$ref": "../components/parameters/beacon_path.json"
+    }
+  ]
 }
