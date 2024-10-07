@@ -15,7 +15,8 @@ env:
   DOCKER_VERSION: '241.18775'
 
 jobs:
-  build:
+  build-index:
+    name: Build Documentation Index
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -34,9 +35,17 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: index
-          path: |
-            artifacts/webHelpI2-all.zip
+          path: artifacts/webHelpI2-all.zip
           retention-days: 7
+
+  build-admin:
+    name: Build Admin Guide
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Build admin docs
         uses: JetBrains/writerside-github-action@v4
@@ -49,9 +58,17 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: admin
-          path: |
-            artifacts/webHelpAG2-all.zip
+          path: artifacts/webHelpAG2-all.zip
           retention-days: 7
+
+  build-user:
+    name: Build User Guide
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Build user docs
         uses: JetBrains/writerside-github-action@v4
@@ -64,9 +81,17 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: user
-          path: |
-            artifacts/webHelpUG2-all.zip
+          path: artifacts/webHelpUG2-all.zip
           retention-days: 7
+
+  build-developer:
+    name: Build Developer Guide
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Build developer docs
         uses: JetBrains/writerside-github-action@v4
@@ -79,9 +104,17 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: developer
-          path: |
-            artifacts/webHelpDG2-all.zip
+          path: artifacts/webHelpDG2-all.zip
           retention-days: 7
+
+  build-bts:
+    name: Build Biomedical Term Service Guide
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Build BTS docs
         uses: JetBrains/writerside-github-action@v4
@@ -94,9 +127,17 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: bts
-          path: |
-            artifacts/webHelpBTS2-all.zip
+          path: artifacts/webHelpBTS2-all.zip
           retention-days: 7
+
+  build-swagger:
+    name: Build Swagger-UI
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Save swagger-ui folder as artifact
         uses: actions/upload-artifact@v4
@@ -109,7 +150,7 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    needs: build
+    needs: [build-index, build-admin, build-user, build-developer, build-bts, build-swagger]
     runs-on: ubuntu-latest
     steps:
       - name: Download artifacts
