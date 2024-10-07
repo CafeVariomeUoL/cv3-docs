@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "title": "Record Query Builder",
+  "properties": {
+    "subject": {
+      "$ref": "./subject_query.json"
+    },
+    "hpo": {
+      "type": "array",
+      "items": {
+        "$ref": "./hpo_query.json"
+      }
+    },
+    "ordo": {
+      "type": "array",
+      "items": {
+        "$ref": "./ordo_query.json"
+      }
+    },
+    "genes": {
+      "type": "array",
+      "items": {
+        "$ref": "./genes_query.json"
+      }
+    },
+    "snomed": {
+      "type": "array",
+      "items": {
+        "$ref": "./snomed_query.json"
+      }
+    },
+    "variant": {
+      "type": "array",
+      "items": {
+        "$ref": "./variant_query.json"
+      }
+    },
+    "sources": {
+      "type": "object",
+      "description": "Filter by source",
+      "properties": {
+        "sources": {
+          "type": "array",
+          "description": "The data sources to run the query against. If some sources are not online/user do not have access, they will be ignored.",
+          "items": {
+            "type": "string",
+            "description": "The source ID",
+            "format": "uuid"
+          }
+        }
+      },
+      "required": [
+        "sources"
+      ]
+    },
+    "eav": {
+      "type": "array",
+      "items": {
+        "$ref": "./eav_filter.json"
+      }
+    },
+    "advanced": {
+      "$ref": "./advanced_query_filter.json"
+    }
+  }
+}

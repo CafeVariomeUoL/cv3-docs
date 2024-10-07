@@ -1,0 +1,16 @@
+{
+  "title": "EAV Filter Relation",
+  "type": "string",
+  "enum": [
+    "stringIs",
+    "stringIsNot",
+    "regexContains",
+    "regexDoesNotContain",
+    "numericEquals",
+    "numericNotEquals",
+    "numericGreaterThan",
+    "numericLessThan",
+    "numericGreaterThanOrEqual",
+    "numericLessThanOrEqual"
+  ]
+}

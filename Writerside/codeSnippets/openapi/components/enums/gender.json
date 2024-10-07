@@ -1,0 +1,9 @@
+{
+  "title": "Gender",
+  "type": "string",
+  "enum": [
+    "male",
+    "female",
+    "any"
+  ]
+}

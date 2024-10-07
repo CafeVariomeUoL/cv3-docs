@@ -25,6 +25,24 @@
     },
     {
       "$ref": "./components/tags/beacon.json"
+    },
+    {
+      "$ref": "./components/tags/config.json"
+    },
+    {
+      "$ref": "./components/tags/log.json"
+    },
+    {
+      "$ref": "./components/tags/network.json"
+    },
+    {
+      "$ref": "./components/tags/node.json"
+    },
+    {
+      "$ref": "./components/tags/record.json"
+    },
+    {
+      "$ref": "./components/tags/source.json"
     }
   ],
   "paths": {
@@ -40,11 +58,70 @@
     "/beacon/{beacon_path}/configuration": {
       "$ref": "./paths/beacon_{beacon_path}_configuration.json"
     },
+    "/beacon/{beacon_path}/dataset": {},
+    "/beacon/{beacon_path}/entry_types": {},
+    "/beacon/{beacon_path}/individuals": {},
     "/beacon/{beacon_path}/info": {
       "$ref": "./paths/beacon_{beacon_path}_info.json"
     },
+    "/beacon/{beacon_path}/map": {},
     "/beacon/{beacon_path}/service-info": {
       "$ref": "./paths/beacon_{beacon_path}_service-info.json"
+    },
+    "/beacon/{beacon_path}/study": {},
+    "/config/cleanup": {
+      "$ref": "./paths/config_cleanup.json"
+    },
+    "/config/global": {
+      "$ref": "./paths/config_global.json"
+    },
+    "/config/keycloak": {
+      "$ref": "./paths/config_keycloak.json"
+    },
+    "/config/maintenance": {
+      "$ref": "./paths/config_maintenance.json"
+    },
+    "/config/user": {
+      "$ref": "./paths/config_user.json"
+    },
+    "/fdp/": {},
+    "/fdp/catalog": {},
+    "/fdp/catalog/{catalog_id}": {},
+    "/fdp/cohort/{cohort_id}": {},
+    "/fdp/dataset/{dataset_id}": {},
+    "/fdp/profile": {},
+    "/fdp/profile/{entry_id}": {},
+    "/log/error": {
+      "$ref": "./paths/log_error.json"
+    },
+    "/log/info": {
+      "$ref": "./paths/log_info.json"
+    },
+    "/meta/index": {},
+    "/meta/query": {},
+    "/networks/" : {
+      "$ref": "./paths/networks.json"
+    },
+    "/networks/{network_id}": {
+      "$ref": "./paths/networks_{network_id}.json"
+    },
+    "/networks/{network_id}/eav-index": {
+      "$ref": "./paths/networks_{network_id}_eav-index.json"
+    },
+    "/networks/{network_id}/meta-index": {
+      "$ref": "./paths/networks_{network_id}_meta-index.json"
+    },
+    "/networks/{network_id}/nodes": {
+      "$ref": "./paths/networks_{network_id}_nodes.json"
+    },
+    "/record/": {
+      "$ref": "./paths/record.json"
+    },
+    "/record/history": {},
+    "/record/history/{query_id}": {},
+    "/record/{query_id}": {},
+    "/sources/": {
+      "$ref": "./paths/sources.json"
     }
   },
   "components": {

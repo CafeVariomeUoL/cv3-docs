@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "title": "EAV Query Filter",
+  "properties": {
+    "attribute": {
+      "type": "string",
+      "description": "The attribute to filter by, in actual field name (not display name).",
+      "examples": [
+        "numberOfVisits"
+      ]
+    },
+    "relation": {
+      "$ref": "../enums/eav_filter_relation.json"
+    },
+    "value": {
+      "type": ["string", "number", "boolean"],
+      "description": "The value of the attribute to match on. The type must match the type stored in database, otherwise the returned records will be 0.",
+      "examples": [
+        5,
+        6.2,
+        "true",
+        true
+      ]
+    }
+  },
+  "required": [
+    "attribute",
+    "relation",
+    "value"
+  ]
+}

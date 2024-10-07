@@ -1,0 +1,14 @@
+{
+  "title": "Variant Mutation Type",
+  "type": "string",
+  "enum": [
+    "nonCoding",
+    "missense",
+    "nonsense",
+    "splice",
+    "frameshift",
+    "lossOfStart",
+    "lossOfStop",
+    "indel"
+  ]
+}

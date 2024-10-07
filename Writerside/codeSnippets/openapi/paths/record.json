@@ -1,0 +1,46 @@
+{
+  "post": {
+    "tags": [
+      "Record"
+    ],
+    "security": [
+      {},
+      {
+        "userAccessToken": []
+      }
+    ],
+    "summary": "Record level query",
+    "description": "Post a record level query. The query will be accepted for processing, but the result will not be returned immediately to allow multiple query to be posted at the same time.",
+    "requestBody": {
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "../components/schemas/query_builder.json"
+          }
+        }
+      }
+    },
+    "responses": {
+      "202": {
+        "description": "Query accepted",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "required": [
+                "queryID"
+              ],
+              "properties": {
+                "queryID": {
+                  "type": "string",
+                  "description": "Unique identifier assigned to the query",
+                  "format": "uuid"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

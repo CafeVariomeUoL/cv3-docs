@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "title": "Genes Query Filter",
+  "properties": {
+    "alleles": {
+      "type": "array",
+      "items": {
+        "$ref": "./alleles_query.json"
+      }
+    }
+  },
+  "required": [
+    "alleles"
+  ]
+}

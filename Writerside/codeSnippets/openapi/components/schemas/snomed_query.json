@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "title": "SNOMED Query Filter",
+  "properties": {
+    "terms": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "description": "SNOMED term ID",
+        "format": "^(\\d{6,}$",
+        "examples": [
+          "70561000"
+        ]
+      }
+    },
+    "minimumMatch": {
+      "type": "integer",
+      "description": "The minimum amount of **original terms** that must be matched in order to consider the record as a match. After expansion, the terms are considered groups, and as long as one term within the group is a match, the original term is considered matched.",
+      "minimum": 1,
+      "default": 1
+    }
+  },
+  "required": [
+    "terms"
+  ]
+}

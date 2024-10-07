@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "title": "Variant Query Filter",
+  "description": "Filter for variant queries. The genes and Reactome pathways does not have to be present at the same time, but at least one should be specified.",
+  "properties": {
+    "genes": {
+      "type": "array",
+      "description": "The genes where the mutation is located.",
+      "items": {
+        "type": "string",
+        "description": "Valid HGNC gene symbol.",
+        "examples": [
+          "BRCA1",
+          "BRCA2"
+        ]
+      }
+    },
+    "reactome": {
+      "type": "array",
+      "description": "The Reactome pathways which contains the genes of interest.",
+      "items": {
+        "type": "string",
+        "description": "Reactome pathway ID."
+      }
+    },
+    "mutation": {
+      "type": "array",
+      "description": "The (aggregated) mutation type. The details of the mutation (such as ref and alt) are not stored to prevent re-identification.",
+      "items": {
+        "$ref": "../enums/mutation_type.json"
+      }
+    },
+    "maxAf": {
+      "type": "number",
+      "description": "The maximum allele frequency of the mutation to be considered.",
+      "minimum": 0,
+      "maximum": 1,
+      "default": 1
+    },
+    "useLocalAf": {
+      "type": "boolean",
+      "description": "Whether to use the local allele frequency or the global allele frequency. Local allele frequency is the frequency of a mutation within a data source, instead of the standard AF calculated based on the entire population group.",
+      "default": false
+    }
+  },
+  "required": [
+    "mutation"
+  ]
+}

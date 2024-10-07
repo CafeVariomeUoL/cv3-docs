@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "title": "Alleles Query Filter",
+  "properties": {
+    "gene": {
+      "type": "string",
+      "description": "Valid HGNC gene symbol.",
+      "examples": [
+        "APOE"
+      ]
+    },
+    "alleles": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "description": "Allele code (name) as it's stored within the database. Due to lack of standard set or API to retrieve this information, the alleles names are retrieved from database during indexing.",
+        "examples": [
+          "e3",
+          "e4"
+        ]
+      }
+    }
+  },
+  "required": [
+    "gene",
+    "alleles"
+  ]
+}

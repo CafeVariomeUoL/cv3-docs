@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "title": "Subject Demographic Query Filter",
+  "definitions": {
+    "AgeFilter": {
+      "type": "object",
+      "properties": {
+        "min": {
+          "type": "integer",
+          "description": "Minimum age",
+          "default": 0,
+          "examples": [
+            18
+          ],
+          "minimum": 0,
+          "maximum": 100
+        },
+        "max": {
+          "type": "integer",
+          "description": "Maximum age",
+          "default": 100,
+          "examples": [
+            65
+          ],
+          "minimum": 0,
+          "maximum": 100
+        }
+      },
+      "required": [
+        "min",
+        "max"
+      ]
+    }
+  },
+  "properties": {
+    "affectedOnly": {
+      "type": "boolean",
+      "description": "Only return affected subjects",
+      "default": false
+    },
+    "age": {
+      "description": "Age of the subject",
+      "$ref": "#/definitions/AgeFilter"
+    },
+    "ageFirstSymptoms": {
+      "description": "Age of the subject when first symptoms appeared",
+      "$ref": "#/definitions/AgeFilter"
+    },
+    "ageFirstDiagnosis": {
+      "description": "Age of the subject when first diagnosed",
+      "$ref": "#/definitions/AgeFilter"
+    },
+    "familyType": {
+      "type": "object",
+      "description": "Family type of the subject",
+      "properties": {
+        "family": {
+          "type": "boolean",
+          "description": "Family",
+          "default": false
+        },
+        "singletons": {
+          "type": "boolean",
+          "description": "Singletons",
+          "default": false
+        },
+        "trios": {
+          "type": "boolean",
+          "description": "Trios",
+          "default": false
+        }
+      }
+    },
+    "gender": {
+      "$ref": "../enums/gender.json"
+    }
+  }
+}

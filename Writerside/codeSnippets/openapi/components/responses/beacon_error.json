@@ -38,5 +38,6 @@
         "type": "object"
       }
     }
-  }
+  },
+  "description": "A failed BEACON query, responding with an error message."
 }

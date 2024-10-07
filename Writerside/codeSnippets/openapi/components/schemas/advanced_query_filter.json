@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "title": "Advanced Query Filter",
+  "properties": {
+    "granularity": {
+      "$ref": "../enums/discovery_policy.json"
+    },
+    "requiredFilters": {
+      "$ref": "./capability.json"
+    }
+  }
+}
