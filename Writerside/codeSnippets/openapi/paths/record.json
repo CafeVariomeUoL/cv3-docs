@@ -10,6 +10,7 @@
       }
     ],
     "summary": "Record level query",
+    "operationId": "recordQuery",
     "description": "Post a record level query. The query will be accepted for processing, but the result will not be returned immediately to allow multiple query to be posted at the same time.",
     "requestBody": {
       "content": {

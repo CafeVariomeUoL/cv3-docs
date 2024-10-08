@@ -117,9 +117,15 @@
     "/record/": {
       "$ref": "./paths/record.json"
     },
-    "/record/history": {},
-    "/record/history/{query_id}": {},
-    "/record/{query_id}": {},
+    "/record/history": {
+      "$ref": "./paths/record_history.json"
+    },
+    "/record/history/{query_id}": {
+      "$ref": "./paths/record_history_{query_id}.json"
+    },
+    "/record/{query_id}": {
+      "$ref": "./paths/record_{query_id}.json"
+    },
     "/sources/": {
       "$ref": "./paths/sources.json"
     }

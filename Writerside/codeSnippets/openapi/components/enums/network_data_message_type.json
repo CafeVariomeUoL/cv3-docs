@@ -1,0 +1,10 @@
+{
+  "title": "Network Data Message Type",
+  "description": "The type of data the network data message is carrying.",
+  "enum": [
+    "recordQuery",
+    "recordResponse",
+    "metaQuery",
+    "metaResponse"
+  ]
+}

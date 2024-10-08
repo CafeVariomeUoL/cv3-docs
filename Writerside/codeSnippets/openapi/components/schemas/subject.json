@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "title": "Record Subject",
+  "properties": {
+    "subjectID": {
+      "type": "string",
+      "description": "Unique ID of the subject within the database.",
+      "format": "uuid"
+    },
+    "HPO": {
+      "type": "array",
+      "description": "The Human Phenotype Ontology terms associated with the subject.",
+      "items": {
+        "oneOf": [
+          {
+            "type": "string",
+            "description": "HPO term ID, without prefix.",
+            "format": "^\\d{7}$"
+          }
+        ]
+      }
+    }
+  },
+  "required": [
+    "subjectID"
+  ]
+}

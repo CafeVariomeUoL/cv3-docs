@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "type": "object",
-  "title": "Auth Request or Invite",
-  "description": "A message to request to join a network, or to invite another node to a network.",
+  "title": "Auth Response",
+  "description": "A message to respond to a request or invite to join a network.",
   "required": [
     "messageType",
     "messageAttributes",
@@ -21,9 +21,7 @@
       "required": [
         "messageID",
         "authType",
-        "networkID",
-        "status",
-        "targetUrl"
+        "networkID"
       ],
       "properties": {
         "messageID": {
@@ -34,51 +32,31 @@
         "authType": {
           "type": "string",
           "description": "The type of authentication related operation this message is for",
-          "enum": [
-            "request",
-            "invite"
-          ]
+          "const": "response"
         },
         "networkID": {
           "type": "string",
           "format": "uuid",
           "description": "ID of the network in the request"
         },
-        "status": {
-          "$ref": "../enums/network_auth_message_status.json"
-        },
-        "targetUrl": {
-          "type": "string",
-          "format": "uri",
-          "description": "The URL which this message is intended for"
+        "approved": {
+          "type": "boolean",
+          "description": "Whether the request or invite was approved",
+          "default": false
         }
       }
     },
     "messageData": {
       "type": "object",
       "description": "Data payload carried by the message",
-      "required": [
-        "node",
-        "challenge"
-      ],
       "properties": {
         "node": {
           "$ref": "./node.json",
-          "description": "The node representation of the sender"
+          "description": "The node representation of the responding node"
         },
         "network": {
           "$ref": "./discovery_network.json",
-          "description": "The network representation, only present if it's an invite"
-        },
-        "challenge": {
-          "type": "array",
-          "description": "3 word challenge, used for offline verification",
-          "minItems": 3,
-          "maxItems": 3,
-          "uniqueItems": true,
-          "items": {
-            "type": "string"
-          }
+          "description": "The network representation, only present if responding to a request"
         }
       }
     },

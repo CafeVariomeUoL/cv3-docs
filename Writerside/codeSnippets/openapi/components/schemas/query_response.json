@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "title": "Record Query Response",
+  "properties": {
+    "sourceID": {
+      "type": "string",
+      "description": "The ID of the data source responding to the query.",
+      "format": "uuid"
+    },
+    "sourceName": {
+      "type": "string",
+      "description": "The name of the data source responding to the query."
+    },
+    "sourceOwner": {
+      "type": "string",
+      "description": "The publisher/manager/owner of the data source responding to the query."
+    },
+    "ownerEmail": {
+      "type": "string",
+      "description": "The email address of the owner of the data source responding to the query.",
+      "format": "email"
+    },
+    "sourceURL": {
+      "type": "string",
+      "description": "The URL of the data source responding to the query.",
+      "format": "uri"
+    },
+    "recordCount": {
+      "type": "integer",
+      "description": "The number of records returned by the data source.",
+      "minimum": 0
+    },
+    "recordRange": {
+      "type": "object",
+      "description": "The range of records returned by the data source. Ranged response is used when obfuscation is required.",
+      "properties": {
+        "min": {
+          "type": "integer",
+          "description": "The minimum threshold of the record range.",
+          "minimum": 0
+        },
+        "max": {
+          "type": "integer",
+          "description": "The maximum threshold of the record range.",
+          "minimum": 0
+        }
+      }
+    },
+    "exist": {
+      "type": "boolean",
+      "description": "Whether there are any records within the source that should match with the query.",
+      "default": false
+    },
+    "resultDetails": {
+      "type": "object",
+      "description": "Additional details about the query result.",
+      "properties": {
+        "subjects": {
+          "type": "array",
+          "description": "The records that match the query, from the database directly.",
+          "items": {
+            "$ref": "./subject.json"
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "sourceID",
+    "sourceName"
+  ]
+}

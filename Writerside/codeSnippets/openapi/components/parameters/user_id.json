@@ -4,6 +4,7 @@
   "description": "ID of the user",
   "required": true,
   "schema": {
-    "type": "string"
+    "type": "string",
+    "format": "uuid"
   }
 }

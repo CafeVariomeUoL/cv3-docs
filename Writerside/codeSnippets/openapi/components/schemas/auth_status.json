@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "title": "Auth Status",
+  "description": "A message to check the status of a previously sent authentication message.",
+  "required": [
+    "messageType",
+    "messageAttributes",
+    "timestamp"
+  ],
+  "properties": {
+    "messageType": {
+      "type": "string",
+      "description": "The type of message",
+      "const": "authMessage"
+    },
+    "messageAttributes": {
+      "type": "object",
+      "description": "Information related to the message",
+      "required": [
+        "messageID",
+        "authType",
+        "networkID"
+      ],
+      "properties": {
+        "messageID": {
+          "type": "string",
+          "format": "uuid",
+          "description": "ID of the message"
+        },
+        "authType": {
+          "type": "string",
+          "description": "The type of authentication related operation this message is for",
+          "const": "status"
+        },
+        "networkID": {
+          "type": "string",
+          "format": "uuid",
+          "description": "ID of the network in the request"
+        },
+        "status": {
+          "$ref": "../enums/network_auth_message_status.json"
+        }
+      }
+    },
+    "timestamp": {
+      "type": "integer",
+      "description": "Timestamp in epoch time"
+    }
+  }
+}

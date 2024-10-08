@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "title": "Record Data Query",
+  "description": "A message to query the node for record level data.",
+  "required": [
+    "messageType",
+    "messageAttributes",
+    "messageData",
+    "timestamp"
+  ],
+  "properties": {
+    "messageType": {
+      "type": "string",
+      "description": "The type of message",
+      "const": "dataMessage"
+    },
+    "messageAttributes": {
+      "type": "object",
+      "description": "Information related to the message",
+      "required": [
+        "messageID",
+        "networkID",
+        "nodeID",
+        "dataType",
+        "shouldRelay",
+        "userID"
+      ],
+      "properties": {
+        "messageID": {
+          "type": "string",
+          "format": "uuid",
+          "description": "ID of the message"
+        },
+        "networkID": {
+          "type": "string",
+          "format": "uuid",
+          "description": "ID of the network in the request"
+        },
+        "nodeID": {
+          "type": "string",
+          "format": "uuid",
+          "description": "ID of the node leaving the network"
+        },
+        "dataType": {
+          "type": "string",
+          "description": "Type of data being requested",
+          "const": "recordQuery"
+        },
+        "shouldRelay": {
+          "type": "boolean",
+          "description": "Whether the message should be relayed to its destination if the direct delivery fails",
+          "default": false
+        },
+        "userID": {
+          "type": "string",
+          "format": "uuid",
+          "description": "ID of the user making the request"
+        }
+      }
+    },
+    "messageData": {
+      "$ref": "./query_builder.json"
+    },
+    "timestamp": {
+      "type": "integer",
+      "description": "Timestamp in epoch time"
+    }
+  }
+}

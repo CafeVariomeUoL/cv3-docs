@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "title": "Auth Leave",
+  "description": "A message to notify the network of a node leaving.",
+  "required": [
+    "messageType",
+    "messageAttributes",
+    "timestamp"
+  ],
+  "properties": {
+    "messageType": {
+      "type": "string",
+      "description": "The type of message",
+      "const": "authMessage"
+    },
+    "messageAttributes": {
+      "type": "object",
+      "description": "Information related to the message",
+      "required": [
+        "messageID",
+        "authType",
+        "networkID"
+      ],
+      "properties": {
+        "messageID": {
+          "type": "string",
+          "format": "uuid",
+          "description": "ID of the message"
+        },
+        "authType": {
+          "type": "string",
+          "description": "The type of authentication related operation this message is for",
+          "const": "leave"
+        },
+        "networkID": {
+          "type": "string",
+          "format": "uuid",
+          "description": "ID of the network in the request"
+        },
+        "nodeID": {
+          "type": "string",
+          "format": "uuid",
+          "description": "ID of the node leaving the network"
+        }
+      }
+    },
+    "timestamp": {
+      "type": "integer",
+      "description": "Timestamp in epoch time"
+    }
+  }
+}

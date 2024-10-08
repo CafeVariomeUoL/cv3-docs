@@ -1,0 +1,32 @@
+{
+  "get": {
+    "summary": "Get a record query",
+    "tags": [
+      "Record"
+    ],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "../components/schemas/record_data_query.json"
+            }
+          }
+        }
+      }
+    },
+    "description": "Get a previously sent record level query by its ID.",
+    "operationId": "recordQueryGetByID",
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ]
+  },
+  "parameters": [
+    {
+      "$ref": "../components/parameters/query_id.json"
+    }
+  ]
+}

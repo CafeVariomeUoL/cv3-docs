@@ -1,0 +1,45 @@
+{
+  "get": {
+    "summary": "Get all record queries",
+    "tags": [
+      "Record"
+    ],
+    "security": [
+      {
+        "userAccessToken": []
+      }
+    ],
+    "operationId": "recordHistory",
+    "description": "Get all record queries that the user has access to. For a regular user, this would be all queries he sent in a data retention period; for an admin, this will be all queries.",
+    "responses": {
+      "200": {
+        "description": "List of record queries and their responses",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "query": {
+                    "$ref": "../components/schemas/record_data_query.json"
+                  },
+                  "responses": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "../components/schemas/record_data_response.json"
+                    }
+                  }
+                },
+                "required": [
+                  "query",
+                  "responses"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

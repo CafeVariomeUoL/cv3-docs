@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "title": "Network Auth Message",
+  "description": "A message to handle authentication related operations in the discovery network.",
+  "oneOf": [
+    {
+      "$ref": "./auth_request_invite.json"
+    },
+    {
+      "$ref": "./auth_response.json"
+    },
+    {
+      "$ref": "./auth_join.json"
+    },
+    {
+      "$ref": "./auth_leave.json"
+    },
+    {
+      "$ref": "./auth_status.json"
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "get": {
+    "summary": "Get a record query history",
+    "tags": [
+      "Record"
+    ],
+    "responses": {
+      "200": {
+        "description": "Success",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "query": {
+                  "$ref": "../components/schemas/record_data_query.json"
+                },
+                "responses": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "../components/schemas/record_data_response.json"
+                  }
+                }
+              },
+              "required": [
+                "query",
+                "responses"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "description": "Get a previously sent record level query and its responses by its ID.",
+    "operationId": "recordHistoryGetByID",
+    "security": [
+      {},
+      {
+        "userAccessToken": []
+      }
+    ]
+  },
+  "parameters": [
+    {
+      "$ref": "../components/parameters/query_id.json"
+    }
+  ]
+}

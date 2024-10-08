@@ -1,7 +1,7 @@
 {
-  "name": "source_id",
+  "name": "query_id",
   "in": "path",
-  "description": "ID of the meta source",
+  "description": "ID of the query to check on",
   "required": true,
   "schema": {
     "type": "string",
