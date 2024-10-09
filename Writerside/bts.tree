@@ -8,4 +8,7 @@
 
     <toc-element topic="biomedical-term-service.md"/>
     <toc-element topic="deploying-bts.md"/>
+    <toc-element topic="bts-data-structure.md">
+        <toc-element topic="term-structure-and-relationships.md"/>
+    </toc-element>
 </instance-profile>

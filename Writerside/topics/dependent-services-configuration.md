@@ -148,7 +148,7 @@ This set up is for a dev server. For production use, you need to use `start` ins
 Cafe Variome V3 requires a service account with sufficient privileges to perform user management and token manipulation operations. These roles are (they may belong to different clients):
 
 - view-users
-- manage-users
+- manage-users (optional if need to create users)
 - read-token
 - manage-account
 - manage-account-links
@@ -163,6 +163,12 @@ If you wish to use the Nexus mode (which manages multiple CV2 instances), you wi
 - manage-clients
 - view-clients
 
+Specifically, for federated authentication, a client role needs to be created with audience mappers to all clients that needs to use this feature. The role is then to be assigned to these clients as default client role. This allows their access token contains the others as audience. An example is:
+
+![keycloak-audience-client-role.png](../images/keycloak-audience-client-role.png)
+
+The two clients are the ones assumed that will be used for federated authentication.
+
 To set up the credentials in KeyCloak 21+, follow the steps below:
 
 <procedure title="Create credentials in KeyCloak 21+">
@@ -172,8 +178,18 @@ To set up the credentials in KeyCloak 21+, follow the steps below:
    <step>Click <code>Create client</code> button to create a new client.</step>
    <step>Set the client type to <code>Service account</code>, and the client ID, client name, description to something you wish to use. Click <code>Save</code> to save the client.</step>
    <step>In Capability config, enable <code>Client authentication</code>, <code>Standard flow</code> and <code>Service accounts roles</code>. For security purpose, it's recommended to disable <code>Direct access grants</code> and any other flow you do not use. Click <code>Next</code> to go to login settings.</step>
-   <step>In Login settings, set all the URL to the URL you plan to host the service. For front end related URL, refer to the <a href="deploying-frontend.md">Frontend Installation</a> document. Click <code>Save</code> to save the client.</step>
+   <step>In Login settings, set all the URL to the URL you plan to host the service. Assume the domain to host the service is at <code>https://cv3.cafevariome.org</code>, the valid redirect URLs would be:
+   <list>
+      <li><code>https://cv3.cafevariome.org/callback.html</code></li>
+      <li><code>https://cv3.cafevariome.org/callback-silent.html</code></li>
+      <li><code>https://cv3.cafevariome.org/discover/callback.html</code></li>
+      <li><code>https://cv3.cafevariome.org/discover/callback-silent.html</code></li>
+      <li><code>https://cv3.cafevariome.org/meta-discover/callback.html</code></li>
+      <li><code>https://cv3.cafevariome.org/meta-discover/callback-silent.html</code></li>
+   </list>
+   Wildcard may be used to ease the management of all URLs. However, due to the frontend code structure, these will be all the valid redirect URLs. Click <code>Save</code> to save the settings.</step>
    <step>Go to the configuration page for the newly created client, and select <code>Service accounts roles</code> tab. Click <code>Assign role</code> to assign the aforementioned roles to the client.</step>
+   <step>Go to the <code>Client Scopes</code> page and create a new client scope, following instructions in the image above. Assign this role to the client as a default client role.</step>
    <step>Fine tune other settings for this client.</step>
    <p>Then the client should be ready to use by CV3.</p>
 </procedure>
