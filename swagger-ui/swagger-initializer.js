@@ -23,7 +23,7 @@ window.onload = function() {
       },
       {
         "name": "Biomedical Term Service",
-        "url": "https://v3doc.cafevariome.org/openapi/cv3-bts.yaml"
+        "url": "https://v3doc.cafevariome.org/openapi/cv3-bts-bundled.yaml"
       }
     ],
     dom_id: '#swagger-ui',

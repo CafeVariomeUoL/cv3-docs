@@ -41,6 +41,9 @@ jobs:
       - name: Bundle OpenAPI Query spec
         run: redocly bundle Writerside/codeSnippets/openapi/openapi-query.json --output openapi/openapi-query-bundled.yaml
 
+      - name: Bundle OpenAPI BTS spec
+        run: redocly bundle Writerside/codeSnippets/openapi/openapi-bts.json --output openapi/openapi-bts-bundled.yaml
+
       - name: Upload OpenAPI specs to Nexus
         run: |
           curl -u "${{ secrets.NEXUS_USERNAME }}:${{ secrets.NEXUS_PASSWORD }}" --upload-file openapi/openapi-all-bundled.yaml \
@@ -51,5 +54,5 @@ jobs:
           https://artifactory.cafevariome.org/repository/schemas/openapi/cv3-network-bundled.yaml
           curl -u "${{ secrets.NEXUS_USERNAME }}:${{ secrets.NEXUS_PASSWORD }}" --upload-file openapi/openapi-query-bundled.yaml \
           https://artifactory.cafevariome.org/repository/schemas/openapi/cv3-query-bundled.yaml
-          curl -u "${{ secrets.NEXUS_USERNAME }}:${{ secrets.NEXUS_PASSWORD }}" --upload-file Writerside/codeSnippets/openapi/openapi-bts.yaml \
-          https://artifactory.cafevariome.org/repository/schemas/openapi/cv3-bts.yaml
+          curl -u "${{ secrets.NEXUS_USERNAME }}:${{ secrets.NEXUS_PASSWORD }}" --upload-file openapi/openapi-bts-bundled.yaml \
+          https://artifactory.cafevariome.org/repository/schemas/openapi/cv3-bts-bundled.yaml
