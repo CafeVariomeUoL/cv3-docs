@@ -4,14 +4,14 @@
   "title": "Beacon Endpoint",
   "description": "A beacon endpoint configuration for querying a network with BEACON request",
   "properties": {
-    "endpointID": {
+    "endpointId": {
       "type": "string",
       "format": "uuid"
     },
     "endpointPath": {
       "type": "string"
     },
-    "networkID": {
+    "networkId": {
       "type": "string",
       "format": "uuid"
     },
@@ -27,9 +27,9 @@
     }
   },
   "required": [
-    "endpointID",
+    "endpointId",
     "endpointPath",
-    "networkID",
+    "networkId",
     "beaconAuthMethod",
     "userMapping"
   ]

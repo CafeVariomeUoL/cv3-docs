@@ -9,13 +9,13 @@
     }
   ],
   "properties": {
-    "subjectIDLocation": {
+    "subjectIdLocation": {
       "type": "string",
       "const": "attributeInFile"
     }
   },
   "required": [
-    "subjectIDLocation"
+    "subjectIdLocation"
   ],
   "unevaluatedProperties": false
 }

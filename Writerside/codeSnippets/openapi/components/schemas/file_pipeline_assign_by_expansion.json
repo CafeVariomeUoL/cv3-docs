@@ -9,7 +9,7 @@
     }
   ],
   "properties": {
-    "subjectIDLocation": {
+    "subjectIdLocation": {
       "type": "string",
       "const": "assignByExtension"
     },
@@ -33,7 +33,7 @@
     }
   },
   "required": [
-    "subjectIDLocation",
+    "subjectIdLocation",
     "columns",
     "expansionPolicy",
     "newAttribute"

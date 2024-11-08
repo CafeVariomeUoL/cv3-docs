@@ -4,13 +4,13 @@
   "title": "Discovery Group",
   "description": "A data model for discovery group, a policy group that controls the user query permission on data sources",
   "required": [
-    "groupID",
+    "groupId",
     "groupName",
-    "networkID",
+    "networkId",
     "discoveryPolicy"
   ],
   "properties": {
-    "groupID": {
+    "groupId": {
       "type": "string",
       "format": "uuid",
       "description": "The UUID of the discovery group"
@@ -19,7 +19,7 @@
       "type": "string",
       "description": "The name of the discovery group"
     },
-    "networkID": {
+    "networkId": {
       "type": "string",
       "description": "The UUID of the network this discovery group is assigned to"
     },

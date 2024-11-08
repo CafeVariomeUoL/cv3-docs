@@ -46,7 +46,7 @@
     "cohortCollectedTypes": {
       "$ref": "./cohort_collected_types.json"
     },
-    "datasetIDs": {
+    "datasetIds": {
       "type": "array",
       "items": {
         "type": "string",

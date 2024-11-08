@@ -19,25 +19,25 @@
       "type": "object",
       "description": "Information related to the message",
       "required": [
-        "messageID",
-        "networkID",
-        "nodeID",
+        "messageId",
+        "networkId",
+        "nodeId",
         "dataType",
         "shouldRelay",
-        "userID"
+        "userId"
       ],
       "properties": {
-        "messageID": {
+        "messageId": {
           "type": "string",
           "format": "uuid",
           "description": "ID of the message"
         },
-        "networkID": {
+        "networkId": {
           "type": "string",
           "format": "uuid",
           "description": "ID of the network in the request"
         },
-        "nodeID": {
+        "nodeId": {
           "type": "string",
           "format": "uuid",
           "description": "ID of the node leaving the network"
@@ -52,7 +52,7 @@
           "description": "Whether the message should be relayed to its destination if the direct delivery fails",
           "default": false
         },
-        "userID": {
+        "userId": {
           "type": "string",
           "format": "uuid",
           "description": "ID of the user making the request"

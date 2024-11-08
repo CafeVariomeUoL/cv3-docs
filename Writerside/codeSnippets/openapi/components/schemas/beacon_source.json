@@ -13,7 +13,7 @@
       "type": "string",
       "const": "beacon"
     },
-    "sourceURL": {
+    "sourceUrl": {
       "type": "string",
       "description": "The base URL of the BEACON service",
       "format": "uri"
@@ -24,7 +24,7 @@
   },
   "required": [
     "sourceType",
-    "sourceURL",
+    "sourceUrl",
     "beaconAuthMethod"
   ],
   "unevaluatedProperties": false

@@ -19,14 +19,14 @@
       "type": "object",
       "description": "Information related to the message",
       "required": [
-        "messageID",
+        "messageId",
         "authType",
-        "networkID",
+        "networkId",
         "status",
         "targetUrl"
       ],
       "properties": {
-        "messageID": {
+        "messageId": {
           "type": "string",
           "format": "uuid",
           "description": "ID of the message"
@@ -39,7 +39,7 @@
             "invite"
           ]
         },
-        "networkID": {
+        "networkId": {
           "type": "string",
           "format": "uuid",
           "description": "ID of the network in the request"

@@ -13,12 +13,12 @@
       "type": "string",
       "const": "molgenis"
     },
-    "sourceURL": {
+    "sourceUrl": {
       "type": "string",
       "format": "uri",
       "description": "The query URL of the source"
     },
-    "indexURL": {
+    "indexUrl": {
       "type": "string",
       "format": "uri",
       "description": "The index URL of the source"
@@ -26,8 +26,8 @@
   },
   "required": [
     "sourceType",
-    "sourceURL",
-    "indexURL"
+    "sourceUrl",
+    "indexUrl"
   ],
   "unevaluatedProperties": false
 }

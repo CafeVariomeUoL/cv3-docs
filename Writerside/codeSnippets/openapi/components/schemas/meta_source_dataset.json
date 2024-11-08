@@ -23,7 +23,7 @@
             "type": "object",
             "description": "The details that describes the dataset itself",
             "properties": {
-              "versionID": {
+              "versionId": {
                 "type": "string",
                 "description": "A unique ID of this dataset version",
                 "format": "uuid"
@@ -49,7 +49,7 @@
                 "description": "The date the dataset was last updated",
                 "format": "date"
               },
-              "connectionID": {
+              "connectionId": {
                 "type": "string",
                 "description": "The ID of a data source stored in **THIS** Cafe Variome instance. This allowing connecting a record level source to a metadata entry",
                 "format": "uuid"

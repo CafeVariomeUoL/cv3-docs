@@ -18,12 +18,12 @@
       "type": "object",
       "description": "Information related to the message",
       "required": [
-        "messageID",
+        "messageId",
         "authType",
-        "networkID"
+        "networkId"
       ],
       "properties": {
-        "messageID": {
+        "messageId": {
           "type": "string",
           "format": "uuid",
           "description": "ID of the message"
@@ -33,12 +33,12 @@
           "description": "The type of authentication related operation this message is for",
           "const": "leave"
         },
-        "networkID": {
+        "networkId": {
           "type": "string",
           "format": "uuid",
           "description": "ID of the network in the request"
         },
-        "nodeID": {
+        "nodeId": {
           "type": "string",
           "format": "uuid",
           "description": "ID of the node leaving the network"

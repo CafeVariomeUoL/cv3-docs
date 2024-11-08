@@ -3,7 +3,7 @@
   "title": "Meta Sources Shared Properties",
   "type": "object",
   "properties": {
-    "sourceID": {
+    "sourceId": {
       "type": "string",
       "format": "uuid"
     },
@@ -13,7 +13,7 @@
     "publisher": {
       "$ref": "./publisher.json"
     },
-    "resourceURLs": {
+    "resourceUrls": {
       "type": "array",
       "items": {
         "type": "string",
@@ -55,12 +55,12 @@
     }
   },
   "required": [
-    "sourceID",
+    "sourceId",
     "sourceName",
     "publisher",
     "description",
     "releaseLicense",
     "language",
-    "connectionID"
+    "connectionId"
   ]
 }

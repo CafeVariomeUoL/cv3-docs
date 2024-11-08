@@ -34,7 +34,7 @@
           "description": "The date the data collection was last updated",
           "format": "date"
         },
-        "connectionID": {
+        "connectionId": {
           "type": "string",
           "description": "The ID of a data source stored in **THIS** Cafe Variome instance. This allowing connecting a record level source to a metadata entry",
           "format": "uuid"

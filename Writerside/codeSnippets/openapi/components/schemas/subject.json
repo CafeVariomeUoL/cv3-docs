@@ -3,7 +3,7 @@
   "type": "object",
   "title": "Record Subject",
   "properties": {
-    "subjectID": {
+    "subjectId": {
       "type": "string",
       "description": "Unique ID of the subject within the database.",
       "format": "uuid"
@@ -23,6 +23,6 @@
     }
   },
   "required": [
-    "subjectID"
+    "subjectId"
   ]
 }

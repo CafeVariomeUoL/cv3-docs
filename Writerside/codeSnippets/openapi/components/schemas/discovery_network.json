@@ -4,15 +4,15 @@
   "title": "Discovery Network",
   "description": "A discovery network is a logical network that is designed for decentralised discovery.",
   "required": [
-    "networkID",
+    "networkId",
     "networkName",
     "description",
-    "nodeIDs",
+    "nodeIds",
     "visible",
-    "instanceID"
+    "instanceId"
   ],
   "properties": {
-    "networkID": {
+    "networkId": {
       "type": "string",
       "format": "uuid",
       "description": "UUID of the network"
@@ -25,7 +25,7 @@
       "type": "string",
       "description": "Description of the network"
     },
-    "nodeIDs": {
+    "nodeIds": {
       "type": "array",
       "description": "UUIDs of the nodes that are in this network, either approved or pending",
       "items": {
@@ -37,7 +37,7 @@
       "type": "boolean",
       "description": "Whether the network is visible for the others to join from this instance"
     },
-    "instanceID": {
+    "instanceId": {
       "type": "string",
       "format": "uuid",
       "description": "UUID of this node itself in this network"

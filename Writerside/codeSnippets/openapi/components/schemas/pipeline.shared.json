@@ -4,11 +4,11 @@
   "type": "object",
   "description": "Shared properties of a data processing pipeline",
   "required": [
-    "pipelineID",
+    "pipelineId",
     "pipelineName"
   ],
   "properties": {
-    "pipelineID": {
+    "pipelineId": {
       "type": "string",
       "format": "uuid",
       "description": "The UUID of the pipeline"

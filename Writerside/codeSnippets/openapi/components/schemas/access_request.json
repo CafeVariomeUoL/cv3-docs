@@ -3,7 +3,7 @@
   "type": "object",
   "title": "Access Request",
   "required": [
-    "requestID",
+    "requestId",
     "firstName",
     "lastName",
     "email",
@@ -11,7 +11,7 @@
     "justification"
   ],
   "properties": {
-    "requestID": {
+    "requestId": {
       "type": "string",
       "format": "uuid",
       "description": "UUID of the access request",

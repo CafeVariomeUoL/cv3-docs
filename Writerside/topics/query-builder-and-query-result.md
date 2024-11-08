@@ -166,11 +166,11 @@ If a filter is provided, however, the data is completely not present within the 
 ```json
 [
   {
-    "subjectID": "_",
+    "subjectId": "_",
     "HPO": ["0000001", "0000002"]
   },
   {
-    "subjectID": "_"
+    "subjectId": "_"
   }
 ]
 ```

@@ -52,7 +52,7 @@ These are the fields that are present in all types of meta-sources.
             <li>dataCollection</li>
         </list>
     </def>
-    <def title="resourceURLs">
+    <def title="resourceUrls">
         <code>array[string]</code> <code>optional</code> Full URI format with schema.
     </def>
     <def title="publisher">
@@ -191,7 +191,7 @@ These are the fields specific to the cohort type.
             </def>
         </deflist>
     </def>
-    <def title="datasetIDs">
+    <def title="datasetIds">
         <code>array[string]</code> <code>optional</code> UUID format. Datasets must be either present in the same file or already uploaded to the system.
     </def>
 </deflist>
@@ -208,7 +208,7 @@ These are the fields specific to the dataset type.
             <def title="datasetDetails">
                 <code>object</code> Nested JSON object.
                 <deflist collapsible="true">
-                    <def title="versionID">
+                    <def title="versionId">
                         <code>string</code> <code>optional</code> Valid UUID 4 string. If omitted, a UUID will be automatically assigned.
                     </def>
                     <def title="versionCode">

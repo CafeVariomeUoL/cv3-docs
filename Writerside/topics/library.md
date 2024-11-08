@@ -13,7 +13,7 @@
     "name": "John Doe",
     "contactEmail": "john@example.com"
   },
-  "resourceURLs": [
+  "resourceUrls": [
     "https://www.example.com"
   ]
 }
@@ -26,7 +26,7 @@
 
 <code-block lang="json" collapsible="true" collapsed-title="MetaSource.maximum.json">
 {
-  "sourceID": "8df136d8-7fb0-4bec-a72a-5deed972bbb6",
+  "sourceId": "8df136d8-7fb0-4bec-a72a-5deed972bbb6",
   "sourceName": "A maximum custom source",
   "sourceType": "custom",
   "publisher": {
@@ -37,7 +37,7 @@
     "url": "https://www.le.ac.uk",
     "location": "Leicester, UK, Europe"
   },
-  "resourceURLs": ["https://www.example.com"],
+  "resourceUrls": ["https://www.example.com"],
   "description": "This is a maximum example of a custom source",
   "themes": [
     "https://example.com/theme1",
@@ -45,7 +45,7 @@
   ],
   "releaseLicense": "https://opensource.org/licenses/MIT",
   "language": "en",
-  "connectionID": "b1120b19-e631-46ad-915c-c964c8a278a2",
+  "connectionId": "b1120b19-e631-46ad-915c-c964c8a278a2",
   "customFields": {
     "Some custom field": "Some value",
     "Another custom field": [
@@ -70,7 +70,7 @@
     "name": "John Doe",
     "contactEmail": "john@example.com"
   },
-  "resourceURLs": ["https://www.example.com"],
+  "resourceUrls": ["https://www.example.com"],
   "cohortDetails": {
     "siteType": "singleSite",
     "country": "UK",
@@ -86,7 +86,7 @@
 
 <code-block lang="json" collapsible="true" collapsed-title="MetaSourceCohort.maximum.json">
 {
-  "sourceID": "a6e001cb-bb60-48b9-a47a-3dccee13c085",
+  "sourceId": "a6e001cb-bb60-48b9-a47a-3dccee13c085",
   "sourceName": "A maximum cohort",
   "sourceType": "cohort",
   "publisher": {
@@ -97,7 +97,7 @@
     "url": "https://www.le.ac.uk",
     "location": "Leicester, UK, Europe"
   },
-  "resourceURLs": ["https://www.example.com"],
+  "resourceUrls": ["https://www.example.com"],
   "description": "This is a maximum example of a cohort",
   "releaseLicense": "https://opensource.org/licenses/MIT",
   "language": "en",
@@ -136,8 +136,8 @@
       "crossSectional"
     ]
   },
-  "connectionID": "6c3968af-3d29-4f81-8747-b2337c1cc01b",
-  "datasetIDs": [
+  "connectionId": "6c3968af-3d29-4f81-8747-b2337c1cc01b",
+  "datasetIds": [
     "adbec8c2-9460-4814-9574-06a0dfe2efb5"
   ],
   "customFields": {
@@ -164,7 +164,7 @@
     "name": "John Doe",
     "contactEmail": "john@example.com"
   },
-  "resourceURLs": ["https://www.example.com"],
+  "resourceUrls": ["https://www.example.com"],
   "datasetVersions": [
     {
       "datasetDetails": {
@@ -185,7 +185,7 @@
 
 <code-block lang="json" collapsible="true" collapsed-title="MetaSourceDataset.maximum.json">
 {
-  "sourceID": "adbec8c2-9460-4814-9574-06a0dfe2efb5",
+  "sourceId": "adbec8c2-9460-4814-9574-06a0dfe2efb5",
   "sourceName": "A maximum dataset",
   "sourceType": "dataset",
   "publisher": {
@@ -196,7 +196,7 @@
     "url": "https://www.le.ac.uk",
     "location": "Leicester, UK, Europe"
   },
-  "resourceURLs": ["https://www.example.com"],
+  "resourceUrls": ["https://www.example.com"],
   "description": "This is a maximum example of a custom source",
   "themes": [
     "https://example.com/theme1",
@@ -205,7 +205,7 @@
   "datasetVersions": [
     {
       "datasetDetails": {
-        "versionID": "1b71b513-33be-45ee-b6e9-a24b2bc9dc05",
+        "versionId": "1b71b513-33be-45ee-b6e9-a24b2bc9dc05",
         "versionName": "v1.0.0",
         "keywords": [
           "keyword1",
@@ -255,7 +255,7 @@
     },
     {
       "datasetDetails": {
-        "versionID": "4114682d-73f5-45eb-9b7c-023e18cd12c9",
+        "versionId": "4114682d-73f5-45eb-9b7c-023e18cd12c9",
         "versionName": "v2.0.0",
         "keywords": [
           "keyword3",
@@ -313,7 +313,7 @@
   ],
   "releaseLicense": "https://opensource.org/licenses/MIT",
   "language": "en",
-  "connectionID": "ac743200-c8ff-485e-a82d-45d0e636f862",
+  "connectionId": "ac743200-c8ff-485e-a82d-45d0e636f862",
   "customFields": {
     "Some custom field": "Some value",
     "Another custom field": [
@@ -338,7 +338,7 @@
     "name": "John Doe",
     "contactEmail": "john@example.com"
   },
-  "resourceURLs": ["https://www.example.com"],
+  "resourceUrls": ["https://www.example.com"],
   "dataCollectionContent": {
     "numberOfSubjects": 100
   }
@@ -352,7 +352,7 @@
 
 <code-block lang="json" collapsible="true" collapsed-title="MetaSourceDataCollection.maximum.json">
 {
-  "sourceID": "adbec8c2-9460-4814-9574-06a0dfe2efb5",
+  "sourceId": "adbec8c2-9460-4814-9574-06a0dfe2efb5",
   "sourceName": "A maximum dataset",
   "sourceType": "dataset",
   "publisher": {
@@ -363,7 +363,7 @@
     "url": "https://www.le.ac.uk",
     "location": "Leicester, UK, Europe"
   },
-  "resourceURLs": ["https://www.example.com"],
+  "resourceUrls": ["https://www.example.com"],
   "description": "This is a maximum example of a custom source",
   "themes": [
     "https://example.com/theme1",
@@ -417,7 +417,7 @@
   },
   "releaseLicense": "https://opensource.org/licenses/MIT",
   "language": "en",
-  "connectionID": "ac743200-c8ff-485e-a82d-45d0e636f862",
+  "connectionId": "ac743200-c8ff-485e-a82d-45d0e636f862",
   "customFields": {
     "Some custom field": "Some value",
     "Another custom field": [

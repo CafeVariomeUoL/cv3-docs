@@ -17,7 +17,7 @@
           "schema": {
             "type": "object",
             "properties": {
-              "baseURL": {
+              "baseUrl": {
                 "type": "string",
                 "format": "uri",
                 "description": "The base URL of the node to invite"

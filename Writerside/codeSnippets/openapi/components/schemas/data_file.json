@@ -4,14 +4,14 @@
   "title": "Data file",
   "description": "A data structure for a data file, uploaded and ready for processing",
   "required": [
-    "dataFileID",
+    "dataFileId",
     "filename",
     "fileFormat",
     "isProcessed",
-    "sourceID"
+    "sourceId"
   ],
   "properties": {
-    "dataFileID": {
+    "dataFileId": {
       "type": "string",
       "format": "uuid"
     },
@@ -25,7 +25,7 @@
       "type": "boolean",
       "default": false
     },
-    "sourceID": {
+    "sourceId": {
       "type": "string",
       "format": "uuid"
     }

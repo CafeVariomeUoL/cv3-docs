@@ -5,7 +5,7 @@
   "description": "A representation of a user in system",
   "examples": [
     {
-      "userID": "2c3821b8-1cdb-4b77-bcd8-a1da701e46aa",
+      "userId": "2c3821b8-1cdb-4b77-bcd8-a1da701e46aa",
       "email": "john@example.com",
       "username": "johndoe",
       "firstName": "John",
@@ -18,7 +18,7 @@
     }
   ],
   "required": [
-    "userID",
+    "userId",
     "email",
     "username",
     "firstName",
@@ -30,7 +30,7 @@
     "budget"
   ],
   "properties": {
-    "userID": {
+    "userId": {
       "type": "string",
       "format": "uuid",
       "example": "2c3821b8-1cdb-4b77-bcd8-a1da701e46aa"

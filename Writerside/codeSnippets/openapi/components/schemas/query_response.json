@@ -3,7 +3,7 @@
   "type": "object",
   "title": "Record Query Response",
   "properties": {
-    "sourceID": {
+    "sourceId": {
       "type": "string",
       "description": "The ID of the data source responding to the query.",
       "format": "uuid"
@@ -21,7 +21,7 @@
       "description": "The email address of the owner of the data source responding to the query.",
       "format": "email"
     },
-    "sourceURL": {
+    "sourceUrl": {
       "type": "string",
       "description": "The URL of the data source responding to the query.",
       "format": "uri"
@@ -67,7 +67,7 @@
     }
   },
   "required": [
-    "sourceID",
+    "sourceId",
     "sourceName"
   ]
 }

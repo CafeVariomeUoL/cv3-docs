@@ -4,7 +4,7 @@
   "title": "Source Shared",
   "description": "Shared properties of record source models.",
   "required": [
-    "sourceID",
+    "sourceId",
     "sourceName",
     "displayName",
     "sourceDescription",
@@ -13,7 +13,7 @@
     "online"
   ],
   "properties": {
-    "sourceID": {
+    "sourceId": {
       "type": "string",
       "format": "uuid",
       "description": "The UUID of the source"

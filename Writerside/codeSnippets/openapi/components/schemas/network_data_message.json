@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "title": "Network Data Message",
+  "description": "A message to request or transmit data within the network.",
+  "oneOf": [
+    {
+      "$ref": "./record_data_query.json"
+    }
+  ]
+}

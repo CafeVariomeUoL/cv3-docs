@@ -13,7 +13,7 @@
       "type": "string",
       "const": "catalog"
     },
-    "datasetIDs": {
+    "datasetIds": {
       "type": "array",
       "items": {
         "type": "string",

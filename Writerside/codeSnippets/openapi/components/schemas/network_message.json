@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "title": "Network Message",
+  "description": "Message that are sent within the discovery network, carrying information for either network operations or the data request/response.",
+  "oneOf": [
+    {
+      "$ref": "./network_auth_message.json"
+    },
+    {
+      "$ref": "./network_data_message.json"
+    }
+  ]
+}

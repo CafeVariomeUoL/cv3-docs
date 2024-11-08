@@ -8,7 +8,7 @@ Each subject is stored as an item within a specific collection belonging to a so
 
 ```json
 {
-    "subjectID": "string",
+    "subjectId": "string",
     "HPO": [
         "0000002",
         "0000003",
@@ -48,7 +48,7 @@ Each subject is stored as an item within a specific collection belonging to a so
 
 In the example:
 
-- `subjectID` is a unique identifier for the subject. If the original data source does not provide a unique identifier, Cafe Variome will generate one with UUID4 format. If the original data contains an ID and Cafe Variome is instructed to use it, it will not change anything. The ID should remain constant for the same subject within the same source, even across data updates, to allow correct association with other data.
+- `subjectId` is a unique identifier for the subject. If the original data source does not provide a unique identifier, Cafe Variome will generate one with UUID4 format. If the original data contains an ID and Cafe Variome is instructed to use it, it will not change anything. The ID should remain constant for the same subject within the same source, even across data updates, to allow correct association with other data.
 - `HPO` is an array of strings, containing the ID part (with no `HPO:` or similar prefixes) of Human Phenotype Ontology terms. It's kept as a string with front-padded zeros, as the HPO terms standard structure. It may also contain a dictionary, where the key is a descriptive term, and the value being the actual value of the attribute (could be a term, boolean, number, or anything).
 - `ORDO` is an array of strings, containing the ID part (with no `ORDO:` or similar prefixes) of Orphanet Rare Disease Ontology terms. Similar to HPO terms, it's the part taken from ORDO IDs directly, without the prefix.
 - `SNOMED` is an array of strings, containing the SNOMED CT term IDs. It may also contain a dictionary, where the key is a descriptive term, and the value being the actual value of the attribute (could be a term, boolean, number, or anything).

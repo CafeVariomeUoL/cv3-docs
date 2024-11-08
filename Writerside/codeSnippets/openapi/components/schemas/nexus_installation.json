@@ -5,8 +5,8 @@
   "required": [
     "installationKey",
     "installationName",
-    "baseURL",
-    "clientID",
+    "baseUrl",
+    "clientId",
     "installationStatus"
   ],
   "properties": {
@@ -16,10 +16,10 @@
     "installationName": {
       "type": "string"
     },
-    "baseURL": {
+    "baseUrl": {
       "type": "string"
     },
-    "clientID": {
+    "clientId": {
       "type": "string"
     },
     "installationStatus": {

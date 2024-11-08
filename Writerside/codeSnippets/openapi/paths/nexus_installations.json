@@ -42,14 +42,14 @@
             "type": "object",
             "required": [
               "installationName",
-              "baseURL",
+              "baseUrl",
               "email"
             ],
             "properties": {
               "installationName": {
                 "type": "string"
               },
-              "baseURL": {
+              "baseUrl": {
                 "type": "string"
               },
               "email": {
