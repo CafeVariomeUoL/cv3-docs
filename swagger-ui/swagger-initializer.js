@@ -20,6 +20,10 @@ window.onload = function() {
       {
         "name": "Query API",
         "url": "https://v3doc.cafevariome.org/openapi/cv3-query-bundled.yaml"
+      },
+      {
+        "name": "Biomedical Term Service",
+        "url": "https://v3doc.cafevariome.org/openapi/cv3-bts.yaml"
       }
     ],
     dom_id: '#swagger-ui',

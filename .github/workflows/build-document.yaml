@@ -188,6 +188,7 @@ jobs:
           curl -o dir/openapi/cv3-admin-bundled.yaml https://artifactory.cafevariome.org/repository/schemas/openapi/cv3-admin-bundled.yaml
           curl -o dir/openapi/cv3-network-bundled.yaml https://artifactory.cafevariome.org/repository/schemas/openapi/cv3-network-bundled.yaml
           curl -o dir/openapi/cv3-query-bundled.yaml https://artifactory.cafevariome.org/repository/schemas/openapi/cv3-query-bundled.yaml
+          curl -o dir/openapi/cv3-bts.yaml https://artifactory.cafevariome.org/repository/schemas/openapi/cv3-bts.yaml
 
       - name: Setup Pages
         uses: actions/configure-pages@v4

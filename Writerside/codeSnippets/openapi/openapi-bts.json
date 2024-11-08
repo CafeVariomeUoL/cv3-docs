@@ -1,0 +1,999 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Cafe Variome Biomedical Terminology Service",
+    "version": "1.0",
+    "description": "This is the API for Cafe Variome Biomedical Terminology Service. It provides auto-completion, semantic similarity search and ontology tree expansion for biomedical terms.",
+    "license": {
+      "name": "MIT",
+      "url": "https://github.com/CafeVariomeUoL/cv3-bioterm/blob/main/license.txt"
+    },
+    "contact": {
+      "email": "brookeslab@leicester.ac.uk",
+      "name": "Brookes Lab, University of Leicester"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://similarity.cafevariome.org",
+      "description": "Production server"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Similarity",
+      "description": "These endpoints returns a series of terms that has enough similarity to the query terms, as HPO terms."
+    },
+    {
+      "name": "Expansion",
+      "description": "These endpoints traverse the ontology tree of the given type, returning all children of the given terms."
+    },
+    {
+      "name": "Mapping",
+      "description": "These endpoints map the terms from one set to another."
+    },
+    {
+      "name": "Auto-Completion",
+      "description": "These endpoints provide auto-completion for the given query."
+    },
+    {
+      "name": "Metrics",
+      "description": "These endpoints exposes metrics for the service."
+    }
+  ],
+  "paths": {
+    "/{term_type}/auto-complete/v1/query/{query}": {
+      "get": {
+        "tags": [
+          "Auto-Completion"
+        ],
+        "summary": "Auto complete a term (V1)",
+        "operationId": "autoCompleteV1",
+        "description": "With a given string, try to find all terms of a type that contains the given string in ID, name, label, definition or synonyms. This is a legacy API, added mainly for Cafe Variome V2, and should not be used in favor of the V2 API of this endpoint.",
+        "responses": {
+          "200": {
+            "description": "A list of terms that contains the query string",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/autoCompleteV1"
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/termType"
+        },
+        {
+          "name": "query",
+          "in": "path",
+          "description": "The query string to search for.",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "example": "pheno"
+        }
+      ]
+    },
+    "/{term_type}/auto-complete/v2": {
+      "get": {
+        "tags": [
+          "Auto-Completion"
+        ],
+        "summary": "Auto complete a term (V2)",
+        "operationId": "autoCompleteV2",
+        "description": "With a given string, try to find all terms of a type that contains the given string in ID, name, label, definition or synonyms.",
+        "responses": {
+          "200": {
+            "description": "A list of terms that contains the query string",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/autoCompleteV2"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "description": "The query string to search for.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "pheno"
+          },
+          {
+            "name": "with_definition",
+            "in": "query",
+            "description": "Whether to include definition in the response.",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "$ref": "#/components/parameters/resultThreshold"
+          }
+        ]
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/termType"
+        }
+      ]
+    },
+    "/{term_type}/expand/v1": {
+      "post": {
+        "tags": [
+          "Expansion"
+        ],
+        "summary": "Expand a term (V1)",
+        "operationId": "expandV1",
+        "description": "Expand terms to their children in the ontology tree with a given depth. Since this requires a tree structure, it only accepts ontology terms.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/expansionV1Request"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "A list of JSON objects containing the original term, expanded descendants and requested depth",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/expansionV1Response"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "depth",
+            "in": "query",
+            "description": "The depth of the expansion. 0 for no limit. Setting it too large or with no limit may cause the query to be too slow that the request may be discarded.",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 3
+            }
+          },
+          {
+            "$ref": "#/components/parameters/resultThreshold"
+          }
+        ]
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/termType"
+        }
+      ]
+    },
+    "/metrics": {
+      "get": {
+        "tags": [
+          "Metrics"
+        ],
+        "summary": "Get metrics",
+        "operationId": "metricsGet",
+        "description": "Prometheus metrics for the service",
+        "responses": {
+          "200": {
+            "description": "Metrics",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "parameters": {
+      "termType": {
+        "name": "term_type",
+        "in": "path",
+        "description": "The type of the term to query",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "hgnc",
+            "hpo",
+            "ncit",
+            "omim",
+            "ordo",
+            "reactome",
+            "snomed"
+          ]
+        }
+      },
+      "resultThreshold": {
+        "name": "result_threshold",
+        "in": "query",
+        "description": "The maximum number of terms to return in the response. 0 for no limit.",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "default": 0
+        }
+      }
+    },
+    "schemas": {
+      "autoCompleteV1": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "description": "A term that contains the query string, assembled into a string"
+        },
+        "example": [
+          "HP:0000118 (Phenotypic abnormality)",
+          "HP:0003812 (Phenotypic variability)",
+          "HP:0005531 (Biphenotypic acute leukemia)",
+          "HP:6000768 (Echophenomenon)",
+          "HP:0030824 (Mizuo phenomenon)",
+          "HP:0034852 (Fetal phenobarbital exposure)",
+          "HP:0030880 (Raynaud phenomenon)",
+          "HP:6000933 (Koebner Phenomenon)",
+          "HP:0011834 (Moyamoya phenomenon)",
+          "HP:6001103 (Entoptic phenomenon)",
+          "HP:0025531 (Harlequin phenomenon)",
+          "HP:0032506 (Alien limb phenomenon)",
+          "HP:0020228 (Biospecimen phenotypic feature)",
+          "HP:6000709 (Absent Bell phenomenon)",
+          "HP:0034110 (Anti-Gerbich phenotype 1 antibody positivity)",
+          "HP:0012470 (Setting-sun eye phenomenon)",
+          "HP:0025354 (Abnormal cellular phenotype)",
+          "HP:0034299 (Sertoli cell-only phenotype)",
+          "HP:0430022 (Abnormality of the sphenoid sinus)",
+          "HP:0025783 (Diagnostic behavioral phenotype)",
+          "HP:0003740 (Myotonia with warm-up phenomenon)",
+          "HP:0011159 (Focal autonomic seizure with epigastric sensation/nausea/vomiting/other gastrointestinal phenomena)",
+          "HP:0032785 (Focal aware autonomic seizure with epigastric sensation/nausea/vomiting/other gastrointestinal phenomena)",
+          "HP:0032778 (Focal impaired awareness autonomic seizure with epigastric sensation/nausea/vomiting/other gastrointestinal phenomena)"
+        ]
+      },
+      "autoCompleteV2": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "termId": {
+              "type": "string",
+              "description": "The ID of the term, with no prefix",
+              "example": "0000118"
+            },
+            "label": {
+              "type": "string",
+              "description": "The label of the term",
+              "example": "Phenotypic abnormality"
+            },
+            "definition": {
+              "type": "string",
+              "description": "The definition of the term",
+              "example": "A phenotypic abnormality."
+            }
+          },
+          "required": [
+            "termId",
+            "label"
+          ]
+        },
+        "example": [
+          {
+            "definition": "A phenotypic abnormality.",
+            "label": "Phenotypic abnormality",
+            "termId": "0000118"
+          },
+          {
+            "definition": "A variability of phenotypic features.",
+            "label": "Phenotypic variability",
+            "termId": "0003812"
+          },
+          {
+            "definition": "A type of actue leukemia with features characteristic of both the myeloid and lymphoid lineages. These leukemias are for this reason are designated mixed-lineage, hybrid or biphenotypic acute leukemias.",
+            "label": "Biphenotypic acute leukemia",
+            "termId": "0005531"
+          },
+          {
+            "definition": "A stimulus triggered repetition of an action (echopraxia) or sound (echolalia) performed without the explicit awareness of an individual.",
+            "label": "Echophenomenon",
+            "termId": "6000768"
+          },
+          {
+            "definition": "Change in the color of the fundus from red in the dark-adapted state to golden immediately or shortly after the onset of the light. The color of the fundus reflex in the light adapted state has also been described as golden-yellow, gray-white, and yellow-white. This reflex can appear either homogeneous or in streaks in the fundus. The retinal vessels appear to be protruding in contrast to the radiant background. Dark adaptation leads to disappearance of the unusual fundus coloration [Digital Journal of Ophthalmology 2008; Volume 14, Number 14].",
+            "label": "Mizuo phenomenon",
+            "termId": "0030824"
+          },
+          {
+            "definition": "A history of exposure during pregnancy of the mother of a fetus or child to phenobarbital.",
+            "label": "Fetal phenobarbital exposure",
+            "termId": "0034852"
+          },
+          {
+            "label": "Raynaud phenomenon",
+            "termId": "0030880"
+          },
+          {
+            "definition": "The appearance of new skin lesions on previously unaffected skin secondary to trauma. This phenomenon is also termed the isomorphic (from Greek, equal shape) response, given the fact that the new lesions that appear are clinically and histologically identical to the patient's underlying cutaneous disease.",
+            "label": "Koebner Phenomenon",
+            "termId": "6000933"
+          },
+          {
+            "definition": "A noninflammatory, progressive occlusion of the intracranial carotid arteries owing to the formation of netlike collateral arteries arising from the circle of Willis.",
+            "label": "Moyamoya phenomenon",
+            "termId": "0011834"
+          },
+          {
+            "definition": "Visual sensations caused by changes within the eye itself, rather than by the normal light stimulation process. Entoptic phenomena are classified in the syndrome as floaters, blue field entoptic phenomenon, photopsia and self-light of the eye.",
+            "label": "Entoptic phenomenon",
+            "termId": "6001103"
+          },
+          {
+            "definition": "The Harlequin phenomenon consists of a sudden change in skin color, resulting in two different body colors, one on each half of the body.",
+            "label": "Harlequin phenomenon",
+            "termId": "0025531"
+          },
+          {
+            "definition": "Alien limb phenomenon refers to involuntary motor activity of a limb in conjunction with the feeling of estrangement from that limb.",
+            "label": "Alien limb phenomenon",
+            "termId": "0032506"
+          },
+          {
+            "definition": "A phenotypic abnormality obvserved in a biospecimen such as a biopsy or an extirpated tumor or tissue.",
+            "label": "Biospecimen phenotypic feature",
+            "termId": "0020228"
+          },
+          {
+            "definition": "The Bell phenomenon is the reflex upward movement of the front of the eyeball when the eyelids close (or blink). It protects the eye by helping to keep the cornea moist. This term refers to a lack of this phenomenon, which can be observed with certain conditions such as congenital fibrosis of the extraocular muscles.",
+            "label": "Absent Bell phenomenon",
+            "termId": "6000709"
+          },
+          {
+            "definition": "The presence of autoantibodies (immunoglobulins) in the blood circulation that react against Ge-1.",
+            "label": "Anti-Gerbich phenotype 1 antibody positivity",
+            "termId": "0034110"
+          },
+          {
+            "definition": "An ophthalmologic sign in young children resulting from upward-gaze paresis. In this condition, the eyes appear driven downward, the sclera may be seen between the upper eyelid and the iris, and part of the lower pupil may be covered by the lower eyelid.",
+            "label": "Setting-sun eye phenomenon",
+            "termId": "0012470"
+          },
+          {
+            "definition": "An anomaly of cellular morphology or physiology.",
+            "label": "Abnormal cellular phenotype",
+            "termId": "0025354"
+          },
+          {
+            "definition": "A histological phenotype observed on testicular biopsy in which only Sertoli cells line the seminiferous tubules of the testis.",
+            "label": "Sertoli cell-only phenotype",
+            "termId": "0034299"
+          },
+          {
+            "definition": "An abnormality of the sphenoid sinus, one of the mucosa-lined, normally air-filled paranasal sinuses of the bones of the skull. The sphenoid sinus is located within the sphenoid bone.",
+            "label": "Abnormality of the sphenoid sinus",
+            "termId": "0430022"
+          },
+          {
+            "definition": "The Human Phenotype Ontology provides terms to describe specific phenotypic abnormalities rather than disease diagnoses. Nevertheless, it is common for descriptions such as 'Autism' to be used to describe individuals affected with Mendelian forms of neurodevelopmental disease and many other conditions. If possible, we recommend annotation using specific terms in other branchs of the Atypical behavior subontology, but if this is not possible, then terms from this branch may be used.",
+            "label": "Diagnostic behavioral phenotype",
+            "termId": "0025783"
+          },
+          {
+            "definition": "Myotonia that occurs after a period of rest and decreases with continuing exercise.",
+            "label": "Myotonia with warm-up phenomenon",
+            "termId": "0003740"
+          },
+          {
+            "definition": "A type of focal autonomic seizure characterized by symptoms or signs pertaining to the gastrointestinal system as the initial semiological feature.",
+            "label": "Focal autonomic seizure with epigastric sensation/nausea/vomiting/other gastrointestinal phenomena",
+            "termId": "0011159"
+          },
+          {
+            "definition": "A focal autonomic seizure with epigastric sensation / nausea / vomiting / other gastrointestinal phenomena characterized by retained awareness throughout the seizure.",
+            "label": "Focal aware autonomic seizure with epigastric sensation/nausea/vomiting/other gastrointestinal phenomena",
+            "termId": "0032785"
+          },
+          {
+            "definition": "A focal autonomic seizure with epigastric sensation / nausea / vomiting / other gastrointestinal phenomena characterized by impaired awareness at some point during the seizure.",
+            "label": "Focal impaired awareness autonomic seizure with epigastric sensation/nausea/vomiting/other gastrointestinal phenomena",
+            "termId": "0032778"
+          }
+        ]
+      },
+      "expansionV1Request": {
+        "type": "object",
+        "properties": {
+          "termIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "description": "The ID of the term, with no prefix",
+              "example": "0000001"
+            }
+          }
+        },
+        "required": [
+          "termIds"
+        ],
+        "example": {
+          "termIds": [
+            "0000001"
+          ]
+        }
+      },
+      "expansionV1Response": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "termId": {
+              "type": "string",
+              "description": "The ID of the original term to expand, with no prefix",
+              "example": "0000001"
+            },
+            "children": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "description": "The IDs of the descendant terms, with no prefix",
+                "example": "0020228"
+              }
+            },
+            "depth": {
+              "type": "integer",
+              "description": "The depth of the expansion",
+              "example": 3
+            }
+          },
+          "required": [
+            "termId",
+            "children",
+            "depth"
+          ]
+        },
+        "example": [
+          {
+            "children": [
+              "0020228",
+              "0012823",
+              "0040279",
+              "0032223",
+              "0032443",
+              "0000005",
+              "0000118",
+              "0003812",
+              "0025285",
+              "0025254",
+              "0031797",
+              "0025204",
+              "0410401",
+              "0025280",
+              "4000042",
+              "0025758",
+              "0012830",
+              "0031375",
+              "0045088",
+              "0025788",
+              "0040409",
+              "0012824",
+              "0020229",
+              "0430091",
+              "0040282",
+              "0040284",
+              "0040283",
+              "0040285",
+              "0040281",
+              "0040280",
+              "0003745",
+              "0034345",
+              "0001426",
+              "0034335",
+              "0032224",
+              "0032373",
+              "4000122",
+              "6000297",
+              "6000094",
+              "0430103",
+              "6001045",
+              "6000311",
+              "6000309",
+              "6000682",
+              "0002686",
+              "6000794",
+              "0032316",
+              "6001089",
+              "4000144",
+              "6000308",
+              "0032467",
+              "4000123",
+              "0040406",
+              "6000181",
+              "4000110",
+              "4000112",
+              "0020121",
+              "6000098",
+              "6000023",
+              "4000129",
+              "6000302",
+              "0033623",
+              "0000598",
+              "0000119",
+              "0001626",
+              "0000818",
+              "0001197",
+              "0002715",
+              "0033127",
+              "0025354",
+              "0001871",
+              "0000769",
+              "0001608",
+              "0025031",
+              "0001507",
+              "0040064",
+              "0000707",
+              "0000152",
+              "0000478",
+              "0001574",
+              "0002086",
+              "0001939",
+              "0045027",
+              "0025142",
+              "0002664",
+              "0025765",
+              "0025761",
+              "0025760",
+              "0025759",
+              "0410008",
+              "0012638",
+              "0012639",
+              "0003549",
+              "0000924",
+              "0011843",
+              "0003011",
+              "0033834",
+              "0012531",
+              "0033695",
+              "0012378",
+              "6000500",
+              "0500001",
+              "0001699",
+              "0100758",
+              "0025144",
+              "0100247",
+              "0100812",
+              "0025143",
+              "0033850",
+              "0031352",
+              "0033675",
+              "0025095",
+              "0031217",
+              "0031058",
+              "0033047",
+              "6000064",
+              "0025406",
+              "0030166",
+              "0003546",
+              "0033665",
+              "6000167",
+              "0032468",
+              "6000054",
+              "6000325",
+              "4000173",
+              "6000840",
+              "0001528",
+              "0001218",
+              "0007289",
+              "0040068",
+              "0041118",
+              "0009815",
+              "0002814",
+              "0009127",
+              "0002817",
+              "0033766",
+              "6000818",
+              "0041117",
+              "4000011",
+              "0033624",
+              "0032370",
+              "0032440",
+              "0032441",
+              "0032442",
+              "0032444",
+              "0040410",
+              "6000294",
+              "6000194",
+              "6000296",
+              "6000227",
+              "6000003",
+              "6000086",
+              "0032557",
+              "0034420",
+              "6000179",
+              "6000096",
+              "0034569",
+              "0034440",
+              "0025255",
+              "6000373",
+              "6000170",
+              "6000068",
+              "6000050",
+              "0025257",
+              "0034516",
+              "4000175",
+              "0034536",
+              "0025256",
+              "0040408",
+              "0034459",
+              "0034759",
+              "0032503",
+              "6000035",
+              "4000174",
+              "0011792",
+              "0011793",
+              "0007379",
+              "0000078",
+              "0000079",
+              "0100589",
+              "0012620",
+              "0032382",
+              "0003743",
+              "0001466",
+              "0034343",
+              "0001470",
+              "0034857",
+              "0003831",
+              "0003829",
+              "0034950",
+              "0034338",
+              "0025352",
+              "0001442",
+              "0032319",
+              "0032318",
+              "0032317",
+              "6000033",
+              "6001092",
+              "6000005",
+              "0034780",
+              "6000055",
+              "6000528",
+              "0035010",
+              "6001106",
+              "6000192",
+              "6001094",
+              "6000041",
+              "0034981",
+              "0034756",
+              "6001066",
+              "4000111",
+              "0430133",
+              "6000636",
+              "6001093",
+              "6000019",
+              "0034632",
+              "4000134",
+              "4000119",
+              "4000118",
+              "6000093",
+              "4000180",
+              "4000135",
+              "4000113",
+              "4000167",
+              "4000115",
+              "4000178",
+              "4000136",
+              "6000949",
+              "4000114",
+              "6000092",
+              "0034634",
+              "4000179",
+              "6000780",
+              "4000137",
+              "4000117",
+              "4000116",
+              "0030917",
+              "0001622",
+              "0033334",
+              "0031169",
+              "6000224",
+              "0001787",
+              "0001194",
+              "0001560",
+              "0034057",
+              "0031550",
+              "0025461",
+              "0011017",
+              "0025281",
+              "6000040",
+              "6000707",
+              "0025282",
+              "6000684",
+              "6000049",
+              "4000182",
+              "6000048",
+              "0025284",
+              "0025283",
+              "0001618",
+              "0001686",
+              "0031801",
+              "0001609",
+              "6001011",
+              "0001621",
+              "0025429",
+              "0100271",
+              "0001611",
+              "0009088",
+              "0003828",
+              "0011138",
+              "3000013",
+              "0000951",
+              "0025276",
+              "0020230",
+              "0020231",
+              "0020233",
+              "0500015",
+              "0011025",
+              "0002597",
+              "0030680",
+              "0025790",
+              "0025789",
+              "0031093",
+              "0031094",
+              "0032374",
+              "0032375",
+              "0100763",
+              "0032251",
+              "0010978",
+              "6000173",
+              "0025315",
+              "6000790",
+              "6001077",
+              "0032500",
+              "0032542",
+              "6000932",
+              "0032534",
+              "6000058",
+              "6001076",
+              "6000014",
+              "6000699",
+              "6000091",
+              "6000042",
+              "4000176",
+              "0025286",
+              "0034802",
+              "0045089",
+              "0045090",
+              "0012827",
+              "0012825",
+              "0012829",
+              "0012826",
+              "0012828",
+              "0000464",
+              "0000234",
+              "0045026",
+              "4000046",
+              "4000047",
+              "4000052",
+              "4000051",
+              "4000048",
+              "4000049",
+              "4000045",
+              "4000043",
+              "4000050",
+              "6000300",
+              "4000053",
+              "4000044",
+              "6000287",
+              "0001892",
+              "0001978",
+              "0005561",
+              "0001928",
+              "0001881",
+              "0001977",
+              "0001872",
+              "0020054",
+              "0033796",
+              "0004377",
+              "0001877",
+              "0031703",
+              "0031704",
+              "0003679",
+              "0040006",
+              "0011008",
+              "0034382",
+              "0003674",
+              "0000819",
+              "0000828",
+              "0003117",
+              "0031072",
+              "0012029",
+              "0012093",
+              "0000873",
+              "0012680",
+              "0000820",
+              "0100568",
+              "0000834",
+              "0008373",
+              "0000864",
+              "0000777",
+              "0000847",
+              "0031071",
+              "4000126",
+              "6001072",
+              "6000162",
+              "6000727",
+              "4000125",
+              "4000172",
+              "6000026",
+              "4000124",
+              "6000953",
+              "0034423",
+              "6000047",
+              "4000121",
+              "0025229",
+              "0025206",
+              "6000180",
+              "0025223",
+              "0025218",
+              "0025221",
+              "0025212",
+              "4000101",
+              "6000683",
+              "6000066",
+              "0025207",
+              "0025215",
+              "0025222",
+              "0025334",
+              "0034826",
+              "0025219",
+              "0033032",
+              "0025226",
+              "0025228",
+              "4000109",
+              "0025227",
+              "0033793",
+              "0025225",
+              "0025220",
+              "0033184",
+              "6001067",
+              "4000120",
+              "0025214",
+              "6000777",
+              "0031135",
+              "0025377",
+              "0430096",
+              "0430102",
+              "0430095",
+              "0430093",
+              "0430094",
+              "0430099",
+              "0430100",
+              "0430097",
+              "0430092",
+              "0430101",
+              "0020295",
+              "0430098",
+              "0020290",
+              "0002795",
+              "0100606",
+              "0011024",
+              "0004298",
+              "0025033",
+              "0004378",
+              "0001438",
+              "0025032",
+              "0002012",
+              "0034930",
+              "6000773",
+              "6000293",
+              "6000260",
+              "6000626",
+              "6000168",
+              "4000146",
+              "6000728",
+              "6000540",
+              "6000304",
+              "6000883",
+              "4000151",
+              "0020139",
+              "6000223",
+              "6000034",
+              "6000935",
+              "4000145",
+              "0034896",
+              "6000774",
+              "6000169",
+              "0020138",
+              "6000706",
+              "6000165",
+              "0011436",
+              "0008072",
+              "6001041",
+              "6000166",
+              "6000104",
+              "0009800",
+              "0100622",
+              "0031437",
+              "0040222",
+              "0012546",
+              "0012188",
+              "0100603",
+              "0011437",
+              "0030244",
+              "0034855",
+              "0031456",
+              "0100610",
+              "6000103",
+              "0034856",
+              "0034778",
+              "0200067",
+              "6000784",
+              "6000164",
+              "6000530",
+              "0012836",
+              "0012831",
+              "0025521",
+              "0033794",
+              "0000002",
+              "0001510",
+              "0004323",
+              "0030853",
+              "0041079",
+              "0100555",
+              "0033795",
+              "0010983",
+              "0010984",
+              "0010982",
+              "0012373",
+              "0012372",
+              "0011034",
+              "0034684",
+              "0020169",
+              "0033331",
+              "0025021",
+              "0025454",
+              "0012337",
+              "0032245",
+              "0031685",
+              "0033012",
+              "0032180",
+              "0003110",
+              "0025456",
+              "0031838",
+              "0430030",
+              "0001946",
+              "0010932",
+              "0032243",
+              "0000007",
+              "0001417",
+              "0001427",
+              "0034339",
+              "0001450",
+              "0032113",
+              "0000006"
+            ],
+            "depth": 3,
+            "termId": "0000001"
+          }
+        ]
+      }
+    }
+  }
+}
