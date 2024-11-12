@@ -60,6 +60,51 @@
                 }
               }
             }
+          },
+          "400": {
+            "description": "Bad request. The query string is too short, or the term type is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "description": "An error message",
+                    "example": "Search term needs at least 2 characters."
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found. The requested term type is valid, but not loaded into the database (by choice of the server admin).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "description": "An error message",
+                    "example": "Requested term type is not loaded."
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "description": "An error message",
+                    "example": "Internal server error."
+                  }
+                }
+              }
+            }
           }
         }
       },
@@ -97,6 +142,15 @@
                 }
               }
             }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
           }
         },
         "parameters": [
@@ -158,6 +212,15 @@
                 }
               }
             }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
           }
         },
         "parameters": [
@@ -179,6 +242,115 @@
       "parameters": [
         {
           "$ref": "#/components/parameters/termType"
+        }
+      ]
+    },
+    "/{term_type}/similarity/v1": {
+      "post": {
+        "tags": [
+          "Similarity"
+        ],
+        "summary": "Get similar terms (V1)",
+        "operationId": "similarityV1",
+        "description": "Get similar terms to the given terms. For details on the semantic similarity calculation, corpus or the algorithm, refer to the documents.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/similarityV1Request"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "A list of terms that are similar to the given terms",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/similarityV1Response"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/resultThreshold"
+          }
+        ]
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/termType"
+        }
+      ]
+    },
+    "/{term_type}/map/v1/{target_type}": {
+      "post": {
+        "tags": [
+          "Mapping"
+        ],
+        "summary": "Map terms to another type (V1)",
+        "operationId": "mapV1",
+        "description": "Map terms to another type. This uses annotation, mapping and other association defined by the publicly available datasets.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/mapV1Request"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "A list of terms that are similar to the given terms",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/mapV1Response"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/resultThreshold"
+          }
+        ]
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/termType"
+        },
+        {
+          "name": "target_type",
+          "in": "path",
+          "description": "The type of the term to map to",
+          "required": true,
+          "schema": {
+            "$ref": "#/components/parameters/termType/schema"
+          }
         }
       ]
     },
@@ -993,6 +1165,428 @@
             "termId": "0000001"
           }
         ]
+      },
+      "similarityV1Request": {
+        "type": "object",
+        "properties": {
+          "termIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "description": "The ID of the term, with no prefix",
+              "example": "0000001"
+            }
+          },
+          "threshold": {
+            "type": "number",
+            "description": "The threshold of the similarity score to return. 0 to return all. Please note that the server may have chosen to store only connections which similarity score are above a certain value. In this case, since the data is not stored, they will not be returned even if the threshold is set to lower.",
+            "example": 0.5,
+            "default": 1.0,
+            "minimum": 0.0,
+            "maximum": 1.0
+          }
+        },
+        "example": {
+          "termIds": [
+            "0000256"
+          ],
+          "threshold": 0.5
+        }
+      },
+      "similarityV1Response": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "termId": {
+              "type": "string",
+              "description": "The ID of the term, with no prefix",
+              "example": "0000001"
+            },
+            "similarIds": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "description": "The IDs of the similar terms, with no prefix",
+                "example": "0000002"
+              }
+            },
+            "similarityThreshold": {
+              "type": "number",
+              "description": "The threshold of the similarity score to return",
+              "example": 0.5
+            },
+            "threshold": {
+              "type": "number",
+              "description": "The maximum number of similar terms to return for one original term ID",
+              "example": 0.5
+            }
+          },
+          "required": [
+            "termId",
+            "similarIds",
+            "similarityThreshold"
+          ]
+        },
+        "example": [
+          {
+            "similarIds": [
+              "0012761",
+              "0005463",
+              "6001069",
+              "6000715",
+              "0005494",
+              "0004443",
+              "0040010",
+              "0004422",
+              "0002703",
+              "0005458",
+              "0010666",
+              "0040011",
+              "0430029",
+              "0010758",
+              "0002684",
+              "0003779",
+              "0000326",
+              "0002677",
+              "0031257",
+              "0010756",
+              "0011325",
+              "6000594",
+              "0000243",
+              "0011821",
+              "0041082",
+              "0030791",
+              "0430012",
+              "0011319",
+              "0430000",
+              "0000256",
+              "0034772",
+              "0010823",
+              "0011322",
+              "0002691",
+              "0430005",
+              "0000930",
+              "6000376",
+              "3000044",
+              "0002737",
+              "0000929",
+              "0004442",
+              "0034261",
+              "6000612",
+              "0002699",
+              "6000483",
+              "0002680",
+              "0011316",
+              "0040196",
+              "0012367",
+              "6000084",
+              "0012802",
+              "0010558",
+              "6000814",
+              "0410219",
+              "0010753",
+              "0011318",
+              "0034271",
+              "0011315",
+              "0000240",
+              "0010724",
+              "0009117",
+              "0007626",
+              "0000262",
+              "6001085",
+              "0004440",
+              "0002696",
+              "0009939",
+              "0034975",
+              "0005476",
+              "6000044",
+              "0010537",
+              "0000277",
+              "0000265",
+              "0000235",
+              "0004488",
+              "0000308",
+              "0005449",
+              "0000347",
+              "0009752",
+              "0005759",
+              "0002693",
+              "0011328",
+              "0004481",
+              "0030716",
+              "0005442",
+              "0004492",
+              "0000932",
+              "0010752",
+              "0009911",
+              "0000268",
+              "0005445",
+              "0430002",
+              "6000307",
+              "0005441",
+              "0010538",
+              "0010559",
+              "0000270",
+              "0008491",
+              "0430013",
+              "0000242",
+              "0000278",
+              "0002697",
+              "0010754",
+              "0011326",
+              "6000595",
+              "0002010",
+              "0000267",
+              "0011327",
+              "0010667",
+              "0032328",
+              "0000236",
+              "0002645",
+              "0012801",
+              "0033011",
+              "0040194",
+              "0040304",
+              "0002682",
+              "0040008",
+              "0009940",
+              "0002678",
+              "0000237",
+              "0001363",
+              "0010757",
+              "0000248",
+              "0010755",
+              "0034974",
+              "0012366",
+              "6000937",
+              "0005498",
+              "0004474",
+              "0001362",
+              "0004482",
+              "0005758",
+              "0030312",
+              "0040263",
+              "0010650",
+              "0004439",
+              "0011815",
+              "0009118",
+              "0005490",
+              "0430003",
+              "0000269",
+              "0041156",
+              "0410218",
+              "6000872",
+              "0005469",
+              "0200025",
+              "0010759",
+              "0002676",
+              "0010539",
+              "0033333",
+              "0040195",
+              "0410000",
+              "0001357",
+              "0002280",
+              "0032045",
+              "0100857",
+              "0004487",
+              "0012478",
+              "0005906",
+              "0009116",
+              "0000264",
+              "0012800",
+              "0000931",
+              "0002683",
+              "0005472",
+              "0000239",
+              "0011329",
+              "0002700",
+              "0005486",
+              "0012479",
+              "0430028",
+              "0000586",
+              "0002692",
+              "0011218",
+              "0011217",
+              "0000327",
+              "0030799",
+              "0004491",
+              "0032569",
+              "0011324",
+              "0100955",
+              "0012294",
+              "0004470",
+              "0005321",
+              "0030793",
+              "6000647",
+              "0000244",
+              "0005446",
+              "0011321",
+              "0005466",
+              "0040309",
+              "0430004",
+              "0002690",
+              "0000211",
+              "0031604",
+              "0033140",
+              "0005723",
+              "0000263",
+              "0002681",
+              "0011320",
+              "0011317",
+              "0002679",
+              "3000030",
+              "0008497",
+              "0000260",
+              "0001476"
+            ],
+            "similarityThreshold": 0.5,
+            "termId": "0000256"
+          }
+        ]
+      },
+      "mapV1Request": {
+        "type": "object",
+        "properties": {
+          "termIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "description": "The ID of the term, with no prefix",
+              "example": "0000001"
+            }
+          }
+        },
+        "required": [
+          "termIds"
+        ],
+        "example": {
+          "termIds": [
+            "0008056"
+          ]
+        }
+      },
+      "mapV1Response": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "termId": {
+              "type": "string",
+              "description": "The ID of the original term to map, with no prefix",
+              "example": "0008056"
+            },
+            "mappedIds": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "description": "The IDs of the mapped terms, with no prefix",
+                "example": "1745"
+              }
+            },
+            "targetType": {
+              "type": "string",
+              "description": "The type of the mapped terms",
+              "example": "Orphanet"
+            }
+          },
+          "required": [
+            "termId",
+            "mappedIds",
+            "targetType"
+          ]
+        },
+        "example": [
+          {
+            "mappedIds": [
+              "1745",
+              "1702",
+              "1695",
+              "3376",
+              "1703",
+              "1926",
+              "3265",
+              "1643",
+              "1590",
+              "1699",
+              "3305",
+              "800",
+              "1895",
+              "1914",
+              "175",
+              "2216",
+              "2549",
+              "2719",
+              "818",
+              "1318",
+              "1794",
+              "2323"
+            ],
+            "targetType": "Orphanet",
+            "termId": "0008056"
+          }
+        ]
+      }
+    },
+    "responses": {
+      "400": {
+        "description": "Bad request. The requested term is invalid.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "description": "The error message",
+                  "example": "Invalid term type."
+                }
+              },
+              "required": [
+                "error"
+              ]
+            }
+          }
+        }
+      },
+      "404": {
+        "description": "Not found. The requested term is not loaded into the database.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "description": "The error message",
+                  "example": "Requested term type is not loaded."
+                }
+              },
+              "required": [
+                "error"
+              ]
+            }
+          }
+        }
+      },
+      "500": {
+        "description": "Internal server error.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "description": "The error message",
+                  "example": "Internal server error."
+                }
+              },
+              "required": [
+                "error"
+              ]
+            }
+          }
+        }
       }
     }
   }
