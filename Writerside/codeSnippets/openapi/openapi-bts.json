@@ -1478,9 +1478,32 @@
             "mappedIds": {
               "type": "array",
               "items": {
-                "type": "string",
-                "description": "The IDs of the mapped terms, with no prefix",
-                "example": "1745"
+                "type": "object",
+                "properties": {
+                  "targetId": {
+                    "type": "string",
+                    "description": "The ID of the mapped term, with no prefix",
+                    "example": "1745"
+                  },
+                  "freq": {
+                    "type": "string",
+                    "description": "The frequency code of the mapping between the two terms",
+                    "nullable": true,
+                    "enum": [
+                      "E",
+                      "VR",
+                      "OC",
+                      "F",
+                      "VF",
+                      "O",
+                      "UN"
+                    ]
+                  }
+                },
+                "required": [
+                  "targetId",
+                  "freq"
+                ]
               }
             },
             "targetType": {
@@ -1498,28 +1521,94 @@
         "example": [
           {
             "mappedIds": [
-              "1745",
-              "1702",
-              "1695",
-              "3376",
-              "1703",
-              "1926",
-              "3265",
-              "1643",
-              "1590",
-              "1699",
-              "3305",
-              "800",
-              "1895",
-              "1914",
-              "175",
-              "2216",
-              "2549",
-              "2719",
-              "818",
-              "1318",
-              "1794",
-              "2323"
+              {
+                "freq": "OC",
+                "targetId": "2323"
+              },
+              {
+                "freq": "OC",
+                "targetId": "818"
+              },
+              {
+                "freq": "OC",
+                "targetId": "800"
+              },
+              {
+                "freq": "OC",
+                "targetId": "1318"
+              },
+              {
+                "freq": "OC",
+                "targetId": "175"
+              },
+              {
+                "freq": "OC",
+                "targetId": "1590"
+              },
+              {
+                "freq": "F",
+                "targetId": "1643"
+              },
+              {
+                "freq": "F",
+                "targetId": "1695"
+              },
+              {
+                "freq": "OC",
+                "targetId": "1699"
+              },
+              {
+                "freq": "OC",
+                "targetId": "1702"
+              },
+              {
+                "freq": "OC",
+                "targetId": "1703"
+              },
+              {
+                "freq": "OC",
+                "targetId": "1745"
+              },
+              {
+                "freq": "OC",
+                "targetId": "1794"
+              },
+              {
+                "freq": "VF",
+                "targetId": "1895"
+              },
+              {
+                "freq": "OC",
+                "targetId": "1914"
+              },
+              {
+                "freq": "VF",
+                "targetId": "1926"
+              },
+              {
+                "freq": "F",
+                "targetId": "2216"
+              },
+              {
+                "freq": "OC",
+                "targetId": "2549"
+              },
+              {
+                "freq": "F",
+                "targetId": "2719"
+              },
+              {
+                "freq": "OC",
+                "targetId": "3265"
+              },
+              {
+                "freq": "OC",
+                "targetId": "3305"
+              },
+              {
+                "freq": "F",
+                "targetId": "3376"
+              }
             ],
             "targetType": "Orphanet",
             "termId": "0008056"

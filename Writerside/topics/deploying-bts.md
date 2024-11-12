@@ -22,8 +22,8 @@ The following software and tools are required to run BTS:
 
 The hardware requirements are:
 
-- 2 CPU cores, 4 recommended
-- 2 GB RAM to start, 4 GB to serve a reasonable amount of requests, 8 GB if building the graph locally
+- 2 CPU cores, 4 recommended, as many as needed for calculating semantic similarity
+- 2 GB RAM to start, 8 GB to serve a reasonable amount of requests, 64 GB if building the graph locally with up to 12 workers
 - 30 GB storage, 60 GB if building the graph locally
 
 > We have optimised the database to use indexes and pre-calculated relationships, exchanging space for speed. Still, similarity search is heavy on the Neo4j, which is memory hungry. We recommend at least 4GB of RAM for the Neo4j instance; if used in production, supporting multiple Cafe Variome V3 instances, we recommend a cloud/clustered solution with dynamic scaling.

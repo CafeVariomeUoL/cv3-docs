@@ -20,11 +20,15 @@ The BTS contains multiple sets of controlled vocabulary terms to facilitate diff
 
 - Human Phenotype Ontology (HPO)
 - Orphanet Rare Disease Ontology (ORDO)
-- Online Mendelian Inheritance in Man (OMIM) *(planned)*
+- Online Mendelian Inheritance in Man (OMIM)
 - SNOMED-CT, SNOMED UK Edition, SNOMED UK Drug Extension, SNOMED UK Clinical Extension (SNOMED)
-- National Cancer Institute Thesaurus (NCIT) *(planned)*
+- National Cancer Institute Thesaurus (NCIT)
 - Hugo Gene Nomenclature Committee (HGNC) symbols and IDs
 - National Center for Biotechnology Information (NCBI) Gene IDs *(planned)*
-- Reactome Pathways *(planned)*
+- Reactome Pathways
 
+To enable semantic similarity and mapping query, some annotation and mapping are loaded between two term sets. They are:
 
+- HPO-Gene mapping, provided by the HPO consortium, within its GitHub releases.
+- Reactome-Gene mapping, provided by the Reactome consortium, within its relational database
+- HPO-ORDO mapping (the HOOM model), provided by Orphanet

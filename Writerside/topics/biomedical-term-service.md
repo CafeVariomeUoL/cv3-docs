@@ -40,17 +40,21 @@ The currently implemented features are:
 
 - Downloading and parsing of biomedical term sets
     - HPO
+    - OMIM
+    - NCIT
     - ORDO (Orphanet)
     - SNOMED-CT, SNOMED UK Edition, SNOMED UK Drug Extension, SNOMED UK Clinical Extension
     - HGNC symbols and IDs
+    - Reactome Pathways
 - Auto-completion of terms
 - Ontology tree expansion search
+- Semantic similarity search
+- GraphQL support on querying all data
 - A CLI to manage the system
+- Prometheus metrics support
 
 The planned features are:
 
 - Adding more term sets:
-    - OMIM
-    - NCIT
-- Semantic similarity search
-- Prometheus metrics support
+    - NCBI
+    - Ensembl
