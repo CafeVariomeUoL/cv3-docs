@@ -24,3 +24,4 @@ There are multiple OpenAPI specifications available for the system, including on
 - [Admin API](https://v3doc.cafevariome.org/openapi/?urls.primaryName=Admin+API)
 - [Network Gateway](https://v3doc.cafevariome.org/openapi/?urls.primaryName=Network+Gateway)
 - [Query API](https://v3doc.cafevariome.org/openapi/?urls.primaryName=Query+API)
+- [Biomedical Term Service](https://v3doc.cafevariome.org/openapi/?urls.primaryName=Biomedical+Term+Service)
