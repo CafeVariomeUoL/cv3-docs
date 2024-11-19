@@ -211,7 +211,7 @@ These are the fields specific to the dataset type.
                     <def title="versionId">
                         <code>string</code> <code>optional</code> Valid UUID 4 string. If omitted, a UUID will be automatically assigned.
                     </def>
-                    <def title="versionCode">
+                    <def title="versionName">
                         <code>string</code> <code>optional</code> Semantic versioning recommended. Non-semantic versions will disable version parsing, comparison, and sorting.
                     </def>
                     <def title="keywords">
