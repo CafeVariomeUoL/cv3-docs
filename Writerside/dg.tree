@@ -21,7 +21,9 @@
     </toc-element>
     <toc-element topic="data-model.md">
         <toc-element topic="mongodb-data-structure.md"/>
-        <toc-element topic="subjects.md"/>
+        <toc-element topic="subjects.md">
+        </toc-element>
+        <toc-element topic="data-indices.md"/>
     </toc-element>
     <toc-element topic="query.md">
         <toc-element topic="query-builder-and-query-result.md"/>
