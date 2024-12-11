@@ -21,6 +21,10 @@
   ],
   "tags": [
     {
+      "name": "Info",
+      "description": "These endpoints provide information about the service, the term sets, and the term itself."
+    },
+    {
       "name": "Similarity",
       "description": "These endpoints returns a series of terms that has enough similarity to the query terms, as HPO terms."
     },
@@ -42,6 +46,92 @@
     }
   ],
   "paths": {
+    "/": {
+      "get": {
+        "tags": [
+          "Info"
+        ],
+        "summary": "Get service information",
+        "operationId": "serviceInfoGet",
+        "description": "Get information about the service, such as the version, the available term types, and all terms that may be supported.",
+        "responses": {
+          "200": {
+            "description": "Service information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/serviceInfo"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/{term_type}": {
+      "get": {
+        "tags": [
+          "Info"
+        ],
+        "summary": "Get term status",
+        "operationId": "termStatusGet",
+        "description": "Get information about the term type, such as total term count, maximum depth, etc.",
+        "responses": {
+          "200": {
+            "description": "Term status",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/termStatus"
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/termType"
+        }
+      ]
+    },
+    "/{term_type}/{term_id}": {
+      "get": {
+        "tags": [
+          "Info"
+        ],
+        "summary": "Get term information",
+        "operationId": "termInfoGet",
+        "description": "Get information about the term, such as the label, definition, and synonyms.",
+        "responses": {
+          "200": {
+            "description": "Term information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/termInfo"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found. The requested term is not found in the database, or the term set is not loaded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "description": "An error message",
+                    "example": "Requested term is not found."
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/{term_type}/auto-complete/v1/query/{query}": {
       "get": {
         "tags": [
@@ -366,7 +456,7 @@
           "200": {
             "description": "Metrics",
             "content": {
-              "text/plain": {
+              "text/plain; version=0.0.4; charset=utf-8": {
                 "schema": {
                   "type": "string"
                 }
@@ -378,6 +468,21 @@
     }
   },
   "components": {
+    "definitions": {
+      "termType": {
+        "type": "string",
+        "enum": [
+          "ctv3",
+          "hgnc",
+          "hpo",
+          "ncit",
+          "omim",
+          "ordo",
+          "reactome",
+          "snomed"
+        ]
+      }
+    },
     "parameters": {
       "termType": {
         "name": "term_type",
@@ -385,16 +490,7 @@
         "description": "The type of the term to query",
         "required": true,
         "schema": {
-          "type": "string",
-          "enum": [
-            "hgnc",
-            "hpo",
-            "ncit",
-            "omim",
-            "ordo",
-            "reactome",
-            "snomed"
-          ]
+          "$ref": "#/components/definitions/termType"
         }
       },
       "resultThreshold": {
@@ -409,6 +505,161 @@
       }
     },
     "schemas": {
+      "serviceInfo": {
+        "type": "object",
+        "properties": {
+          "version": {
+            "type": "string",
+            "description": "The version of the service",
+            "example": "v1.0.0"
+          },
+          "loadedTerms": {
+            "type": "array",
+            "description": "The term types that are loaded into the database",
+            "items": {
+              "$ref": "#/components/definitions/termType"
+            }
+          },
+          "unloadedTerms": {
+            "type": "array",
+            "description": "The term types that are not loaded into the database",
+            "items": {
+              "$ref": "#/components/definitions/termType"
+            }
+          }
+        },
+        "required": [
+          "version",
+          "loadedTerms",
+          "unloadedTerms"
+        ],
+        "example": {
+          "version": "v1.0.0",
+          "loadedTerms": [
+            "hpo",
+            "snomed"
+          ],
+          "unloadedTerms": [
+            "ctv3",
+            "hgnc",
+            "ncit",
+            "omim",
+            "ordo",
+            "reactome"
+          ]
+        }
+      },
+      "termStatus": {
+        "type": "object",
+        "properties": {
+          "termName": {
+            "type": "string",
+            "description": "The display name of the term type",
+            "example": "HPO"
+          },
+          "termCount": {
+            "type": "integer",
+            "description": "The total number of terms in the term type",
+            "example": 10000,
+            "minimum": 0
+          },
+          "associatedTerms": {
+            "type": "array",
+            "description": "The other terms which have mapping or association with the term type",
+            "items": {
+              "type": "string",
+              "example": "SNOMED"
+            }
+          },
+          "rootTerm": {
+            "type": "string",
+            "description": "The root term of the ontology tree. Only present for ontologies.",
+            "example": "0000001"
+          },
+          "maxDepth": {
+            "type": "integer",
+            "description": "The maximum depth of the ontology tree. Only present for ontologies.",
+            "example": 10,
+            "minimum": 0
+          }
+        },
+        "required": [
+          "termName",
+          "termCount",
+          "associatedTerms"
+        ],
+        "example": {
+          "termName": "HPO",
+          "termCount": 10000,
+          "associatedTerms": [
+            "Orphanet",
+            "Gene Symbol (HGNC Standard)"
+          ],
+          "rootTerm": "0000001",
+          "maxDepth": 14
+        }
+      },
+      "termInfo": {
+        "type": "object",
+        "properties": {
+          "termId": {
+            "type": "string",
+            "description": "The ID of the term, with no prefix",
+            "example": "0000118"
+          },
+          "label": {
+            "type": "string",
+            "description": "The label of the term",
+            "example": "Phenotypic abnormality"
+          },
+          "definition": {
+            "type": "string",
+            "description": "The definition of the term",
+            "example": "A phenotypic abnormality."
+          },
+          "synonyms": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "description": "The synonyms of the term",
+              "example": "Phenotypic abnormality"
+            }
+          },
+          "comment": {
+            "type": "string",
+            "description": "The comment of the term",
+            "example": "This is a comment."
+          },
+          "parents": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "description": "The IDs of the parent terms, with no prefix",
+              "example": "0000118"
+            }
+          },
+          "children": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "description": "The IDs of the descendant terms, with no prefix",
+              "example": "0020228"
+            }
+          }
+        },
+        "required": [
+          "termId"
+        ],
+        "example": {
+          "termId": "0000118",
+          "label": "Phenotypic abnormality",
+          "definition": "A phenotypic abnormality.",
+          "synonyms": [
+            "Phenotypic abnormality"
+          ],
+          "comment": "This is a comment."
+        }
+      },
       "autoCompleteV1": {
         "type": "array",
         "items": {
