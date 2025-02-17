@@ -39,16 +39,19 @@ The data being downloaded or used by CV-BTS are not generated, validated or dist
 The currently implemented features are:
 
 - Downloading and parsing of biomedical term sets
-    - HPO
-    - OMIM
-    - NCIT
-    - ORDO (Orphanet)
-    - SNOMED-CT, SNOMED UK Edition, SNOMED UK Drug Extension, SNOMED UK Clinical Extension
+    - CTV3
     - HGNC symbols and IDs
-    - Reactome Pathways
+    - HPO
+    - NCIT
+    - OMIM
+    - ORDO (Orphanet)
+    - Reactome Pathways and Reactions
+    - SNOMED-CT, SNOMED UK Edition, SNOMED UK Drug Extension, SNOMED UK Clinical Extension
 - Auto-completion of terms
 - Ontology tree expansion search
 - Semantic similarity search
+- Term information retrieval on single terms or dataset level metadata
+- Sampling of terms
 - GraphQL support on querying all data
 - A CLI to manage the system
 - Prometheus metrics support

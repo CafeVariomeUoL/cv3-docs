@@ -19,11 +19,12 @@ The following software and tools are required to run BTS:
 - An ASGI server (Hypercorn if running from the script directly)
 - MongoDB
 - Neo4j
+- Redis
 
 The hardware requirements are:
 
 - 2 CPU cores, 4 recommended, as many as needed for calculating semantic similarity
-- 2 GB RAM to start, 8 GB to serve a reasonable amount of requests, 64 GB if building the graph locally with up to 12 workers
+- 2 GB RAM to start (excluding the database requirements), 8 GB to serve a reasonable amount of requests, 64 GB if building the graph locally with up to 12 workers
 - 30 GB storage, 60 GB if building the graph locally
 
 > We have optimised the database to use indexes and pre-calculated relationships, exchanging space for speed. Still, similarity search is heavy on the Neo4j, which is memory hungry. We recommend at least 4GB of RAM for the Neo4j instance; if used in production, supporting multiple Cafe Variome V3 instances, we recommend a cloud/clustered solution with dynamic scaling.
@@ -40,7 +41,7 @@ Prepare the Python environment first:
 ```shell
 git clone https://github.com/CafeVariomeUoL/cv3-bioterms.git
 cd cv3-bioterms
-pip install -r requirements.txt
+pip install .
 cp config.json.example config.json
 export BIOPORTAL_API_KEY=YOUR_BIOPORTAL_API_KEY
 export NHS_TRUD_API_KEY=YOUR_NHS_TRUD_API_KEY
@@ -75,9 +76,15 @@ The CLI is used to download and load the data into the databases. In production,
         \|_______|\|__|/            \|_______|\|__|\|_______|    \|__|  \|_______|\|__|\|__|\|__|     \|__|
 
 Database reachable
-HPO terms not loaded
-ORDO terms not loaded
-SNOMED terms not loaded
+CTV3 terms loaded
+Gene Symbol (HGNC Standard) terms loaded
+HGNC terms loaded
+HPO terms loaded
+NCIT terms loaded
+OMIM terms loaded
+Orphanet terms loaded
+Reactome terms loaded
+SNOMED CT terms loaded
 
 >
 ```
@@ -86,4 +93,17 @@ The CLI has autocomplete and help feature, so you can follow the built-in guide 
 
 ## Loading the database dump
 
-If there is no need to customize the graph, it's recommended to use the database dump we provide. This would save both space and time to download the temporary files, build the connections, and calculate the semantic similarity scores.
+If there is no need to customize the graph, it's recommended to use the database dump we provide. This would save both space and time to download the temporary files, build the connections, and calculate the semantic similarity scores. We provide pre-built database dumps, hosted in our artifact storage:
+
+- Neo4j dump: [Download](https://artifactory.cafevariome.org/repository/cv3-bioterms/data/neo4j/neo4j.dump)
+- MongoDB dump (in multiple files): [View](https://artifactory.cafevariome.org/#browse/browse:cv3-bioterms:data%2Fmongodb)
+
+Upon downloading the data dumps, use the `neo4j-admin` and `mongoimport` tools to load the data into the respective databases.
+
+The Neo4j dump contains indices, while MongoDB does not export indices into JSON files. To build local indices and redis cache, start the CLI and run:
+
+```shell
+index rebuild
+```
+
+This will drop all indices and rebuild them, then warm up the cache.
