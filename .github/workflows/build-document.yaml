@@ -73,6 +73,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: graphviz
+          path: Writerside/images
 
       - name: Build admin docs
         uses: JetBrains/writerside-github-action@v4
@@ -102,6 +103,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: graphviz
+          path: Writerside/images
 
       - name: Build user docs
         uses: JetBrains/writerside-github-action@v4
@@ -131,6 +133,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: graphviz
+          path: Writerside/images
 
       - name: Build developer docs
         uses: JetBrains/writerside-github-action@v4
@@ -160,6 +163,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: graphviz
+          path: Writerside/images
 
       - name: Build BTS docs
         uses: JetBrains/writerside-github-action@v4
