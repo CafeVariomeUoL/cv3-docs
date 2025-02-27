@@ -15,6 +15,27 @@ env:
   DOCKER_VERSION: '241.18775'
 
 jobs:
+  render-graphviz:
+    name: Render Graphviz diagrams
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install Graphviz
+        run: sudo apt-get install graphviz
+
+      - name: Render Graphviz diagrams
+        run: ./Writerside/codeSnippets/graphviz/render_image.sh
+
+      - name: Save Graphviz diagrams
+        uses: actions/upload-artifact@v4
+        with:
+          name: graphviz
+          path: ./Writerside/images/gn-*.*
+
   build-index:
     name: Build Documentation Index
     runs-on: ubuntu-latest
@@ -40,12 +61,18 @@ jobs:
 
   build-admin:
     name: Build Admin Guide
+    needs: [render-graphviz]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
+      - name: Download Graphviz diagrams
+        uses: actions/download-artifact@v4
+        with:
+          name: graphviz
 
       - name: Build admin docs
         uses: JetBrains/writerside-github-action@v4
@@ -63,12 +90,18 @@ jobs:
 
   build-user:
     name: Build User Guide
+    needs: [render-graphviz]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
+      - name: Download Graphviz diagrams
+        uses: actions/download-artifact@v4
+        with:
+          name: graphviz
 
       - name: Build user docs
         uses: JetBrains/writerside-github-action@v4
@@ -86,12 +119,18 @@ jobs:
 
   build-developer:
     name: Build Developer Guide
+    needs: [render-graphviz]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
+      - name: Download Graphviz diagrams
+        uses: actions/download-artifact@v4
+        with:
+          name: graphviz
 
       - name: Build developer docs
         uses: JetBrains/writerside-github-action@v4
@@ -109,12 +148,18 @@ jobs:
 
   build-bts:
     name: Build Biomedical Term Service Guide
+    needs: [render-graphviz]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
+      - name: Download Graphviz diagrams
+        uses: actions/download-artifact@v4
+        with:
+          name: graphviz
 
       - name: Build BTS docs
         uses: JetBrains/writerside-github-action@v4

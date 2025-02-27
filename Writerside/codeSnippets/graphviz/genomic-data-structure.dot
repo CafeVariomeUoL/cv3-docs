@@ -1,0 +1,19 @@
+digraph Genomic_Data_Structure {
+    nodesep=1.0;
+
+    node [shape=circle, style=filled, fillcolor=lightblue, fontname="Arial", fontsize=12, width=1.8, fixedsize=shape];
+
+    "ENSG00000151773" [label="ENSG00000151773"];
+    "CCDC122" [label="CCDC122"];
+    "ENST00000476570" [label="ENST00000476570"];
+    "ENST00000444614" [label="ENST00000444614"];
+    "ENSE00001480042" [label="ENSE00001480042"];
+    "ENSP00000407763" [label="ENSP00000407763"];
+
+    "ENSG00000151773" -> "CCDC122" [label="HAS_SYMBOL", color=red, fontcolor=red];
+    "ENSG00000151773" -> "ENST00000476570" [label="HAS_TRANSCRIPT", color=blue, fontcolor=blue];
+    "ENSG00000151773" -> "ENST00000444614" [label="HAS_TRANSCRIPT", color=blue, fontcolor=blue];
+    "ENST00000476570" -> "ENSE00001480042" [label="HAS_EXON", color=blue, fontcolor=blue];
+    "ENST00000444614" -> "ENSE00001480042" [label="HAS_EXON", color=blue, fontcolor=blue];
+    "ENST00000444614" -> "ENSP00000407763" [label="ENCODES", color=blue, fontcolor=blue];
+}

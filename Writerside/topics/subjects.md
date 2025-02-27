@@ -38,10 +38,10 @@ Each subject is stored as an item within a specific collection belonging to a so
         }
     ],
     "EAV": {
-        "Attribute 1": "Value 1",
-        "Attribute 2": 2,
-        "Attribute 3": true,
-        "Attribute 4": ["Value 4", "Value 5"]
+        "attribute1": "Value 1",
+        "attribute2": 2,
+        "attribute3": true,
+        "attribute4": ["Value 4", "Value 5"]
     }
 }
 ```
@@ -56,3 +56,9 @@ In the example:
 - `ALLELES` is an array of objects designed to describ what type of alleles the subject has. Each object contains two fields: `gene` and `allele`. `gene` is the gene name (in HGNC format), and `alleles` are a pair of values representing the alleles of this gene that the subject has.
 - `VARIANT` is an array of objects designed to describe what type of genetic variants the subject has. Each object contains two fields: `gene` and `mutation`. The `gene` field is the gene name (in HGNC format), and the `mutation` field is the protein effect of the mutation. The `af` field is the allele frequency of the mutation. If the allele frequency is not provided, Cafe Variome will use the dataset itself to calculate it. This is to assume the dataset contains full information about each subject and their genetic variants.
 - `EAV` is a key-value pair object, where the key is the attribute name and the value is the attribute value. This is used to store any additional information that does not fit into the other fields. The values can be string, number, boolean, or an array of the above.
+
+## Ontology Terms and Qualifiers
+
+### Prefix and ID structure
+
+The ontology terms for subjects are stored in their corresponding fields as an array. They do not contain their prefixes (e.g. `HP:`, `Orpha:`), only the part after the prefix colon. All queries, indices, and other processing are done with the terms in this format. Note that not all prefixes or "common parts" of an ID are considered prefix; only the ones in namespace format are removed.

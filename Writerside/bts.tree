@@ -11,4 +11,5 @@
     <toc-element topic="bts-data-structure.md">
         <toc-element topic="term-structure-and-relationships.md"/>
     </toc-element>
+    <toc-element topic="querying-the-service.md"/>
 </instance-profile>

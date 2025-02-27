@@ -1,0 +1,19 @@
+digraph HPO_Ontology_Structure {
+    rankdir=TB;
+    nodesep=1.0;
+
+    node [shape=circle, style=filled, fillcolor=lightblue, fontname="Arial", fontsize=12];
+
+    "0003494" [label="0003494"];
+    "0000005" [label="0000005"];
+    "0000001" [label="0000001"];
+    "0020228" [label="0020228"];
+
+    { rank=min; "0000001" }
+    { rank=same; "0000005"; "0020228" }
+    { rank=max; "0003494"}
+
+    "0003494" -> "0000005" [label="REPLACED_BY", color=red, fontcolor=red];
+    "0000005" -> "0000001" [label="IS_A", color=blue, fontcolor=blue];
+    "0020228" -> "0000001" [label="IS_A", color=blue, fontcolor=blue];
+}
