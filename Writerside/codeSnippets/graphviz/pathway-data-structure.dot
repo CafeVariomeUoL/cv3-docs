@@ -1,0 +1,10 @@
+digraph Pathway_Data_Structure {
+    nodesep=1.0;
+
+    node [shape=circle, style=filled, fillcolor=lightblue, fontname="Arial", fontsize=12];
+
+    "R-HSA-9613829" [label="R-HSA-9613829"];
+    "R-HSA-9626276" [label="R-HSA-9626276"];
+
+    "R-HSA-9613829" -> "R-HSA-9626276" [label="HAS_REACTION", color=blue, fontcolor=blue];
+}

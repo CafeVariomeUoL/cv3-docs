@@ -21,6 +21,7 @@ Additionally, Redis is used to provide application-level caching and power the m
 The BTS contains multiple sets of controlled vocabulary terms to facilitate different use cases. The ones supported (and planned) are:
 
 - Clinical Terms Version 3 (CTV3)
+- Ensembl Gene database (Ensembl)
 - Hugo Gene Nomenclature Committee (HGNC) symbols and IDs
 - Human Phenotype Ontology (HPO)
 - National Cancer Institute Thesaurus (NCIT)
@@ -33,6 +34,27 @@ The BTS contains multiple sets of controlled vocabulary terms to facilitate diff
 To enable semantic similarity and mapping query, some annotation and mapping are loaded between two term sets. They are:
 
 - HPO-Gene mapping, provided by the HPO consortium, within its GitHub releases.
-- Reactome-Gene mapping, provided by the Reactome consortium, within its relational database
+- Reactome-Gene mapping, provided by the Reactome consortium, within its relational database.
+- NCIT-Gene mapping, provided by the NCI Thesaurus, within its release files.
+- OMIM-Gene mapping, provided by the OMIM, with a separate release file.
 - HPO-ORDO mapping (the HOOM model), provided by Orphanet
-- CTV3-SNOMED mapping, provided by the NHS TRUD
+- ORDO-Gene mapping, provided by Orphanet, in its rare disease gene annotation files.
+- ORDO-OMIM mapping, provided by Orphanet, in its alignment files.
+- CTV3-SNOMED mapping, provided by the NHS TRUD.
+- SNOMED-ORDO mapping, provided by SNOMED (via UMLS downloads), as a Orphanet mapping pack.
+
+## Input files
+
+The system takes various input file format to load the data into the databases, but each dataset can use only one of the designated format. The supported formats are:
+
+- CTV3: CTV3 speciality files, in the NHS TRUD format.
+- Ensembl: GTF files.
+- HGNC: TSV files.
+- HPO: OWL files.
+- NCIT: TSV files.
+- OMIM: CSV files.
+- ORDO: OWL files.
+- Reactome: There is a special script to extract from its neo4j database (when it's running), and store the data into CSV. The main program accepts this processed CSV file.
+- SNOMED: RF2 files.
+
+For CTV3, CSV, TSV and RF2 files, `pandas` is used to load the raw data file; for OWL files `owlready2` is used to parse the ontology structure.

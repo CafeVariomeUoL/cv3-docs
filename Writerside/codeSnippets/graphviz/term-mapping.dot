@@ -1,0 +1,34 @@
+digraph Term_Mapping {
+    nodesep=1.0;
+
+    node [shape=circle, style=filled, fillcolor=lightblue, fontname="Arial", fontsize=12, width=2, fixedsize=shape];
+
+    "TERM_CTV3" [label="TERM_CTV3"];
+    "TERM_SNOMED" [label="TERM_SNOMED"];
+    "TERM_ORDO" [label="TERM_ORDO"];
+    "TERM_HPO" [label="TERM_HPO"];
+    "TERM_OMIM" [label="TERM_OMIM"];
+    "TERM_NCIT" [label="TERM_NCIT"];
+    "TERM_HGNC" [label="TERM_HGNC"];
+    "SYMBOL_GENE" [label="SYMBOL_GENE"];
+    "REACTOME_PATHWAY" [label="TERM_REACTOME\nREACTOME_PATHWAY"];
+    "REACTOME_REACTION" [label="TERM_REACTOME\nREACTOME_REACTION"];
+    "ENSEMBL_GENE" [label="ENSEMBL_GENE"];
+    "ENSEMBL_TRANSCRIPT" [label="ENSEMBL_TRANSCRIPT"];
+    "ENSEMBL_EXON" [label="ENSEMBL_EXON"];
+    "ENSEMBL_PROTEIN" [label="ENSEMBL_PROTEIN"];
+
+    "TERM_CTV3" -> "TERM_SNOMED" [label="ASSOCIATED_WITH", color=blue, fontcolor=blue];
+    "TERM_SNOMED" -> "TERM_ORDO" [label="ASSOCIATED_WITH", color=blue, fontcolor=blue];
+    "TERM_ORDO" -> "TERM_HPO" [label="ASSOCIATED_WITH", color=blue, fontcolor=blue];
+    "TERM_ORDO" -> "TERM_OMIM" [label="ASSOCIATED_WITH", color=blue, fontcolor=blue];
+    "TERM_ORDO" -> "SYMBOL_GENE" [label="ASSOCIATED_WITH", color=blue, fontcolor=blue];
+    "TERM_NCIT" -> "SYMBOL_GENE" [label="ASSOCIATED_WITH", color=blue, fontcolor=blue];
+    "TERM_HGNC" -> "SYMBOL_GENE" [label="HAS_SYMBOL", color=blue, fontcolor=blue];
+    "ENSEMBL_GENE" -> "SYMBOL_GENE" [label="HAS_SYMBOL", color=blue, fontcolor=blue];
+    "REACTOME_REACTION" -> "SYMBOL_GENE" [label="ASSOCIATED_WITH", color=blue, fontcolor=blue];
+    "REACTOME_PATHWAY" -> "REACTOME_REACTION" [label="HAS_REACTION", color=blue, fontcolor=blue];
+    "ENSEMBL_GENE" -> "ENSEMBL_TRANSCRIPT" [label="HAS_TRANSCRIPT", color=blue, fontcolor=blue];
+    "ENSEMBL_TRANSCRIPT" -> "ENSEMBL_EXON" [label="HAS_EXON", color=blue, fontcolor=blue];
+    "ENSEMBL_TRANSCRIPT" -> "ENSEMBL_PROTEIN" [label="ENCODES", color=blue, fontcolor=blue];
+}

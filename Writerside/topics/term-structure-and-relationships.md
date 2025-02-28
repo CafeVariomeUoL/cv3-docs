@@ -28,3 +28,11 @@ Specifically, the relationships between the entities are:
 ## Pathway data
 
 Pathway data focuses on the cell reactions and passways, and the genes that are known to relate to the reactions. It can be represented as:
+
+<img src="gn-pathway-data-structure.svg" alt="Pathway Data Structure" width="450"/>
+
+## Relationships between data types
+
+From the mapping and annotation published by the respective databases, we can establish the relationships between the different data types. The relationships supported by the system are (as they are stored in neo4j):
+
+<img src="gn-term-mapping.svg" alt="Term Mapping" width="450"/>
