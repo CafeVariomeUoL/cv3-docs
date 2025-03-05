@@ -51,9 +51,77 @@ The two API keys are required to download the ontology terms from BioPortal and 
 
 ### From Docker
 
-Docker images contains the CLI component, but since it's cumbersome to run the CLI from a container, it can also automatically download the data and initialize the databases.
+Docker images contains the CLI component, but since it's cumbersome to run the CLI from a container, it can also automatically download the data and initialize the databases. Since the project requires multiple external databases, it's recommended to use docker compose to start the service. The example docker compose file is released in the main repository:
+
+```yaml
+services:
+  cv3-bioterms:
+    image: brookeslab/cv3-bioterms:latest
+    ports:
+      - '3000:3000'
+    environment:
+      - BIOPORTAL_API_KEY=YOUR_BIOPORTAL_API_KEY
+      - NHS_TRUD_API_KEY=YOUR_NHS_TRUD_API_KEY
+    volumes:
+      - ./config/bioterms_config.json:/app/config.json
+    networks:
+      - cv3_bioterms
+
+  mongodb:
+    image: mongo:7.0.11
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - cv3_bioterms
+
+  neo4j:
+    image: neo4j:5.22.0
+    restart: always
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    volumes:
+      - neo4j_data:/data
+    networks:
+      - cv3_bioterms
+
+  redis:
+    image: redis:7.4
+    restart: always
+    ports:
+      - '6379:6379'
+    command: redis-server
+    volumes: 
+      - redis_data:/data
+
+networks:
+  cv3_bioterms:
+    driver: bridge
+
+volumes:
+  mongodb_data:
+  neo4j_data:
+  redis_data:
+```
+
+When running in docker, the database will be automatically populated. To disable this behavior, set environment variable `AUTO_LOAD` to `false`. The API keys are used to download the files. However, due to restrictions on the various data sources, not all data can be downloaded from the API. Some data files require manual downloading.
 
 ### From binary
+
+We provide portable binary package releases for Linux environments. The binary is built using `nuitka`, a tool to compile Python code to C first, then executables. The result binary contains all necessary dependencies, and should perform consistently on all Linux distributions, provided that the `glibc` version is compatible. The binary also does not require Python or other runtime to be used, and may have a slightly better performance, due to the methods `nuitka` used to compile it. We do not currently provide binary release for Windows or MacOS, as we do not anticipate use cases with any OS other than Linux servers.
+
+To use the binary release, download it from either the GitHub release page, or our artifact repository. The binaries in our artifact repository contains a "nightly" build, which keeps up to date with the main branch (if the test cases pass of course). However due to storage constraints, the old artifacts may be removed, so if you're looking for an old release for over 180 days, you may need to build it from source or check out the GitHub repository.
+
+After downloading the tarball, extract it to a directory, and run the script:
+
+```shell
+tar -xzf cv3-bioterms-nightly.tar.gz
+cd cv3-bioterms
+./BioTermService.sh
+```
 
 ### From Python package
 
@@ -90,20 +158,3 @@ SNOMED CT terms loaded
 ```
 
 The CLI has autocomplete and help feature, so you can follow the built-in guide to load the data.
-
-## Loading the database dump
-
-If there is no need to customize the graph, it's recommended to use the database dump we provide. This would save both space and time to download the temporary files, build the connections, and calculate the semantic similarity scores. We provide pre-built database dumps, hosted in our artifact storage:
-
-- Neo4j dump: [Download](https://artifactory.cafevariome.org/repository/cv3-bioterms/data/neo4j/neo4j.dump)
-- MongoDB dump (in multiple files): [View](https://artifactory.cafevariome.org/#browse/browse:cv3-bioterms:data%2Fmongodb)
-
-Upon downloading the data dumps, use the `neo4j-admin` and `mongoimport` tools to load the data into the respective databases.
-
-The Neo4j dump contains indices, while MongoDB does not export indices into JSON files. To build local indices and redis cache, start the CLI and run:
-
-```shell
-index rebuild
-```
-
-This will drop all indices and rebuild them, then warm up the cache.

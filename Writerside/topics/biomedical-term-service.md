@@ -32,7 +32,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 > {style="note"}
 
-The data being downloaded or used by CV-BTS are not generated, validated or distributed in any form by Cafe Variome. They should be downloaded from the respective sources, under their own licenses and terms of use. Their authors do not endorse or support CV-BTS in any way. When downloading and using the data, ensure that you comply with the terms of use of the respective data sources and the local laws. For questions regarding the data, please contact the respective data sources.
+The data being downloaded or used by CV-BTS are not generated, validated or distributed in any form by Cafe Variome. They should be downloaded from the respective sources, under their own licenses and terms of use. Their authors do not endorse or support CV-BTS in any way. When downloading and using the data, ensure that you comply with the terms of use of the respective data sources and the local laws. For questions regarding the data, please contact the respective data sources. A copy of their license and terms are included in the source code, and will be served via a special API. The entity deploying/hosting the service should be responsible for ensuring the compliance of the data usage. The authors and copyright holders of CV-BTS are not responsible for any misuse of the data, or any breach of the terms of use with the data sources.
 
 ## Features and roadmap
 
@@ -40,6 +40,7 @@ The currently implemented features are:
 
 - Downloading and parsing of biomedical term sets
     - CTV3
+    - Ensembl
     - HGNC symbols and IDs
     - HPO
     - NCIT
@@ -60,4 +61,3 @@ The planned features are:
 
 - Adding more term sets:
     - NCBI
-    - Ensembl

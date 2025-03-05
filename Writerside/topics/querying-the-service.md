@@ -14,7 +14,7 @@ The term auto-completion refers to the feature where the user types in a few cha
 
 - The search string needs to be at least 3 characters in length. This is to prevent returning a massive list of terms.
 - The search is case-insensitive. All the quotation marks will be stripped off as well.
-- White spaces are matched as-is. For example, "Phenotypic abnormality" will not match "Phenotypicabnormality", and vice versa.
+- White spaces are considered separators. The search string will be split into words, and each word will be searched on separately. However any other characters will be matched as-is, including but not limited to hyphens, underscores, dots, etc.
 
 The results will be ordered by the relevance of the term to the search string. The relevance is calculated based on the length of the resulting term, and the position of the search string in the term. For example:
 
@@ -47,3 +47,11 @@ The ontology tree expansion search refers to the feature where the user provides
 ### Semantic Similarity Search
 
 The semantic similarity search refers to the feature where the user provides a list of terms and a single/list of similarity thresholds, and the system returns the terms that are similar to the provided terms. The similarity is calculated based on the ontology tree structure, with the relevance method.
+
+### Term Translation
+
+The term translation search refers to the feature where the user provides a list of terms, a single/list of similarity thresholds and a list of constraint terms, and the service returns the terms from the constraint list that is above the given threshold. This feature is used to translate a match set to another one on services that does not support fuzzy match or similarity query, such as a BEACON system.
+
+### Term Set Mapping
+
+The term set mapping refers to the feature where the user provides a list of terms and a target set, and the system maps the original terms onto the annotated or mapped terms on the target set. For now, only direct annotation is supported (for example, HPO and ORDO have annotation, and ORDO and SNOMED have annotation. However, the two cannot be used together to map HPO to SNOMED).

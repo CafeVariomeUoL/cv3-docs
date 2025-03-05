@@ -46,7 +46,7 @@
     },
     {
       "name": "Similarity",
-      "description": "These endpoints returns a series of terms that has enough similarity to the query terms, as HPO terms."
+      "description": "These endpoints returns a series of terms that has enough similarity to the query terms."
     }
   ],
   "paths": {
@@ -96,6 +96,36 @@
           },
           "404": {
             "$ref": "#/components/responses/404"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/termType"
+        }
+      ]
+    },
+    "/{term_type}/license.md": {
+      "get": {
+        "tags": [
+          "Info"
+        ],
+        "summary": "Get term license",
+        "operationId": "termLicenseGet",
+        "description": "Get the license data of a term set. The license would contain the original license the term data is released under, if applicable.",
+        "responses": {
+          "200": {
+            "description": "Term license",
+            "content": {
+              "text/markdown": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
           }
         }
       },
@@ -209,7 +239,20 @@
               }
             }
           }
-        }
+        },
+        "parameters": [
+          {
+            "name": "long",
+            "in": "query",
+            "description": "Whether to return a long response (250 terms) or a short response (25 terms).",
+            "required": true,
+            "schema": {
+              "type": "bool",
+              "default": false
+            },
+            "example": false
+          }
+        ]
       },
       "parameters": [
         {
@@ -474,6 +517,56 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/similarityV1Response"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/resultThreshold"
+          }
+        ]
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/termType"
+        }
+      ]
+    },
+    "/{term_type}/translate/v1": {
+      "post": {
+        "tags": [
+          "Similarity"
+        ],
+        "summary": "Translate terms (V1)",
+        "operationId": "translateV1",
+        "description": "Get similar terms to the given terms based on a constraint set. The result terms will be a subset of the constraint set, with each returned term above or equal to the threshold.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/translateV1Request"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "A list of terms that are similar to the given terms",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/translateV1Response"
                 }
               }
             }
@@ -1757,6 +1850,93 @@
             "similarityThreshold": 0.5,
             "termId": "0000256"
           }
+        ]
+      },
+      "translateV1Request": {
+        "type": "object",
+        "properties": {
+          "termIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "description": "The ID of the term, with no prefix",
+              "example": "0000001"
+            }
+          },
+          "constraintIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "description": "The ID of the term, with no prefix",
+              "example": "0000001"
+            }
+          },
+          "threshold": {
+            "anyOf": [
+              {
+                "type": "number",
+                "format": "float",
+                "minimum": 0.0,
+                "maximum": 1.0
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "number",
+                  "format": "float",
+                  "minimum": 0.0,
+                  "maximum": 1.0
+                }
+              }
+            ],
+            "description": "The threshold of the similarity score to return. 0 to return all. Please note that the server may have chosen to store only connections which similarity score are above a certain value. In this case, since the data is not stored, they will not be returned even if the threshold is set to lower.",
+            "example": 0.5,
+            "default": 1.0
+          }
+        },
+        "required": [
+          "termIds",
+          "constraintIds",
+          "threshold"
+        ],
+        "example": {
+          "termIds": ["0000270"],
+          "constraintIds": [
+            "0000239", "0008491", "6000612", "0011321", "0000236", "0005458", "0005442", "0005476", "0011325",
+            "6000647", "0004474", "0011324", "0012800", "6001069", "0000237", "0005494", "0000260", "0011329",
+            "0011317", "0000270", "0001363", "0005486", "0005441", "0004442", "0000915", "0500024", "0000089",
+            "0000171", "0002155", "6000754", "0034199", "6000768", "0011811", "0500218"
+          ],
+          "threshold": 0.8
+        }
+      },
+      "translateV1Response": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "termId": {
+              "type": "string",
+              "description": "The ID of the term, with no prefix",
+              "example": "0000001"
+            },
+            "score": {
+              "type": "number",
+              "format": "float",
+              "description": "The similarity score",
+              "minimum": 0.0,
+              "maximum": 1.0
+            }
+          },
+          "required": [
+            "termId",
+            "score"
+          ]
+        },
+        "example": [
+          {"score": 0.8743, "termId": "0004474"},
+          {"score": 0.8929, "termId": "0011329"},
+          {"score": 0.8648, "termId": "0001363"}
         ]
       },
       "mapV1Request": {
