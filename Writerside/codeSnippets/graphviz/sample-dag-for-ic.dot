@@ -1,0 +1,15 @@
+digraph Sample_DAG_For_IC {
+    nodesep=1.0;
+
+    node [shape=circle, style=filled, fillcolor=lightblue, fontname="Arial", fontsize=12];
+
+    "A" [label="A\n10"];
+    "B" [label="B\n5"];
+    "C" [label="C\n7"];
+    "D" [label="D\n4"];
+
+    "A" -> "B";
+    "A" -> "C";
+    "B" -> "D";
+    "C" -> "D";
+}

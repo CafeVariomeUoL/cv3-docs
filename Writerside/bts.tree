@@ -10,6 +10,7 @@
     <toc-element topic="deploying-bts.md"/>
     <toc-element topic="bts-data-structure.md">
         <toc-element topic="term-structure-and-relationships.md"/>
+        <toc-element topic="semantic-similarity-in-ontologies.md"/>
     </toc-element>
     <toc-element topic="querying-the-service.md"/>
 </instance-profile>

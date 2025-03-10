@@ -1,0 +1,204 @@
+enum TermType {
+  ctv3
+  hpo
+  ordo
+  snomed
+  hgnc
+  omim
+  ncit
+  reactome
+  geneSymbol
+}
+
+interface BioMedicalTerm {
+  termId: String!
+}
+
+interface GeneTerm implements BioMedicalTerm {
+  termId: String!
+  label: String!
+  symbol: [GeneSymbol]!
+}
+
+interface Pathway implements BioMedicalTerm {
+  termId: String!
+  label: String
+  reactions: [Reaction]
+}
+
+interface Reaction implements BioMedicalTerm {
+  termId: String!
+  label: String
+  pathways: [Pathway]
+}
+
+interface OntologyTerm implements BioMedicalTerm {
+  termId: String!
+  label: String
+  children: [OntologyTerm]
+  parents: [OntologyTerm]
+}
+
+type Query {
+  _empty: String
+  ctv3(termId: String!): Ctv3Term
+  ensemblGene(termId: String!): EnsemblGene
+  ensemblTranscript(termId: String!): EnsemblTranscript
+  ensemblExon(termId: String!): EnsemblExon
+  ensemblProtein(termId: String!): EnsemblProtein
+  gene(termId: String!): GeneSymbol
+  hgnc(termId: String!): HgncTerm
+  hpo(termId: String!): HpoTerm
+  ncit(termId: String!): NcitTerm
+  omim(termId: String!): OmimTerm
+  ordo(termId: String!): OrdoTerm
+  reactomePathway(termId: String!): ReactomePathway
+  reactomeReaction(termId: String!): ReactomeReaction
+  snomed(termId: String!): SnomedTerm
+}
+
+type Ctv3Term implements BioMedicalTerm & OntologyTerm {
+  termId: String!
+  label: String
+  deprecated: Boolean
+  children: [Ctv3Term]
+  parents: [Ctv3Term]
+  replaces: [Ctv3Term]
+  replacing: [Ctv3Term]
+  annotatedSnomed: [SnomedTerm]
+}
+
+type EnsemblGene implements BioMedicalTerm & GeneTerm {
+  termId: String!
+  label: String!
+  seqName: String!
+  start: Int!
+  end: Int!
+  symbol: [GeneSymbol]!
+  transcripts: [EnsemblTranscript]
+}
+
+type EnsemblTranscript implements BioMedicalTerm {
+  termId: String!
+  label: String
+  gene: EnsemblGene
+  exons: [EnsemblExon]
+  protein: EnsemblProtein
+}
+
+type EnsemblExon implements BioMedicalTerm {
+  termId: String!
+  label: String
+  transcripts: [EnsemblTranscript]
+}
+
+type EnsemblProtein implements BioMedicalTerm {
+  termId: String!
+  label: String
+  transcripts: EnsemblTranscript
+}
+
+type GeneSymbol implements BioMedicalTerm {
+  termId: String!
+  hgnc: [HgncTerm]
+  ensembl: [EnsemblGene]
+  annotatedHpo: [HpoTerm]
+  annotatedNcit: [NcitTerm]
+  annotatedOmim: [OmimTerm]
+  annotatedOrdo: [OrdoTerm]
+  annotatedReactomeReaction: [ReactomeReaction]
+}
+
+type HgncTerm implements BioMedicalTerm & GeneTerm {
+  termId: String!
+  label: String!
+  definition: String!
+  location: String!
+  synonyms: [String]
+  deprecated: Boolean
+  symbol: [GeneSymbol]!
+}
+
+type HpoTerm implements BioMedicalTerm & OntologyTerm {
+  termId: String!
+  label: String
+  definition: String
+  comment: String
+  deprecated: Boolean
+  children: [HpoTerm]
+  parents: [HpoTerm]
+  replaces: [HpoTerm]
+  replacing: [HpoTerm]
+  similar(similarity: Float): [HpoTerm]
+  annotatedOrdo: [OrdoTerm]
+  annotatedGene: [GeneSymbol]
+}
+
+type NcitTerm implements BioMedicalTerm & OntologyTerm {
+  termId: String!
+  label: String!
+  definition: String
+  deprecated: Boolean
+  synonyms: [String]
+  children: [NcitTerm]
+  parents: [NcitTerm]
+  annotatedGene: [GeneSymbol]
+}
+
+type OmimTerm implements BioMedicalTerm & OntologyTerm {
+  termId: String!
+  label: String
+  deprecated: Boolean
+  children: [OmimTerm]
+  parents: [OmimTerm]
+  replaces: [OmimTerm]
+  replacing: [OmimTerm]
+  annotatedGene: [GeneSymbol]
+  annotatedOrdo: [OrdoTerm]
+}
+
+type OrdoTerm implements BioMedicalTerm & OntologyTerm {
+  termId: String!
+  label: String
+  definition: String
+  deprecated: Boolean
+  synonyms: [String]
+  children: [OrdoTerm]
+  parents: [OrdoTerm]
+  replaces: [OrdoTerm]
+  replacing: [OrdoTerm]
+  annotatedGene: [GeneSymbol]
+  annotatedHpo: [HpoTerm]
+  annotatedOmim: [OmimTerm]
+  annotatedSnomed: [SnomedTerm]
+}
+
+type ReactomePathway implements BioMedicalTerm & Pathway {
+  termId: String!
+  label: String!
+  synonyms: [String]
+  reactions: [ReactomeReaction]
+}
+
+type ReactomeReaction implements BioMedicalTerm & Reaction {
+  termId: String!
+  label: String!
+  synonyms: [String]
+  pathways: [ReactomePathway]
+  annotatedGenes: [GeneSymbol]
+}
+
+type SnomedTerm implements BioMedicalTerm & OntologyTerm {
+  termId: String!
+  label: String
+  definition: String
+  synonyms: [String]
+  fullyDefined: Boolean
+  deprecated: Boolean
+  children: [SnomedTerm]
+  parents: [SnomedTerm]
+  replaces: [SnomedTerm]
+  replacing: [SnomedTerm]
+  annotatedCtv3: [Ctv3Term]
+  annotatedOrdo: [OrdoTerm]
+}

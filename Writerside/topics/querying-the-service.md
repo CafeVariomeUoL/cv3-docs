@@ -55,3 +55,9 @@ The term translation search refers to the feature where the user provides a list
 ### Term Set Mapping
 
 The term set mapping refers to the feature where the user provides a list of terms and a target set, and the system maps the original terms onto the annotated or mapped terms on the target set. For now, only direct annotation is supported (for example, HPO and ORDO have annotation, and ORDO and SNOMED have annotation. However, the two cannot be used together to map HPO to SNOMED).
+
+## Using the GraphQL API
+
+A GraphQL endpoint is provided in `https://similarity.cafevariome.org/graphql` for querying the service in a customisable way. The GraphQL API is designed to support all the functionalities of the REST API and more, including multi-link traversal, child-parent reverse traversal, and more complex queries. However, due to the nature of GraphQL, the query is not as optimised as the REST API, and may be slower in performance. The response is usually larger than REST API as well. The schema is provided below:
+
+<code-block lang="graphql" src="graphql/biomedical-term-service.graphql" collapsible="true" collapsed-title="GraphQL Schema"/>
