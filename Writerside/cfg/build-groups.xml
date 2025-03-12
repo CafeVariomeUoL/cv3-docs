@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE build-groups SYSTEM "https://resources.jetbrains.com/writerside/1.0/build-groups.dtd">
+<build-groups
+        xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/build-groups.xsd"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <build-group name="cv3-docs">
+        <instance instance-id="ug" alias="User Guide" path="/user"/>
+        <instance instance-id="ag" alias="Admin Guide" path="/admin"/>
+        <instance instance-id="dg" alias="Developer Guide" path="/developer"/>
+        <instance instance-id="bts" alias="Biomedical Term Service" path="/bts"/>
+    </build-group>
+</build-groups>

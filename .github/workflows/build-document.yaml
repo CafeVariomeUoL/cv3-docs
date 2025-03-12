@@ -12,7 +12,10 @@ permissions:
   checks: read
 
 env:
-  DOCKER_VERSION: '243.22562'
+  DOCKER_VERSION: '2025.03.8312'
+  INSTANCE: 'Writerside/cv3-docs'
+  ARTIFACT: 'webHelpCV3-all.zip'
+  IS_GROUP: 'true'
 
 jobs:
   render-graphviz:
@@ -36,149 +39,6 @@ jobs:
           name: graphviz
           path: ./Writerside/images/gn-*.*
 
-  build-index:
-    name: Build Documentation Index
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Build index
-        uses: JetBrains/writerside-github-action@v4
-        with:
-          instance: 'Writerside/i'
-          artifact: 'webHelpI2-all.zip'
-          docker-version: ${{ env.DOCKER_VERSION }}
-
-      - name: Save index
-        uses: actions/upload-artifact@v4
-        with:
-          name: index
-          path: artifacts/webHelpI2-all.zip
-          retention-days: 7
-
-  build-admin:
-    name: Build Admin Guide
-    needs: [render-graphviz]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Download Graphviz diagrams
-        uses: actions/download-artifact@v4
-        with:
-          name: graphviz
-          path: Writerside/images
-
-      - name: Build admin docs
-        uses: JetBrains/writerside-github-action@v4
-        with:
-          instance: 'Writerside/ag'
-          artifact: 'webHelpAG2-all.zip'
-          docker-version: ${{ env.DOCKER_VERSION }}
-
-      - name: Save admin guide
-        uses: actions/upload-artifact@v4
-        with:
-          name: admin
-          path: artifacts/webHelpAG2-all.zip
-          retention-days: 7
-
-  build-user:
-    name: Build User Guide
-    needs: [render-graphviz]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Download Graphviz diagrams
-        uses: actions/download-artifact@v4
-        with:
-          name: graphviz
-          path: Writerside/images
-
-      - name: Build user docs
-        uses: JetBrains/writerside-github-action@v4
-        with:
-          instance: 'Writerside/ug'
-          artifact: 'webHelpUG2-all.zip'
-          docker-version: ${{ env.DOCKER_VERSION }}
-
-      - name: Save user guide
-        uses: actions/upload-artifact@v4
-        with:
-          name: user
-          path: artifacts/webHelpUG2-all.zip
-          retention-days: 7
-
-  build-developer:
-    name: Build Developer Guide
-    needs: [render-graphviz]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Download Graphviz diagrams
-        uses: actions/download-artifact@v4
-        with:
-          name: graphviz
-          path: Writerside/images
-
-      - name: Build developer docs
-        uses: JetBrains/writerside-github-action@v4
-        with:
-          instance: 'Writerside/dg'
-          artifact: 'webHelpDG2-all.zip'
-          docker-version: ${{ env.DOCKER_VERSION }}
-
-      - name: Save developer guide
-        uses: actions/upload-artifact@v4
-        with:
-          name: developer
-          path: artifacts/webHelpDG2-all.zip
-          retention-days: 7
-
-  build-bts:
-    name: Build Biomedical Term Service Guide
-    needs: [render-graphviz]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Download Graphviz diagrams
-        uses: actions/download-artifact@v4
-        with:
-          name: graphviz
-          path: Writerside/images
-
-      - name: Build BTS docs
-        uses: JetBrains/writerside-github-action@v4
-        with:
-          instance: 'Writerside/bts'
-          artifact: 'webHelpBTS2-all.zip'
-          docker-version: ${{ env.DOCKER_VERSION }}
-
-      - name: Save BTS guide
-        uses: actions/upload-artifact@v4
-        with:
-          name: bts
-          path: artifacts/webHelpBTS2-all.zip
-          retention-days: 7
-
   build-swagger:
     name: Build Swagger-UI
     runs-on: ubuntu-latest
@@ -193,32 +53,66 @@ jobs:
         with:
           name: swagger-ui
           path: swagger-ui/*
-          retention-days: 7
+          retention-days: 1
+
+  build-documents:
+    name: Build Documents
+    needs: [render-graphviz]
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Download Graphviz diagrams
+        uses: actions/download-artifact@v4
+        with:
+          name: graphviz
+          path: Writerside/images
+
+      - name: Define instance id and artifacts
+        id: define-ids
+        run: |
+          INSTANCE=${INSTANCE#*/}
+          INSTANCE_ID_UPPER=$(echo "$INSTANCE" | tr '[:lower:]' '[:upper:]')
+          ARTIFACT="webHelp${INSTANCE_ID_UPPER}2-all.zip"
+          ALGOLIA_ARTIFACT="algolia-indexes-${INSTANCE_ID_UPPER}.zip"
+
+          # Set the environment variables and outputs
+          echo "INSTANCE_ID_UPPER=$INSTANCE_ID_UPPER" >> $GITHUB_ENV
+          echo "ARTIFACT=$ARTIFACT" >> $GITHUB_ENV
+          echo "ALGOLIA_ARTIFACT=$ALGOLIA_ARTIFACT" >> $GITHUB_ENV
+          echo "artifact=$ARTIFACT" >> $GITHUB_OUTPUT
+          echo "algolia_artifact=$ALGOLIA_ARTIFACT" >> $GITHUB_OUTPUT
+
+      - name: Build documents
+        uses: JetBrains/writerside-github-action@v4
+        with:
+          instance: ${{ env.INSTANCE }}
+          artifact: ${{ env.ARTIFACT }}
+          docker-version: ${{ env.DOCKER_VERSION }}
+
+      - name: Save documents
+        uses: actions/upload-artifact@v4
+        with:
+          name: admin
+          path: artifacts/${{ env.ARTIFACT }}
+          retention-days: 1
 
   deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    needs: [build-index, build-admin, build-user, build-developer, build-bts, build-swagger]
+    needs: [build-swagger, build-documents]
     runs-on: ubuntu-latest
     steps:
       - name: Download artifacts
         uses: actions/download-artifact@v4
 
       - name: Unzip index
-        run: unzip -O UTF-8 -qq index/webHelpI2-all.zip -d dir
-
-      - name: Unzip admin guide
-        run:  unzip -O UTF-8 -qq admin/webHelpAG2-all.zip -d dir/admin
-
-      - name: Unzip user guide
-        run: unzip -O UTF-8 -qq user/webHelpUG2-all.zip -d dir/user
-
-      - name: Unzip developer guide
-        run: unzip -O UTF-8 -qq developer/webHelpDG2-all.zip -d dir/developer
-
-      - name: Unzip BTS guide
-        run: unzip -O UTF-8 -qq bts/webHelpBTS2-all.zip -d dir/bts
+        run: unzip -O UTF-8 -qq index/${{ env.ARTIFACT }} -d dir
 
       - name: Copy Swagger-UI
         run: mkdir -p dir/openapi && cp -r swagger-ui/* dir/openapi/
