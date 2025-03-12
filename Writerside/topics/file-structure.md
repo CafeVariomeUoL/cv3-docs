@@ -1,5 +1,7 @@
 # File Structure
 
+## Backend Library
+
 The files in the library repository follow the basic structure:
 
 - src: The source code directory. If running from source, this directory should be added to the Python path.
@@ -18,3 +20,16 @@ The files in the library repository follow the basic structure:
 - LICENSE, READEME.md: the license and readme files.
 - pyproject.toml, requirements.txt, requirements-test.txt: the build and dependency files.
 - *.nuitka-package.config.yaml: the Nuitka build configuration files. These files are used to build the source code into binary executables.
+
+## Frontend library
+
+The files in the library repository follow the basic structure:
+
+- lib: the flutter source root.
+  - models: the data models.
+    - providers: the state management providers. All providers are injected into the app at the root level, some are chained with proxy providers for inter-provider state access.
+  - pages: the UI pages.
+  - routes: the router definition, and the generated router file by `auto_route`.
+  - services: the service classes handling web requests to the backend.
+  - utils: utility functions that are used across the library.
+  - widgets: the UI components that are reused across different pages.
