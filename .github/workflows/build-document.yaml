@@ -14,7 +14,7 @@ permissions:
 env:
   DOCKER_VERSION: '2025.03.8312'
   INSTANCE: 'Writerside/cv3-docs'
-  ARTIFACT: 'webHelpCV3-all.zip'
+  ARTIFACT: 'webHelpCV3-DOCS2-all.zip'
   IS_GROUP: 'true'
 
 jobs:
