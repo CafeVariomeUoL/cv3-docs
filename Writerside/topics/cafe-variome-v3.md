@@ -4,43 +4,45 @@ This is the documentation for Cafe Variome V3.
 
 ## What is Cafe Variome
 
-Cafe Variome is a flexible web-based data discovery tool that any biomedical data owner can install to enable the “existence” rather than the “substance” of the data to be discovered. It takes in various format's of data (such as phenopackets, xlsx, csv, etc.), and allows users to query the patients in a unified way.
+Cafe Variome is a flexible, web-based data discovery tool designed for biomedical data owners. It enables the discovery of the existence of data without revealing its substance. Supporting various data formats (such as Phenopackets, XLSX, CSV, etc.), Cafe Variome allows users to query patient records in a unified way.
 
 ## Why Cafe Variome
 
-Health data sharing often occurs in small-scale interactions between a limited number of individuals or institutions. Although this approach helps to ensure correct data governance and provenance the value of this data is never realised and runs counter to widespread FAIR principles.
+Health data sharing often takes place through small-scale interactions between a limited number of individuals or institutions. While this approach helps ensure proper data governance and provenance, it prevents the full potential of the data from being realised and contradicts widespread FAIR principles.
 
-Cafe Variome provides a user-friendly solution by allowing data controllers/custodians to retain control of their data while having approved data elements for discovery, either using a single instance or a federation of data sharing instances. It's powerful, adaptive query interface uses semantic similarity and its flexibility allows the researcher/user to use queries that are as simple or as complex as desired.
+Cafe Variome provides a user-friendly solution, allowing data controllers and custodians to retain control of their data while making approved data elements discoverable, either through a single instance or a federation of data-sharing instances. Its powerful, adaptive query interface uses semantic similarity, and its flexibility enables researchers and users to create queries that are as simple or as complex as needed.
 
-Cafe Variome can be used in a variety of settings. Examples include: searching for a specific study (performed using a given participant cohort), searching for a specific type of data or matching rare disease patients to take part in a clinical study.
+Cafe Variome can be used in a variety of settings, such as searching for a specific study (conducted using a given participant cohort), identifying a particular type of data, or matching rare disease patients to clinical studies.
 
 ## Key features of Cafe Variome Data Discovery Platform
 
 ### Powerful storage and query engine
 
-Cafe Variome stores everything, a schema-less, scalable storage solution. It accepts a wide variety of data formats, and has powerful built-in features to assist the data holders to convert the data into an easily queryable format. The query engines run on the processed dataset, with the ability to query on any field, in any combination and in any order.
+Cafe Variome provides a schema-less, scalable storage solution for all data. It accepts a wide variety of formats and includes powerful built-in features to help data holders convert their data into an easily queryable format. The query engines run on the processed dataset, allowing queries on any field, in any combination, and in any order.
 
-In collaboration with [Molgenis](https://www.molgenis.org/), we are building a query system, which will allow users to query data stored in both Cafe Variome and Molgenis simultaneously from the user's own Cafe Variome instance. This allows both platforms to make full use of all the powerful query filters and fine-grain access control available in Cafe Variome.
+In collaboration with [Molgenis](https://www.molgenis.org/), we are developing a query system that enables users to query data stored in both Cafe Variome and Molgenis simultaneously from their own Cafe Variome instance. This integration allows both platforms to fully utilise Cafe Variome’s powerful query filters and fine-grained access control.
 
 We are continuously working to support more data storage backends, more input formats, and more ontology/term sets.
 
 ### Semantic similarity based quering
 
-Use of ontology terms in patient data is gaining prevalence. Cafe Variome can work with data inputted using ontology terms, by either detecting the terms automatically, or it can be configured to treat specific data as ontology terms. Currently, Cafe Variome supports the [ORDO](https://www.orphadata.com/ontologies/) and [SNOMED](https://www.snomed.org/what-is-snomed-ct) controlled vocabularies. Terms entered from either vocabulary is mapped internally to the Human Phenotype Ontology [(HPO)](https://hpo.jax.org/). This mapping permit Cafe Variome to enable semantic querying, in that queries are performed not only the terms entered but also the terms that are similar to the query terms. Other ontology term sets, if mapped to or from HPO set, can also be used for semantic similarity based query. Therefore, you can discover similar patients based on phenotypes, diseases, or medicine that they are assigned with.
+The use of ontology terms in patient data is becoming increasingly common. Cafe Variome can process data inputted with ontology terms by either detecting them automatically or being configured to treat specific data as ontology terms. Currently, Cafe Variome supports the [ORDO](https://www.orphadata.com/ontologies/) and [SNOMED](https://www.snomed.org/what-is-snomed-ct) controlled vocabularies. Terms entered from either vocabulary are mapped internally to the Human Phenotype Ontology [(HPO)](https://hpo.jax.org/). 
+
+This mapping enables semantic querying, meaning queries are performed not only on the entered terms but also on similar terms. Other ontology term sets, if mapped to or from HPO, can also be used for semantic similarity-based queries. As a result, users can discover similar patients based on phenotypes, diseases, or prescribed medications.
 
 ### Federated data discovery
 
-Cafe Variome, designed as a federated data discovery tool, can be used to form decentralised discovery networks. Such networks can combine the data from multiple instances of Cafe Variome, making the collective data discoverable from a single place. Cafe Variome allows data administrators to create bespoke networks for specific purposes, as well as to request to join existing networks. This implies data providers (viz., laboratories, biobanks etc.,) can connect together in closed or semi-closed discovery networks.
+Cafe Variome, designed as a federated data discovery tool, enables the formation of decentralised discovery networks. These networks can combine data from multiple instances of Cafe Variome, making the collective data discoverable from a single access point. Cafe Variome allows data administrators to create bespoke networks for specific purposes and request to join existing ones. This means that data providers (e.g., laboratories, biobanks, etc.) can connect within closed or semi-closed discovery networks.
 
-The resulting network is decentralised and utilises advanced security and access control features with a high fault tolerance, automatic data synchronisation and conflict resolution. Nodes requesting to join an existing network are approved individually by each node of the network, with users being granted access to the data on a per-source per-person basis. This allows the data owners to retain control of their data while having approved data elements for discovery, while still have a robust means of data discovery. The network model is flexible enough to work with common data access and analysis models, while still providing a unified interface.
+The resulting network is decentralised and incorporates advanced security and access control features, ensuring high fault tolerance, automatic data synchronisation, and conflict resolution. Nodes requesting to join an existing network must be individually approved by each node, with user access granted on a per-source, per-person basis. This allows data owners to retain control of their data while making approved data elements discoverable, all within a robust data discovery framework. The network model is flexible enough to accommodate common data access and analysis models while still providing a unified interface.
 
 ### User-friendly, cross-platform interface
 
-Cafe Variome's frontend interface is platform independent and can be run as a web application, mobile or a desktop client. It provides a unified experience across all platforms, including Web, Android, iOS, Windows, Linux, and macOS. The frontend is designed to work with the backend seamlessly and provides a unified experience across all platforms. The frontend is also designed to be responsive, and will adapt to different screen sizes, from mobile phones to desktops.
+Cafe Variome's frontend interface is platform-independent and can run as a web application, mobile app, or desktop client. It provides a consistent experience across Web, Android, iOS, Windows, Linux, and macOS. Designed to integrate seamlessly with the backend, the frontend is also fully responsive, adapting to different screen sizes from mobile phones to desktops.
 
-The query interface, with which most users interact adapts to the type of data that a given installation holds. By automatically detecting the type of data stored, Cafe Variome show only those components of the user interface that are appropriate to the type of data detected. This provides Cafe Variome with clean and adaptable user interface, which avoid confusing the user with unnecessary interface options. The advanced query interface provides a greater range of query logic and filter options, permitting advanced users to perform more targeted searches.
+The query interface, which most users interact with, adapts to the type of data stored in a given installation. By automatically detecting the data type, Cafe Variome displays only the relevant components of the user interface, ensuring a clean and adaptable experience while avoiding unnecessary options that could confuse users. The advanced query interface offers a broader range of query logic and filter options, allowing advanced users to perform more targeted searches.
 
-The interface can be adapted to the type of data contained in the underlying database, to allow users to quickly build their queries in an intuitive way. The examples below show the types of adaptations that can be made.
+The interface adapts to the type of data in the underlying database, enabling users to build queries quickly and intuitively. The examples below illustrate the types of adaptations that can be made.
 
 > **Keyword Search**
 >
@@ -61,6 +63,6 @@ The interface can be adapted to the type of data contained in the underlying dat
 
 ### Full BEACON compatibility
 
-Cafe Variome implements BEACON v2 specifications, which aims to make discovering genomic data easier. By loading data into Cafe Variome, the user also gets a BEACON compatible API, which can be integrated with other services. The optional security features have been implemented into the BEACON API, granting the BEACON the same level of security, access control, and data synchronisation should the admin wish to enable it.
+Cafe Variome implements BEACON v2 specifications, designed to simplify genomic data discovery. By loading data into Cafe Variome, users automatically gain access to a BEACON-compatible API, which can be integrated with other services. Optional security features are built into the BEACON API, ensuring the same level of security, access control, and data synchronisation as Cafe Variome, should the administrator choose to enable them.
 
-Cafe Variome can also query other BEACON compatible systems as remote data sources, as if the data is being stored locally. While the query will be limited to BEACON capabilities, the results will be merged with local results. The compiled set of results will be presented to the user as a single set, allowing Cafe Variome to be used as a central interface for BEACON discovery.
+Cafe Variome can also query other BEACON-compatible systems as remote data sources, treating external data as if it were stored locally. While queries are limited to BEACON capabilities, the results are merged with local data and presented to the user as a single, unified set. This allows Cafe Variome to serve as a central interface for BEACON discovery.
