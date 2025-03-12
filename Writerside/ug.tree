@@ -7,7 +7,7 @@
                   start-page="cafe-variome-v3.md">
 
     <toc-element topic="cafe-variome-v3.md"/>
-    <toc-element topic="General.md"/>
+    <toc-element topic="general.md"/>
     <toc-element topic="user-and-admin-access-control.md"/>
     <toc-element topic="metadata-discovery-model.md"/>
 </instance-profile>
