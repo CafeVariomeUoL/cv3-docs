@@ -1,0 +1,31 @@
+{
+  "sourceId": "8df136d8-7fb0-4bec-a72a-5deed972bbb6",
+  "sourceName": "A maximum custom source",
+  "sourceType": "custom",
+  "publisher": {
+    "publisherType": "organization",
+    "name": "University of Leicester",
+    "contactEmail": "brookeslab@le.ac.uk",
+    "contactName": "John Doe",
+    "url": "https://www.le.ac.uk",
+    "location": "Leicester, UK, Europe"
+  },
+  "resourceUrls": [
+    "https://www.example.com"
+  ],
+  "description": "This is a maximum example of a custom source",
+  "themes": [
+    "https://example.com/theme1",
+    "https://example.com/theme2"
+  ],
+  "releaseLicense": "https://opensource.org/licenses/MIT",
+  "language": "en",
+  "connectionId": "b1120b19-e631-46ad-915c-c964c8a278a2",
+  "customFields": {
+    "Some custom field": "Some value",
+    "Another custom field": [
+      "Value 1",
+      "Value 2"
+    ]
+  }
+}

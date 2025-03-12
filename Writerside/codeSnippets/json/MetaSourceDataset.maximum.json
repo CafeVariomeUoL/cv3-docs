@@ -1,0 +1,140 @@
+{
+  "sourceId": "adbec8c2-9460-4814-9574-06a0dfe2efb5",
+  "sourceName": "A maximum dataset",
+  "sourceType": "dataset",
+  "publisher": {
+    "publisherType": "organization",
+    "name": "University of Leicester",
+    "contactEmail": "brookeslab@le.ac.uk",
+    "contactName": "John Doe",
+    "url": "https://www.le.ac.uk",
+    "location": "Leicester, UK, Europe"
+  },
+  "resourceUrls": [
+    "https://www.example.com"
+  ],
+  "description": "This is a maximum example of a custom source",
+  "themes": [
+    "https://example.com/theme1",
+    "https://example.com/theme2"
+  ],
+  "datasetVersions": [
+    {
+      "datasetDetails": {
+        "versionId": "1b71b513-33be-45ee-b6e9-a24b2bc9dc05",
+        "versionName": "v1.0.0",
+        "keywords": [
+          "keyword1",
+          "keyword2"
+        ],
+        "publishedDate": "2023-12-02",
+        "updateDate": "2023-12-12"
+      },
+      "datasetContent": {
+        "numberOfSubjects": 100,
+        "minAge": 18,
+        "maxAge": 35,
+        "countries": [
+          "UK",
+          "US"
+        ],
+        "diseases": [
+          "controlGroup",
+          "ad",
+          "hd"
+        ],
+        "sex": [
+          "male",
+          "female"
+        ],
+        "clinical": [
+          "lifeStyleInfo",
+          "vitalSigns"
+        ],
+        "markers": [
+          "amyloid",
+          "tau"
+        ],
+        "images": [
+          "mri",
+          "petTau",
+          "datScan"
+        ],
+        "electrophysiology": [
+          "eeg",
+          "meg"
+        ],
+        "dataTypes": [
+          "demographics"
+        ]
+      }
+    },
+    {
+      "datasetDetails": {
+        "versionId": "4114682d-73f5-45eb-9b7c-023e18cd12c9",
+        "versionName": "v2.0.0",
+        "keywords": [
+          "keyword3",
+          "keyword4"
+        ],
+        "publishedDate": "2024-01-01",
+        "updateDate": "2024-01-11"
+      },
+      "datasetContent": {
+        "numberOfSubjects": 200,
+        "minAge": 20,
+        "maxAge": 40,
+        "countries": [
+          "UK",
+          "US",
+          "CA"
+        ],
+        "diseases": [
+          "controlGroup",
+          "ad",
+          "hd"
+        ],
+        "sex": [
+          "male",
+          "female",
+          "other"
+        ],
+        "clinical": [
+          "lifeStyleInfo",
+          "vitalSigns"
+        ],
+        "markers": [
+          "amyloid",
+          "tau",
+          "neurofilamentLightChain"
+        ],
+        "images": [
+          "mri",
+          "petTau",
+          "datScan",
+          "spect"
+        ],
+        "electrophysiology": [
+          "eeg",
+          "meg",
+          "erp"
+        ],
+        "dataTypes": [
+          "demographics",
+          "clinical",
+          "lifestyle"
+        ]
+      }
+    }
+  ],
+  "releaseLicense": "https://opensource.org/licenses/MIT",
+  "language": "en",
+  "connectionId": "ac743200-c8ff-485e-a82d-45d0e636f862",
+  "customFields": {
+    "Some custom field": "Some value",
+    "Another custom field": [
+      "Value 1",
+      "Value 2"
+    ]
+  }
+}

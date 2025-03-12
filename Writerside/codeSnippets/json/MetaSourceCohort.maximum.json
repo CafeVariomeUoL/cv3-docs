@@ -1,0 +1,65 @@
+{
+  "sourceId": "a6e001cb-bb60-48b9-a47a-3dccee13c085",
+  "sourceName": "A maximum cohort",
+  "sourceType": "cohort",
+  "publisher": {
+    "publisherType": "organization",
+    "name": "University of Leicester",
+    "contactEmail": "brookeslab@le.ac.uk",
+    "contactName": "John Doe",
+    "url": "https://www.le.ac.uk",
+    "location": "Leicester, UK, Europe"
+  },
+  "resourceUrls": [
+    "https://www.example.com"
+  ],
+  "description": "This is a maximum example of a cohort",
+  "releaseLicense": "https://opensource.org/licenses/MIT",
+  "language": "en",
+  "themes": [
+    "https://example.com/theme1",
+    "https://example.com/theme2"
+  ],
+  "cohortDetails": {
+    "siteType": "multiSite",
+    "country": "UK",
+    "yearStart": 2023
+  },
+  "collectedTypes": {
+    "participants": {
+      "diseases": [
+        "controlGroup",
+        "ad",
+        "hd"
+      ],
+      "numberOfSubjects": 1000
+    },
+    "bioSamples": [
+      "csf",
+      "serum",
+      "plasma",
+      "dna",
+      "saliva",
+      "urine"
+    ],
+    "images": [
+      "mri",
+      "petTau",
+      "datScan"
+    ],
+    "cognitiveData": [
+      "crossSectional"
+    ]
+  },
+  "connectionId": "6c3968af-3d29-4f81-8747-b2337c1cc01b",
+  "datasetIds": [
+    "adbec8c2-9460-4814-9574-06a0dfe2efb5"
+  ],
+  "customFields": {
+    "Some custom field": "Some value",
+    "Another custom field": [
+      "Value 1",
+      "Value 2"
+    ]
+  }
+}

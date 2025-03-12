@@ -1,0 +1,22 @@
+{
+  "sourceName": "A minimum dataset",
+  "sourceType": "dataset",
+  "publisher": {
+    "publisherType": "individual",
+    "name": "John Doe",
+    "contactEmail": "john@example.com"
+  },
+  "resourceUrls": [
+    "https://www.example.com"
+  ],
+  "datasetVersions": [
+    {
+      "datasetDetails": {
+        "versionName": "v1.0.0"
+      },
+      "datasetContent": {
+        "numberOfSubjects": 100
+      }
+    }
+  ]
+}

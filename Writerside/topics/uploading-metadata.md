@@ -21,7 +21,7 @@ If the metadata is large in quantity, or if the metadata is being exported from 
 
 The metadata file to be uploaded should be in JSON format. It should be an array containing one or multiple objects, each object being a meta source. The structure of the meta-source should follow the [meta-source model](metadata-discovery-model.md), but some fields can be omitted or left empty. The following is an example of a metadata file:
 
-<include from="library.md" element-id="json-meta_source_custom-minimum"></include>
+<code-block src="json/MetaSource.minimum.json" collapsed-title="MetaSource.minimum.json" collapsible="true" lang="json" />
 
 ### Fields and constraints
 
@@ -470,35 +470,35 @@ Here are some minimum and maximum examples of metadata models for different sour
 
 Minimum example for `custom` type:
 
-<include from="library.md" element-id="json-meta_source_custom-minimum"></include>
+<code-block src="json/MetaSource.minimum.json" collapsed-title="MetaSource.minimum.json" collapsible="true" lang="json" />
 
 Maximum example for `custom` type:
 
-<include from="library.md" element-id="json-meta_source_custom-maximum"></include>
+<code-block src="json/MetaSource.maximum.json" collapsed-title="MetaSource.maximum.json" collapsible="true" lang="json" />
 
 Minimum example for `cohort` type:
 
-<include from="library.md" element-id="json-meta_source_cohort-minimum"></include>
+<code-block src="json/MetaSourceCohort.minimum.json" collapsed-title="MetaSourceCohort.minimum.json" collapsible="true" lang="json" />
 
 Maximum example for `cohort` type:
 
-<include from="library.md" element-id="json-meta_source_cohort-maximum"></include>
+<code-block src="json/MetaSourceCohort.maximum.json" collapsed-title="MetaSourceCohort.maximum.json" collapsible="true" lang="json" />
 
 Minimum example for `dataset` type:
 
-<include from="library.md" element-id="json-meta_source_dataset-minimum"></include>
+<code-block src="json/MetaSourceDataset.minimum.json" collapsed-title="MetaSourceDataset.minimum.json" collapsible="true" lang="json" />
 
 Maximum example for `dataset` type:
 
-<include from="library.md" element-id="json-meta_source_dataset-maximum"></include>
+<code-block src="json/MetaSourceDataset.maximum.json" collapsed-title="MetaSourceDataset.maximum.json" collapsible="true" lang="json" />
 
 Minimum example for `dataCollection` type:
 
-<include from="library.md" element-id="json-meta_source_data_collection-minimum"></include>
+<code-block src="json/MetaSourceDataCollection.minimum.json" collapsed-title="MetaSourceDataCollection.minimum.json" collapsible="true" lang="json" />
 
 Maximum example for `dataCollection` type:
 
-<include from="library.md" element-id="json-meta_source_data_collection-maximum"></include>
+<code-block src="json/MetaSourceDataCollection.minimum.json" collapsed-title="MetaSourceDataCollection.maximum.json" collapsible="true" lang="json" />
 
 ### Uploading the metadata file
 

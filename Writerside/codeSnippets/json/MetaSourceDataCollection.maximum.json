@@ -1,0 +1,77 @@
+{
+  "sourceId": "adbec8c2-9460-4814-9574-06a0dfe2efb5",
+  "sourceName": "A maximum dataset",
+  "sourceType": "dataset",
+  "publisher": {
+    "publisherType": "organization",
+    "name": "University of Leicester",
+    "contactEmail": "brookeslab@le.ac.uk",
+    "contactName": "John Doe",
+    "url": "https://www.le.ac.uk",
+    "location": "Leicester, UK, Europe"
+  },
+  "resourceUrls": [
+    "https://www.example.com"
+  ],
+  "description": "This is a maximum example of a custom source",
+  "themes": [
+    "https://example.com/theme1",
+    "https://example.com/theme2"
+  ],
+  "dataCollectionDetails": {
+    "keywords": [
+      "keyword1",
+      "keyword2"
+    ],
+    "publishedDate": "2023-12-02",
+    "updateDate": "2023-12-12"
+  },
+  "dataCollectionContent": {
+    "numberOfSubjects": 100,
+    "minAge": 18,
+    "maxAge": 35,
+    "countries": [
+      "UK",
+      "US"
+    ],
+    "diseases": [
+      "controlGroup",
+      "ad",
+      "hd"
+    ],
+    "sex": [
+      "male",
+      "female"
+    ],
+    "clinical": [
+      "lifeStyleInfo",
+      "vitalSigns"
+    ],
+    "markers": [
+      "amyloid",
+      "tau"
+    ],
+    "images": [
+      "mri",
+      "petTau",
+      "datScan"
+    ],
+    "electrophysiology": [
+      "eeg",
+      "meg"
+    ],
+    "dataTypes": [
+      "demographics"
+    ]
+  },
+  "releaseLicense": "https://opensource.org/licenses/MIT",
+  "language": "en",
+  "connectionId": "ac743200-c8ff-485e-a82d-45d0e636f862",
+  "customFields": {
+    "Some custom field": "Some value",
+    "Another custom field": [
+      "Value 1",
+      "Value 2"
+    ]
+  }
+}

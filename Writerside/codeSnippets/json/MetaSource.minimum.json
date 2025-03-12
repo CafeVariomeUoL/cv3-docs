@@ -1,0 +1,12 @@
+{
+  "sourceName": "A minimum custom source",
+  "sourceType": "custom",
+  "publisher": {
+    "publisherType": "individual",
+    "name": "John Doe",
+    "contactEmail": "john@example.com"
+  },
+  "resourceUrls": [
+    "https://www.example.com"
+  ]
+}
