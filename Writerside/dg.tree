@@ -8,6 +8,7 @@
 
     <toc-element topic="cafe-variome-v3.md"/>
     <toc-element topic="convention.md">
+        <toc-element topic="system-structure.md"/>
         <toc-element topic="file-structure.md"/>
     </toc-element>
     <toc-element topic="authentication.md">
@@ -29,5 +30,4 @@
         <toc-element topic="query-builder-and-query-result.md"/>
     </toc-element>
     <toc-element topic="monitoring.md"/>
-    <toc-element topic="system-structure.md"/>
 </instance-profile>

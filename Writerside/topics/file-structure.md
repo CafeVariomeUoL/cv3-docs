@@ -1,29 +1,20 @@
 # File Structure
 
-The files in this repository follow the basic structure:
+The files in the library repository follow the basic structure:
 
-- cvf_app: The main Quart application folder, as a Python package.
-    * auth: Folder containing authentication related code, including KeyCloak and Vault drivers, as well as some decorators and security related function
-    * beacon: Beacon related functions, including the class definition, the code to query beacon endpoints, and to process beacon queries. Also containing the management functions to handle beacon sources
-    * cv: The Cafe Variome management related code. Almost all endpoints used by frontend are here.
-    * federation: The federated network related code. Federated query uses a different authentication model, so it has a different codebase from the regular query
-    * legacy: Legacy functions, including the legacy query and views for frontend to manage the legacy code
-    * log: The code to handle logging, log reporting, and receiving log from the front end.
-    * meta: *ON HOLD NOW* The code for meta sources and meta-query
-    * models: All class definition for data models used in cv and management functions. Specific models, like the query model, are inside the corresponding folder.
-    * nexus: The code for nexus mode. The views in this folder do not follow naming conventions of this project, because it needs to be compatible with the V2 API endpoints.
-    * query: The code related to querying, including both the query and response model, data searching and sanitization, etc.
-    * util: Utility functions, not used by any other part of the code. It's a standalone implementation of a CLI to interact with the system.
-- docs: The documentation folder, containing the OpenAPI specification.
-- resources: The resource folder, containing the necessary files for backend to run
-- static: Static file folder, containing web pages and js scripts that are served directly
-- tests: Testing root folder
-- utility: The folder containing helper script, etc.
-
-## File names
-
-In each source code subfolder, there could be these files:
-
-- views: Definition of the endpoints, using `Blueprint` from Quart. These files are the direct entry point of a request
-- management: The functions used to run background or scheduled tasks. These codes are used with `APScheduler` to run in the background to perform various data operations, like database cleanup, network syncing, etc.
-- schemas: The file holding the schemas for input validation. CV3 uses `marshmallow` for input validation, working as both a data integrity check and security filter. This file defines the schema for the views in this folder.
+- src: The source code directory. If running from source, this directory should be added to the Python path.
+  - cv3_backend_lib: the library package, containing the shared functions and data models.
+    - data: a data folder containing non-code files, like GraphQL schemas, resource files, etc. This folder is packaged by the build system upon release.
+    - etc: arbitrary files that provide configurations and other data, such as constant definitions, `marshmallow` schemas, etc.
+    - graphql: module dedicated to graphql support. GraphQL in CV3 is a wrapper on normal functions, so this module is not imported elsewhere (except by the main server file), and is self-contained for GraphQL functions.
+    - models: the data models used in the system. These files minimise the import from other modules except from the `etc` and `util` module. For child classes that are used in-place as a more detailed version of parent classes, they are defined in a submodule, named after the parent class.
+    - query: the query driver handling either internal database queries or network-based queries for supported protocols and implementations.
+    - util: utility functions that are used across the library and cannot be packed into any specific classes, such as logging and security wrappers.
+    - views: the definition of Quart blueprints.
+- tests: the test directory, containing all test files for the library. Within each test type, the file structure mirros the module they are testing.
+  - function_test: function tests. These tests start from an endpoint funtion, and runs through the function with mocked database drivers. They will test all internal functions except the database/network calls.
+  - unit_test: unit tests, focusing on classes and functions in an individual level.
+- instance_config.json(.example): the (example) config file. When running from source code, this file needs to be present in all microservice folders.
+- LICENSE, READEME.md: the license and readme files.
+- pyproject.toml, requirements.txt, requirements-test.txt: the build and dependency files.
+- *.nuitka-package.config.yaml: the Nuitka build configuration files. These files are used to build the source code into binary executables.
