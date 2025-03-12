@@ -14,7 +14,7 @@ permissions:
 env:
   DOCKER_VERSION: '2025.03.8312'
   INSTANCE: 'Writerside/cv3-docs'
-  ARTIFACT: 'webHelpCV3-all.zip'
+  ARTIFACT: 'webHelpCV3-DOCS2-all.zip'
   IS_GROUP: 'true'
 
 jobs:
@@ -98,7 +98,7 @@ jobs:
       - name: Save documents
         uses: actions/upload-artifact@v4
         with:
-          name: admin
+          name: documents
           path: artifacts/${{ env.ARTIFACT }}
           retention-days: 1
 
@@ -112,8 +112,8 @@ jobs:
       - name: Download artifacts
         uses: actions/download-artifact@v4
 
-      - name: Unzip index
-        run: unzip -O UTF-8 -qq index/${{ env.ARTIFACT }} -d dir
+      - name: Unzip documents
+        run: unzip -O UTF-8 -qq documents/${{ env.ARTIFACT }} -d dir
 
       - name: Copy Swagger-UI
         run: mkdir -p dir/openapi && cp -r swagger-ui/* dir/openapi/
