@@ -96,7 +96,7 @@ Redis may also be configured as a cluster. When using a redis cluster, set the `
 
 ## Keycloak
 
-Keycloak is an open source OIDC identity provider that Cafe Variome V3 uses to authenticate users. CV3 integrates with Keycloak deeply, not only by using the OIDC protocol, but also uses its REST API to manage users, tokens and clients. It currently cannot use a different OIDC server.
+Keycloak is an open source <tooltip term="OIDC">OIDC</tooltip> identity provider that Cafe Variome V3 uses to authenticate users. CV3 integrates with Keycloak deeply, not only by using the <tooltip term="OIDC">OIDC</tooltip> protocol, but also uses its REST API to manage users, tokens and clients. It currently cannot use a different <tooltip term="OIDC">OIDC</tooltip> server.
 
 ### Using Keycloak docker
 

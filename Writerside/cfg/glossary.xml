@@ -1,7 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE terms SYSTEM "https://resources.jetbrains.com/writerside/1.0/glossary.dtd">
 <terms>
-    <term name="foo">
-        Description of what "foo" is.
+    <term name="OIDC">
+        OpenID Connect, a simple identity layer on top of the OAuth 2.0 protocol; used for SSO, authentication, and authorisation.
+    </term>
+    <term name="FAIR">
+        Findable, Accessible, Interoperable, and Reusable; a set of principles to make data more reusable.
+    </term>
+    <term name="ORDO">
+        Orphanet Rare Disease Ontology, an ontology for rare diseases.
+    </term>
+    <term name="SNOMED">
+        Systematized Nomenclature of Medicine Clinical Terms, a clinical terminology system.
+    </term>
+    <term name="HPO">
+        Human Phenotype Ontology, a standardized vocabulary of phenotypic abnormalities.
+    </term>
+    <term name="OMIM">
+        Online Mendelian Inheritance in Man, a comprehensive compendium of human genes and genetic phenotypes.
+    </term>
+    <term name="NCIT">
+        National Cancer Institute Thesaurus, a reference terminology for cancer research.
+    </term>
+    <term name="HGNC">
+        HUGO Gene Nomenclature Committee, a committee that assigns standardised nomenclature to human genes.
+    </term>
+    <term name="BEACON">
+        Beacon v2 is a protocol and specification established by the GA4GH that defines an open standard for the discovery of genomic (and phenoclinic) data in biomedical research and clinical applications.
+    </term>
+    <term name="GA4GH">
+        Global Alliance for Genomics and Health, an international coalition that aims to enable the sharing of genomic and clinical data.
+    </term>
+    <term name="Nexus">
+        Sonatype Nexus, a repository manager that allows you to proxy, collect, and manage dependencies, files and other artifacts.
+    </term>
+    <term name="KeyCloak">
+        An open-source identity and access management solution.
+    </term>
+    <term name="Vault">
+        HashiCorp Vault, a tool for managing secrets and protecting sensitive data.
+    </term>
+    <term name="PEM">
+        PEM format, a base64-encoded format for storing and transferring cryptographic keys.
+    </term>
+    <term name="JWK">
+        JSON Web Key, a JSON object that represents a cryptographic key.
+    </term>
+    <term name="JWKS">
+        JSON Web Key Set, a JSON object that represents a set of JSON Web Keys.
+    </term>
+    <term name="realm">
+        A realm is a domain of users that share the same identity, authentication, and authorisation policies.
+    </term>
+    <term name="KV Engine">
+        Key-Value Engine, a storage engine that stores key-value pairs.
+    </term>
+    <term name="Molgenis">
+        A platform for scientific data management. It specialise in versatile data management and database solutions.
     </term>
 </terms>
