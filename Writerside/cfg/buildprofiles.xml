@@ -7,6 +7,10 @@
         <web-root>https://v3doc.cafevariome.org</web-root>
         <custom-favicons>favicon.ico</custom-favicons>
         <header-logo>cafevariome-logo.png</header-logo>
+        <algolia-id>2L5CYVSKPL</algolia-id>
+        <algolia-index>writerside_prod</algolia-index>
+        <algolia-api-key>bb7137596e296dc5829a7cf9b9b911cf</algolia-api-key>
+        <algolia-show-logo>true</algolia-show-logo>
     </variables>
 
     <footer>
@@ -31,11 +35,6 @@
         </variables>
     </build-profile>
     <build-profile instance="bts">
-        <variables>
-            <noindex-content>false</noindex-content>
-        </variables>
-    </build-profile>
-    <build-profile instance="i">
         <variables>
             <noindex-content>false</noindex-content>
         </variables>

@@ -16,6 +16,9 @@ env:
   INSTANCE: 'Writerside/cv3-docs'
   ARTIFACT: 'webHelpCV3-DOCS2-all.zip'
   IS_GROUP: 'true'
+  ALGOLIA_APP_NAME: 'NLAGB2LZHU'
+  ALGOLIA_INDEX_NAME: 'MY_INDEX'
+  CONFIG_JSON_VERSION: '1.0'
 
 jobs:
   render-graphviz:
@@ -72,21 +75,6 @@ jobs:
           name: graphviz
           path: Writerside/images
 
-      - name: Define instance id and artifacts
-        id: define-ids
-        run: |
-          INSTANCE=${INSTANCE#*/}
-          INSTANCE_ID_UPPER=$(echo "$INSTANCE" | tr '[:lower:]' '[:upper:]')
-          ARTIFACT="webHelp${INSTANCE_ID_UPPER}2-all.zip"
-          ALGOLIA_ARTIFACT="algolia-indexes-${INSTANCE_ID_UPPER}.zip"
-
-          # Set the environment variables and outputs
-          echo "INSTANCE_ID_UPPER=$INSTANCE_ID_UPPER" >> $GITHUB_ENV
-          echo "ARTIFACT=$ARTIFACT" >> $GITHUB_ENV
-          echo "ALGOLIA_ARTIFACT=$ALGOLIA_ARTIFACT" >> $GITHUB_ENV
-          echo "artifact=$ARTIFACT" >> $GITHUB_OUTPUT
-          echo "algolia_artifact=$ALGOLIA_ARTIFACT" >> $GITHUB_OUTPUT
-
       - name: Build documents
         uses: JetBrains/writerside-github-action@v4
         with:
@@ -99,7 +87,12 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: documents
-          path: artifacts/${{ env.ARTIFACT }}
+          path: |
+            artifacts/${{ env.ARTIFACT }}
+            artifacts/algolia-indexes-AG.zip
+            artifacts/algolia-indexes-BTS.zip
+            artifacts/algolia-indexes-DG.zip
+            artifacts/algolia-indexes-UG.zip
           retention-days: 1
 
   deploy:
@@ -145,3 +138,57 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  publish-indexes:
+    needs: [ build-documents, deploy ]
+    runs-on: ubuntu-latest
+    container:
+      image: registry.jetbrains.team/p/writerside/builder/algolia-publisher:2.0.32-3
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: documents
+          path: artifacts
+
+      - name: Unzip Algolia artifact
+        run: |
+          unzip -O UTF-8 -qq "artifacts/algolia-indexes-AG.zip" -d indexes-ag
+          unzip -O UTF-8 -qq "artifacts/algolia-indexes-BTS.zip" -d indexes-bts
+          unzip -O UTF-8 -qq "artifacts/algolia-indexes-DG.zip" -d indexes-dg
+          unzip -O UTF-8 -qq "artifacts/algolia-indexes-UG.zip" -d indexes-ug
+
+      - name: Update Algolia Index
+        run: |
+          env "algolia-key=${{ secrets.ALGOLIA_KEY }}" java -jar /opt/builder/help-publication-agent.jar \
+          update-index \
+          --application-name ${{ env.ALGOLIA_APP_NAME }} \
+          --index-name ${{ env.ALGOLIA_INDEX_NAME }} \
+          --product AG \
+          --version ${{ env.CONFIG_JSON_VERSION }} \
+          --index-directory indexes-ag/ \
+          2>&1 | tee algolia-update-index-log.txt
+          env "algolia-key=${{ secrets.ALGOLIA_KEY }}" java -jar /opt/builder/help-publication-agent.jar \
+          update-index \
+          --application-name ${{ env.ALGOLIA_APP_NAME }} \
+          --index-name ${{ env.ALGOLIA_INDEX_NAME }} \
+          --product BTS \
+          --version ${{ env.CONFIG_JSON_VERSION }} \
+          --index-directory indexes-bts/ \
+          2>&1 | tee algolia-update-index-log.txt
+          env "algolia-key=${{ secrets.ALGOLIA_KEY }}" java -jar /opt/builder/help-publication-agent.jar \
+          update-index \
+          --application-name ${{ env.ALGOLIA_APP_NAME }} \
+          --index-name ${{ env.ALGOLIA_INDEX_NAME }} \
+          --product DG \
+          --version ${{ env.CONFIG_JSON_VERSION }} \
+          --index-directory indexes-dg/ \
+          2>&1 | tee algolia-update-index-log.txt
+          env "algolia-key=${{ secrets.ALGOLIA_KEY }}" java -jar /opt/builder/help-publication-agent.jar \
+          update-index \
+          --application-name ${{ env.ALGOLIA_APP_NAME }} \
+          --index-name ${{ env.ALGOLIA_INDEX_NAME }} \
+          --product UG \
+          --version ${{ env.CONFIG_JSON_VERSION }} \
+          --index-directory indexes-ug/ \
+          2>&1 | tee algolia-update-index-log.txt
