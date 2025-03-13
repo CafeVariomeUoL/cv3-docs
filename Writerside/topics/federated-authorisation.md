@@ -1,8 +1,8 @@
 # Federated Authorization
 
-When performing discovery in a discovery network, the authorization happens in a decentralized way. This wiki page explains how a user or a node is authorized, providing insight on the basic model of the discovery network. For a general authorization process, refer to the [Authorization Model](authorization-model.md).
+When performing discovery in a discovery network, the authorisation happens in a decentralised way. This wiki page explains how a user or a node is authorised, providing insight on the basic model of the discovery network. For a general authorisation process, refer to the [](authorisation-model).
 
-The federated authorization process can be divided into 2 parts: authorizing the server where the requests originate from, and the user himself.
+The federated authorisation process can be divided into 2 parts: authorising the server where the requests originate from, and the user himself.
 
 ## Node authorization
 

@@ -22,9 +22,9 @@
         <toc-element topic="authentication-model.md"/>
         <toc-element topic="federated-authentication.md"/>
     </toc-element>
-    <toc-element topic="authorization.md">
-        <toc-element topic="authorization-model.md"/>
-        <toc-element topic="federated-authorization.md"/>
+    <toc-element topic="authorisation.md">
+        <toc-element topic="authorisation-model.md"/>
+        <toc-element topic="federated-authorisation.md"/>
     </toc-element>
     <toc-element topic="data-model.md">
         <toc-element topic="mongodb-data-structure.md"/>
