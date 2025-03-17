@@ -83,6 +83,13 @@ jobs:
           docker-version: ${{ env.DOCKER_VERSION }}
           is-group: ${{ env.IS_GROUP }}
 
+      - name: Debug - List files before uploading
+        run: |
+          echo "Checking artifacts directory:"
+          ls -lah artifacts || echo "No artifacts directory found!"
+          echo "Checking files in artifacts directory:"
+          ls -lah artifacts/* || echo "No files found in artifacts!"
+
       - name: Save documents
         uses: actions/upload-artifact@v4
         with:
