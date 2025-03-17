@@ -1,0 +1,63 @@
+services:
+  keycloak:
+    image: quay.io/keycloak/keycloak:23.0
+    deploy:
+      restart_policy:
+        condition: always
+        delay: 5s
+        window: 120s
+    ports:
+      - '8080:8080'
+    depends_on:
+      - keycloak_db
+    command: start-dev --db mariadb --db-url-host keycloak_db --db-username keycloak_docker --db-password KeyCloakPassword1234 --http-port 8080
+    environment:
+      DB_VENDOR: mariadb
+      DB_ADDR: keycloak_db
+      DB_PORT: 3306
+      DB_DATABASE: keycloak
+      DB_USER: keycloak_docker
+      DB_PASSWORD: KeyCloakPassword1234
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: KeyCloakPassword1234
+
+  keycloak_db:
+    image: mariadb:lts-jammy
+    environment:
+      MYSQL_ROOT_PASSWORD: KeyCloakPassword1234
+      MYSQL_DATABASE: keycloak
+      MYSQL_USER: keycloak_docker
+      MYSQL_PASSWORD: KeyCloakPassword1234
+    restart: always
+    volumes:
+      - ./data/keycloak/db:/var/lib/mysql
+
+  mongodb:
+    image: mongo:7.0.11
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./data/mongodb/db:/data/db
+
+  redis:
+    image: redis:7.4
+    restart: always
+    ports:
+      - '6379:6379'
+    command: redis-server
+    volumes:
+      - ./data/redis:/data
+
+  vault:
+    image: hashicorp/vault:1.17.2
+    restart: always
+    ports:
+      - "8200:8200"
+    cap_add:
+      - IPC_LOCK
+    environment:
+      VAULT_LOCAL_CONFIG: '{"storage": {"file": {"path": "/vault/file"}}, "listener": [{"tcp": { "address": "0.0.0.0:8200", "tls_disable": true}}], "default_lease_ttl": "168h", "max_lease_ttl": "720h", "ui": true}'
+    command: server
+    volumes:
+      - ./data/vault/file:/vault/file

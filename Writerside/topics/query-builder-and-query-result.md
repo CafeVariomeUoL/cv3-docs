@@ -1,5 +1,7 @@
 # Query Builder and Query Result
 
+<primary-label ref="backend"/>
+
 This page explains the structure, meaning, and operation of the query builder and its responses.
 
 ## Query Builder

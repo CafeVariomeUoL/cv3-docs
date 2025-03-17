@@ -1,0 +1,108 @@
+{
+  "MongoDB": {
+    "Host": "localhost",
+    "Port": "27017",
+    "User": "cafevariome",
+    "Password": "cafevariome",
+    "Database": "cafevariome",
+    "MaxJobs": 40
+  },
+  "Redis": {
+    "Host": "localhost",
+    "Port": "6379",
+    "Cluster": false
+  },
+  "Keycloak": {
+    "Client": "test_client",
+    "Realm": "cafe_variome",
+    "URL": "http://localhost:8080",
+    "BackendURL": "http://localhost:8080",
+    "RedirectURLs": [
+      "http://localhost:49430/callback.html",
+      "http://localhost:49430/callback-silent.html"
+    ]
+  },
+  "Vault": {
+    "Host": "http://localhost:8200",
+    "TransitPath": "transit_cv3",
+    "KV2Path": "kv",
+    "KV2Prefix": "cv3"
+  },
+  "CORS": {
+    "AllowOrigin": [
+      "*"
+    ],
+    "AllowMethods": [
+      "GET",
+      "POST",
+      "PUT",
+      "PATCH",
+      "DELETE",
+      "OPTIONS"
+    ],
+    "AllowHeaders": [
+      "Content-Type",
+      "Authorization",
+      "Network-Id"
+    ]
+  },
+  "Metrics": {
+    "Prometheus": {
+      "Enabled": false,
+      "Path": "/metrics",
+      "Key": ""
+    }
+  },
+  "Email": {
+    "From": {
+      "Address": "admin@cafevariome.org",
+      "Name": "Cafe Variome Admin"
+    },
+    "Sender": "noreply@system.le.ac.uk",
+    "SMTP": {
+      "Host": "localhost",
+      "Port": 25,
+      "Authentication": {
+        "Required": false,
+        "Username": "",
+        "Password": ""
+      }
+    }
+  },
+  "Legacy": {
+    "NexusMode": {
+      "Enabled": false,
+      "AccessTokenEnabled": true
+    },
+    "Query": true
+  },
+  "Logging": {
+    "Name": "Cafe Variome V3",
+    "Level": "INFO",
+    "MaxBytes": 10485760,
+    "BackupCount": 20,
+    "SplunkHEC": {
+      "Enabled": false,
+      "HecEndpoint": "",
+      "Token": ""
+    },
+    "Loki": {
+      "Enabled": false,
+      "Endpoint": "",
+      "Tags": {},
+      "Auth": {
+        "Enabled": false,
+        "Username": "",
+        "Password": ""
+      }
+    }
+  },
+  "Data": {
+    "UploadPath": "data_source/",
+    "ValidFileFormats": [
+      "vcf",
+      "csv"
+    ],
+    "ChunkSize": 1024
+  }
+}

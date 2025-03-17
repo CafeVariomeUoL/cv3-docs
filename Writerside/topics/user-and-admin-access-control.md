@@ -1,5 +1,7 @@
 # User and Admin Access Control
 
+<primary-label ref="cv3"/>
+
 In Cafe Variome V3, users and admins have different levels of access to the system and interface. This guide will explain the different levels of access and how to configure them. Remember to follow the principle of least privilege when assigning access to users.
 
 ## User types and access overview

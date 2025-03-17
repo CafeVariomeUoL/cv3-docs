@@ -1,0 +1,169 @@
+services:
+  cv3-backend-admin:
+    image: brookeslab/cv3-backend-admin:latest
+    restart: unless-stopped
+    network_mode: "host"
+    depends_on:
+      - cv3-backend-database-manager
+      - cv3-backend-scheduler
+    environment:
+      VAULT_ROLE_ID: <Vault Role ID here>
+      VAULT_SECRET_ID: <Vault Secret ID here>
+    volumes:
+      - ./config/backend_config.json:/app/instance_config.json
+      - ./logs:/app/logs
+
+  # cv3-backend-cli:
+  #   image: brookeslab/cv3-backend-cli:latest
+  #   restart: unless-stopped
+  #   network_mode: "host"
+  #   depends_on:
+  #     - cv3-backend-database-manager
+  #     - cv3-backend-scheduler
+  #   environment:
+  #     VAULT_ROLE_ID: <Vault Role ID here>
+  #     VAULT_SECRET_ID: <Vault Secret ID here>
+  #   volumes:
+  #     - ./config/backend_config.json:/app/instance_config.json
+  #     - ./logs:/app/logs
+
+  cv3-backend-database-manager:
+    image: brookeslab/cv3-backend-database-manager:latest
+    restart: unless-stopped
+    network_mode: "host"
+    environment:
+      VAULT_ROLE_ID: <Vault Role ID here>
+      VAULT_SECRET_ID: <Vault Secret ID here>
+      KEYCLOAK_CLIENT_SECRET: <Your Keycloak Client Secret here>
+      ADMIN_EMAIL: demo@cafevariome.org
+      ADMIN_AFFILIATION: CafeVariome
+    volumes:
+      - ./config/backend_config.json:/app/instance_config.json
+      - ./logs:/app/logs
+
+  # cv3-backend-exporter:
+  #   image: brookeslab/cv3-backend-exporter:latest
+  #   restart: unless-stopped
+  #   network_mode: "host"
+  #   depends_on:
+  #     - cv3-backend-database-manager
+  #     - cv3-backend-scheduler
+  #   volumes:
+  #     - ./config/backend_config.json:/app/instance_config.json
+  #     - ./logs:/app/logs
+
+  cv3-backend-network:
+    image: brookeslab/cv3-backend-network:latest
+    restart: unless-stopped
+    network_mode: "host"
+    depends_on:
+      - cv3-backend-database-manager
+      - cv3-backend-scheduler
+    environment:
+      VAULT_ROLE_ID: <Vault Role ID here>
+      VAULT_SECRET_ID: <Vault Secret ID here>
+    volumes:
+      - ./config/backend_config.json:/app/instance_config.json
+      - ./logs:/app/logs
+
+  # cv3-backend-nexus:
+  #   image: brookeslab/cv3-backend-nexus:latest
+  #   restart: unless-stopped
+  #   network_mode: "host"
+  #   depends_on:
+  #     - cv3-backend-database-manager
+  #     - cv3-backend-scheduler
+  #   environment:
+  #     VAULT_ROLE_ID: <Vault Role ID here>
+  #     VAULT_SECRET_ID: <Vault Secret ID here>
+  #   volumes:
+  #     - ./config/backend_config.json:/app/instance_config.json
+  #     - ./logs:/app/logs
+
+  cv3-backend-query:
+    image: brookeslab/cv3-backend-query:latest
+    restart: unless-stopped
+    network_mode: "host"
+    depends_on:
+      - cv3-backend-database-manager
+      - cv3-backend-scheduler
+    environment:
+      VAULT_ROLE_ID: <Vault Role ID here>
+      VAULT_SECRET_ID: <Vault Secret ID here>
+    volumes:
+      - ./config/backend_config.json:/app/instance_config.json
+      - ./logs:/app/logs
+
+  cv3-backend-query-compiler:
+    image: brookeslab/cv3-backend-query-compiler:latest
+    restart: unless-stopped
+    network_mode: "host"
+    depends_on:
+      - cv3-backend-database-manager
+      - cv3-backend-scheduler
+    environment:
+      VAULT_ROLE_ID: <Vault Role ID here>
+      VAULT_SECRET_ID: <Vault Secret ID here>
+    volumes:
+      - ./config/backend_config.json:/app/instance_config.json
+      - ./logs:/app/logs
+
+  cv3-backend-query-meta:
+    image: brookeslab/cv3-backend-query-meta:latest
+    restart: unless-stopped
+    network_mode: "host"
+    depends_on:
+      - cv3-backend-database-manager
+      - cv3-backend-scheduler
+    environment:
+      VAULT_ROLE_ID: <Vault Role ID here>
+      VAULT_SECRET_ID: <Vault Secret ID here>
+    volumes:
+      - ./config/backend_config.json:/app/instance_config.json
+      - ./logs:/app/logs
+
+  cv3-backend-scheduler:
+    image: brookeslab/cv3-backend-scheduler:latest
+    restart: unless-stopped
+    network_mode: "host"
+    depends_on:
+      - cv3-backend-database-manager
+    environment:
+      VAULT_ROLE_ID: <Vault Role ID here>
+      VAULT_SECRET_ID: <Vault Secret ID here>
+    volumes:
+      - ./config/backend_config.json:/app/instance_config.json
+      - ./logs:/app/logs
+
+  cv3-frontend-admin:
+    image: brookeslab/cv3-frontend-admin:latest
+    restart: unless-stopped
+    ports:
+      - '5080:80'
+    volumes:
+      - ./config/frontend_admin_config.json:/usr/share/nginx/html/assets/assets/config.json
+
+  cv3-frontend-query:
+    image: brookeslab/cv3-frontend-query:latest
+    restart: unless-stopped
+    ports:
+      - '5081:80'
+    volumes:
+      - ./config/frontend_query_config.json:/usr/share/nginx/html/assets/assets/config.json
+
+  cv3-frontend-query-meta:
+    image: brookeslab/cv3-frontend-query-meta:latest
+    restart: unless-stopped
+    ports:
+      - '5082:80'
+    volumes:
+      - ./config/frontend_query_meta_config.json:/usr/share/nginx/html/assets/assets/config.json
+
+  nginx:
+    image: nginx:mainline-alpine3.18
+    restart: unless-stopped
+    network_mode: "host"
+    ports:
+      - '18080:80'
+    volumes:
+      - ./config/reverse_proxy.nginx.conf:/etc/nginx/nginx.conf

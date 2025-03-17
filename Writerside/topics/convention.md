@@ -1,5 +1,7 @@
 # Convention
 
+<primary-label ref="cv3"/>
+
 Cafe Variome V3 tries to follow best practice in both coding and maintaining the codebase. This section documents the conventions used in the system developments.
 
 ## Code style

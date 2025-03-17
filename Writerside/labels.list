@@ -2,15 +2,22 @@
 <!DOCTYPE labels SYSTEM "https://resources.jetbrains.com/writerside/1.0/labels-list.dtd">
 <labels xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/labels.xsd">
-    <primary-label id="frontend" short-name="CVF" name="Frontend" href="https://www.jetbrains.com" color="blue">
+    <primary-label id="frontend" short-name="CVF" name="Frontend" href="https://github.com/CafeVariomeUoL/cv3-frontend" color="blue">
         Go to CV3 Frontend repository
     </primary-label>
-    <primary-label id="backend" short-name="CVB" name="Backend" href="https://www.jetbrains.com" color="strawberry">
+    <primary-label id="backend" short-name="CVB" name="Backend" href="https://github.com/CafeVariomeUoL/cv3-backend" color="purple">
         Go to CV3 Backend repository
+    </primary-label>
+    <primary-label id="cv3" short-name="CV3" name="Cafe Variome V3" href="https://github.com/CafeVariomeUoL/CafeVariomeV3" color="strawberry">
+        Go to Cafe Variome V3 repository
+    </primary-label>
+    <primary-label id="bioterms" short-name="bioterms" name="Biomedical Term Service" href="https://github.com/CafeVariomeUoL/cv3-bioterms" color="tangerine">
+        Go to CV3 Biomedical Term Service Repository
     </primary-label>
 
     <secondary-label id="wip" name="WIP" color="purple">Work in progress</secondary-label>
     <secondary-label id="alpha" name="α" color="red">Alpha</secondary-label>
     <secondary-label id="beta" name="β" color="tangerine">Beta</secondary-label>
     <secondary-label id="experimental" name="Experimental" color="purple">This is an experimental feature</secondary-label>
+    <secondary-label id="integration" name="Integration" color="red">This is a feature to integrate with external services</secondary-label>
 </labels>

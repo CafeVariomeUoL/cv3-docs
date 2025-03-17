@@ -1,5 +1,7 @@
 # Cafe Variome V3
 
+<primary-label ref="cv3"/>
+
 This is the documentation for Cafe Variome V3.
 
 ## What is Cafe Variome
