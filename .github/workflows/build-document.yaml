@@ -151,12 +151,20 @@ jobs:
           name: documents
           path: artifacts
 
+      - name: Debug - List all files in artifacts before uploading
+        run: |
+          echo "Checking artifacts directory:"
+          ls -lah artifacts || echo "No artifacts directory found!"
+
+          echo "Checking all files inside artifacts (recursively):"
+          find artifacts -type f || echo "No files found inside artifacts!"
+
       - name: Unzip Algolia artifact
         run: |
-          unzip -O UTF-8 -qq "artifacts/search/algolia-indexes-AG.zip" -d indexes-ag
-          unzip -O UTF-8 -qq "artifacts/search/algolia-indexes-BTS.zip" -d indexes-bts
-          unzip -O UTF-8 -qq "artifacts/search/algolia-indexes-DG.zip" -d indexes-dg
-          unzip -O UTF-8 -qq "artifacts/search/algolia-indexes-UG.zip" -d indexes-ug
+          unzip -O UTF-8 -qq "artifacts/algolia-indexes-AG.zip" -d indexes-ag
+          unzip -O UTF-8 -qq "artifacts/algolia-indexes-BTS.zip" -d indexes-bts
+          unzip -O UTF-8 -qq "artifacts/algolia-indexes-DG.zip" -d indexes-dg
+          unzip -O UTF-8 -qq "artifacts/algolia-indexes-UG.zip" -d indexes-ug
 
       - name: Update Algolia Index
         run: |
