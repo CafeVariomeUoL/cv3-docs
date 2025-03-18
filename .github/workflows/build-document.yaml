@@ -164,7 +164,7 @@ jobs:
           update-index \
           --application-name ${{ env.ALGOLIA_APP_NAME }} \
           --index-name ${{ env.ALGOLIA_INDEX_NAME }} \
-          --product AG \
+          --product admin \
           --version ${{ env.CONFIG_JSON_VERSION }} \
           --index-directory indexes-ag/ \
           2>&1 | tee algolia-update-index-log.txt
@@ -172,7 +172,7 @@ jobs:
           update-index \
           --application-name ${{ env.ALGOLIA_APP_NAME }} \
           --index-name ${{ env.ALGOLIA_INDEX_NAME }} \
-          --product BTS \
+          --product bts \
           --version ${{ env.CONFIG_JSON_VERSION }} \
           --index-directory indexes-bts/ \
           2>&1 | tee algolia-update-index-log.txt
@@ -180,7 +180,7 @@ jobs:
           update-index \
           --application-name ${{ env.ALGOLIA_APP_NAME }} \
           --index-name ${{ env.ALGOLIA_INDEX_NAME }} \
-          --product DG \
+          --product developer \
           --version ${{ env.CONFIG_JSON_VERSION }} \
           --index-directory indexes-dg/ \
           2>&1 | tee algolia-update-index-log.txt
@@ -188,7 +188,7 @@ jobs:
           update-index \
           --application-name ${{ env.ALGOLIA_APP_NAME }} \
           --index-name ${{ env.ALGOLIA_INDEX_NAME }} \
-          --product UG \
+          --product user \
           --version ${{ env.CONFIG_JSON_VERSION }} \
           --index-directory indexes-ug/ \
           2>&1 | tee algolia-update-index-log.txt
