@@ -37,5 +37,8 @@
     <toc-element topic="query.md">
         <toc-element topic="query-builder-and-query-result.md"/>
     </toc-element>
+    <toc-element topic="external-services-integration.md">
+        <toc-element topic="molgenis-integration.md"/>
+    </toc-element>
     <toc-element topic="monitoring.md"/>
 </instance-profile>
