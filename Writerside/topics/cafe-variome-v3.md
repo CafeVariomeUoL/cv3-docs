@@ -10,7 +10,7 @@ Cafe Variome is a flexible, web-based data discovery tool designed for biomedica
 
 ## Why Cafe Variome
 
-Health data sharing often takes place through small-scale interactions between a limited number of individuals or institutions. While this approach helps ensure proper data governance and provenance, it prevents the full potential of the data from being realised and contradicts widespread FAIR principles.
+Health data sharing often takes place through small-scale interactions between a limited number of individuals or institutions. While this approach helps ensure proper data governance and provenance, it prevents the full potential of the data from being realised and contradicts widespread (<tooltip term="FAIR">FAIR</tooltip>) principles.
 
 Cafe Variome provides a user-friendly solution, allowing data controllers and custodians to retain control of their data while making approved data elements discoverable, either through a single instance or a federation of data-sharing instances. Its powerful, adaptive query interface uses semantic similarity, and its flexibility enables researchers and users to create queries that are as simple or as complex as needed.
 
@@ -22,15 +22,15 @@ Cafe Variome can be used in a variety of settings, such as searching for a speci
 
 Cafe Variome provides a schema-less, scalable storage solution for all data. It accepts a wide variety of formats and includes powerful built-in features to help data holders convert their data into an easily queryable format. The query engines run on the processed dataset, allowing queries on any field, in any combination, and in any order.
 
-In collaboration with [Molgenis](https://www.molgenis.org/), we are developing a query system that enables users to query data stored in both Cafe Variome and Molgenis simultaneously from their own Cafe Variome instance. This integration allows both platforms to fully utilise Cafe Variome’s powerful query filters and fine-grained access control.
+In collaboration with <a href="https://www.molgenis.org/"><tooltip term="Molgenis">Molgenis</tooltip></a>, we are developing a query system that enables users to query data stored in both Cafe Variome and Molgenis simultaneously from their own Cafe Variome instance. This integration allows both platforms to fully utilise Cafe Variome’s powerful query filters and fine-grained access control.
 
 We are continuously working to support more data storage backends, more input formats, and more ontology/term sets.
 
-### Semantic similarity based quering
+### Semantic similarity based querying
 
-The use of ontology terms in patient data is becoming increasingly common. Cafe Variome can process data inputted with ontology terms by either detecting them automatically or being configured to treat specific data as ontology terms. Currently, Cafe Variome supports the [ORDO](https://www.orphadata.com/ontologies/) and [SNOMED](https://www.snomed.org/what-is-snomed-ct) controlled vocabularies. Terms entered from either vocabulary are mapped internally to the Human Phenotype Ontology [(HPO)](https://hpo.jax.org/). 
+The use of ontology terms in patient data is becoming increasingly common. Cafe Variome can process data inputted with ontology terms by either detecting them automatically or being configured to treat specific data as ontology terms. Currently, Cafe Variome supports the <a href="https://www.orphadata.com/ontologies/"><tooltip term="ORDO">ORDO</tooltip></a> and <a href="https://www.snomed.org/what-is-snomed-ct"><tooltip term="SNOMED">SNOMED</tooltip></a>  controlled vocabularies. Terms entered from either vocabulary are mapped internally to <a href="https://hpo.jax.org/"><tooltip term="HPO">HPO</tooltip></a>. 
 
-This mapping enables semantic querying, meaning queries are performed not only on the entered terms but also on similar terms. Other ontology term sets, if mapped to or from HPO, can also be used for semantic similarity-based queries. As a result, users can discover similar patients based on phenotypes, diseases, or prescribed medications.
+This mapping enables semantic querying, meaning queries are performed not only on the entered terms but also on similar terms. Other ontology term sets, if mapped to or from (<tooltip term="HPO">HPO</tooltip>), can also be used for semantic similarity-based queries. As a result, users can discover similar patients based on phenotypes, diseases, or prescribed medications.
 
 ### Federated data discovery
 
@@ -65,6 +65,6 @@ The interface adapts to the type of data in the underlying database, enabling us
 
 ### Full BEACON compatibility
 
-Cafe Variome implements BEACON v2 specifications, designed to simplify genomic data discovery. By loading data into Cafe Variome, users automatically gain access to a BEACON-compatible API, which can be integrated with other services. Optional security features are built into the BEACON API, ensuring the same level of security, access control, and data synchronisation as Cafe Variome, should the administrator choose to enable them.
+Cafe Variome implements (<tooltip term="BEACON">BEACON v2</tooltip>) specifications, designed to simplify genomic data discovery. By loading data into Cafe Variome, users automatically gain access to a BEACON-compatible API, which can be integrated with other services. Optional security features are built into the BEACON API, ensuring the same level of security, access control, and data synchronisation as Cafe Variome, should the administrator choose to enable them.
 
 Cafe Variome can also query other BEACON-compatible systems as remote data sources, treating external data as if it were stored locally. While queries are limited to BEACON capabilities, the results are merged with local data and presented to the user as a single, unified set. This allows Cafe Variome to serve as a central interface for BEACON discovery.

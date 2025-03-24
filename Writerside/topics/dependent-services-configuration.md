@@ -1,10 +1,10 @@
 # Dependent Services Configuration
 
-Cafe Variome V3 requires several services to be running in order to function properly. They are databases, storages, and identity providers.
+Cafe Variome V3 relies on multiple services to function correctly, including databases, storage systems, and identity providers.
 
 ## MongoDB
 
-MongoDB is a schemaless, NoSQL database that Cafe Variome V3 uses to store data. All operational data and discoverable data are stored in MongoDB.
+MongoDB is a schemaless NoSQL database used by Cafe Variome V3 to store both operational and discoverable data.
 
 <tabs>
     <tab title="Install as a package">
@@ -52,7 +52,7 @@ MongoDB supports authentication. It is recommended to enable authentication for 
 }
 ```
 
-If authentication is not enabled, the username and password can be left empty, or use anything.
+If authentication is not enabled, the username and password can be left empty or set to any value.
 
 ## Redis
 
@@ -88,7 +88,7 @@ Redis is a high speed in-memory cache storage that Cafe Variome V3 uses as a mes
     </tab>
 </tabs>
 
-Redis do not use username/password authentication, but rather a ACL system. For now, CV3 do not support such authentication method, and only supports redis without authentication.
+Redis does not use traditional username/password authentication but instead relies on an ACL system. Currently, CV3 does not support this authentication method and only works with Redis without authentication.
 
 Redis may also be configured as a cluster. When using a redis cluster, set the `cluster` option in CV3 configuration to
 `true`.
@@ -147,7 +147,7 @@ It's recommended to use Keycloak with docker. Otherwise, the server should be sp
     </tab>
 </tabs>
 
-Cafe Variome V3 requires a service account with sufficient privileges to perform user management and token manipulation operations. These roles are (they may belong to different clients):
+Cafe Variome V3 requires a service account with sufficient privileges to manage users and handle token operations. The necessary roles, which may be assigned to different clients, include:
 
 - view-users
 - manage-users (optional if need to create users)
@@ -165,7 +165,7 @@ If you wish to use the Nexus mode (which manages multiple CV2 instances), you wi
 - manage-clients
 - view-clients
 
-Specifically, for federated authentication, a client role needs to be created with audience mappers to all clients that needs to use this feature. The role is then to be assigned to these clients as default client role. This allows their access token contains the others as audience. An example is:
+For federated authentication, a client role must be created with audience mappers for all clients that need to support this feature. This role should then be set as a default client role for those clients. By doing so, their access tokens will automatically include the necessary audiences. An example is:
 
 ![keycloak-audience-client-role.png](../images/keycloak-audience-client-role.png)
 
@@ -175,12 +175,12 @@ To set up the credentials in KeyCloak 21+, follow the steps below:
 
 <procedure title="Create credentials in KeyCloak 21+">
    <p>To set up the credentials in KeyCloak 21+, follow the steps below:</p>
-   <step>Log in to KeyCloak as an administrator. The administrator account can be the global admin in master realm, or any admin account with the <code>realm-management</code> role in the realm you wish to use.</step>
-   <step>Go to the realm you wish to use, and go to the <code>Clients</code> page.</step>
-   <step>Click <code>Create client</code> button to create a new client.</step>
-   <step>Set the client type to <code>Service account</code>, and the client ID, client name, description to something you wish to use. Click <code>Save</code> to save the client.</step>
+   <step>Log in to KeyCloak as an administrator. The administrator account can be the global admin in master <tooltip term="realm">realm</tooltip>, or any admin account with the <code>realm-management</code> role in the <tooltip term="realm">realm</tooltip> you wish to use.</step>
+   <step>Go to the <tooltip term="realm">realm</tooltip> you wish to use, and go to the <code>Clients</code> page.</step>
+   <step>Click the <code>Create client</code> button to create a new client.</step>
+   <step>Set the client type to <code>Service account</code>, and the client ID, client name, and description to something you wish to use. Click <code>Save</code> to save the client.</step>
    <step>In Capability config, enable <code>Client authentication</code>, <code>Standard flow</code> and <code>Service accounts roles</code>. For security purpose, it's recommended to disable <code>Direct access grants</code> and any other flow you do not use. Click <code>Next</code> to go to login settings.</step>
-   <step>In Login settings, set all the URL to the URL you plan to host the service. Assume the domain to host the service is at <code>https://cv3.cafevariome.org</code>, the valid redirect URLs would be:
+   <step>In the Login settings, configure all URLs to match the intended hosting location of the service. Assuming the domain hosting the service is <code>https://cv3.cafevariome.org</code>, the valid redirect URLs would be:
    <list>
       <li><code>https://cv3.cafevariome.org/callback.html</code></li>
       <li><code>https://cv3.cafevariome.org/callback-silent.html</code></li>
@@ -189,11 +189,11 @@ To set up the credentials in KeyCloak 21+, follow the steps below:
       <li><code>https://cv3.cafevariome.org/meta-discover/callback.html</code></li>
       <li><code>https://cv3.cafevariome.org/meta-discover/callback-silent.html</code></li>
    </list>
-   Wildcard may be used to ease the management of all URLs. However, due to the frontend code structure, these will be all the valid redirect URLs. Click <code>Save</code> to save the settings.</step>
+   A wildcard can be used to simplify URL management. However, due to the frontend code structure, only these specified URLs will be valid for redirection. Click <code>Save</code> to save the settings.</step>
    <step>Go to the configuration page for the newly created client, and select <code>Service accounts roles</code> tab. Click <code>Assign role</code> to assign the aforementioned roles to the client.</step>
    <step>Go to the <code>Client Scopes</code> page and create a new client scope, following instructions in the image above. Assign this role to the client as a default client role.</step>
    <step>Fine tune other settings for this client.</step>
-   <p>Then the client should be ready to use by CV3.</p>
+   <p>At this point, the client should be ready to use CV3.</p>
 </procedure>
 
 > The client secret, which is part of the client credentials, is one of the most important credential for CV3. DO NOT note it down in unsecure locations, and rotate it frequently. When running installation script, CV3 installer will ask for this secret, and store it securely in Vault.
@@ -205,7 +205,7 @@ Vault is a powerful secret management tool that focuses on security. It's a web 
 
 <tabs>
     <tab title="Install as a package">
-        On some distributions, Vault can be installed via package manager. For Ubuntu, it can be installed like:
+        On some distributions, Vault can be installed via package manager. For Ubuntu, it can be installed like this:
         <code-block title="Install MongoDB on Ubuntu" lang="bash">
             sudo apt update && sudo apt install gpg wget
             wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
@@ -237,11 +237,11 @@ Vault is a powerful secret management tool that focuses on security. It's a web 
     </tab>
 </tabs>
 
-Vault is a bit special in this setup, because every time it reboots, it needs to be unsealed. This can be done via some auto-unseal process, for example using AWS KMS, or Azure Key Vault. This is actually recommended, but for simplicity, we will use a simple unseal process.
+Vault requires unsealing each time it restarts. While this process can be automated using methods like AWS KMS or Azure Key Vault (which is recommended for production), we'll use a simple manual unseal process here for demonstration purposes.
 
 <procedure title="Configure Hashicorp Vault">
-    <p>To configure Hashicorp Vault for use with Cafe Variome, follow the step below:</p>
-    <step>Install the vault, configure it, and start the server. It's recommended to use high availability set up or auto unseal to ensure the availability of the vault server. Initialize and unseal the vault. For details on these steps, refer to <a href="https://developer.hashicorp.com/vault/docs">official vault documents]</a> </step>
+    <p>To configure Hashicorp Vault for use with Cafe Variome, follow the steps below:</p>
+    <step>Install the vault, configure it, and start the server. It's recommended to use high availability set up or auto unseal to ensure the availability of the vault server. Initialize and unseal the vault. For details on these steps, refer to <a href="https://developer.hashicorp.com/vault/docs">official vault documents</a> </step>
     <step>Enable kv store and transit engine for CV3, if not done so already. Run the following command (note that it's kv-v2, not kv):
         <code-block lang="bash">
         # Enable kv store
@@ -291,7 +291,9 @@ Vault is a bit special in this setup, because every time it reboots, it needs to
     </step>
 </procedure>
 
-The role ID is unique to each role, and will not change even if the approle configuration changes. However, the secret ID is generated every time it's requested, and the previous secret ID will be invalidated. The above configuration means that the secret ID is valid for 10 minutes after it's generated, and can be used 40 times. Whatever the authentication method (approle, OIDC, etc.), the client will eventually get a tokene for this session. This token is set to expire in 20 minutes, and can be renewed up to 30 minutes. The token can be used 10 times. Change the configuration to suit your needs.
+The role ID is unique to each role and remains unchanged, even if the AppRole configuration is updated. In contrast, the secret ID is regenerated each time it is requested, and any previously issued secret ID becomes invalid.
+
+In the example above, the secret ID is valid for 10 minutes after creation and can be used up to 40 times. Regardless of the authentication method (AppRole, OIDC, etc.), the client ultimately receives a token for the session. This token is configured to expire after 20 minutes and can be renewed up to a total of 30 minutes. It may be used a maximum of 10 times.
 
 > For development purpose, the configurations can be set to 0 to disable the expiration of credentials. However, this is highly discouraged for production use.
 > {style="note"}

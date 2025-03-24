@@ -46,9 +46,9 @@ Record level indices are stored in `RecordIndex` objects. They follow the format
 
 ### Capability
 
-The `capability` field captures the type of data available in the database. In the example above, it reports that it has subject data (demographic data), HPO terms, Gene codes, ORDO terms, etc.
+The `capability` field captures the type of data available in the database. In the example above, it reports that it has subject data (demographic data), (<tooltip term="HPO">HPO</tooltip>) terms, Gene codes, (<tooltip term="OIDC">OIDC</tooltip>) terms, etc.
 
-The demographic data is a bit special: almost all general purpose ontologies would contain terms for demographic descriptions, so when used together, they may cause confusion. For example, if the subject gender is stored in NCIT terms, while the user searched on SNOMED terms, the system won't automatically convert the expression. And since the demographic filters are frequently used, we added the generic `subject` filter to handle the translation. The `subjectCapability` reports the detailed filter supported by the database.
+The demographic data is a bit special: almost all general purpose ontologies would contain terms for demographic descriptions, so when used together, they may cause confusion. For example, if the subject gender is stored in (<tooltip term="NCIT">NCIT</tooltip>) terms, while the user searched on (<tooltip term="SNOMED">SNOMED</tooltip>) terms, the system won't automatically convert the expression. And since the demographic filters are frequently used, we added the generic `subject` filter to handle the translation. The `subjectCapability` reports the detailed filter supported by the database.
 
 ### Record Count
 

@@ -20,7 +20,7 @@ CV3 frontend is divided into 3 web apps, each handling a part of the essential f
 
 ## API design
 
-The CV3 backend are fully RESTful, with no session or websocket usage. This allows maximum compatibility with most web server setup. One result of such design is each endpoint, if not public, requires an access token from OIDC provider to authenticate the user. The access token is thus managed by the frontend and passed to the backend in each request.
+The CV3 backend are fully RESTful, with no session or websocket usage. This allows maximum compatibility with most web server setup. One result of such design is each endpoint, if not public, requires an access token from an (<tooltip term="OIDC">OIDC</tooltip>) provider to authenticate the user. The access token is thus managed by the frontend and passed to the backend in each request.
 
 Additionally, all API uses JSON format for data exchange, and all JSON uses lower camel case, while URLs use hyphenated formats.
 

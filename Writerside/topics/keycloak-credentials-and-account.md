@@ -6,7 +6,7 @@ Cafe Variome V3 requires certain features in Keycloak to be enabled and granted 
 
 ### Client authentication
 
-To secure the authentication flow and authenticate the backend service with Keycloak, the client must be set to confidential. This is also required to enable a service account role. Enabling this generates a client secret, which is used to authenticate the backend service with Keycloak. By design, the client secret **CANNOT BE CHANGED IN RUNTIME**, as the backend must always be able to interact with Keycloak at any point. To rotate the client secret, the backend service must be stopped. The new secret can then be updated externally in the vault or entered manually using the CLI tool before restarting the service.
+To secure the authentication flow and authenticate the backend service with (<tooltip term="KeyCloak">Keycloak</tooltip>), the client must be set to confidential. This is also required to enable a service account role. Enabling this generates a client secret, which is used to authenticate the backend service with Keycloak. By design, the client secret **CANNOT BE CHANGED IN RUNTIME**, as the backend must always be able to interact with Keycloak at any point. To rotate the client secret, the backend service must be stopped. The new secret can then be updated externally in the vault or entered manually using the CLI tool before restarting the service.
 
 The [Cafe Variome Assistant](https://github.com/CafeVariomeUoL/cv3-assistant) tool can also rotate the secrets of an instance it manages. Refer to its documentation for more details.
 
@@ -25,7 +25,7 @@ CV3 backend requires a service account to perform elevated privilege operations 
 
 ### Token exchange
 
-CV3 uses a token exchange service to translate tokens between realms or broaden their audience, enabling introspection by another client. This supports the federated nature of user authentication in the federated network model. This feature must be explicitly enabled in Keycloak by rebuilding the server with it activated. This is also why Keycloak is necessary, as other OIDC providers are not compatible with CV3.
+CV3 uses a token exchange service to translate tokens between realms or broaden their audience, enabling introspection by another client. This supports the federated nature of user authentication in the federated network model. This feature must be explicitly enabled in Keycloak by rebuilding the server with it activated. This is also why Keycloak is necessary, as other (<tooltip term="OIDC">OIDC</tooltip>) providers are not compatible with CV3.
 
 ## Service account roles
 

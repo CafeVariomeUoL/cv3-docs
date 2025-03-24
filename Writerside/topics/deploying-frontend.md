@@ -4,9 +4,17 @@
 
 ## Overview
 
-The frontend of Cafe Variome V3 is written with Flutter, a cross-platform application framework developed by Google. When designing the applications, we have taken into consideration different platforms, and tried our best to provide a unified experience across all platforms. However, due to the nature of Flutter, there are still some differences between the web and other versions. This document will explain the differences and how to compile and install the frontend. Note that we only provide pre-compiled release for web platform, because some parameters are set during compile time, and it's not possible to provide a single release that works for all requirements. This document will walk you through the process of compiling the frontend from source.
+The frontend of Cafe Variome V3 is built using **Flutter**, a cross-platform application framework developed by Google. During development, we aimed to deliver a consistent user experience across all supported platforms. However, due to certain limitations inherent to Flutter, there are some differences between the web version and other platform builds.
 
-The frontend of Cafe Variome V3 consists of 3 applications: the admin interface, the record level query interface, and the metadata query interface. Each can be used independently as a standalone application, or they can redirect to each other (on web platform) and work together. The admin interface is used to manage the system, including user management, data source management, and system configuration. The record level query interface is used to query the data source and retrieve individual records. The metadata query interface is used to query the metadata of the data source, and retrieve the metadata. Some functionalities, such as login, landing page, etc. are shared between them.
+This document outlines those differences and provides guidance on how to compile and install the frontend. While we offer a pre-compiled release for the web platform, it's important to note that some parameters must be defined at compile time. As a result, it's not feasible to distribute a single pre-built release that meets all use cases. The sections below will walk you through compiling the frontend from source to suit your specific requirements.
+
+The frontend of Cafe Variome V3 is made up of three applications: the **admin interface**, the **record-level query interface**, and the **metadata query interface**. Each can operate independently as a standalone app, or, on the web platform, where they can seamlessly redirect between one another and work together.
+
+- The **admin interface** is used for managing the system. It handles user accounts, data sources, and configuration settings.
+- The **record-level query interface** allows users to query data sources and retrieve individual records.
+- The **metadata query interface** is used to search and retrieve metadata about data sources.
+
+Certain features, such as login and the landing page, are shared across all three applications.
 
 ## Prerequisite
 
@@ -22,7 +30,7 @@ To compile the frontend, you will need:
 
 ## Compiling the frontend
 
-> The instruction here suits all three parts of the frontend. The only difference is the configuration file, which needs to be changed to match the sub-paths of the application. The configuration file is explained in the following sections.
+> The instructions in this section apply to all three frontend applications. The only difference lies in the configuration file, which must be adjusted to reflect each application's specific sub-path. Details on configuring these files are provided in the following sections.
 
 The flutter application is designed to work on web and desktop environment, including Windows, Linux and macOS. Before compiling, several configurations need to be changed:
 
@@ -44,12 +52,12 @@ The JSON file contains only six entries:
 }
 ```
 
-The backend URL points to the backend intended to use it with this frontend. The redirect URL points to the `callback.html` file within the web app, while the silent redirect URL points to the `callback-silent.html` file. When using the frontend as desktop app instead of web app, these URLs can be anything, as long as the frontend, backend and KeyCloak are configured to match. It's still recommended to set them to a domain controlled by you, as there may be credential leak if the URL is pointing outside. The admin, discover and meta-discovery URL points to the position of three web applications. If using in desktop mode they are not used, so can be left unchanged.
+The backend URL specifies the backend server this frontend will interact with. The redirect URL should point to the ``callback.html`` file within the web app, while the silent redirect URL should point to ``callback-silent.html``. When running the frontend as a desktop application rather than a web app, these URLs can technically be set to any value—provided the frontend, backend, and Keycloak configurations all align. However, it's still recommended to use a domain under your control to avoid potential credential leakage if the URLs point elsewhere. The admin, discover, and meta-discovery URLs specify the locations of the three web applications. These are not used in desktop mode, so they can be left unchanged in that case.
 
-> Although the system uses the standard redirection flow of KeyCloak to authenticate a user, it mimics this flow in application mode. This is to minimise the effort one has to make to compile it for another platform, as different platforms handle redirection callback differently. It will make the GET and POST request to KeyCloak server behind the scene, mimicing the redirection flow, and get the authorisation code.
+> Although the system uses Keycloak’s standard redirection flow for user authentication, it emulates this flow in application mode. This approach reduces the effort required to compile the application across different platforms, as redirection callbacks are handled differently depending on the environment. Instead of performing an actual browser redirect, the application makes the necessary GET and POST requests to the Keycloak server behind the scenes, mimicking the redirection process to obtain the authorisation code.
 > {: .block-tip }
 
-The content of `callback.html` also needs to be changed if using on web and serving under a sub-path. The line:
+If you're deploying the web app under a sub-path, you’ll also need to update the contents of `callback.html`. The line:
 
 ```javascript
 window.location.href = "/#/?code=" + code;
@@ -61,27 +69,26 @@ Needs to be changed to:
 window.location.href = "/your/subpath/#/?code=" + code;
 ```
 
-This can be done before compile in `web` directory, or after compile in the root directory of the result (often `build/web`).
+You can make this change either before compiling, within the ``web`` directory, or after compilation in the root of the output directory (typically ``build/web``).
 
 For official documents on how to build and release Flutter apps, refer to [Google Documents](https://docs.flutter.dev/deployment).
 
-> When signing and redistributing Cafe Variome 3 frontend, or any piece of this system, please refer to our licences to ensure you're complying with them.
+> When signing and redistributing the Cafe Variome V3 frontend or any part of the system, please refer to our licenses to ensure compliance.
 
 <tabs>
     <tab title="Compile for web">
-        The web version of the frontend is the easiest to compile, and the recommended distribution method for a hosted system. No extra tools required for compiling for web.
-        To compile for web, configure the project as mentioned above, and run the following command in the root directory of the frontend:
+        The web version of the frontend is the easiest to compile and is the recommended method for distributing a hosted system. No additional tools are required for web compilation. To build the web version, configure the project as described above, then run the following command from the root directory of the frontend:
         <code-block lang="bash">
             flutter build web --release
         </code-block>
-        If the web app is intended to be served under a subpath, like <code>https://www.mydomain.com/cv3/</code>, the main js file need to be loaded from the sub path. To let Flutter engine know this, add the following parameter:
+        If the web app is meant to be served under a subpath (e.g. <code>https://www.mydomain.com/cv3/</code>), the main JavaScript file must be loaded from that subpath. To inform the Flutter engine of this, add the following parameter:
         <code-block lang="bash">
             flutter build web --base-href "/cv3/"
         </code-block>
-        Remember to modify the `callback.html` file as mentioned above.
+        Remember to modify the <code>callback.html</code> file as mentioned above.
     </tab>
     <tab title="Compile for Linux">
-        To compile for Linux, a system running Linux with necessary development header files is required. You would also need gcc and necessary dependencies. We recommend runnning <code>flutter doctor</code> and resolve any dependency issues before proceeding.
+        To compile for Linux, you’ll need a Linux system with the necessary development headers, along with gcc and other required dependencies. It's recommended to run flutter doctor beforehand and resolve any reported issues. To build for Linux, run:
         To build for linux, run:
         <code-block lang="bash">
             flutter build linux --release

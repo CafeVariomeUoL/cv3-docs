@@ -48,7 +48,7 @@ Contains basic demographic filters on gender, age, age of first diagnosis, age o
 
 ### HPO Filter
 
-The HPO filter is used to query phenotypic data with Human Phenotype Ontology (HPO) terms. The structure:
+The HPO filter is used to query phenotypic data with (<tooltip term="HPO">HPO</tooltip>) terms. The structure:
 
 ```json
 {
@@ -69,7 +69,7 @@ Takes one or more HPO IDs, with only the numerical ID part without
 The minimum match specifies how many of the **original ** terms must be matched. For the above 3 terms, if the minimum match is set to 2, then 2 out of the 3 original terms, or 2 sets out of 3 sets of expanded terms, must match for a record to be included in the result.
 
 The
-`useOrphanet` flag specifies whether to use Orphanet terms to match with patients. With the HOOM model, HPO and ORDO terms can be mapped to one another, allowing records containing either to be returned.
+`useOrphanet` flag specifies whether to use Orphanet terms to match with patients. With the (<tooltip term="HOOM model">HOOM model</tooltip>), (<tooltip term="HPO">HPO</tooltip>) and (<tooltip term="OIDC">OIDC</tooltip>) terms can be mapped to one another, allowing records containing either to be returned.
 
 ### ORDO Filter
 
