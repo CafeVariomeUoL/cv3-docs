@@ -18,5 +18,6 @@
     </toc-element>
     <toc-element topic="external-services-integration.md">
         <toc-element topic="molgenis-integration.md"/>
+        <toc-element topic="beacon-integration.md"/>
     </toc-element>
 </instance-profile>
