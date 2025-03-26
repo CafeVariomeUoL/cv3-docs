@@ -88,12 +88,11 @@ For official documents on how to build and release Flutter apps, refer to [Googl
         Remember to modify the <code>callback.html</code> file as mentioned above.
     </tab>
     <tab title="Compile for Linux">
-        To compile for Linux, you’ll need a Linux system with the necessary development headers, along with gcc and other required dependencies. It's recommended to run flutter doctor beforehand and resolve any reported issues. To build for Linux, run:
-        To build for linux, run:
+        To compile for Linux, you’ll need a Linux system with the necessary development headers, along with gcc and other required dependencies. It's recommended to run <code>flutter doctor</code> beforehand and resolve any reported issues. To build for Linux, run:
         <code-block lang="bash">
             flutter build linux --release
         </code-block>
-        This generates a directory with the compiled release. The binary file will be in <code>build/linux/release/bundle</code>. If there is a need to distribute the application, releasing as app image may be easier. There are configuration files checked into the repository to be used with `flutter_distributor` to generate app image. There is no pre-compiled app image, because the configuration files need to be modified before compiling. Run:
+        This will generate a directory containing the compiled release. The binary file can be found in <code>build/linux/release/bundle</code>. If you need to distribute the application, packaging it as an AppImage may be more convenient. Configuration files for this process are included in the repository and can be used with <code>flutter_distributor</code> to create the AppImage. Since these configuration files must be modified before compiling, no pre-compiled AppImage is provided. To create the AppImage, run:
         <code-block lang="bash">
             # Install locate and appimagetool
             sudo apt install locate
