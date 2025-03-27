@@ -64,4 +64,7 @@
     <term name="HOOM model">
 
     </term>
+    <term name="UUID4">
+        UUID4 is a 128-bit identifier, randomly generated and represented as a 32-character hexadecimal string in the format xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx.
+    </term>
 </terms>

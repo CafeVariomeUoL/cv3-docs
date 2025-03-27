@@ -1,6 +1,6 @@
 # Uploading Metadata into Cafe Variome
 
-To upload metadata into Cafe Variome, there are two different ways.
+There are two different ways to upload metadata into Cafe Variome.
 
 ## Using the editing interface
 
@@ -12,14 +12,14 @@ recommended approach when there are only several records to add.
 
 ## Using the file uploader
 
-If the metadata is large in quantity, or if the metadata is being exported from another system, it's better to use the file uploader to upload the metadata. It does, however, requires the metadata to be in a specific format to allow direct ingestion.
+If there is a larger quantity of metadata, or if the metadata is being exported from another system, it's better to use the file uploader to upload the metadata. It does, however, require the metadata to be in a specific format to allow direct ingestion.
 
 > The file uploader cannot override metadata entries. If you upload a new version of existing entry there will be duplications. **Please remove the old entries before uploading the new ones.**
 > {style="warning"}
 
 ### Metadata file format
 
-The metadata file to be uploaded should be in JSON format. It should be an array containing one or multiple objects, each object being a meta source. The structure of the meta-source should follow the [meta-source model](metadata-discovery-model.md), but some fields can be omitted or left empty. The following is an example of a metadata file:
+The metadata file to be uploaded should be in JSON format. It should be an array containing one or multiple objects, with each object being a meta source. The structure of the meta-source should follow the [meta-source model](metadata-discovery-model.md), but some fields can be omitted or left empty. The following is an example of a metadata file:
 
 <code-block src="json/MetaSource.minimum.json" collapsed-title="MetaSource.minimum.json" collapsible="true" lang="json" />
 
