@@ -99,7 +99,7 @@ These are the fields that are present in all types of meta-sources.
     <def title="customFields">
         <code>object</code> <code>optional</code> Key-value or key[values] pairs. Constraints:
         <list type="bullet">
-            <li>Key must be a string and cannot contain special characters: `.`, `$`, `/`, or `\`.</li>
+            <li>Key must be a string and cannot contain special characters: <code>.</code>, <code>$</code>, <code>/</code>, or <code>\</code>.</li>
             <li>If a key is present, the value cannot be `null` but can be an empty string or an empty array.</li>
         </list>
     </def>
@@ -515,7 +515,4 @@ be removed before finalising the upload.
 
 ![interface-meta_source_file_selected.png](interface-meta_source_file_selected.png)
 
-Once the files are decided, click the "Process" button to start reading and processing the files. All of the metadata
-entries will be read in the front end, sanitized and validated, and then sent to the server for storage. After
-processing, you will be prompted with the number of metadata entries it read in, and to confirm the upload. Once
-confirmed, the metadata entries will be stored in the database, and will be available for search and discovery.
+After selecting the files, click the "Process" button to begin reading and processing them. All metadata entries will first be read by the frontend, sanitized, and validated, then sent to the server for storage. Once processing is complete, you'll see a prompt displaying the number of metadata entries read and asking you to confirm the upload. After your confirmation, the metadata entries will be stored in the database and become available for search and discovery.

@@ -2,23 +2,23 @@
 
 <primary-label ref="backend"/>
 
-This page explains the structure, meaning, and operation of the query builder and its responses.
+This page describes the structure, purpose, and functionality of the query builder, as well as the meaning of its responses.
 
 ## Query Builder
 
-The query builder is a class that helps to construct a record level query from various sources, and transform or run the query. It's highly flexible and is the core part of the record level query system in Cafe Variome.
+The query builder is a class designed to help construct record-level queries from various sources and then transform or execute those queries. It is highly flexible and forms the core component of the record-level query system in Cafe Variome.
 
 ### Data Structure
 
-An example JSON structure of the query builder can be:
+An example JSON structure of the query builder could be:
 
 <code-block src="json/RecordQueryBuilder.maximum.json" collapsed-title="RecordQueryBuilder.maximum.json" collapsible="true" lang="json" />
 
-The detailed explanation of each filter is as follows:
+A detailed explanation of each filter is provided below:
 
 ### Subject Filter
 
-The subject filter is used to query common demographic data within the system. Because they are usually stored in various terms, the subject filter provides a unified interface to query them, and an easier way for user to see on the UI what to query on. The structure:
+The subject filter is used to query common demographic data within the system. Since this data is typically stored using various terminology standards, the subject filter provides a unified interface to simplify queries and makes it easier for users to identify query options in the UI. Its structure is as follows:
 
 ```json
 {
@@ -44,11 +44,11 @@ The subject filter is used to query common demographic data within the system. B
 }
 ```
 
-Contains basic demographic filters on gender, age, age of first diagnosis, age of first symptoms, affected status, and family type.
+This contains basic demographic filters on gender, age, age of first diagnosis, age of first symptoms, affected status, and family type.
 
 ### HPO Filter
 
-The HPO filter is used to query phenotypic data with (<tooltip term="HPO">HPO</tooltip>) terms. The structure:
+The <tooltip term="HPO">HPO</tooltip> filter is used to query phenotypic data with <tooltip term="HPO">HPO</tooltip> terms. Its structure is as follows:
 
 ```json
 {
@@ -63,17 +63,15 @@ The HPO filter is used to query phenotypic data with (<tooltip term="HPO">HPO</t
 }
 ```
 
-Takes one or more HPO IDs, with only the numerical ID part without
-`HP:` prefix. It also allows specifying a similarity score, which is used to expand the terms to similar terms, based on our Semantic Similarity functionality provided with Biomedical Term Service.
+Its structure accepts one or more <tooltip term="HPO">HPO</tooltip> IDs, specified using only the numerical part of the ID, without the `HP:` prefix. It also allows you to specify a similarity score, which expands the provided terms to include similar ones, based on the Semantic Similarity functionality available through our Biomedical Term Service.
 
-The minimum match specifies how many of the **original ** terms must be matched. For the above 3 terms, if the minimum match is set to 2, then 2 out of the 3 original terms, or 2 sets out of 3 sets of expanded terms, must match for a record to be included in the result.
+The minimum match parameter defines how many of the **original** terms must match. For example, if three terms are provided and the minimum match is set to 2, then at least two of the three original terms (or two of the three sets of expanded terms) must match for a record to be included in the results.
 
-The
-`useOrphanet` flag specifies whether to use Orphanet terms to match with patients. With the (<tooltip term="HOOM model">HOOM model</tooltip>), (<tooltip term="HPO">HPO</tooltip>) and (<tooltip term="OIDC">OIDC</tooltip>) terms can be mapped to one another, allowing records containing either to be returned.
+The `useOrphanet` flag indicates whether Orphanet terms should also be used to match patients. With the <tooltip term="HOOM model">HOOM model</tooltip>, <tooltip term="HPO">HPO</tooltip> and <tooltip term="OIDC">OIDC</tooltip>, terms can be mapped to each other, enabling records containing either term type to be returned.
 
 ### ORDO Filter
 
-The ORDO filter is used to query disease data with Orphanet terms. The structure:
+The <tooltip term="ORDO">ORDO</tooltip> filter is used to query disease data with Orphanet terms. Its structure is as follows:
 
 ```json
 {
@@ -87,18 +85,17 @@ The ORDO filter is used to query disease data with Orphanet terms. The structure
 }
 ```
 
-Takes one or more ORDO IDs, with only the numerical ID. The rest is very similar to HPO filter, as they are connected together with the HOOM model.
+Its structure takes one or more <tooltip term="ORDO">ORDO</tooltip> IDs, with only the numerical ID. The rest are very similar to <tooltip term="HPO">HPO</tooltip> filter, as they are connected together with the <tooltip term="HOOM model">HOOM model</tooltip>.
 
 ## Query Logic
 
-The query API used by CV3 allows advanced query logic by putting the match target in different position.
+The query API used by CV3 allows advanced query logic by putting the match target in a different position.
 
 ### AND logic between filters
 
-All filters that are independent to another are AND logic filters. For example, if HPO filter and ORDO filters are used at the same time, the result must be matched to
-**both** HPO and ORDO terms.
+All filters that are independent of each other use **AND** logic. For example, if an HPO filter and an <tooltip term="ORDO">ORDO</tooltip> filter are applied simultaneously, the results must match **both** the <tooltip term="HPO">HPO</tooltip> and <tooltip term="ORDO">ORDO</tooltip> terms.
 
-Specially, some filters allowing multiple instances of the same type. For example, HPO filters can be provided multiple times. They are also AND logic between each other. If 2 HPO filters are provided:
+Specifically, some filters allow multiple instances of the same filter type. For example, multiple <tooltip term="HPO">HPO</tooltip> filters can be applied at once. These multiple filters are also combined using AND logic. If two <tooltip term="HPO">HPO</tooltip> filters are provided:
 
 ```json
 {
@@ -127,16 +124,14 @@ Specially, some filters allowing multiple instances of the same type. For exampl
 }
 ```
 
-The meaning of the structure is:
+This structure means - Find records that:
 
-Find records that:
-
-- Matches at least 2 terms from the first HPO filter, **AND**
-- Matches at least 2 terms from the second HPO filter.
+- Match at least 2 terms from the first <tooltip term="HPO">HPO</tooltip> filter, **AND**
+- Match at least 2 terms from the second <tooltip term="HPO">HPO</tooltip> filter.
 
 ### OR logic within filters
 
-All terms within a filter are OR logic. For example, if 3 HPO terms are provided:
+All terms within a filter are **OR** logic. For example, if 3 <tooltip term="HPO">HPO</tooltip> terms are provided:
 
 ```json
 {
@@ -162,15 +157,13 @@ This means that the record only need to match with "0000001" **OR** "0000002" **
 
 #### Empty default to "any"
 
-For any filter that contains an empty value (for example, empty HPO code or 0/100 for age), they are considered empty, and equivalent to
-**not provided**. This means that the filter is not applied, and the record can have any value for that field.
+Any filter that contains an empty value (e.g., an empty <tooltip term="HPO">HPO</tooltip> code or 0/100 for age) is treated as if the filter was **not provided**. This means the filter is not applied, and the record can have any value for that field.
 
-Please note that CV3 do not support filter level negation. For example, if HPO filter is not applied, a subject with or without HPO field, or with anything in HPO field, may be included. This behavior is
-**different from negation, where a subject must not contain any HPO term**.
+Note that CV3 does not support filter-level negation. For example, if a <tooltip term="HPO">HPO</tooltip> filter is not applied, a subject with or without an HPO field, or with any value in the <tooltip term="HPO">HPO</tooltip> field, may be included. This is **different from negation, where a subject must not contain any HPO term**.
 
 #### Filter default to soft match
 
-If a filter is provided, however, the data is completely not present within the source, the filter will be ignored. This is a soft match behavior, where the filter is not applied if the data is not present. Specifically, soft match will only be applied if the entire source does not have that field. For example, for a collection:
+If a filter is provided, but the data is completely absent from the source, the filter will be ignored. This is known as soft match behavior, where the filter is not applied if the data is not present. Specifically, soft match occurs only when the entire source lacks that particular field. For example, in a collection:
 
 ```json
 [
@@ -187,9 +180,7 @@ If a filter is provided, however, the data is completely not present within the 
 ]
 ```
 
-ORDO information is missing in every record. If an ORDO filter is provided, it will be ignored. However, some records have HPO information; so if HPO filter is provided, any records that do not have HPO information will not be included. The latter case is considered
+<tooltip term="ORDO">ORDO</tooltip> information is missing in every record. If an <tooltip term="ORDO">ORDO</tooltip> filter is provided, it will be ignored. However, some records have <tooltip term="HPO">HPO</tooltip> data; so if a <tooltip term="HPO">HPO</tooltip> filter is provided, any records that do not have <tooltip term="HPO">HPO</tooltip> information will not be included. The latter case is considered
 **information missing**, instead of **filter not supported**.
 
-The default soft match can be overridden by providing an
-`advanced` filter, instructing the query behavior. Within the advanced filter, the
-`requiredFilters` field details which filters are mandatory, and the soft match will be turned off for that field.
+The default soft match behavior can be overridden by providing an advanced filter that specifies the desired query behavior. In the `advanced` filter, the `requiredFilters` field defines which filters are mandatory, and this will disable the soft match for those fields.

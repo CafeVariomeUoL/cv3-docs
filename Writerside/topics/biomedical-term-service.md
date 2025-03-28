@@ -32,7 +32,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 > {style="note"}
 
-The data being downloaded or used by CV-BTS are not generated, validated or distributed in any form by Cafe Variome. They should be downloaded from the respective sources, under their own licenses and terms of use. Their authors do not endorse or support CV-BTS in any way. When downloading and using the data, ensure that you comply with the terms of use of the respective data sources and the local laws. For questions regarding the data, please contact the respective data sources. A copy of their license and terms are included in the source code, and will be served via a special API. The entity deploying/hosting the service should be responsible for ensuring the compliance of the data usage. The authors and copyright holders of CV-BTS are not responsible for any misuse of the data, or any breach of the terms of use with the data sources.
+The data being downloaded or used by CV-BTS are not generated, validated or distributed in any form by Cafe Variome. They should be downloaded from the respective sources, under their own licenses and terms of use. Their authors do not endorse or support CV-BTS in any way. When downloading and using the data, ensure that you comply with the terms of use of the respective data sources and the local laws. For questions regarding the data, please contact the respective data sources. A copy of their license and terms is included in the source code, and will be served via a special API. The entity deploying/hosting the service should be responsible for ensuring the compliance of the data usage. The authors and copyright holders of CV-BTS are not responsible for any misuse of the data, or any breach of the terms of use with the data sources.
 
 ## Features and roadmap
 
@@ -41,13 +41,13 @@ The currently implemented features are:
 - Downloading and parsing of biomedical term sets
     - CTV3
     - Ensembl
-    - HGNC symbols and IDs
-    - HPO
-    - NCIT
-    - OMIM
-    - ORDO (Orphanet)
+    - <tooltip term="HGNC">HGNC</tooltip> symbols and IDs
+    - <tooltip term="HPO">HPO</tooltip>
+    - <tooltip term="NCIT">NCIT</tooltip>
+    - <tooltip term="OMIM">OMIM</tooltip>
+    - <tooltip term="ORDO">ORDO</tooltip> (Orphanet)
     - Reactome Pathways and Reactions
-    - SNOMED-CT, SNOMED UK Edition, SNOMED UK Drug Extension, SNOMED UK Clinical Extension
+    - <tooltip term="SNOMED">SNOMED</tooltip>-CT, <tooltip term="SNOMED">SNOMED</tooltip> UK Edition, <tooltip term="SNOMED">SNOMED</tooltip> UK Drug Extension, <tooltip term="SNOMED">SNOMED</tooltip> UK Clinical Extension
 - Auto-completion of terms
 - Ontology tree expansion search
 - Semantic similarity search

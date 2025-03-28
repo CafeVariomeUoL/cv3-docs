@@ -1,10 +1,10 @@
 # Deploying BTS
 
-CV-BTS is backend only. It's meant to be queried by CV3 and its supporting services, but it may also be used independently or to support other biomedical related tools.
+CV-BTS is a backend-only system, designed to be queried by CV3 and its supporting services. However, it can also be used independently or to support other biomedical-related tools.
 
 ## Overview
 
-The BTS backend is written in Python, powered by Quart. When in operation mode, it does not write into the databases, so it's safe to be scaled horizontally. All requests are RESTful, so there will be no session management required.
+The BTS backend is written in Python, powered by Quart. When in operation mode, it does not write into the databases, so it's safe to be scaled horizontally. All requests are RESTful, so no session management is required.
 
 ## Dependencies
 
@@ -23,9 +23,9 @@ The following software and tools are required to run BTS:
 
 The hardware requirements are:
 
-- 2 CPU cores, 4 recommended, as many as needed for calculating semantic similarity
-- 2 GB RAM to start (excluding the database requirements), 8 GB to serve a reasonable amount of requests, 64 GB if building the graph locally with up to 12 workers
-- 30 GB storage, 60 GB if building the graph locally
+- 2 CPU cores (4 recommended), as many as needed for calculating semantic similarity.
+- 2 GB RAM to start (excluding the database requirements), 8 GB to serve a reasonable amount of requests, 64 GB if building the graph locally with up to 12 workers.
+- 30 GB storage, 60 GB if building the graph locally.
 
 > We have optimised the database to use indexes and pre-calculated relationships, exchanging space for speed. Still, similarity search is heavy on the Neo4j, which is memory hungry. We recommend at least 4GB of RAM for the Neo4j instance; if used in production, supporting multiple Cafe Variome V3 instances, we recommend a cloud/clustered solution with dynamic scaling.
 > {style="note"}
@@ -51,7 +51,7 @@ The two API keys are required to download the ontology terms from BioPortal and 
 
 ### From Docker
 
-Docker images contains the CLI component, but since it's cumbersome to run the CLI from a container, it can also automatically download the data and initialize the databases. Since the project requires multiple external databases, it's recommended to use docker compose to start the service. The example docker compose file is released in the main repository:
+The Docker images include the CLI component. However, since running the CLI from a container can be cumbersome, the images also support automatic downloading of data and database initialization. As the project requires multiple external databases, it's recommended to use Docker Compose to start the service. An example Docker Compose file is provided in the main repository:
 
 ```yaml
 services:
@@ -111,9 +111,9 @@ When running in docker, the database will be automatically populated. To disable
 
 ### From binary
 
-We provide portable binary package releases for Linux environments. The binary is built using `nuitka`, a tool to compile Python code to C first, then executables. The result binary contains all necessary dependencies, and should perform consistently on all Linux distributions, provided that the `glibc` version is compatible. The binary also does not require Python or other runtime to be used, and may have a slightly better performance, due to the methods `nuitka` used to compile it. We do not currently provide binary release for Windows or MacOS, as we do not anticipate use cases with any OS other than Linux servers.
+We provide portable binary package releases for Linux environments. The binary is built using `nuitka`, a tool to compile Python code to C first, then executables. The resulting binary contains all necessary dependencies, and should perform consistently on all Linux distributions, provided that the `glibc` version is compatible. The binary also does not require Python or any other runtime to be used, and may have a slightly better performance due to the compilation methods used by `nuitka`. We do not currently provide binary release for Windows or MacOS, as we do not anticipate use cases with any OS other than Linux servers.
 
-To use the binary release, download it from either the GitHub release page, or our artifact repository. The binaries in our artifact repository contains a "nightly" build, which keeps up to date with the main branch (if the test cases pass of course). However due to storage constraints, the old artifacts may be removed, so if you're looking for an old release for over 180 days, you may need to build it from source or check out the GitHub repository.
+To use the binary release, download it from either the GitHub release page, or our artifact repository. The binaries in our artifact repository contain a "nightly" build, which keeps up to date with the main branch (if the test cases pass). However, due to storage limitations, older artifacts may be removed. If you're looking for a release older than 180 days, you may need to build it from source or check the GitHub repository.
 
 After downloading the tarball, extract it to a directory, and run the script:
 
@@ -127,7 +127,7 @@ cd cv3-bioterms
 
 ## Using the CLI to load data
 
-The CLI is used to download and load the data into the databases. In production, it might be the case where only part of the data is needed, so the CLI can selectively download and initialize only part of the graph.
+The CLI is used to download and load the data into the databases. In production, it might be the case that only part of the data is needed, so the CLI can selectively download and initialize only part of the graph.
 
 ```shell
 # When running from source code, use the script
@@ -157,4 +157,4 @@ SNOMED CT terms loaded
 >
 ```
 
-The CLI has autocomplete and help feature, so you can follow the built-in guide to load the data.
+The CLI has an autocomplete and help feature, so you can follow the built-in guide to load the data.
