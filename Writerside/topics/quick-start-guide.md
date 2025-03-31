@@ -47,3 +47,11 @@ This is the docker compose file to start the Cafe Variome V3 backend and fronten
 2. The `cv3-backend-database-manager` container has extra environment variables. These are used to initialize the system without using the CLI utility. If you already have a database initialized, you do not need to supply these variables. After the first run, you may safely remove them.
 3. The `cv3-backend-exporter` does not require credentials.
 4. All backend containers are started to use host network mode. This is so that they can connect to the services running on `localhost`. If your databases are running with a different hostname or domain (such as in a cloud environment), it's recommended not to use host network mode. If so, the reverse proxy container no longer needs to be in host network mode either.
+
+<seealso>
+    <category ref="related">
+        <a href="deploying-backend.md"/>
+        <a href="deploying-frontend.md"/>
+        <a href="dependent-services-configuration.md"/>
+    </category>
+</seealso>

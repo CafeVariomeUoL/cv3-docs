@@ -23,3 +23,10 @@ Due to lack of demand, the FDP integration is not actively developed. Usually it
 - **FDP query**: CV3 may support querying an external FDP service directly, and aggregate the result with other query results, similar to [Beacon integration](beacon-integration.md).
 
 We are open to suggestions and contributions from the community, especially if you have a valid and practical use case that requires an existing or new feature.
+
+<seealso>
+    <category ref="related">
+        <a href="molgenis-integration.md"/>
+        <a href="beacon-integration.md"/>
+    </category>
+</seealso>

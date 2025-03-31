@@ -847,3 +847,12 @@ These are the fields specific to the data collection type.
 #### Data collection model example
 
 <include from="library.md" element-id="json-meta_source_data_collection-maximum"></include>
+
+
+<seealso>
+    <category ref="related">
+        <a href="uploading-metadata.md"/>
+        <a href="fdp-integration.md"/>
+        <a href="query-builder-and-query-result.md"/>
+    </category>
+</seealso>

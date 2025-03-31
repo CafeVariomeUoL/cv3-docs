@@ -297,3 +297,12 @@ In the example above, the secret ID is valid for 10 minutes after creation and c
 
 > For development purpose, the configurations can be set to 0 to disable the expiration of credentials. However, this is highly discouraged for production use.
 > {style="note"}
+
+
+<seealso>
+    <category ref="related">
+        <a href="deploying-backend.md"/>
+        <a href="quick-start-guide.md"/>
+        <a href="keycloak-credentials-and-account.md"/>
+    </category>
+</seealso>

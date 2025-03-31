@@ -150,3 +150,11 @@ return decrypted_payload.decode()
 ```
 
 Because the payload is long, the RSA key is only used to encrypt an AES key, and the payload is encrypted with AES symmetric encryption.
+
+<seealso>
+    <category ref="related">
+        <a href="authentication.md"/>
+        <a href="authentication-model.md"/>
+        <a href="federated-authorisation.md"/>
+    </category>
+</seealso>

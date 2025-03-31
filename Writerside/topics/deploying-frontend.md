@@ -128,3 +128,12 @@ After compiling, the frontend can then be installed, distributed or served.
         </code-block>
     </tab>
 </tabs>
+
+
+<seealso>
+    <category ref="related">
+        <a href="quick-start-guide.md"/>
+        <a href="deploying-backend.md"/>
+        <a href="user-and-admin-access-control.md"/>
+    </category>
+</seealso>

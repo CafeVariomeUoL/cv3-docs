@@ -48,3 +48,10 @@ The integration is still in its early stages, and there are many features that a
 - Native support of networking protocols in Molgenis: Molgenis may support the decentralised protocol used by CV3, allowing it to join the network directly as a data node, responding to other CV3 instances' queries.
 
 We cannot provide a timeline for these features, or to confirm if they would be added to the system. However, we are open to suggestions and contributions from the community, especially if you have a valid and practical use case that requires an existing or new feature.
+
+<seealso>
+    <category ref="related">
+        <a href="beacon-integration.md"/>
+        <a href="fdp-integration.md"/>
+    </category>
+</seealso>

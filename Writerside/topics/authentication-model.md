@@ -69,3 +69,11 @@ The network is built to be as close to zero trust as possible. In future, a vali
 ## Federated authentication for a server
 
 When a server performs sync operations on another server, it must also be authenticated. The authentication process is the same as for federated user authentication, but in this case, a service account access token is used, and the query ID and user ID are not included.
+
+<seealso>
+    <category ref="related">
+        <a href="authentication.md"/>
+        <a href="keycloak-credentials-and-account.md"/>
+        <a href="federated-authentication.md"/>
+    </category>
+</seealso>

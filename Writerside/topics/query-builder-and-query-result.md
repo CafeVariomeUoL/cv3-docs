@@ -184,3 +184,11 @@ If a filter is provided, but the data is completely absent from the source, the 
 **information missing**, instead of **filter not supported**.
 
 The default soft match behavior can be overridden by providing an advanced filter that specifies the desired query behavior. In the `advanced` filter, the `requiredFilters` field defines which filters are mandatory, and this will disable the soft match for those fields.
+
+<seealso>
+    <category ref="related">
+        <a href="data-indices.md"/>
+        <a href="data-model.md"/>
+        <a href="metadata-discovery-model.md"/>
+    </category>
+</seealso>

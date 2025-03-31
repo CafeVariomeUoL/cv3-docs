@@ -68,3 +68,11 @@ The interface adapts to the type of data in the underlying database, enabling us
 Cafe Variome implements (<tooltip term="BEACON">BEACON v2</tooltip>) specifications, designed to simplify genomic data discovery. By loading data into Cafe Variome, users automatically gain access to a BEACON-compatible API, which can be integrated with other services. Optional security features are built into the BEACON API, ensuring the same level of security, access control, and data synchronisation as Cafe Variome, should the administrator choose to enable them.
 
 Cafe Variome can also query other BEACON-compatible systems as remote data sources, treating external data as if it were stored locally. While queries are limited to BEACON capabilities, the results are merged with local data and presented to the user as a single, unified set. This allows Cafe Variome to serve as a central interface for BEACON discovery.
+
+<seealso>
+    <category ref="related">
+        <a href="quick-start-guide.md"/>
+        <a href="user-and-admin-access-control.md"/>
+        <a href="external-services-integration.md"/>
+    </category>
+</seealso>

@@ -207,3 +207,11 @@ After all necessary services and config file in place, the CV3 backend can be st
         <code-block src="yaml/docker-compose.cv.yaml" lang="yaml" />
     </tab>
 </tabs>
+
+<seealso>
+    <category ref="related">
+        <a href="quick-start-guide.md"/>
+        <a href="dependent-services-configuration.md"/>
+        <a href="deploying-frontend.md"/>
+    </category>
+</seealso>

@@ -122,3 +122,13 @@ In this scenario:
 Additionally, a user may have different access levels granted through different discovery networks. However, if the same source is involved, the user will always use the highest access level, regardless of the network from which the query originates. Since access levels are definitive and take precedence, it's important to adhere to the principle of least privilege when granting user access.
 
 </snippet>
+
+
+<seealso>
+    <category ref="related">
+        <a href="authorisation.md"/>
+        <a href="authentication.md"/>
+        <a href="keycloak-credentials-and-account.md"/>
+    </category>
+</seealso>
+

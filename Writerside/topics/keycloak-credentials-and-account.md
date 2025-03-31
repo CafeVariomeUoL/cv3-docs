@@ -14,7 +14,7 @@ The [Cafe Variome Assistant](https://github.com/CafeVariomeUoL/cv3-assistant) to
 
 Both the CV3 frontend and backend are designed exclusively to use the standard flow. This approach is chosen for its high compatibility and security while minimizing the risk of credential leaks. The client secret is stored in the backend, while the frontend sends an authorization code to exchange for an access token.
 
-Unlike standard designs, where tokens are stored in the backend to authenticate with other resources, CV3 keeps the tokens in the frontend. This is because all authorization is independent of the OIDC service, and the tokens have only minimal scopes. By doing so, the backend remains RESTful and can potentially be used with any other tools or interfaces that provide the correct tokens.
+Unlike standard designs, where tokens are stored in the backend to authenticate with other resources, CV3 keeps the tokens in the frontend. This is because all authorization is independent of the <tooltip term="OIDC">OIDC</tooltip> service, and the tokens have only minimal scopes. By doing so, the backend remains RESTful and can potentially be used with any other tools or interfaces that provide the correct tokens.
 
 ### Service account role
 
@@ -25,7 +25,7 @@ CV3 backend requires a service account to perform elevated privilege operations 
 
 ### Token exchange
 
-CV3 uses a token exchange service to translate tokens between realms or broaden their audience, enabling introspection by another client. This supports the federated nature of user authentication in the federated network model. This feature must be explicitly enabled in Keycloak by rebuilding the server with it activated. This is also why Keycloak is necessary, as other (<tooltip term="OIDC">OIDC</tooltip>) providers are not compatible with CV3.
+CV3 uses a token exchange service to translate tokens between realms or broaden their audience, enabling introspection by another client. This supports the federated nature of user authentication in the federated network model. This feature must be explicitly enabled in Keycloak by rebuilding the server with it activated. This is also why Keycloak is necessary, as other <tooltip term="OIDC">OIDC</tooltip> providers are not compatible with CV3.
 
 ## Service account roles
 
@@ -50,3 +50,12 @@ This role allows CV3 to manage its own service account, which has an associated 
 ### create-client, manage-clients, view-clients and manage-realm
 
 "These roles are required only when nexus mode is enabled in the config file. Nexus mode requires a CV3 instance to create credentials for CV2 instances, meaning it must have permission to view, create, and manage all clients within this realm. Use this permission with caution, as any mistakes could impact not only CV2 clients but also other applications. It is recommended to enable nexus mode on a single CV3 instance and use it to manage all CV2 instances within the realm. This is a strict limitation in the CVA tool.
+
+
+<seealso>
+    <category ref="related">
+        <a href="authentication.md"/>
+        <a href="authentication-model.md"/>
+        <a href="dependent-services-configuration.md"/>
+    </category>
+</seealso>

@@ -1,6 +1,6 @@
 # Federated Authorization
 
-When performing discovery in a discovery network, the authorisation happens in a decentralised way. This wiki page explains how a user or a node is authorised, providing insight on the basic model of the discovery network. For a general authorisation process, refer to the [](authorisation-model).
+When performing discovery in a discovery network, the authorisation happens in a decentralised way. This wiki page explains how a user or a node is authorised, providing insight on the basic model of the discovery network. For a general authorisation process, refer to the [](authorisation-model.md).
 
 The federated authorisation process can be divided into 2 parts: authorising the server where the requests originate from, and the user himself.
 
@@ -55,3 +55,11 @@ Based on whether A and D is using the same authentication service provider (A.K.
 For any node in the network, it cannot see the user access level in another node, thus would need to determine the discovery group configuration on its own. The incoming request may carry a granularity request, but it's up to the node whether to respond with the requested granularity. If the granularity is higher than the permitted, the node will respond with the permitted granularity. If the granularity is lower than the permitted, the node will respond with the requested granularity. If the granularity is not specified, the node will respond with the permitted granularity.
 
 It's not possible to restrict the user access based on source node, unless the user is remapped. For a user that is not remapped, the user access level is determined by the user access level in the current node, regardless of the source node. This is to uphold the fairness principle of the decentralized network.
+
+<seealso>
+    <category ref="related">
+        <a href="federated-authentication.md"/>
+        <a href="authorisation.md"/>
+        <a href="authorisation-model.md"/>
+    </category>
+</seealso>

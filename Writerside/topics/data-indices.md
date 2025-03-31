@@ -65,3 +65,12 @@ The `eavIndex` object contains three fields:
 - `values`: A key-value pair listing the possible attribute values and their display names. This information is used to populate dropdown menus or checkboxes within the query interface.
 
 - `mappings`: Defines the relationships between attributes and their values. Each attribute appears as a key, and its value is an array of possible attribute values (using actual field names rather than display names). This mapping is only included for alphanumeric attributes with categorical values. When a mapping exists, the frontend assumes the attribute must contain one or more of the provided values and therefore displays a dropdown, checkbox selection, or a free-text box for regex searches. If an attribute isn't included in the mappings, the frontend assumes it is numerical and presents a free-text box alongside numerical operators (`>`, `<`, `=`, etc.).
+
+
+<seealso>
+    <category ref="related">
+        <a href="data-model.md"/>
+        <a href="mongodb-data-structure.md"/>
+        <a href="subjects.md"/>
+    </category>
+</seealso>

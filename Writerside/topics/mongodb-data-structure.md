@@ -30,3 +30,12 @@ The database consists of the following collections:
 - `sources.meta`
 - `user.info`
 - `user.requests`
+
+
+<seealso>
+    <category ref="related">
+        <a href="data-model.md"/>
+        <a href="data-indices.md"/>
+        <a href="subjects.md"/>
+    </category>
+</seealso>

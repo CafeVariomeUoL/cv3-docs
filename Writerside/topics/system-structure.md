@@ -108,3 +108,12 @@ The server APIs are the APIs dedicated to server-to-server communication. They a
 - **Network Gateway**: The network gateway is the federated gateway for the system. It's used to create a fully decentralised data discovery network with other CV3 instances, and to translate all queries to the local database.
 - **Nexus**: The nexus is a legacy API used to provide networking function for Cafe Variome V2 instances. CV2 uses a centralised discovery network model, so the nexus component is used to act as the registry server, and bridges the queries between CV2 and CV3.
 - **Exporter**: The exporter is a service that provides metrics monitoring functionalities for the system. It collects the metrics from Redis, and exposes them in Prometheus format for monitoring.
+
+
+<seealso>
+    <category ref="related">
+        <a href="file-structure.md"/>
+        <a href="convention.md"/>
+        <a href="data-model.md"/>
+    </category>
+</seealso>

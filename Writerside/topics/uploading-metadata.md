@@ -516,3 +516,12 @@ be removed before finalising the upload.
 ![interface-meta_source_file_selected.png](interface-meta_source_file_selected.png)
 
 After selecting the files, click the "Process" button to begin reading and processing them. All metadata entries will first be read by the frontend, sanitized, and validated, then sent to the server for storage. Once processing is complete, you'll see a prompt displaying the number of metadata entries read and asking you to confirm the upload. After your confirmation, the metadata entries will be stored in the database and become available for search and discovery.
+
+
+<seealso>
+    <category ref="related">
+        <a href="metadata-discovery-model.md"/>
+        <a href="fdp-integration.md"/>
+        <a href="data-model.md"/>
+    </category>
+</seealso>

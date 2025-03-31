@@ -33,3 +33,12 @@ The files in the library repository follow the structure:
   - **services**: the service classes handling web requests to the backend.
   - **utils**: utility functions that are used across the library.
   - **widgets**: the UI components that are reused across different pages.
+
+
+<seealso>
+    <category ref="related">
+        <a href="convention.md"/>
+        <a href="system-structure.md"/>
+        <a href="data-model.md"/>
+    </category>
+</seealso>

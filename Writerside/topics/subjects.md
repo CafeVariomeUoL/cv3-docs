@@ -62,3 +62,12 @@ In the example:
 ### Prefix and ID structure
 
 The ontology terms for subjects are stored in their corresponding fields as an array. They do not contain their prefixes (e.g. `HP:`, `Orpha:`), only the part after the prefix colon. All queries, indices, and other processing are done with the terms in this format. Note that not all prefixes or "common parts" of an ID are considered prefix; only the ones in namespace format are removed.
+
+
+<seealso>
+    <category ref="related">
+        <a href="data-model.md"/>
+        <a href="mongodb-data-structure.md"/>
+        <a href="data-indices.md"/>
+    </category>
+</seealso>

@@ -24,7 +24,8 @@ Here is a table of user types, their account conditions and permissions to perfo
 
 <seealso>
     <category ref="related">
-        <a href="keycloak-credentials-and-account.md"/>
+        <a href="authorisation.md"/>
         <a href="user-and-admin-access-control.md"/>
+        <a href="federated-authorisation.md"/>
     </category>
 </seealso>

@@ -74,3 +74,10 @@ The features we are currently working on are:
 The features that we know we will not implement in the near future are:
 
 - Pagination support. All data will be returned in the same response. When querying a different service, if we detect pagination is enabled, we will send a second query requesting a larger pagination limit, which will cause all results to be returned in the same response. Then we will use the second response to display the results. CV3 does not give out paginated results at all.
+
+<seealso>
+    <category ref="related">
+        <a href="fdp-integration.md"/>
+        <a href="molgenis-integration.md"/>
+    </category>
+</seealso>

@@ -31,3 +31,11 @@ There are several OpenAPI specifications available for the system, including ind
 - [Network Gateway](https://v3doc.cafevariome.org/openapi/?urls.primaryName=Network+Gateway)
 - [Query API](https://v3doc.cafevariome.org/openapi/?urls.primaryName=Query+API)
 - [Biomedical Term Service](https://v3doc.cafevariome.org/openapi/?urls.primaryName=Biomedical+Term+Service)
+
+<seealso>
+    <category ref="related">
+        <a href="file-structure.md"/>
+        <a href="system-structure.md"/>
+        <a href="data-model.md"/>
+    </category>
+</seealso>
