@@ -9,12 +9,12 @@ In Cafe Variome V3, users and admins have different levels of access to the syst
 In Cafe Variome V3, users can be divided into the following types:
 
 - **Anonymous
-  users**: Users who have not logged in to the system. They can only access the landing page of the system, and, if enabled, can query some data without logging in.
+  users**: These are users who have not logged in to the system. They can only access the landing page of the system, and, if enabled, can query some limited data without logging in.
 - **Remote
-  users**: Users registered with another installation that uses the same authentication providers. They may be granted query privileges on some data sources, but they cannot log into this particular system, and cannot access the interface that requires login.
-- **Users**: Regular users that have logged in. They can access the query interface, as well as user setting pages.
+  users**: These are users who are registered with another installation, which uses the same authentication providers. They may be granted query privileges on some data sources, but they cannot log into this particular system, and cannot access the interface, as that requires login.
+- **Users**: These are regular users that have logged in. They can access the query interface, as well as user setting pages.
 - **Data admins**: The administrators that manage the data sources. They are allowed to access part of the admin interface, particularly the data source management pages, discovery network and discovery group settings, etc.
-- **System admins**: The administrators that manage the system. They are allowed to access the user registration, server config, and other system management pages.
+- **System admins**: These are the administrators who manage the system. They are allowed to access the user registration, server config, and other system management pages.
 - **Developers**: The super admin of the system. They have full access to all pages of the system, including the debug system, while the system is in debug mode.
 
 This model is designed to allow data holders to separate the role responsible for controlling access to data from the role required for server maintenance.
@@ -55,7 +55,7 @@ When a user is created here, an account is also generated in <tooltip term="KeyC
 
 ### Creating user from KeyCloak
 
-Users can also be created inside <tooltip term="KeyCloak">KeyCloak</tooltip>, although this is a more "manual" approach, and is not recommended. This is because the application uses the user ID from <tooltip term="KeyCloak">KeyCloak</tooltip> as the unique identifier, and this information needs to be manually put inside the database for it to work. This process is not allowed from the user interface as it would create an inconsistency with the database record. The system administrator would need to operate on the database directly. This should only be used while trying to recover a database from inconsistent state.
+Users can also be created inside <tooltip term="KeyCloak">KeyCloak</tooltip>, although this is a more "manual" approach, and is not recommended. This is because the application uses the user ID from <tooltip term="KeyCloak">KeyCloak</tooltip> as the unique identifier, and this information needs to be manually entered in to the database for it to work. This process is not allowed from the user interface as it would create an inconsistency with the database record. Hence, this would need to be performed by the system administrator operating on the database directly. This should only be used while trying to recover a database from inconsistent state.
 
 ### User access request
 
@@ -96,10 +96,12 @@ Access to data sources is managed through a model called **Discovery Groups**. E
 The available discovery policies are:
 
 - **Boolean response**: This indicates whether there are records within a data source that meet the filtering criteria.
-- **Range response**: This provides the maximum and minimum possible count of records within a data source that meet the filtering criteria. This range is calculated based on factors like user access, query sensitivity, and the data source itself. For example, if 50 records fit the criteria, the result might be displayed as a range of 25–65, with the actual average varying for each user. ***This feature is still under active development and is not available in the current release.***
+- **Range response**: This provides the maximum and minimum possible count of records within a data source that meet the filtering criteria. This range is calculated based on factors such as user access, query sensitivity, and the data source itself. For example, if 50 records fit the criteria, the result might be displayed as a range of 25–65, with the actual average varying for each user. ***This feature is still under active development and is not available in the current release.***
 - **Count response**: show the exact number of records inside a datasource that fits the filtering requirements.
-- **Count with subject ID**: This refers to a response that provides both the exact number of records within a data source that meet the filtering criteria, as well as the subject IDs associated with those records. The subject ID is the unique identifier assigned to each record in the database. This ID may represent an actual identifier, such as a patient's NHS number, or a de-identified ID, depending on the data ingestion process and whether de-identification was applied.
+- **Count with subject ID**: This refers to a response that provides both the exact number of records within a data source that meet the filtering criteria, as well as the subject IDs associated with those records. The subject ID is the unique identifier assigned to each record in the database. This ID may be the  actual identifier, or a de-identified ID, depending on the data ingestion process and data governance policies of the providing user. The Cafe Variome software only provides the platform to allow data discovery, the end user must ensure that they have all of the appropriate approvals in place to allow them to display the level of detail desired in their queiry responses.  
 - **Count with details**: This displays the records matching the filtering criteria, along with all associated data for each record. Please be aware that this may significantly increase the response size, especially if the data includes large representations like gene sequences. ***Use with caution.***
+
+**The Cafe Variome software only provides the platform to allow data discovery. The end user must ensure that they have all of the appropriate approvals in place to display the level of detail desired in the queiry responses.**
 
 ### Managing discovery groups
 

@@ -6,7 +6,7 @@ This is the documentation for Cafe Variome V3.
 
 ## What is Cafe Variome
 
-Cafe Variome is a flexible, web-based data discovery tool designed for biomedical data owners. It enables the discovery of the existence of data without revealing its substance. Supporting various data formats (such as Phenopackets, XLSX, CSV, etc.), Cafe Variome allows users to query patient records in a unified way.
+Cafe Variome is a flexible, web-based data discovery tool designed for biomedical data owners. It enables discovery of the existence of data without revealing its substance. Supporting various data formats (such as Phenopackets, XLSX, CSV, etc.), Cafe Variome allows users to query patient records in a unified way.
 
 ## Why Cafe Variome
 

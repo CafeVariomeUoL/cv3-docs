@@ -48,7 +48,7 @@ User logout is a straightforward process. The frontend sends a logout request to
 
 Passive logout occurs when the access token is invalid and the refresh token has expired. If a refresh attempt fails or the backend returns a 401 error (indicating a bad token in this system, whereas 403 signifies a valid login but insufficient permissions), the frontend logs out the user without sending a logout request.
 
-Upon logout, the frontend state is reset, and all in-memory values are lost. However, configurations stored in shared preferences, such as the theme color, remain unchanged, ensuring a consistent user experience.
+Upon logout, the frontend state is reset, and all in-memory values are lost. However, configurations stored in shared preferences, such as the theme colour, remain unchanged, ensuring a consistent user experience.
 
 ## Federated authentication for a user
 
