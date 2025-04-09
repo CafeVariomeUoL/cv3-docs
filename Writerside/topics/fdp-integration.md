@@ -1,10 +1,10 @@
 # FDP Integration
 
-A FAIR Data Point (FDP) is the realisation of the vision of a group of authors of the original paper on FAIR on how (meta)data could be presented on the web using existing standards, and without the need of APIs. It is essentially a group of RDF files that semantically represent the metadata of the resources, and can be discovered or queried by any service that understands RDF. It uses the Data Catalog (DCAT) model and Dublin Core terms to describe the metadata, and can be queried using SPARQL.
+A FAIR Data Point (FDP) is the realisation of the vision, the authors of the original paper on FAIR had. It showed how (meta)data could be presented on the web using existing standards, and without the need of APIs. It is essentially a group of RDF files that semantically represent the metadata of the resources, and can be discovered or queried by any service that understands RDF. It uses the Data Catalog (DCAT) model and Dublin Core terms to describe the metadata, and can be queried using SPARQL.
 
 ## Motivation
 
-In CV3, metadata entries are small in size and relaxed in permissions. It does not have user level permission, only one global switch to allow or disallow user to query it without logging in. This allows the metadata entries to be fully downloaded to a frontend, an app or another system for local filtering. To enable this, FDP is a good candidate that supports customisable model, local query, semantic discovery and lightweight communication.
+In CV3, metadata entries are small in size and relaxed in permissions. It does not have user level permission, only one global switch to allow or disallow user to query it without logging in. This allows the metadata entries to be fully downloaded to a frontend, an app or another system for local filtering. To enable this, FDP is a good candidate that supports customisable models, local query, semantic discovery and lightweight communication.
 
 ## Features
 
